@@ -3,7 +3,7 @@
  */
 
 var FILES_PER_PAGE = 19;
-var FILES_PER_ROW  = 5;
+var FILES_FAST_JUMP  = 5;
 
 
 var cLanguage_himedia = "eng";
@@ -2598,46 +2598,48 @@ function dropboxConetentKeyDown(event) {
     debugPrint("dropboxConetentKeyDown begin and keyCode is :" + event.keyCode);
     switch (checkDMPkeycode(event.keyCode)) {
         case VK_RIGHT:
-            if (HiFileBrowser.curFile + FILES_PER_ROW < HiFileBrowser.totalFile) {
+            if (HiFileBrowser.curFile + FILES_FAST_JUMP < HiFileBrowser.totalFile) {
 
-                if (HiFileBrowser.curFile + FILES_PER_ROW < (HiFileBrowser.curPage + 1) * FILES_PER_PAGE) {
-                    setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile + FILES_PER_ROW);
-                    HiFileBrowser.curFile += FILES_PER_ROW;
+                if (HiFileBrowser.curFile + FILES_FAST_JUMP < (HiFileBrowser.curPage + 1) * FILES_PER_PAGE) {
+                    setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile + FILES_FAST_JUMP);
+                    HiFileBrowser.curFile += FILES_FAST_JUMP;
                 }
                 else {
-                    HiFileBrowser.curFile += FILES_PER_ROW;
+                    HiFileBrowser.curFile += FILES_FAST_JUMP;
                     changePage(HiFileBrowser.curPage, HiFileBrowser.curPage + 1);
                 }
             }
-            else if (Math.floor(HiFileBrowser.totalFile / FILES_PER_ROW) != Math.floor(HiFileBrowser.curFile / FILES_PER_ROW)) {
-                if (HiFileBrowser.curFile + FILES_PER_ROW < (HiFileBrowser.curPage + 1) * FILES_PER_PAGE) {
-                    setFileFocus(HiFileBrowser.curFile, HiFileBrowser.totalFile - 1);
-                    HiFileBrowser.curFile = HiFileBrowser.totalFile - 1;
-                }
-                else if (HiFileBrowser.curFile + FILES_PER_ROW > (HiFileBrowser.curPage + 1) * FILES_PER_PAGE && HiFileBrowser.curFile + FILES_PER_ROW >= HiFileBrowser.totalFile && HiFileBrowser.totalFile > (HiFileBrowser.curPage + 1) * FILES_PER_PAGE) {
-                    HiFileBrowser.curFile = HiFileBrowser.totalFile - 1;
-                    changePage(HiFileBrowser.curPage, HiFileBrowser.curPage + 1);
-                }
-
+            else {
+                HiFileBrowser.curPage = HiFileBrowser.totalPage - 1;
+                HiFileBrowser.curFile = HiFileBrowser.totalFile - 1;
+                changePage(0, HiFileBrowser.curPage);
+                setFileFocus(0, HiFileBrowser.curFile);
             }
             break;
         case VK_LEFT:
-            if (HiFileBrowser.curFile - FILES_PER_ROW >= 0) {
-                if (HiFileBrowser.curFile - FILES_PER_ROW >= HiFileBrowser.curPage * FILES_PER_PAGE) {
-                    setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile - FILES_PER_ROW);
-                    HiFileBrowser.curFile -= FILES_PER_ROW;
+            if (HiFileBrowser.curFile - FILES_FAST_JUMP >= 0) {
+                if (HiFileBrowser.curFile - FILES_FAST_JUMP >= HiFileBrowser.curPage * FILES_PER_PAGE) {
+                    setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile - FILES_FAST_JUMP);
+                    HiFileBrowser.curFile -= FILES_FAST_JUMP;
                 }
                 else {
-                    HiFileBrowser.curFile -= FILES_PER_ROW;
+                    HiFileBrowser.curFile -= FILES_FAST_JUMP;
                     changePage(HiFileBrowser.curPage, HiFileBrowser.curPage - 1);
                 }
+            }
+            else {
+                changePage(HiFileBrowser.curPage, 0);
+                setFileFocus(HiFileBrowser.curFile, 0);
+                HiFileBrowser.curFile = 0;
+                HiFileBrowser.curPage = 0;
             }
             break;
         case VK_UP:
             if (HiFileBrowser.curFile == 0) {
-
-//                pathStack.pop();
-                goToList();
+                HiFileBrowser.curPage = HiFileBrowser.totalPage - 1;
+                HiFileBrowser.curFile = HiFileBrowser.totalFile - 1;
+                changePage(0, HiFileBrowser.curPage);
+                setFileFocus(0, HiFileBrowser.curFile);
             }
             else if (HiFileBrowser.curFile == HiFileBrowser.curPage * FILES_PER_PAGE) {
                 HiFileBrowser.curFile--;
@@ -2645,12 +2647,17 @@ function dropboxConetentKeyDown(event) {
             }
             else {
                 setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile - 1);
-
                 HiFileBrowser.curFile--;
             }
             break;
         case VK_DOWN:
-            if (HiFileBrowser.curFile < HiFileBrowser.totalFile - 1) {
+            if (HiFileBrowser.curFile == (HiFileBrowser.totalFile - 1)) {
+                changePage(HiFileBrowser.curPage, 0);
+                setFileFocus(HiFileBrowser.curFile, 0);
+                HiFileBrowser.curFile = 0;
+                HiFileBrowser.curPage = 0;
+            }
+            else if (HiFileBrowser.curFile < HiFileBrowser.totalFile - 1) {
                 if (HiFileBrowser.curFile + 1 == (HiFileBrowser.curPage + 1) * FILES_PER_PAGE) {
                     HiFileBrowser.curFile++;
                     changePage(HiFileBrowser.curPage, HiFileBrowser.curPage + 1);
