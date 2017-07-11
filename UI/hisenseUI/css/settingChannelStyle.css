@@ -1,0 +1,858 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.settingChSetEUPageCls{
+    width: 1920px;
+    height: 1080px;
+    background-color: #0d1722;
+    position: absolute;
+}
+.settingChSetHeadCls{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+}
+.settingChSetEUHeadTitleClc{
+    margin-right: 36px;
+    margin-top: 96px;
+    font-size: 40px;
+    color: rgba(255,255,255,0.3);
+    float: right;
+}
+.settingChSetEUHeadItemClc{
+    margin-left: 86px;
+    margin-top: 64px;
+    font-size: 80px;
+    color: rgba(255,255,255,0.7);
+    float: left;
+}
+.html_rtl .settingChSetEUHeadItemClc{
+    margin-right: 86px;
+    margin-top: 64px;
+    font-size: 80px;
+    color: rgba(255,255,255,0.7);
+    float: right;
+}
+.settingChSetBodyCls{
+    width: 1920px;
+    height: 1080px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 0;
+}
+.settingChSetLeftImgFrameCls{
+    width: 75px;
+    margin-left: 36px;
+    height: 577px;
+    margin-top: 502px;
+    display: inline-block;
+    vertical-align: top;
+}
+.settingChSetRightImgFrameCls{
+    width: 75px;
+    height: 577px;
+    margin-top: 502px;
+    display: inline-block;
+    vertical-align: top;
+}
+.settingChSetContentCls{
+    width: 1698px;
+    height: 1080px;
+    display: inline-block;
+    vertical-align: top;
+}
+.settingChSetCenterFrame{
+    width: 1698px;
+    height: 1080px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.settingChSetLeftFrame{
+    width: 590px;
+    height: 1080px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.settingChSetNoTitleUl{
+    display: inline-block;
+}
+.settingChSetNoTitleUl li{
+    border-bottom: 1px rgba(255,255,255,0.08) solid;
+}
+.settingChSetNoTitleUl li:last-child{
+    border-bottom: 1px #0d1722 solid;
+}
+.settingChSingleNoTitleLiNormal{
+    width: 998px;
+    padding-left: 60px;
+    padding-right: 60px;
+    height: 116px;
+    line-height: 116px;
+    color: rgba(255,255,255,0.5);
+}
+.settingChSingleNoTitleLiFocus{
+    width: 998px;
+    padding-left: 60px;
+    padding-right: 60px;
+    height: 116px;
+    line-height: 116px;
+    color: #FFFFFF;
+    background-color: rgba(21,75,110,0.6);
+    box-shadow: 0px 0px 0px 4px #84ecfe inset;
+}
+.settingChSingleNoTitleLiSelected{
+    width: 998px;
+    padding-left: 60px;
+    padding-right: 60px;
+    height: 116px;
+    line-height: 116px;
+    color: #FFFFFF;
+    background-color: rgba(21,75,110,0.2);
+}
+.settingChSingleNoTitleLiDisable{
+    width: 998px;
+    padding-left: 60px;
+    padding-right: 60px;
+    height: 116px;
+    line-height: 116px;
+    color: rgba(255,255,255,0.26);
+}
+.settingChSetSingleNoTitleLiNameCls{
+    width: 950px;
+    height: 116px;
+    line-height: 116px;
+    display: inline-block;
+    font-size: 45px;
+}
+.settingChSetSingleNoTitleLiImgCls{
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    display: inline-block;
+}
+.settingChLeftNoTitleLiNormal{
+    width: 590px;
+    height: 116px;
+    line-height: 116px;
+    color: rgba(255,255,255,0.5);
+}
+.settingChLeftNoTitleLiFocus{
+    width: 590px;
+    height: 116px;
+    line-height: 116px;
+    color: #FFFFFF;
+    background-color: rgba(21,75,110,0.6);
+    box-shadow: 0px 0px 0px 4px #84ecfe inset;
+}
+.settingChLeftNoTitleLiSelected{
+    width: 590px;
+    height: 116px;
+    line-height: 116px;
+    color: #FFFFFF;
+    background-color: rgba(21,75,110,0.2);
+}
+.settingChLeftNoTitleLiDisable{
+    width: 590px;
+    height: 116px;
+    line-height: 116px;
+    color: rgba(255,255,255,0.26);
+}
+.settingChSetLeftNoTitleLiNameCls{
+    width: 470px;
+    padding-left: 60px;
+    padding-right: 60px;
+    display: inline-block;
+    font-size: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.settingChSetRightFrame{
+    width: 908px;
+    height: 1080px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.settingChSetRightFrame ul li{
+    width: 908px;
+    height: 84px;
+    line-height: 84px;
+    margin-bottom: 40px;
+}
+.settingChRightWithTitleLiNormal{}
+.settingChRightWithTitleLiNormal .settingChSetRightListInfo{
+    width: 394px;
+    height: 84px;
+    line-height: 84px;
+    padding-left: 36px;
+    padding-right: 36px;
+    color: rgba(255,255,255,0.5);
+    display: inline-block;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.1);
+}
+.settingChRightWithTitleLiFocus{}
+.settingChRightWithTitleLiFocus .settingChSetRightListInfo{
+    width: 394px;
+    height: 84px;
+    line-height: 84px;
+    padding-left: 36px;
+    padding-right: 36px;
+    color: #FFFFFF;
+    display: inline-block;
+    background-color: rgba(21,75,110,0.6);
+    box-shadow: 0px 0px 0px 4px #84ecfe inset;
+}
+.settingChRightWithTitleLiSelected{}
+.settingChRightWithTitleLiSelected .settingChSetRightListInfo{
+    width: 394px;
+    height: 84px;
+    line-height: 84px;
+    padding-left: 36px;
+    padding-right: 36px;
+    color: #FFFFFF;
+    display: inline-block;
+    background-color: rgba(21,75,110,0.2);
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.1);
+}
+.settingChRightWithTitleLiDisable{
+    display: none;
+}
+.settingChRightWithTitleLiDisable .settingChSetRightListInfo{
+    width: 394px;
+    height: 84px;
+    line-height: 84px;
+    padding-left: 36px;
+    padding-right: 36px;
+    color: rgba(255,255,255,0.26);
+    display: inline-block;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.1);
+}
+.settingChSetRightWithTitleLiTitleCls{
+    width: 354px;
+    padding-right: 88px;
+    text-align: right;
+    display: inline-block;
+    font-size: 45px;
+    color: rgba(255,255,255,0.5);
+}
+.settingChSetRightWithTitleLiNameCls{
+    width: 364px;
+    display: inline-block;
+    font-size: 36px;
+}
+.settingChSetRightWithTitleLiImgCls{
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+}
+.settingChSetAntennaSetBtnNormal{
+    width: 358px;
+    height: 84px;
+    line-height: 84px;
+    margin-left: 598px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: rgba(255,255,255,0.5);
+    font-size: 36px;
+    text-align: center;
+    border: 1px rgba(255,255,255,0.08) solid;
+}
+.settingChSetAntennaSetBtnFocus{
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    margin-left: 598px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #FFFFFF;
+    font-size: 36px;
+    text-align: center;
+    border: 1px rgba(255,255,255,0.08) solid;
+    background-color: rgba(21,75,110,0.6);
+    box-shadow: 0px 0px 0px 4px #84ecfe inset;
+}
+.settingChSetAntennaSetBtnDisable{
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    margin-left: 598px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: rgba(255,255,255,0.2);
+    font-size: 36px;
+    text-align: center;
+    border: 1px rgba(255,255,255,0.08) solid;
+}
+/***************************Antenna setup*************/
+.ChannelCommMainPage{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 1080px;
+    width: 1920px;
+    background-color: #0d1722;
+}
+.ChannelCommLine{
+    width: 1120px;
+    height: 84px;
+    position: relative;
+}
+.ChannelCommCon{
+    height: 1080px;
+    display: table-cell;
+    vertical-align: middle;
+    left: 364px;
+    position: relative;
+}
+.ChannelCommTitle{
+    width: 466px;
+    color: rgba(255,255,255,.5);
+    font-size: 45px;
+    height: 84px;
+    line-height: 84px;
+    text-align: right;
+    float: left;
+
+}
+.ChannelCommTitleDisable{
+    width: 466px;
+    color: rgba(255,255,255,.2);
+    font-size: 45px;
+    height: 84px;
+    line-height: 84px;
+    text-align: right;
+    float: left;
+}
+.ChannelCommItemNormal{
+    width: 566px;
+    height: 84px;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.1);
+    float: right;
+    margin-left: 88px;
+}
+.ChannelCommItemFocus{
+    width: 566px;
+    height: 84px;
+    box-shadow: 0 0 0 4px rgba(132,236,255,1);
+    background-color: rgba(17,74,111,.8);
+    float: right;
+    margin-left: 88px;
+}
+.ChannelCommItemDisable{
+    width: 566px;
+    height: 84px;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.1);
+    float: right;
+    margin-left: 88px;
+}
+.ChannelCommItemFocus .ChannelCommChannelItemSpan{
+    color: #ffffff;
+}
+.ChannelCommItemDisable .ChannelCommChannelItemSpan{
+    color: rgba(255,255,255,0.2);
+}
+.ChannelCommChannelItemSpan{
+    color: rgba(255,255,255,.5);
+    font-size: 36px;
+    height: 84px;
+    line-height: 84px;
+    margin-left: 36px;
+    display: inline-block;
+    width: 464px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.ChannelCommChannelItemImg{
+    background-image: url(../img/channel_down_arrow.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: relative;
+    top: 10px;
+}
+.ChannelCommUserBandFreInput{
+    width: 466px;
+    height: 84px;
+    color: rgba(255,255,255,.5);
+    font-size: 36px;
+    background-color: rgba(0,0,0,.1);
+    border: 0 none;
+    outline: 0;
+}
+.ChannelCommChannelListFrameNormal{
+    position: absolute;
+    right: 0px;
+    top: 70px;
+    visibility: hidden;
+    z-index: 2;
+}
+.ChannelCommChannelListFrameFocus{
+    position: absolute;
+    right: 0px;
+    top: 70px;
+    visibility: visible;
+    z-index: 2;
+}
+.ChannelCommChannelSelectListUl{
+    list-style: none;
+    padding: 0;
+    box-shadow: 0 0 30px 0px #000;
+    margin-top: 16px;
+    background-color: #0d1722;
+}
+.ChannelCommChannelSelectListUl li {
+    height: 84px;
+    min-width: 566px;
+    border-bottom: 1px rgba(255,255,255,.08) solid;
+    /*background-color: #0d1722;*/
+
+}
+.settingChannelCommChannelListLiNormal{
+
+}
+.settingChannelCommChannelListLiFocus{
+    background-color: rgba(17,74,111,.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+.settingChannelCommChannelListLiFocus .ChannelCommChannelSelectItem{
+    color: #FFFFFF;
+}
+.settingChannelCommChannelListLiDisable{
+}
+.settingChannelCommChannelListLiDisable .ChannelCommChannelSelectItem{
+    color: rgba(255,255,255,0.2);
+}
+.settingChannelCommChannelListLiSelect{
+}
+.ChannelCommChannelSelectItem{
+    color: rgba(255,255,255,.5);
+    font-size: 36px;
+    height: 84px;
+    line-height: 84px;
+    margin-left: 36px;
+}
+/*#ChannelCommUserBandListFrame{*/
+    /*top: -447px;*/
+/*}*/
+/********************channel Antenna Setup*******************/
+.settingChSetAntDialogCls{
+    width: 1022px;
+    height: 800px;
+    border-top: 1px #173f58 solid;
+    position: absolute;
+    left: 449px;
+    top: 120px;
+    background-color: #1c2b3e;
+}
+.channelAntSetupListUl {
+    list-style: none;
+    height: 112px;
+    /*border-top: 2px #183f57 solid;*/
+    border-top: 2px rgba(255,255,255,0.15) solid;
+    border-bottom: 2px rgba(255,255,255,0.15) solid;
+    border-left: 2px rgba(255,255,255,0.15) solid;
+    float: left;
+}
+
+.channelAntSetupListUl li {
+    height: 112px;
+    font-size: 32px;
+    display: inline-block;
+    text-align: center;
+    border-right: 2px rgba(255,255,255,0.15) solid;
+    width: 888px;
+}
+.channelAntSetupSateLiNormal{
+
+}
+.channelAntSetupSateLiFocus{
+    background-color: rgba(21,75,110,0.6);
+    box-shadow: 0px 0px 0px 4px #84ecfe inset;
+}
+.channelAntSetupSateLiSelected{
+    background-color: rgba(17,74,111,0.8);
+}
+
+.channelAntSetupListUlTitle{
+    font-size: 36px;
+    line-height: 36px;
+    margin-top: 17px;
+    color: #FFFFFF;
+}
+.channelAntSetupListUlValue{
+    font-size: 30px;
+    line-height: 30px;
+    margin-top: 12px;
+    color: #FFFFFF;
+}
+/***************************Auto Scan*************/
+
+.settingChSetAutoScanBody{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 1920px;
+    height: 1080px;
+    /*background-color:#0d1722;*/
+}
+.settingChSetAutoScanMain{
+    position: relative;
+    margin-left: 238px;
+    margin-top: 194px;
+    width: 1358px;
+    height: 692px;
+}
+.html_rtl .settingChSetAutoScanMain{
+    position: relative;
+    margin-right: 238px;
+    margin-top: 194px;
+    width: 1358px;
+    height: 692px;
+}
+.settingChSetAutoLeftArrow{
+    position: relative;
+    float: left;
+    margin-left: 36px;
+    margin-top: 502px;
+    width: 75px;
+    height: 75px;
+}
+.settingChSetAutoRightArrow{
+    position: relative;
+    float: right;
+    margin-right: 36px;
+    margin-top: 516px;
+    width: 36px;
+    height: 64px;
+}
+.settingChSetAutoCenter{
+    position: relative;
+    /*float: left;*/
+    left: 528px;
+    /*margin-top: 194px;*/
+    width: 720px;
+    height: 1080px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.html_rtl .settingChSetAutoCenter{
+    position: relative;
+    /*float: left;*/
+    right: 528px;
+    /*margin-top: 194px;*/
+    width: 720px;
+    height: 1080px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.settingChSetAutoCenterDiv1 {
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    padding-right: 96px;
+    width: 720px;
+    font-size: 0;
+}
+.settingChSetAutoCenterDiv {
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    padding-right: 96px;
+    margin-top: 46px;
+    width: 740px;
+    font-size: 0;
+}
+.settingChSetAutoScanLeft{
+    position: relative;
+    float: left;
+    width: 722px;
+    height: 692px;
+}
+.html_rtl .settingChSetAutoScanLeft{
+    position: relative;
+    float: right;
+    width: 626px;
+    height: 692px;
+    margin-right: 96px;
+}
+.settingChSetAutoScanLeftCon{
+    position: relative;
+    height: 692px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.settingChSetAutoScanLine{
+    position: relative;
+    float: left;
+    width: 2px;
+    height: 692px;
+    border-right: 2px rgba(255,255,255,0.1) solid;
+}
+.html_rtl .settingChSetAutoScanLine{
+    position: relative;
+    float: right;
+    width: 2px;
+    height: 692px;
+    border-right: 2px rgba(255,255,255,0.1) solid;
+}
+.settingChSetAutoScanLeftDiv {
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    /*padding-right: 96px;*/
+    margin-top: 46px;
+    width: 720px;
+    font-size: 0;
+    overflow: hidden;
+    white-space:nowrap;
+}
+.settingChSetAutoScanLeftDiv1 {
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    /*padding-right: 96px;*/
+    /*margin-bottom: 46px;*/
+    width: 680px;
+    font-size: 0;
+    overflow: hidden;
+    white-space:nowrap;
+}
+.settingChSetAutoScanRight{
+    position: relative;
+    float: left;
+    margin-top: 200px;
+    left: 96px;
+    width: 632px;
+    height: 360px;
+}
+.html_rtl .settingChSetAutoScanRight{
+    position: relative;
+    float: right;
+    right: 96px;
+    margin-top: 200px;
+    width: 632px;
+    height: 360px;
+}
+.settingChSetAutoScanRightDiv {
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    /*padding-left: 96px;*/
+    margin-bottom: 56px;
+    width: 536px;
+    font-size: 0;
+}
+.settingChSetAutoScanRightDivPro {
+    position: relative;
+    height: 76px;
+    line-height: 36px;
+    /*padding-left: 96px;*/
+    margin-bottom: 56px;
+    width: 536px;
+    font-size: 0;
+}
+.settingChSetAutoScanSetItemTitle {
+    display: inline-block;
+    color: rgba(255,255,255,0.5);
+    font-size: 36px;
+}
+.settingChSetAutoScanItemValue {
+    display: inline-block;
+    color: rgba(255,255,255,0.87);
+    /*padding-left: 20px;*/
+    font-size: 36px;
+}
+.settingChSetAutoScanProFrame {
+    margin-top: 30px;
+    position: relative;
+    background-color: rgba(255,255,255,0.15);
+    display: inline-block;
+    width: 536px;
+    height: 10px;
+    border-radius: 2px;
+}
+.settingChSetAutoScanProCont {
+    position: relative;
+    background-color: rgba(255,255,255,0.6);
+    width: 200px;
+    height: 10px;
+    border-radius: 2px;
+}
+.settingChSetAutoScanProCont1 {
+    position: relative;
+    background-color: #128b89;
+    width: 200px;
+    height: 10px;
+    border-radius: 2px;
+}
+.settingChSetAutoScanBottom{
+    position: relative;
+    margin-top: 76px;
+    margin-left: 390px;
+    width: 1190px;
+    height: 84px;
+    line-height: 36px;
+}
+.html_rtl .settingChSetAutoScanBottom{
+    position: relative;
+    margin-top: 76px;
+    margin-right: 390px;
+    width: 1190px;
+    height: 84px;
+    line-height: 36px;
+}
+.settingChSetAutoScanBottom_two{
+    position: absolute;
+    bottom: 34px;
+    left: 570px;
+    width: 790px;
+    height: 84px;
+    line-height: 36px;
+}
+.settingChSetAutoScanBtnNormal {
+    display: inline-block;
+    margin-right: 30px;
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    text-indent: 5px;
+    color: rgba(255,255,255,0.5);
+    background-color: rgba(37,41,51,0.2);
+    font-size: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.1) inset
+}
+
+.settingChSetAutoScanBtnFocus {
+    display: inline-block;
+    margin-right: 30px;
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-indent: 5px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: rgba(21,75,110,0.6);
+    box-shadow: 0px 0px 0px 4px #88ecff inset;
+}
+
+.settingChSetAutoScanBtnDisable {
+    display: inline-block;
+    margin-right: 30px;
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-indent: 5px;
+    text-align: center;
+    color: #85888d;
+    font-size: 36px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: rgba(36,51,72,0.5);
+    background-color: #243348;
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset;
+    /*opacity: 0.5;*/
+    visibility: hidden;
+}
+.settingChSetCommDVBCLeft{
+    float: left;
+    line-height: 1080px;
+}
+.settingChSetCommDVBCRight{
+    float: right;
+    line-height: 1080px;
+}
+.settingChSetCommDVBCLeftImg{
+    width: 75px;
+    height: 75px;
+    position: relative;
+    left: 36px;
+}
+.settingChSetCommDVBCRightImg{
+    width: 75px;
+    height: 75px;
+    position: relative;
+    right: 36px;
+}
+.settingChSetCommDVBCRightSpan{
+    font-size: 30px;
+    color: rgba(255,255,255,.8);
+    line-height: 1080px;
+    top: 50px;
+    position: relative;
+    right: -36px;
+    float: right;
+}
+.ChannelCommItemInputFocus{
+    width: 466px;
+    height: 84px;
+    box-shadow: 0 0 0 4px rgba(132,236,255,1);
+    float: right;
+    margin-left: 88px;
+}
+.ChannelCommUserBandListScrollCon{
+    width: 4px;
+    height: 252px;
+    margin-top: -230px;
+    left: 545px;
+    position: absolute;
+    float: right;
+}
+.ChannelCommUserBandListScrollBar{
+    margin-top: 0px;
+    height: 95px;
+    width: 4px;
+    border-radius: 2px;
+    background-color:rgba(255,255,255,.2);
+}
+.settingChSetSelSateSignalNormal{
+    /*display: inline-block;*/
+    width: 26px;
+    height: 84px;
+    position: relative;
+    top: -95px;
+    left: 920px;
+}
+.settingChSetSelSateSignalDisable{
+    display: none;
+}
+.settingChSetSelSateSQFrame{
+    display: inline-block;
+    background-color: rgba(255,255,255,0.1);
+    width: 8px;
+    height: 84px;
+}
+.settingChSetSelSateSLFrame{
+    display: inline-block;
+    background-color: rgba(255,255,255,0.1);
+    width: 8px;
+    height: 84px;
+    margin-left: 10px;
+}
+.settingChSetSelSateSignalL{
+    background-color: rgba(255,255,255,0.6);
+    width: 8px;
+    position: relative;
+}
+.settingChSetSelSateSignalQ{
+    background-color: rgba(255,255,255,0.6);
+    width: 8px;
+    position: relative;
+}

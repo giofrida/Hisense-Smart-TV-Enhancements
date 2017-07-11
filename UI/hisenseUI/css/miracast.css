@@ -1,0 +1,178 @@
+/*#setting_pic_Mira_page{*/
+    /*width: 1920px;*/
+    /*height: 1080px;*/
+    /*position: absolute;*/
+    /*background: url(../img/Anyview-cast.png);*/
+/*}*/
+/*.setting_pic_Mira_content {*/
+    /*width: 1920px;*/
+    /*height: 1080px;*/
+    /*position: absolute;*/
+    /*background: url(../img/Anyview-cast.png);*/
+/*}*/
+#setting_pic_Mira_page{
+    width: 1920px;
+    height: 1080px;
+    position: absolute;
+}
+.setting_pic_Mira_all {
+    width: 1920px;
+    height: 1080px;
+    position: absolute;
+    background: url(../img/Anyview-cast.png);
+}
+
+.picMiraMode{
+    font-size: 120px;
+    color: #F0F0F0;
+    line-height: 84px;
+    text-align: center;
+}
+
+.setting_pic_Mira_content{
+    margin-top: 134px;
+    margin-left: 307px;
+    margin-right: 877px;;
+}
+.setting_pic_Mira_bottom{
+    margin-left: 125px;
+    margin-top: 485px;
+    margin-right: 125px;
+}
+.miraSpan1{
+    font-size: 50px;
+    color: #F0F0F0;
+}
+.setting_pic_Mira_bottom2{
+    margin-left: 125px;
+    margin-top: 28px;
+    font-size: 0;
+    margin-right: 125px;
+}
+.setting_pic_Mira_line1{
+    width: 295px;
+    height: 10px;
+    background-color: #0868d3;
+    display: inline-block;
+    margin-right: 6px;
+}
+.setting_pic_Mira_line2{
+    width: 295px;
+    height: 10px;
+    background-color:rgba(104,159,222,.6);
+    display: inline-block;
+    margin-right: 6px;
+}
+.setting_pic_Mira_bottom3{
+    margin-top: 110px;
+    margin-left: 125px;
+    margin-right: 125px;
+}
+.setting_pic_Mira_tv_name{
+    font-size: 40px;
+    color: #b2b8bf;
+}
+#setting_Mira_exit_page{
+    width: 1920px;
+    height: 1080px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+#setting_Mira_wifi_page{
+    width: 1920px;
+    height: 1080px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+.setting_pic_Mira_exit_all{
+    width: 1022px;
+    height: 443px;
+    background-color: #173f58;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -221.5px;
+    margin-left: -511px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+.setting_Mira_exit_title{
+    width: 1022px;
+    height: 100px;
+    line-height: 100px;
+    border-bottom: 6px #33b5e6 solid;
+    background-color: #102136;
+}
+.setting_Mira_exit_span{
+    color: #41b6e3;
+    font-size: 40px;
+    margin-left: 65px;
+    margin-right: 65px;
+}
+.setting_Mira_exit_content{
+    margin-top: 0px;
+    width: 1022px;
+    height: 240px;
+    background-color: #102136;
+}
+.setting_Mira_exit_div{
+    display: table-cell;
+    width: auto;
+    height: 240px;
+    padding: 0 65px 0 65px;
+    color: #f0f0f0;
+    vertical-align: middle;
+}
+.setting_Mira_exit_text{
+    display: inline-block;
+    font-size: 36px;
+    vertical-align: middle;
+}
+.setting_Mira_btn_class_normal{
+    width: 510px;
+    height: 95px;
+    margin-top: 2px;
+    background-color: #102136;
+    float: left;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 32px;
+    line-height: 95px;
+}
+.setting_Mira_btn_class_focus{
+    width: 510px;
+    height: 95px;
+    margin-top: 2px;
+    /*background-color: #ae6600; *//**��Ҫ�޸�*/
+    float: left;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 32px;
+    line-height: 95px;
+    box-shadow: 0 0 0 4px rgba(132,236,255,1) inset;
+    background-color: rgba(17,74,111,.8);
+}
+.setting_Mirawifi_btn_class_focus{
+    width: 1022px;
+    height: 95px;
+    margin-top: 2px;
+    /*background-color: #ae6600; *//**需要修改*/
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 32px;
+    line-height: 95px;
+    /*background-color: #AE6600;*/
+    /*box-shadow: inset 0px 0px 0px 1px #fc8700, inset 0px 0px 0px 3px #cc9500, inset 0px 0px 0px 4px #fc8700;*/
+    box-shadow: 0 0 0 4px rgba(132,236,255,1) inset;
+    background-color: rgba(17,74,111,.8);
+}
+.setting_Mirawifi_btn_class_normal{
+    width: 1022px;
+    height: 95px;
+    margin-top: 2px;
+    background-color: #102136;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 32px;
+    line-height: 95px;
+}

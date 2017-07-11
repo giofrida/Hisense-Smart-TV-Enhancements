@@ -1,0 +1,107 @@
+
+#ginga_app {
+
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 981px;
+    width: 900px;
+    padding: 150px 510px 50px 510px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #9ba2ad;
+
+}
+
+.ginga_head {
+    margin-left: 65px;
+    margin-top: 0px;
+    height: 100px;
+    width: 900px;
+    font-size: 40px;
+    line-height: 100px;
+    color: #35b5e4;
+}
+
+.ginga_head_separate_line_blue {
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 900px;
+    height: 6px;
+    background-color: #35B5E4;
+}
+
+.gingaAppPanel {
+
+    height: 780px;
+    width: 900px;
+    background-color: #102136;
+    /*border: 1px #102136 solid;*/
+    border-radius: 4px;
+
+}
+
+#ginga_app_list {
+    width: 820px;
+    margin-left: 40px;
+    float: left;
+}
+
+#ginga_app_list li {
+    height: 50px;
+    line-height: 50px;
+    /*border-bottom: 2px #173f58 solid;*/
+    padding: 20px 20px 20px 20px;
+    margin-top: 30px;
+    color: #9ba2ad;
+    font-size: 36px;
+    text-align: left;
+}
+
+#ginga_app_list li.focus {
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+    color: #f0f0f0;
+}
+
+#ginga_app_list li.normal {
+    /*box-shadow: 0 0 0 4px #84ecff inset;*/
+    background-color: rgba(17, 74, 111, 0.8);
+    color: #f0f0f0;
+}
+
+/*#ginga_app_list li span {*/
+/*display: block;*/
+/*float: left;*/
+/*overflow: hidden;*/
+/*text-overflow: ellipsis;*/
+/*white-space: nowrap;*/
+/*width: 200px;*/
+/*font-size: 26px;*/
+/*text-indent: 20px;*/
+/*height: 30px;*/
+/*}*/
+
+#ginga_app_list li span:nth-child(2) {
+    color: #84ecff ;
+    float: right;
+}
+
+.ginga_app_scroll_container{
+    height: 570px;
+    width: 4px;
+    margin-top: 30px;
+    margin-right: 20px;
+    float: right;
+    /*position: absolute;*/
+
+    /*background: #ffffff;*/
+}
+
+.ginga_app_scroll_bar{
+    position: absolute;
+    margin-top: 0px;
+    height: 50px;
+    width: 4px;
+    background: #555b60;
+    border-radius: 4px;
+}

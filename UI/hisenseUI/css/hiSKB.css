@@ -1,0 +1,1177 @@
+/*body{*/
+/*margin:0;*/
+/*padding:0;*/
+/*font: normal 12pt Arial;*/
+/*}*/
+.bg {
+    width: 1920px;
+    height: 1080px;
+    /*background: url(../img/bg.png);*/
+    position: relative;
+}
+
+.inputtest {
+    width: 1020px;
+    height: 500px;
+    padding-bottom: 15px;
+    background-color: #151618;
+    position: absolute;
+    color: #f0f0f0;
+    display: none;
+}
+
+.row {
+    padding-top: 60px;
+    padding-left: 65px;
+    font-size: 0;
+}
+
+.row.normal {
+    padding-top: 41px;
+    padding-left: 65px;
+    font-size: 0;
+}
+
+/*#softKeyBoard*/
+/*{*/
+/*opacity: 1;*/
+/*}*/
+/*#epgInput*/
+/*{*/
+/*vertical-align: middle;*/
+/*}*/
+/*#epgGo{*/
+/*margin-left: 15px;*/
+/*vertical-align: middle;*/
+/*}*/
+/*.skbInputContentNormal*/
+/*{*/
+/*margin-top:65px;*/
+/*margin-left: 25px;*/
+/*}*/
+
+/*****************正常输入框的样式******************/
+.epgInputNormal {
+    width: 570px;
+    height: 50px;
+
+    border: 0 none;
+    outline: 0;
+    padding: 0 15px;
+
+    color: #b2b8bf;
+    font-size: 32px;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 4px #1b3860;
+
+}
+
+.epgInputFocus {
+    width: 570px;
+    height: 50px;
+
+    border: 0 none;
+    outline: 0;
+    padding: 0 15px;
+
+    color: #f0f0f0;
+    font-size: 32px;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px #f78701, inset 0 0 0 3px #cc9400, inset 0 0 0 4px #f78701;
+}
+
+/*****************搜索按钮的样式******************/
+.skbGoNormal {
+    width: 230px;
+    height: 50px;
+    line-height: 50px;
+    border: 0 none;
+    outline: 0;
+    display: inline-block;
+    vertical-align: bottom;
+    text-align: center;
+
+    color: #f0f0f0;
+    font-size: 32px;
+    background-color: #172c4a;
+    box-shadow: inset 0 0 0 4px #1b3860;
+}
+
+.skbGoFocus {
+    width: 230px;
+    height: 50px;
+    line-height: 50px;
+    border: 0 none;
+    outline: 0;
+    display: inline-block;
+    vertical-align: bottom;
+    text-align: center;
+
+    color: #f0f0f0;
+    font-size: 32px;
+    background-color: #ae6600;
+    box-shadow: inset 0 0 0 1px #f78701, inset 0 0 0 3px #cc9400, inset 0 0 0 4px #f78701;
+}
+
+/*****************zip数字输入框的容器的样式，主要用selected和normal样式******************/
+
+.skbInputZipContainerNormal {
+    width: 544px;
+    height: 11px;
+    border: 0 none;
+    outline: 0;
+
+    position: relative;
+    display: inline-block;
+    bottom: 4px;
+
+    box-shadow: inset 0 3px 0 #151618, inset 0 0 0 3px #1b3860;
+}
+
+.skbInputZipContainerFocus {
+    width: 544px;
+    height: 11px;
+    border: 0 none;
+    outline: 0;
+
+    position: relative;
+    display: inline-block;
+    bottom: 4px;
+
+    box-shadow: inset 0 3px 0 #151618, inset 0 0 0 1px #f78701, inset 0 0 0 2px #cc9400, inset 0 0 0 3px #f78701;
+}
+
+.skbInputZipContainerSelected {
+    width: 544px;
+    height: 11px;
+    border: 0 none;
+    outline: 0;
+
+    position: relative;
+    display: inline-block;
+    bottom: 4px;
+
+    box-shadow: inset 0 3px 0 #151618, inset 0 0 0 1px #f78701, inset 0 0 0 2px #cc9400, inset 0 0 0 3px #f78701;
+}
+
+/*****************ZIP数字输入框的样式******************/
+.epgInputZipNormal {
+    width: 514px;
+    height: 50px;
+    border: 0 none;
+    outline: 0;
+    position: absolute;
+    margin: 0 15px;
+    padding: 0;
+    top: -47px;
+
+    color: #f0f0f0;
+    font-size: 32px;
+    background-color: transparent;
+}
+
+.epgInputZipFocus {
+    width: 514px;
+    height: 50px;
+    border: 0 none;
+    outline: 0;
+    position: absolute;
+    margin: 0 15px;
+    padding: 0;
+    top: -47px;
+
+    color: #f0f0f0;
+    font-size: 32px;
+    background-color: transparent;
+}
+
+/*****************ZIP输入框前面标签的样式******************/
+.epgInputZipNameNormal {
+    width: 298px;
+    height: 36px;
+    color: #f0f0f0;
+    font-size: 36px;
+    line-height: 36px;
+    margin-right: 50px;
+    overflow: hidden;
+    display: inline-block;
+    /*vertical-align: bottom;*/
+}
+
+/****************以下为键盘部分的样式*********************/
+
+/****************软键盘整体样式*********************/
+.softKeyBoard {
+    width: 1920px;
+    height: 500px;
+    padding-bottom: 15px;
+    /*background-color: #151618;*/
+    position: absolute;
+    color: #f0f0f0;
+    display: none;
+    bottom: 0;
+    /*opacity: 0.5;*/
+}
+
+.softKeyBoardContainer {
+    background-color: #151618;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/***************遮罩样式*******************/
+.mask {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    display: block;
+    z-index: -1;
+}
+
+/***************以下两段CSS用来将type为number的input的spinner去掉***************/
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/******************输入框外围Div的样式************************/
+.skbLeft {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.letterKeyNormal {
+    width: 1410px;
+    height: 276px;
+    font-size: 0;
+}
+
+.specialKeyNormal {
+    width: 1410px;
+    height: 92px;
+    font-size: 0;
+}
+
+.numberKeyNormal {
+    width: 504px;
+    height: 368px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 0;
+}
+
+.skbContentNormal {
+    font-size: 0;
+    position: relative;
+    width: 100%;
+}
+
+.skbInputContentNormal {
+    position: relative;
+    width: 100%;
+    height: 101px;
+    margin-top: 0;
+}
+
+/******************输入框Container样式************************/
+.skbInputContainerNormal {
+    position: absolute;
+    width: 1284px;
+    height: 11px;
+    margin-top: 71px;
+    left: 50%;
+    margin-left: -645px;
+    padding-left: 7px;
+    padding-right: 7px;
+
+    /*border:3px solid #49525c;*/
+    box-shadow: inset 0 3px 0 #151618,inset 0 0 0 3px #49525c;
+    border-top: 0 none;
+}
+
+.skbInputContainerFocus {
+    position: absolute;
+    width: 1284px;
+    height: 11px;
+    margin-top: 71px;
+    left: 50%;
+    margin-left: -645px;
+    padding-left: 7px;
+    padding-right: 7px;
+
+    /*border:3px solid #49525c;*/
+    border-top: 0 none;
+    box-shadow: inset 0 3px 0 #151618, inset 0 0 0 3px #84ecff;
+}
+
+.skbInputContainerSelected {
+    position: absolute;
+    width: 1284px;
+    height: 11px;
+    margin-top: 71px;
+    left: 50%;
+    margin-left: -645px;
+    padding-left: 7px;
+    padding-right: 7px;
+
+    /*border:3px solid #49525c;*/
+    border-top: 0 none;
+    box-shadow: inset 0 3px 0 #151618, inset 0 0 0 3px #84ecff;
+}
+
+/*****************软键盘输入框的样式******************/
+.skbInputNormal {
+    width: 1276px;
+    height: 58px;
+    border: 0 none;
+    outline: 0;
+    position: absolute;
+    top: -58px;
+
+    color: #f1f1f1;
+    font-size: 50px;
+    background-color: transparent;
+}
+
+.skbInputFocus {
+    width: 1276px;
+    height: 58px;
+    border: 0 none;
+    outline: 0;
+    position: absolute;
+    top: -58px;
+
+    color: #f1f1f1;
+    font-size: 50px;
+    background-color: transparent;
+}
+
+/*************键盘里面 键 的样式**************/
+.keyANormal {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 55px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyAFocus {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    background-color:rgba(17,74,111,0.8);
+
+    font-size: 55px;
+    color: #000000;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyASelected {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 55px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyADisable {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 55px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+/*************键盘里面 键 的样式**************/
+.keyEnterNormal {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background: #49525c url(../img/skb/enter_normal.png) no-repeat;
+    background-position: center center;
+    font-size: 55px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+}
+
+.keyEnterFocus {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    background:rgba(17,74,111,0.8) url(../img/skb/enter_focus.png) no-repeat;
+    background-position: center center;
+
+    font-size: 55px;
+    color: #000000;
+    margin: 6px 0 0 6px;
+}
+
+.keyEnterSelected {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+
+    background:#49525c url(../img/skb/enter_normal.png) no-repeat;
+    background-position: center center;
+
+    font-size: 55px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+}
+
+.keyADisable {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background:#49525c url(../img/skb/enter_normal.png) no-repeat;
+    background-position: center center;
+
+    font-size: 55px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+}
+
+/*************键盘里面 键 的样式**************/
+.keyBNormal {
+    width: 162px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 55px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyBFocus {
+    width: 162px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    background-color:rgba(17,74,111,0.8);
+
+    font-size: 55px;
+    color: #000000;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyBSelected {
+    width: 162px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 55px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyBDisable {
+    width: 162px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 55px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+/*************键盘里面 键 的样式**************/
+.keyHTTPNormal {
+    width: 162px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyHTTPFocus {
+    width: 162px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    background-color:rgba(17,74,111,0.8);
+
+    font-size: 48px;
+    color: #000000;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyHTTPSelected {
+    width: 162px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyHTTPDisable {
+    width: 162px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+/*************键盘里面 键 的样式**************/
+.keyCNormal {
+    width: 276px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyCFocus {
+    width: 276px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    background-color:rgba(17,74,111,0.8);
+
+    font-size: 48px;
+    color: #000000;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyCWork {
+    width: 276px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    background-color: #dcdcdc;
+
+    font-size: 48px;
+    color: #49525C;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyCSelected {
+    width: 276px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyCDisable {
+    width: 276px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+/*************键盘里面 键 的样式**************/
+.keyDNormal {
+    width: 417px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+    cursor: pointer;
+    background:#49525c url(../img/skb/blank_normal.png) no-repeat;
+    background-position: center center;
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+}
+
+.keyDFocus {
+    width: 417px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    background: rgba(17,74,111,0.8) url(../img/skb/blank_focus.png) no-repeat;
+    background-position: center center;
+    font-size: 48px;
+    color: #000000;
+    margin: 6px 0 0 6px;
+}
+
+.keyDSelected {
+    width: 417px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background:#49525c url(../img/skb/blank_normal.png) no-repeat;
+    background-position: center center;
+
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+}
+
+.keyDDisable {
+    width: 417px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background:#49525c url(../img/skb/blank_normal.png) no-repeat;
+    background-position: center center;
+
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+}
+
+/*************键盘里面 键 的样式**************/
+.keyCharNormal {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyCharFocus {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    background-color:rgba(17,74,111,0.8);
+
+    font-size: 48px;
+    color: #000000;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyCharSelected {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.keyCharDisable {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background-color: #49525c;
+
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+/*************键盘里面 键 的样式**************/
+.keyDeleteNormal {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+
+    background:#49525c url(../img/skb/delete_normal.png) no-repeat;
+    background-position: center center;
+
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+}
+
+.keyDeleteFocus {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    background:rgba(17,74,111,0.8) url(../img/skb/delete_focus.png) no-repeat;
+    background-position: center center;
+
+    font-size: 48px;
+    color: #000000;
+    margin: 6px 0 0 6px;
+}
+
+.keyDeleteSelected {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background:#49525c url(../img/skb/delete_normal.png) no-repeat;
+    background-position: center center;
+
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+}
+
+.keyDeleteDisable {
+    width: 135px;
+    height: 86px;
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    vertical-align: middle;
+
+    cursor: pointer;
+    background:#49525c url(../img/skb/delete_normal.png) no-repeat;
+    background-position: center center;
+
+    font-size: 48px;
+    color: #dcdcdc;
+    margin: 6px 0 0 6px;
+}
+
+/******************遥控器颜色按键样式**************************/
+.visualLength {
+    visibility: hidden;
+    white-space: nowrap;
+    font-size: 50px;
+}
+
+.controlSectionNormal {
+    float: right;
+    width: 181px;
+    margin-top: 14px;
+}
+
+.controlEnterNormal {
+    width: 35px;
+    height: 14px;
+    background-color: #0a6dac;
+    float: left;
+    margin-top: 3px;
+    border-radius: 1px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+}
+
+.controlDeleteNormal {
+    width: 35px;
+    height: 14px;
+    background-color: #8c8a12;
+    float: left;
+    margin-top: 3px;
+    border-radius: 1px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+}
+
+.controlRightNormal {
+    width: 35px;
+    height: 14px;
+    background-color: #247040;
+    float: left;
+    margin-top: 3px;
+    border-radius: 1px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+}
+
+.controlLeftNormal {
+    width: 35px;
+    height: 14px;
+    background-color: #822c00;
+    float: left;
+    margin-top: 3px;
+    border-radius: 1px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+}
+
+.controlFont {
+    color: #6b6f79;
+    font-size: 22px;
+    float: left;
+    margin-left: 20px;
+    margin-top: -3px;
+}
+
+/*************软键盘语言选择画面样式************/
+.softKeyBoardLanguage {
+    width: 1022px;
+    height: 612px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -511px;
+    margin-top: -306px;
+    /*z-index: 3;*/
+}
+
+.lanmask {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    display: block;
+    z-index: -1;
+}
+
+.SKBLanListContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    background-color: #102136;
+    box-shadow: 0 -1px 0 rgba(37, 67, 105, 0.75);
+}
+
+/*************软键盘语言选择画面  头部    样式************/
+.SKBHead {
+    width: 100%;
+    height: 100px;
+    border-bottom: 6px solid #33b5e6;
+
+}
+
+.SKBHeadLabel {
+    margin-left: 65px;
+    font-size: 40px;
+    color: #35b5ec;
+    line-height: 100px;
+}
+
+.skbLanListUlNormal {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.skbLanScrollBar {
+    position: absolute;
+    display: inline-block;
+    width: 4px;
+    background-color: #555b60;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    height: 95px;
+    right: 20px;
+}
+
+/******************列表框Li的样式**********************/
+.skbLanListLiNormal {
+    margin: 0 65px;
+    height: 95px;
+    border: 0 none;
+    line-height: 95px;
+}
+
+.skbLanListLiFocus {
+    margin: 0 65px;
+    height: 95px;
+    background-color:rgba(17,74,111,0.8);
+    border: 0 none;
+    box-shadow:  inset 0 0 0 4px #84ecff;
+    line-height: 95px;
+}
+
+.skbLanListLiDataSelected {
+    margin: 0 65px;
+    height: 95px;
+    border: 0 none;
+    line-height: 95px;
+}
+
+/******************列表 图片  的样式**********************/
+.skbLanListItemSwitchDivNormal {
+    margin-left: 18px;
+    margin-right: 22px;
+    width: 25px;
+    height: 95px;
+}
+
+.skbLanListItemSwitchDivFocus {
+    margin-left: 18px;
+    margin-right: 22px;
+    width: 25px;
+    height: 95px;
+    background-color: #ae6600;
+    box-shadow: inset 0 0 0 1px #f78701, inset 0 0 0 3px #cc9400, inset 0 0 0 4px #f78701;
+}
+.skbLanListItemSwitchDivImg{
+    margin-left: 18px;
+    margin-right: 22px;
+    width: 26px;
+    height: 26px;
+}
+/******************列表 字体  的样式**********************/
+.skbLanListItemNameNormal {
+    font-size: 32px;
+    color: #b2b8bf;
+}
+
+.skbLanListItemNameFocus {
+    font-size: 32px;
+    color: #f0f0f0;
+}

@@ -1,0 +1,84 @@
+
+#livetv_volume{
+
+    position: absolute;
+    width: 1920px;
+    height: 210px;
+    top: 880px;
+    padding-top: 10px;
+    overflow: hidden;
+    direction: ltr;
+}
+
+#volume_bar{
+    position: relative;
+    left: 445px;
+    width: 1030px;
+    height: 80px;
+
+    background-color: rgba(0, 0, 0, .80);
+    /*box-shadow: 0 0 0 2px rgba(255,255,255,0.6) inset, 0 0 0 3px rgba(0,0,0,0.2) inset;*/
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 1px;
+    padding: 35px 0;
+
+    visibility: hidden;
+}
+
+#volume_bar div{
+    /*float: left;*/
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#volume_bar_icon{
+    width: 80px;
+    height: 80px;
+    vertical-align: middle;
+    margin-left: 40px;
+}
+
+#volume_bar_bottom{
+    background-color: #3e4454;
+    width: 752px;
+    height: 12px;
+    margin: 0 24px;
+    border-radius: 4px;
+    font-size: 0;
+    white-space: nowrap;
+}
+
+#volume_bar_top{
+    width: 0;
+    height: 12px;
+    border-radius: 4px;
+    background-color: #00bdb9;
+}
+
+#volume_bar_img{
+    display: inline-block;
+    vertical-align: middle;
+    margin: -20px 0 -20px -25px;
+}
+
+#volume_bar_txt{
+    font-size: 40px;
+    color: #fff;
+}
+
+#volume_mute{
+    position: relative;
+    top: -132px;
+    left: 1690px;
+    width: 140px;
+    height: 120px;
+
+    background-color: rgba(0, 0, 0, .80);
+    background-image: url(../../img/common/mute.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid rgba(255,255,255,0.6);
+    /*box-shadow: 0 0 0 2px  rgba(255,255,255,0.6), 0 0 2px 3px rgba(0,0,0,0.2);*/
+    border-radius: 1px;
+    visibility: hidden;
+}

@@ -1,0 +1,130 @@
+@charset "utf-8";
+@font-face {
+    font-family: myFirstFont;
+    src: url('../fonts/arial.ttf')
+}
+.standbyBtnContent{
+    width: 1024px;
+    height: 100px;
+    margin-left:-1px;
+    margin-right:-1px;
+    background-color: #173f58;
+}
+/*****待机录制对话框的样式*******/
+.standbyRecordDialog
+{
+    width: 1022px;
+    height: 256px;
+    background-color: #102136;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -511px;
+    margin-top: -128px;
+    overflow: hidden;
+}
+/*******提示语的样式*********/
+.standbyRecordTipNormal
+{
+    width: 100%;
+    height: 156px;
+    font-size: 32px;
+    color: #f0f0f0;
+    text-align: center;
+    line-height: 156px;
+}
+/*****button未获得焦点的样式*****/
+.html_ltr .standbyRecordBtnNormal
+{
+    display: inline-block;
+    text-align: center;
+    width: 510px;
+    height: 98px;
+    line-height: 98px;
+    font-size: 32px;
+    color: #f0f0f0;
+    margin-top: 2px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background-color: #102136;
+    float: left;
+    /*border-top: 2px solid #173f58;*/
+}
+.html_rtl .standbyRecordBtnNormal
+{
+    display: inline-block;
+    text-align: center;
+    width: 510px;
+    height: 98px;
+    line-height: 98px;
+    font-size: 32px;
+    color: #f0f0f0;
+    margin-top: 2px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background-color: #102136;
+    float: right;
+    /*border-top: 2px solid #173f58;*/
+}
+/*****button获得焦点的样式*****/
+.html_ltr .standbyRecordBtnFocus
+{
+    display: inline-block;
+    text-align: center;
+    width: 510px;
+    height: 98px;
+    line-height: 98px;
+    font-size: 32px;
+    color: #f0f0f0;
+    /*border-top: 2px solid #173f58;*/
+    margin-top: 2px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background-color: #114a6f;
+    opacity: 0.8;
+    box-shadow: inset 0 0 0 4px #84ecff;
+    float: left;
+    /*box-shadow: inset 0 0 0 1px #f78701, inset 0 0 0 3px #cc9400, inset 0 0 0 4px #f78701;*/
+}
+.html_rtl .standbyRecordBtnFocus
+{
+    display: inline-block;
+    text-align: center;
+    width: 510px;
+    height: 98px;
+    line-height: 98px;
+    font-size: 32px;
+    color: #f0f0f0;
+    /*border-top: 2px solid #173f58;*/
+    margin-top: 2px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background-color: #114a6f;
+    opacity: 0.8;
+    box-shadow: inset 0 0 0 4px #84ecff;
+    float: right;
+    /*box-shadow: inset 0 0 0 1px #f78701, inset 0 0 0 3px #cc9400, inset 0 0 0 4px #f78701;*/
+}
+/*****button选中后的样式*****/
+.standbyRecordBtnSelected
+{
+    display: inline-block;
+    text-align: center;
+    width: 510px;
+    height: 98px;
+    line-height: 98px;
+    font-size: 32px;
+    color: #f0f0f0;
+    border-top: 2px solid #173f58;
+}
+.standbyRecordBtnDisable
+{
+    display: inline-block;
+    text-align: center;
+    width: 510px;
+    height: 98px;
+    line-height: 98px;
+    font-size: 32px;
+    color: #f0f0f0;
+    border-top: 2px solid #173f58;
+}

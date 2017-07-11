@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="css/settingsys.css" rel="stylesheet" type="text/css">
+    <link href="css/musicPlayer.css" rel="stylesheet" type="text/css">
+    <link href="css/videoPlayer.css" rel="stylesheet" type="text/css">
+    <link href="css/fileBrowser.css" rel="stylesheet" type="text/css">
+    <link href="css/picPlayer.css" rel="stylesheet" type="text/css">
+    <link href="css/scrollbar.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="../hiSDK/zepto.min.js"></script>
+    <script type="text/javascript" src="lang/languages_media.js"></script>
+    <script type="text/javascript" src="debug.js"></script>
+    <script type="text/javascript" src="xml2json.js"></script>
+    <script type="text/javascript" src="keyboard/keyboard-himedia.js"></script>
+    <script type="text/javascript" src="model/model-himedia.js"></script>
+    <script type="text/javascript" src="../hiSDK/hiUISDK_media.js"></script>
+
+
+    <script type="text/javascript" src="mediaConfig.js"></script>
+    <script type="text/javascript" src="modulePages/skb/iqqi/js/invoke.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="scrollbar.js"></script>
+    <script type="text/javascript" src="modulePages/himedia/dropbox-api.js"></script>
+    <script type="text/javascript" src="modulePages/himedia/dropbox.js"></script>
+    <script type="text/javascript" src="modulePages/himedia/jdrag.js"></script>
+    <script type="text/javascript" src="tempString/hiMediaString.js"></script>
+
+
+    <script type="text/javascript">
+        //以下代码正式环境注释----
+        var htmlRead = function (a) {
+
+            var tempStr = "";
+            switch (a) {
+
+                case "modulePages/himedia/fileBrowser.html":
+                    tempStr = himediaFileBrowser;
+                    break;
+                case "modulePages/himedia/videoPlayer.html":
+                    tempStr = himediaVideoPlayer;
+                    break;
+                case "modulePages/himedia/musicPlayer.html":
+                    tempStr = himediaMusicPlayer;
+                    break;
+                case "modulePages/himedia/picPlayer.html":
+                    tempStr = himediaPicPlayer;
+                    break;
+                default :
+                    break;
+            }
+            return tempStr;
+        }
+
+        function viewSDKPages() {
+            //hiWebOsFrame.aaaa.getCaE("listViewItem_programList_sys1_programListName_sys2").setCurrentSelectTree();
+        }
+
+    </script>
+
+</head>
+<body>
+
+<!--modulePages-->
+
+<div id="himedia_fileBrowser" style="display:none"></div>
+<div id="himedia_videoPlayer" style="display:none"></div>
+<div id="himedia_musicPlayer" dir="ltr" style="display:none"></div>
+<div id="himedia_picPlayer" style="display:none"></div>
+<div id="dialog_common" style="display:none"></div>
+
+
+<div name="scrollbarDemo" class="scrollbar_class_demo">
+    <div name="contentPanel">
+    </div>
+    <div name="controlPanel">
+        <!--<div><img name="img1" src="img/up.png"></div>-->
+        <div name="scrollPanel">
+            <div name="sliderPanel"></div>
+        </div>
+        <!--<div><img name="img2" src="img/down.png"></div>-->
+    </div>
+</div>
+<div id="sdkLoading"
+     style="display:none;position: absolute;width: 1920px;height: 1080px;left:0px;right:0px;background-color: rgba(0,0,0,0.5);z-index: 1000">
+    <img id="loadingImg" src="img/sdk/loading.png" style="display:none;position: relative;left:885px;top:465px; ">
+
+    <div id="loadingDiv" style="display:none;position: relative;left:885px;top:465px;height: 140px;width: 140px;">
+    </div>
+</div>
+
+<!--message pages-->
+<div id="mymsgbox" style="display: none">
+    <span id="msg_title"></span>
+    <span id="msg_content"></span>
+</div>
+<div id="toastBox" style="display: none">
+    <div style="width: 600px;height: 180px;vertical-align: middle;display: table-cell">
+        <div id="toast_content"
+             style="color:#f0f0f0;font-size:26px;width: 480px;margin-left: 60px;text-align: center"></div>
+    </div>
+</div>
+<div id="debugLog"
+     style="display:none;background-color:rgba(0,0,0,0.8);font-size: 28px; color:#ffffff; position: absolute;  height:500px; width:1500px;z-index: 1500;left:100px;top:500px;"></div>
+</body>
+</html>

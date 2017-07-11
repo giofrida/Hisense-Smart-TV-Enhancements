@@ -1,0 +1,961 @@
+/*弹出框的黑色遮罩*/
+.wizardDialogBlackBg {
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1920px;
+    height: 1080px;
+}
+#setting_pic_whiteBalance10PointLevel_page{
+    height: 610px;
+    width: 1022px;
+    background-color: rgba(16, 33, 54, .9);
+    position: absolute;
+    border-radius: 4px;
+    /*left: 50%;*/
+    margin-left: 449px;
+    /*bottom: 70px;*/
+    top: 400px;
+}
+/*弹出框通用信息*/
+.wizardDialogFrame {
+    width: 1022px;
+    background-color: #102136;
+    position: relative;
+    left: 448px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-top: 1px #173f58 solid;
+}
+
+.wizardDialogHead {
+    width: 1022px;
+    height: 100px;
+    line-height: 100px;
+    border-bottom: 6px #33b5e6 solid;
+}
+
+.wizardDialogTitle {
+    color: #35B5EC;
+    font-size: 40px;
+    padding-right: 65px;
+    padding-left: 65px;
+}
+
+.wizardDialogContentFrame_240 {
+    width: 1022px;
+    height: 240px;
+}
+
+.wizardDialogContentFrame_326 {
+    width: 1022px;
+    height: 326px;
+}
+.wizardDialogContentFrame_344 {
+    width: 1022px;
+    height: 344px;
+    overflow: hidden;
+    /*margin-left: 65px;*/
+}
+.wizardDialogContentFrame_413 {
+    width: 1022px;
+    height: 413px;
+    overflow: hidden;
+    /*margin-left: 65px;*/
+}
+.wizardDialogContentFrame_441 {
+    width: 1022px;
+    height: 441px;
+    overflow: hidden;
+    /*margin-left: 65px;*/
+}
+.wizardDialogContent_240 {
+    width: 892px;
+    height: 240px;
+    font-size: 0;
+    color: #f0f0f0;
+    margin-left: 65px;
+    /*vertical-align: middle;*/
+    /*display:table-cell;*/
+}
+
+.wizardDialogContent_326 {
+    width: 892px;
+    height: 326px;
+    font-size: 36px;
+    margin-left: 65px;
+    margin-right: 65px;
+    text-align: center;
+    color: #f0f0f0;
+    position: absolute;
+}
+
+.wizardDialog_700 {
+    width: 1022px;
+    height: 700px;
+    border-top: 1px #173f58 solid;
+    position: fixed;
+    left: 449px;
+    top: 190px;
+    background-color: #102136;
+}
+.wizardDialog_510 {
+    width: 1022px;
+    height: 510px;
+    border-top: 1px #173f58 solid;
+    position: fixed;
+    left: 449px;
+    top: 285px;
+    background-color: #102136;
+    direction: ltr;
+}
+.wizardDialog_530 {
+    width: 1022px;
+    height: 530px;
+    border-top: 1px #173f58 solid;
+    position: fixed;
+    left: 449px;
+    top: 275px;
+    background-color: #102136;
+}
+.wizardDialog_444 {
+    width: 1022px;
+    height: 444px;
+    border-top: 1px #173f58 solid;
+    position: fixed;
+    left: 449px;
+    top: 318px;
+    background-color: #102136;
+}
+
+.wizardDialog_530 {
+    width: 1022px;
+    height: 530px;
+    border-top: 1px #173f58 solid;
+    position: fixed;
+    left: 449px;
+    top: 275px;
+    background-color: #102136;
+}
+
+.wizardDialog_424 {
+    width: 1022px;
+    height: 424px;
+    border-top: 1px #173f58 solid;
+    position: fixed;
+    left: 449px;
+    top: 328px;
+    background-color: #102136;
+}
+
+.wizardDialog_337 {
+    width: 1022px;
+    height: 337px;
+    border-top: 1px #173f58 solid;
+    position: fixed;
+    left: 449px;
+    top: 371px;
+    background-color: #102136;
+}
+
+.wizardDialog_240 {
+    width: 1022px;
+    height: 240px;
+    border-top: 1px #173f58 solid;
+    position: fixed;
+    left: 449px;
+    top: 420px;
+    background-color: #102136;
+}
+.wizardDialog_270{
+    width: 1022px;
+    height: 270px;
+    border-top: 1px #173f58 solid;
+    position: fixed;
+    left: 449px;
+    top:405px;
+    background-color: #102136;
+    overflow: hidden;
+}
+.wizardDialog_326 {
+    width: 1022px;
+    height: 326px;
+    border-top: 1px #173f58 solid;
+    position: fixed;
+    left: 449px;
+    top: 377px;
+    background-color: #102136;
+}
+.wizardDialog_347 {
+    width: 1022px;
+    height: 347px;
+    border-top: 1px #173f58 solid;
+    position: fixed;
+    left: 449px;
+    top: 367px;
+    background-color: #102136;
+}
+.wizardDialog_547 {
+    width: 1022px;
+    height: 547px;
+    border-top: 1px #173f58 solid;
+    position: fixed;
+    left: 449px;
+    top: 266px;
+    background-color: #1c2b3e;
+}
+.wizardDialog_644 {
+    width: 1022px;
+    height: 644px;
+    border-top: 1px #173f58 solid;
+    position: fixed;
+    left: 449px;
+    top: 218px;
+    background-color: #1c2b3e;
+}
+.wizardDialogFootFrame {
+    width: 1022px;
+    height: 95px;
+    border-top: 2px #173f58 solid;
+    font-size: 0;
+}
+
+.wizardDialogFootSingleNormal {
+    width: 1022px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #f0f0f0;
+}
+
+.wizardDialogFootSingleFocus {
+    width: 1022px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #F0F0F0;
+    border-top: 2px #173f58 solid;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+.wizardDialogFootLeftDisable {
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #85888d;
+    background-color: #243348;
+    border-right: 2px #173f58 solid;
+    display: inline-block;
+}
+
+.html_ltr .wizardDialogFootLeftNormal {
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #f0f0f0;
+    display: inline-block;
+    border-right: 2px #173f58 solid;
+}
+.html_rtl .wizardDialogFootLeftNormal{
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #f0f0f0;
+    display: inline-block;
+    border-left: 2px #173f58 solid;
+}
+.html_ltr .wizardDialogFootLeftFocus {
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #ffffff;
+    display: inline-block;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    border-right: 2px #173f58 solid;
+}
+.html_rtl .wizardDialogFootLeftFocus {
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #ffffff;
+    display: inline-block;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    border-left: 2px #173f58 solid;
+}
+.wizardDialogFootRightNormal {
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #F0F0F0;
+    display: inline-block;
+}
+.wizardDialogFootRightFocus {
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #F0F0F0;
+    display: inline-block;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+.wizardDialogLoadingImg {
+    margin: 60px 376px 0px 376px;
+    width: 140px;
+    height: 140px;
+
+    display: block;
+}
+.wizardDialogLoadingDiv{
+    margin: 60px 376px 0px 376px;
+    width: 140px;
+    height: 140px;
+    display: none;
+    background:url('../img/loading_div.png') no-repeat 0 0;
+    -webkit-animation:run 1350ms steps(1) infinite 0s;
+}
+.wizardDialogLoadingText {
+    margin-top: 40px;
+}
+.wizardDialogTipInfoClass{
+    width: 892px;
+    margin-left: 65px;
+    margin-right: 65px;
+    font-size: 32px;
+    color: #f0f0f0;
+    padding-top: 30px;
+}
+.wizardInputLine{
+    width: 892px;
+    margin-left: 65px;
+    margin-right: 65px;
+    font-size: 0;
+}
+.wizardInputTitle{
+    width: 298px;
+    height:70px;
+    font-size: 36px;
+    line-height: 70px;
+    color: #f0f0f0;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
+}
+.wizardInputContentNormal{
+    width: 574px;
+    height: 70px;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.15) inset;
+    background-color: transparent;
+    font-size: 32px;
+    color: #b2b8bf;
+    border: 0;
+    /*float: right;*/
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.wizardInputContentFocus{
+    width: 574px;
+    height: 70px;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: transparent;
+    font-size: 32px;
+    color: #b2b8bf;
+    border: 0;
+    /*float: right;*/
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.html_ltr .settingInputPlaceHolder{
+    width: 574px;
+    height: 60px;
+    line-height: 60px;
+    color: #b2b8bf;
+    display: none;
+    position: absolute;
+    left: 370px;
+    top: 142px;
+    font-size: 30px;
+    overflow: hidden;
+    background-color: #102136;
+}
+.html_rtl .settingInputPlaceHolder{
+    width: 574px;
+    height: 60px;
+    line-height: 60px;
+    color: #b2b8bf;
+    display: none;
+    position: absolute;
+    right: 370px;
+    top: 142px;
+    font-size: 30px;
+    overflow: hidden;
+    background-color: #102136;
+}
+.wizardInputConWithTitleNormal{
+    width: 544px;
+    height: 11px;
+    border: 0 none;
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    bottom: 4px;
+    box-shadow: inset 0 3px 0 #102136, inset 0 0 0 3px rgba(255,255,255,0.15);
+}
+.wizardInputConWithTitleFocus{
+    width: 544px;
+    height: 11px;
+    border: 0 none;
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    bottom: 4px;
+    margin-left: 10px;
+
+    box-shadow: inset 0 3px 0 #102136, inset 0 0 0 3px #84ecff;
+}
+.wizardInputConWithTitleSelected {
+    width: 544px;
+    height: 11px;
+    border: 0 none;
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    bottom: 4px;
+    box-shadow: inset 0 3px 0 #102136, inset 0 0 0 3px #84ecff;
+}
+.wizardInputContainerNormal {
+    width: 892px;
+    height: 10px;
+    font-size: 36px;
+    border: 0 none;
+    outline: 0;
+    position: relative;
+    top: 130px;
+    box-shadow: inset 0 3px 0 #102136, inset 0 0 0 3px rgba(255,255,255,0.15);
+}
+
+.wizardInputContainerFocus {
+    width: 892px;
+    height: 10px;
+    font-size: 36px;
+    border: 0 none;
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    top: 130px;
+    /*bottom:4px;*/
+    box-shadow: inset 0 3px 0 #102136, inset 0 0 0 3px #84ecff;
+}
+
+.wizardInputContainerSelected {
+    width: 892px;
+    height: 11px;
+    border: 0 none;
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    bottom: 4px;
+    top: 130px;
+    box-shadow: inset 0 3px 0 #102136, inset 0 0 0 3px #84ecff;
+}
+.wizardInputWithTitleNormal {
+    width: 514px;
+    height: 50px;
+    border: 0 none;
+    outline: 0;
+    position: absolute;
+    margin: 0 15px;
+    padding: 0;
+    top: -47px;
+
+    color: #f0f0f0;
+    font-size: 32px;
+    background-color: transparent;
+}
+
+.wizardInputWithTitleFocus {
+    width: 514px;
+    height: 50px;
+    border: 0 none;
+    outline: 0;
+    position: absolute;
+    margin: 0 15px;
+    padding: 0;
+    top: -47px;
+
+    color: #f0f0f0;
+    font-size: 32px;
+    background-color: transparent;
+}
+.wizardInputNormal {
+    width: 892px;
+    height: 50px;
+    border: 0 none;
+    outline: 0;
+    position: absolute;
+    margin: 0 15px;
+    padding: 0;
+    top: -47px;
+    color: #f0f0f0;
+    font-size: 32px;
+    background-color: transparent;
+}
+
+.wizardInputFocus {
+    width: 892px;
+    height: 50px;
+    border: 0 none;
+    outline: 0;
+    position: absolute;
+    margin: 0 15px;
+    padding: 0;
+    top: -47px;
+    color: #f0f0f0;
+    font-size: 32px;
+    background-color: transparent;
+}
+
+.wizardListDialogBody {
+    background-color: #102136;
+    position: absolute;
+    width: 1022px;
+    height: 610px;
+    top: 234px;
+    left: 449px;
+    border-top: 1px #173f58 solid;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+.wizardListDialogBody_5 {
+    background-color: #102136;
+    position: absolute;
+    width: 1022px;
+    height: 610px;
+    top: 234px;
+    left: 449px;
+    border-top: 1px #173f58 solid;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+.wizardListDialogBody_3 {
+    background-color: #102136;
+    position: absolute;
+    width: 1022px;
+    height: 420px;
+    top: 330px;
+    left: 449px;
+    border-top: 1px #173f58 solid;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+.wizardListDialogBody_2 {
+    background-color: #102136;
+    position: absolute;
+    width: 1022px;
+    height: 325px;
+    top: 378px;
+    left: 449px;
+    border-top: 1px #173f58 solid;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+.wizardListDialogBody_2_help {
+    background-color: #102136;
+    position: absolute;
+    width: 1022px;
+    top: 270px;
+    left: 449px;
+    border-top: 1px #173f58 solid;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+.wizardDialogButtonHelp{
+    height: 180px;
+    border-top: 2px #173f58 solid;
+}
+.wizardDialogButtonHelpTitle{
+    font-size: 28px;
+    color: rgba(240,240,240,.6);
+    padding-left: 65px;
+    padding-right: 65px;
+    padding-top: 30px;
+}
+.wizardDialogButtonHelpInfo{
+    font-size: 26px;
+    color: rgba(178,184,191,.6);
+    margin-top: 10px;
+    padding-left: 65px;
+    line-height: 31px;
+    padding-right: 65px;
+}
+.wizardListContentFrame {
+    width: 1022px;
+    height: 504px;
+    font-size: 0;
+}
+.settingListContentUlWithBottom{
+    width: 892px;
+    list-style-type: none;
+    /*float: left;*/
+    margin-left: 65px;
+}
+.settingListLiWithBottomNormal {
+    height: 78px;
+    line-height: 78px;
+    font-size: 0;
+    border-bottom: 2px #173f58 solid;
+    color: #b2b8bf;
+}
+.settingListLiWithBottomFocus {
+    height: 78px;
+    line-height: 78px;
+    font-size: 0;
+    border-bottom: 2px #173f58 solid;
+    color: #f0f0f0;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+.settingListItemFirstText{
+    width:150px;
+    padding-left: 65px;
+    font-size: 28px;
+    /*float: left;*/
+    display: inline-block;
+}
+.settingListItemSecondText{
+    width: 500px;
+    /*float: left;*/
+    font-size: 28px;
+    display: inline-block;
+}
+.settingListItemSelImg{
+    /*float: right;*/
+    margin-right: 65px;
+    margin-top: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    border: 0
+}
+.wizardListContentUl {
+    width: 892px;
+    list-style-type: none;
+    /*margin:0 65px 0 65px;*/
+}
+.wizardListContentUlFix{
+    width: 892px;
+    margin:0 65px 0 65px;
+    list-style: none;
+}
+
+.wizardListContentLiNormal {
+    height: 95px;
+    line-height: 95px;
+    width: 892px;
+    /*float: left;*/
+    color: #b2b8bf;
+}
+
+.wizardListContentLiFocus {
+    height: 95px;
+    line-height: 95px;
+    width: 892px;
+    /*float: left;*/
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    color: #f0f0f0;
+}
+.wizardListContentLiDisable {
+    height: 95px;
+    line-height: 95px;
+    width: 892px;
+    /*float: left;*/
+    color: #85888d;
+}
+.wizardCheckBoxImg{
+    vertical-align:top;
+    /*margin-right: 20px;*/
+    line-height: 36px;
+}
+.wizardListSelectImg {
+    line-height: 36px;
+    padding-left: 20px;
+    padding-right: 20px;
+    vertical-align: middle;
+}
+
+.wizardListSelectTxt {
+    display: inline-block;
+    line-height: 36px;
+    font-size: 36px;
+    color: #f0f0f0;
+}
+.wizardListContentLiDisable .wizardListSelectTxt{
+    display: inline-block;
+    line-height: 36px;
+    font-size: 36px;
+    color: #85888d;
+}
+.wizardSelectFrameNormal{
+    width: 594px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.15) inset;
+    background-color: transparent;
+}
+.wizardSelectFrameFocus{
+    width: 594px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: transparent;
+}
+.wizardSelectFrameNormal .wizardSelectText{
+    width: 526px;
+    color: #b2b8bf;
+    height: 70px;
+    font-size: 32px;
+    /*float: left;*/
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline-block;
+}
+.wizardSelectFrameFocus .wizardSelectText{
+    width: 526px;
+    color: #f0f0f0;
+    height: 70px;
+    font-size: 32px;
+    /*float: left;*/
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline-block;
+}
+.wizardSelectFrameNormal .wizardSelectRightImg{
+    width: 38px;
+    height: 20px;
+    background-image: url("../img/down_arrow.png");
+    /*float: right;*/
+    /*margin-right: 40px;*/
+    margin-top: 25px;
+    display: inline-block;
+}
+.wizardSelectFrameFocus .wizardSelectRightImg{
+    width: 38px;
+    height: 20px;
+    background-image: url("../img/down_arrow.png");
+    /*float: right;*/
+    /*margin-right: 40px;*/
+    margin-top: 25px;
+    display: inline-block;
+}
+.wizardSelectFrameNormal .wizardSelectBottomImg{
+    width: 544px;
+    height: 20px;
+    background-image: url("../img/selectImg544Normal.png");
+}
+.wizardSelectFrameFocus .wizardSelectBottomImg{
+    width: 544px;
+    height: 20px;
+    background-image: url("../img/selectImg544Focus.png");
+}
+.wizardSelectListFrameNormal{
+    position: relative;
+    width: 514px;
+    height: 348px;
+    left: 363px;
+    top:5px;
+    display: none;
+}
+.wizardSelectListFrameFocus{
+    position: relative;
+    width: 594px;
+    height: 348px;
+    /*left: 363px;*/
+    top:5px;
+    display: block;
+}
+.wizardSelectListContent{
+    width: 594px;
+    background-color: #132f58;
+}
+.wizardSelectListContent li:last-child {
+    border-bottom: 0px;
+}
+
+.wizardSelectLiNormal {
+    height: 68px;
+    width: 594px;
+    border-bottom: 2px #173f58 solid;
+}
+
+.wizardSelectLiFocus {
+    height: 68px;
+    width: 594px;
+    border-bottom: 2px #173f58 solid;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(17,74,111,0.8);
+}
+.wizardSelectLiNormal .wizardSelectItem{
+    font-size: 34px;
+    height: 68px;
+    line-height: 68px;
+    color: #b2b8bf;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.wizardSelectLiFocus .wizardSelectItem{
+    font-size: 34px;
+    color: #F0F0F0;
+    height: 68px;
+    line-height: 68px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.buttonPlusTopFocus{
+    width: 100px;
+    height: 50px;
+    background-image:url(../img/DVB_plus_focus.png);
+    margin:0 auto;
+}
+.buttonPlusTopNormal{
+    width: 100px;
+    height: 50px;
+    background-image:url(../img/DVB_plus_normal.png);
+    margin:0 auto;
+}
+.buttonReduceBottomFocus{
+    width: 100px;
+    height: 50px;
+    background-image:url(../img/DVB_reduce_focus.png);
+    margin:0 auto;
+}
+.buttonReduceBottomNormal{
+    width: 100px;
+    height: 50px;
+    background-image:url(../img/DVB_reduce_normal.png);
+    margin:0 auto;
+}
+.settingChSetDVBTUKAreaLiNormal {
+    height: 95px;
+    line-height: 95px;
+    width: 892px;
+    float: left;
+}
+.settingChSetDVBTUKAreaLiFocus {
+    height: 95px;
+    line-height: 95px;
+    width: 892px;
+    float: left;
+}
+.settingChSetDVBTUKAreaLiDisable {
+    height: 95px;
+    line-height: 95px;
+    width: 892px;
+    float: left;
+}
+.settingChSetDVBTUKAreaLiNormal .settingChSetDVBTUKAreaLeft{
+    float: left;
+    font-size: 36px;
+    color: #b2b8bf;
+    display: inline-block;
+}
+.settingChSetDVBTUKAreaLiFocus .settingChSetDVBTUKAreaLeft{
+    float: left;
+    font-size: 36px;
+    color: #b2b8bf;
+    display: inline-block;
+}
+.settingChSetDVBTUKAreaLiDisable .settingChSetDVBTUKAreaLeft{
+    float: left;
+    font-size: 36px;
+    color: #85888d;
+    display: inline-block;
+}
+.settingChSetDVBTUKAreaRight{
+    float: right;
+    width: 376px;
+}
+.settingChSetDVBTUKAreaLiNormal .settingChSetDVBTAreaName{
+    width: 300px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 32px;
+    display: inline-block;
+    color: #b2b8bf;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 95px;
+    line-height: 95px;
+}
+.settingChSetDVBTUKAreaLiFocus .settingChSetDVBTAreaName{
+    width: 300px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 32px;
+    display: inline-block;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    color: #f0f0f0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 95px;
+    line-height: 95px;
+}
+.settingChSetDVBTUKAreaLiDisable .settingChSetDVBTAreaName{
+    width: 300px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 32px;
+    display: inline-block;
+    color: #85888d;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 95px;
+    line-height: 95px;
+}
+
+.VIDAALiteLauncherEULA {
+    width: 1022px;
+    height: 365px;
+    position: fixed;
+    left: 449px;
+    top: 357px;
+    background-color: #102136;
+}
+
+.VIDAALiteLauncherEULAContent {
+    width: 1022px;
+    height: 270px;
+}

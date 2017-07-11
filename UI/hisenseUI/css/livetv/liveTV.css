@@ -1,0 +1,146 @@
+
+#livetv_main{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1920px;
+    height: 1080px;
+    /*background-color: #0078a3;*/
+    /*background-image: url(../../img/epos/epos_image_1.jpg);*/
+}
+
+.noSignalTip{
+    min-width: 268px;
+    height: 150px;
+    line-height:150px ;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 5px;
+    background-color: #102136;
+    display: none;
+
+    color: white;
+    font-size: 36px;
+    text-align: center;
+}
+.numKeyInput{
+    display: none;
+    float: left;
+    border-radius: 5px;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+    max-width: 298px;
+    min-width: 196px;
+    height: 145px;
+    line-height:145px ;
+    box-shadow: 0 0 0 2px  rgba(178,178,183,0.5), 0 0 2px 3px rgba(0,0,0,0.2);
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, .80);
+    margin-top: 20px;
+    margin-left: 90px;
+}
+
+.audioOnly{
+    width: 370px;
+    height: 200px;
+    position: absolute;
+    left: 70px;
+    top: 810px;
+    box-shadow: 0 0 0 2px  rgba(178,178,183,0.5), 0 0 2px 3px rgba(0,0,0,0.2);
+    border-radius: 1px;
+    background-color: rgba(0, 0, 0, .80);
+    display: none;
+}
+
+.audioOnlyText {
+    display: inline-block;
+    width: 370px;
+    height: 200px;
+    line-height:200px ;
+    position: relative;
+    font-size: 36px;
+    white-space: nowrap;
+    color: #ffffff;
+    text-overflow: ellipsis;
+    text-align: center;
+
+}
+
+.setting_msg_info_normal {
+    left: 469px;
+    width: 852px;
+    font-size: 32px;
+    line-height: 44px;
+    background-color: #102136;
+
+    /*text-align: center;*/
+
+    color: #f0f0f0;
+    /*background-color: transparent;*/
+    /*box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.75);*/
+    border-radius: 4px;
+    /*float: left;*/
+    padding-left: 65px;
+    padding-right: 65px;
+    padding-top: 54px;
+    padding-bottom: 54px;
+    word-wrap: break-word;
+    word-break: normal;
+    position: absolute;
+    bottom: 200px;
+    /*z-index: 400;*/
+
+}
+
+.livetv_energy_warning_info{
+    margin-left: 449px;
+    margin-right: 449px;
+    margin-top: 300px;
+    width: 1022px;
+    height: 450px;
+    background-color: #102136;
+    /*opacity: 1;*/
+    /*position: absolute;*/
+    border-radius: 4px;
+}
+
+.livetv_energy_warning_title {
+    margin-left: 65px;
+    margin-right: 65px;
+    margin-top: 0px;
+    height: 100px;
+    width: 1022px;
+    font-size: 40px;
+    line-height: 100px;
+    color: #35b5e4;
+}
+
+.livetv_energy_warning_separate_line_blue {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 1022px;
+    height: 6px;
+    background-color: #35B5E4;
+}
+
+.livetv_energy_warning_content{
+    margin-left: 65px;
+    margin-right: 65px;
+    margin-top: 35px;
+    width: 900px;
+    /*height: 816px;*/
+    height: 330px;
+    /*background-color: #102136;*/
+    /*opacity: 1;*/
+    /*position: absolute;*/
+    border-radius: 4px;
+
+    line-height: 50px;
+    /*margin-top:7px;*/
+    font-size: 36px;
+    color: #f0f0f0;
+}

@@ -1,0 +1,99 @@
+.chl_manager_dialog_page_bg{
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 0px;
+    /*left: 0px;*/
+    width: 1920px;
+    height: 1080px;
+}
+#chl_manager_dialog_page{
+    position:absolute;
+    width:1022px;
+    height: 365px;
+    top:357px;
+    left:449px;
+    background-color: #102136;
+}
+.chl_manager_dialog_content{
+    position: relative;
+    width: 1022px;
+    height: 268px;
+    text-align: center;
+    font-size: 36px;
+    color: #f0f0f0;
+    border-bottom: 2px #173f58 solid;
+}
+.chl_manager_dialog_txt{
+    width: 962px;
+    height: 80px;
+    position: relative;
+    top:78px;
+}
+.chl_manager_dialog_choose_content{
+    position: relative;
+    width: 900px;
+    height: 36px;
+    top:110px;
+}
+.chl_manager_dialog_choose_img_normal{
+    width: 42px;
+    height: 36px;
+    padding-left: 6px;
+    padding-top:4px;
+    padding-bottom: 4px;
+    position: relative;
+    display: inline-block;
+    /*margin-right: 20px;*/
+    /*width: 26px;*/
+}
+.chl_manager_dialog_choose_img_focus{
+    width: 42px;
+    height: 36px;
+    padding-left: 6px;
+    padding-top:4px;
+    padding-bottom: 4px;
+    position: relative;
+    box-shadow:0px 0px 0px 1px #395a88 inset, 0px 0px 0px 3px #84ecff inset, 0px 0px 0px 4px #395a88 inset;
+    /*box-shadow:0px 0px 0px 1px #ff6c00 inset, 0px 0px 0px 3px #ffd510 inset, 0px 0px 0px 4px #ff6c00 inset;*/
+    display: inline-block;
+    /*margin-right: 20px;*/
+   /*width: 26px;*/
+}
+.chl_manager_dialog_choose_txt{
+
+    width: 962px;
+    height: 80px;
+    position: relative;
+}
+.chl_manager_dialog_bottom{
+    width:1022px;
+    height: 95px;
+    background: url(../img/channellist/vertical_line.png);
+    font-size: 0;
+}
+.chl_manager_dialog_btn_class_normal {
+    width: 510px;
+    height: 95px;
+    /*float: left;*/
+    display: inline-block;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 32px;
+    line-height: 95px;
+}
+
+.chl_manager_dialog_btn_class_focus {
+    width: 510px;
+    height: 95px;
+    margin-top: 0px;
+    /*float: left;*/
+    display: inline-block;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 32px;
+    line-height: 95px;
+    background-color: rgba(17, 74, 111, 0.8);
+    box-shadow: inset 0px 0px 0px 4px #84ecff;
+    /*background-color: #AE6600;*/
+    /*box-shadow: inset 0px 0px 0px 1px #fc8700, inset 0px 0px 0px 3px #cc9500, inset 0px 0px 0px 4px #fc8700;*/
+}

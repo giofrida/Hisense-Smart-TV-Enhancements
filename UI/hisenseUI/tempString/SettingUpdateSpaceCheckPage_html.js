@@ -1,0 +1,4 @@
+/**
+ * Created by Administrator on 14-8-22.
+ */
+var SettingUpdateSpaceCheckPage_html="<div  class=\"setting_sys_pvr_dialog1_box\">"+"    <div id=\"setting_update_spacechaeck_head\" class=\"setting_sys_lang2_head\">"+"        <span id=\"setting_update_spacechaeck_text1\" class=\"setting_sys_lang2_title\">HDD detect</span>"+"    </div>"+"    <div>"+"        <div id=\"setting_update_spacechaeck_content\" style=\"top:60px;\" class=\"setting_sys_nav_content\">no enough space for upgrade, please insert external storage devices</div>"+"    </div>"+"    <div >"+"        <div id=\"setting_update_spacechaeck_btn1\"class=\"setting_sys_button_normal\">Ok</div>"+"        <div id=\"setting_update_spacechaeck_btn2\" class=\"setting_sys_button_normal\">Cancel</div>"+"    </div>"+"</div>"

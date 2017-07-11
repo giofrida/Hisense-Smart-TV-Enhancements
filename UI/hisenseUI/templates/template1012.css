@@ -1,0 +1,278 @@
+.OEMTemplate1012Left{
+    height: 732px;
+    width: 726px;
+    display: inline-block;
+    float: left;
+}
+.OEMTemplate1012Right{
+    height: 732px;
+    /*width: 726px;*/
+    display: inline-block;
+    float: left;
+}
+.OEMTem1012_360_240_img{
+    width: 360px;
+    height: 240px;
+}
+.OEMTem1012_360_486_img{
+    width: 360px;
+    height: 486px;
+}
+.OEMTem1012_255_178_img{
+    width: 255px;
+    height: 178px;
+}
+.OEMTem1012Position1Normal{
+    width: 360px;
+    height: 486px;
+    position: relative;
+    top: -714px;
+    left: 366px;
+    /*overflow: hidden;*/
+}
+.OEMTem1012Position1Focus{
+    width: 360px;
+    height: 486px;
+    position: relative;
+    top: -714px;
+    left: 366px;
+    /*overflow: hidden;*/
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px #0b1a39, 0 0 0 6px #bef5ff, 0 0 20px 6px rgba(8, 210, 247, 0.8), 0 0 80px 15px rgba(0, 0, 0, 0.8);
+    /*box-shadow: inset 0 0 0 2px #0b1a39, 0 0 0 4px #bef5ff, 0 0 15px 4px #08d2f7;*/
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+    z-index: 2;
+}
+.OEMTem1012Position2Normal{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: 0;
+    /*overflow: hidden;*/
+}
+.OEMTem1012Position2Focus{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: 0;
+    /*overflow: hidden;*/
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px #0b1a39, 0 0 0 6px #bef5ff, 0 0 20px 6px rgba(8, 210, 247, 0.8), 0 0 80px 15px rgba(0, 0, 0, 0.8);
+    /*box-shadow: inset 0 0 0 2px #0b1a39, 0 0 0 4px #bef5ff, 0 0 15px 4px #08d2f7;*/
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+    z-index: 2;
+}
+.OEMTem1012Position3Normal{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: -234px;
+    /*overflow: hidden;*/
+}
+.OEMTem1012Position3Focus{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: -234px;
+    /*overflow: hidden;*/
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px #0b1a39, 0 0 0 6px #bef5ff, 0 0 20px 6px rgba(8, 210, 247, 0.8), 0 0 80px 15px rgba(0, 0, 0, 0.8);
+    /*box-shadow: inset 0 0 0 2px #0b1a39, 0 0 0 4px #bef5ff, 0 0 15px 4px #08d2f7;*/
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+    z-index: 2;
+}
+.OEMTem1012Position4Normal{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: -228px;
+    /*overflow: hidden;*/
+}
+.OEMTem1012Position4Focus{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: -228px;
+    /*overflow: hidden;*/
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px #0b1a39, 0 0 0 6px #bef5ff, 0 0 20px 6px rgba(8, 210, 247, 0.8), 0 0 80px 15px rgba(0, 0, 0, 0.8);
+    /*box-shadow: inset 0 0 0 2px #0b1a39, 0 0 0 4px #bef5ff, 0 0 15px 4px #08d2f7;*/
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+    z-index: 2;
+
+}
+.OEMTem1012Position5Normal{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: -240px;
+    left: 366px;
+    /*overflow: hidden;*/
+}
+.OEMTem1012Position5Focus{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: -240px;
+    left: 366px;
+    /*overflow: hidden;*/
+
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px #0b1a39, 0 0 0 6px #bef5ff, 0 0 20px 6px rgba(8, 210, 247, 0.8), 0 0 80px 15px rgba(0, 0, 0, 0.8);
+    /*box-shadow: inset 0 0 0 2px #0b1a39, 0 0 0 4px #bef5ff, 0 0 15px 4px #08d2f7;*/
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+    z-index: 2;
+}
+.OEMTem1012Position1Normal .OEMTem1012PositionFixed_txt{
+    display: none;
+}
+.OEMTem1012Position2Normal .OEMTem1012PositionFixed_txt{
+    display: none;
+}
+.OEMTem1012Position3Normal .OEMTem1012PositionFixed_txt{
+    display: none;
+}
+.OEMTem1012Position4Normal .OEMTem1012PositionFixed_txt{
+    display: none;
+}
+.OEMTem1012Position5Normal .OEMTem1012PositionFixed_txt{
+    display: none;
+}
+.OEMTem1012PositionFixed_txt{
+    width: 312px;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    top: -64px;
+    padding-left: 24px;
+    padding-right:24px ;
+    /*text-align: center;*/
+    display: inline-block;
+    background-color: rgba(0,0,0,0.6);
+    color: #ffffff;
+    font-size: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.OEMTem1012EditAppListNormal{
+    height: 732px;
+    /*width: 500px;*/
+}
+.OEMTem1012EditAppListDelete{
+    height: 732px;
+    /*width: 500px;*/
+}
+.OEMTem1012EditAppListNormal li{
+    height: 178px;
+    width: 255px;
+    margin: 0 0 6px 6px;
+    /*text-align: center;*/
+}
+.OEMTem1012EditAppListDelete li{
+    height: 178px;
+    width: 255px;
+    margin: 0 0 6px 6px;
+    /*text-align: center;*/
+}
+.OEMTem1012EditAppListNormal ul li:last-child{
+    margin: 0 0 0px 6px;
+}
+.OEMTem1012EditAppListDelete ul li:last-child{
+    margin: 0 0 0px 6px;
+}
+.OEMTem1012EditAppNormal{
+
+}
+
+.OEMTem1012EditAppFocus{
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px #0b1a39, 0 0 0 6px #bef5ff, 0 0 20px 6px rgba(8, 210, 247, 0.8), 0 0 80px 15px rgba(0, 0, 0, 0.8);
+    /*box-shadow: inset 0 0 0 2px #0b1a39, 0 0 0 4px #bef5ff, 0 0 15px 4px #08d2f7;*/
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+    z-index: 2;
+}
+.OEMTem1012EditAppNormal .OEMTem1012EditAppName{
+    display: none;
+}
+.OEMTem1012EditAppFocus .OEMTem1012EditAppName{
+    width: 207px;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    top: -64px;
+    padding-left: 24px;
+    padding-right:24px ;
+    /*text-align: center;*/
+    display: inline-block;
+    background-color: rgba(0,0,0,0.6);
+    color: #ffffff;
+    font-size: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.OEMTem1012EditAppListNormal ul:last-child li:last-child .OEMTem1012EditAppName{
+    width: 207px;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    top: -64px;
+    padding-left: 24px;
+    padding-right:24px ;
+    display: inline-block;
+    background-color: rgba(0,0,0,0.6);
+    color: #ffffff;
+    font-size: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.OEMTem1012EditAppListDelete ul:last-child li:last-child .OEMTem1012EditAppName{
+    width: 207px;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    top: -64px;
+    padding-left: 24px;
+    padding-right:24px ;
+    display: inline-block;
+    background-color: rgba(0,0,0,0.6);
+    color: #ffffff;
+    font-size: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.OEMTem1012EditAppListNormal .OEMTem1012EditAppDelete{
+    display: none;
+}
+.OEMTem1012EditAppDisable{
+
+}
+.OEMTem1012EditAppListDelete .OEMTem1012EditAppDisable .OEMTem1012EditAppDelete{
+    display: none;
+}
+.OEMTem1012EditAppListDelete .OEMTem1012EditAppDisable .OEMTem1012EditAppName{
+    display: none;
+}
+.OEMTem1012EditAppListDelete .OEMTem1012EditAppNormal .OEMTem1012EditAppDelete{
+    position: relative;
+    top: -180px;
+    left: 185px;
+}
+.OEMTem1012EditAppListDelete .OEMTem1012EditAppFocus .OEMTem1012EditAppDelete{
+    position: relative;
+    top: -240px;
+    left: 185px;
+}
+.OEMTem1012EditAppListDelete ul:last-child li:last-child .OEMTem1012EditAppDelete{
+    display: none;
+}

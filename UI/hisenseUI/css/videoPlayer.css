@@ -1,0 +1,555 @@
+#videoPlayerDiv ul li {
+    list-style: none;
+    float: left;
+    padding: 0 0 0 0;
+    margin: 0 31px 0 0;
+}
+
+#videoPlayerDiv .testHiMedia {
+    position: absolute;
+    z-index: 2;
+    width: 1920px;
+    height: 1080px;
+
+}
+
+#videoPlayerDiv .GuiButton1 {
+    text-align: center;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 150%;
+    color: #FFF;
+    background: #0CADA7;
+    padding: 10px 60px;
+    display: inline-block;
+    margin: 10px 0;
+    border-color: #0CADA7;
+    border-width: 3px;
+    border-style: solid;
+    opacity: 1;
+}
+
+#videoPlayerDiv .GuiButton1:focus {
+    border-color: #FFFFFF;
+    border-width: 3px;
+    border-style: solid;
+}
+
+#videoPlayerDiv .videoPlayer {
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    z-index: 6;
+    padding: 0;
+    margin: 0;
+}
+
+#videoPlayerDiv .videoPlayerPanel {
+    width: 1920px;
+    height: 1080px;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    overflow: hidden;
+
+}
+
+#videoPlayerDiv .videoPlayerDiv {
+    /*background: url("../img/videoPlayer.png");*/
+    width: 1920px;
+    height: 1080px;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    overflow: hidden;
+    display: none;
+}
+
+#videoPlayerDiv .videoPlayerStatus {
+    width: 202px;
+    height: 202px;
+    position: absolute;
+    left: 859px;
+    right: 859px;
+    top: 441px;
+}
+
+#videoPlayerDiv .videoPlayerHeader {
+    width: 1920px;
+    height: 150px;
+    padding: 0;
+    margin: 0;
+    background: url("../img/himedia/videoPlayer/backgroundheader.png");
+    overflow: hidden;
+}
+
+#videoPlayerDiv .dolby {
+    width: 60px;
+    height: 40px;
+    float: right;
+    margin-top: -20px;
+    margin-right: 55px;
+    position: relative;
+    display: none;
+
+}
+
+#videoPlayerDiv .videoTitle {
+    padding: 0;
+    margin: 0;
+    left: 65px;
+    right: 65px;
+    top: 20px;
+    width: 900px;
+    position: relative;
+    font-family: customerFont, monospace;
+    font-size: 40px;
+    color: #b2b2b2;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#videoPlayerDiv .videoPlayerFooter {
+    position: relative;
+    padding: 0;
+    margin: 680px 0 0 0;
+    width: 1920px;
+    height: 250px;
+    background: url("../img/himedia/videoPlayer/backgroundfooter.png");
+
+}
+
+#videoPlayerDiv .videoPlayerTimer {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    left: 65px;
+    right: 65px;
+    top: 90px;
+    width: 1855px;
+
+}
+
+#videoPlayerDiv .videoPlayerController {
+    position: relative;
+    margin-top: 30px;
+    left: 400px;
+    right: 400px;
+    top: 90px;
+}
+
+#videoPlayerDiv .startTime {
+    font-family: customerFont, monospace;
+    font-size: 28px;
+    color: #b2b2b2;
+    float: left;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: 28px;
+    line-height: 28px;
+
+}
+
+#videoPlayerDiv .videoProgressBar {
+    width: 1520px;
+    height: 28px;
+    background: url("../img/himedia/videoPlayer/pg_bk1.png");
+    float: left;
+}
+
+#videoPlayerDiv .videoProgressBarImg {
+    /*-o-transition-property: width;*/
+    /*-o-transition-duration: 1s;*/
+    margin-left: 5px;
+    margin-top: 1px;
+    height: 26px;
+    float: left;
+    width: 2px;
+}
+
+#videoPlayerDiv .endTime {
+    font-family: customerFont, monospace;
+    font-size: 28px;
+    color: #b2b2b2;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 28px;
+    line-height: 28px;
+
+}
+
+/*弹出框通用信息*/
+#videoPlayerDiv .videoDialogFrame1 {
+    z-index: 15;
+    width: 900px;
+    background-color: #112235;
+    position: relative;
+    left: 519px;
+    right: 519px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-top: 1px #173f58 solid;
+}
+
+/*弹出框通用信息*/
+#videoPlayerDiv .videoDialogFrame {
+    z-index: 15;
+    width: 780px;
+    background-color: #112235;
+    position: relative;
+    left: 569px;
+    right: 569px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-top: 1px #173f58 solid;
+}
+
+#videoPlayerDiv .videoDialogHead1 {
+    width: 900px;
+    height: 100px;
+    line-height: 100px;
+    border-bottom: 6px #33b5e6 solid;
+}
+
+#videoPlayerDiv .videoDialogHead {
+    width: 780px;
+    height: 100px;
+    line-height: 100px;
+    border-bottom: 6px #33b5e6 solid;
+}
+
+#videoPlayerDiv .videoDialogTitle {
+    color: #41b6e3;
+    font-size: 40px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+#videoPlayerDiv .videoDialogContentFrame_240 {
+    width: 1022px;
+    height: 240px;
+    /*margin-left: 65px;*/
+}
+
+#videoPlayerDiv .videoDialogContentFrame_326 {
+    width: 1022px;
+    height: 326px;
+}
+
+#videoPlayerDiv .VinfoTable {
+
+    table-layout: fixed;
+
+    width: 880px;
+    margin-top: 24px;
+    height: auto;
+    font-size: 36px;
+    color: #ffffff;
+
+}
+
+#videoPlayerDiv .VinfoTable tr {
+    height: 68px;
+}
+
+#videoPlayerDiv .VinfoTable td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+#videoPlayerDiv .Vinfoleft {
+    text-align: right;
+    width: 450px;
+}
+
+#videoPlayerDiv .Vinforight {
+    /*background: url("../img/player/dialog-focus.png");*/
+    /*line-height: 68px;*/
+    /*height: 68px;*/
+    padding-left: 30px;
+
+    /*width: 300px;*/
+    /*text-overflow: ellipsis;*/
+}
+
+#videoPlayerDiv .Vinforight span {
+
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+#videoPlayerDiv .VsettingTable {
+    table-layout: fixed;
+    width: 880px;
+    margin-top: 24px;
+    height: auto;
+    font-size: 36px;
+    color: #ffffff;
+}
+
+#videoPlayerDiv .VsettingTable tr {
+    height: 95px;
+}
+
+#videoPlayerDiv .VsettingTable td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#videoPlayerDiv .VsettingButton {
+    text-align: center;
+    width: 386px;
+    height: 95px;
+    line-height: 95px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}
+
+#videoPlayerDiv .VsettingButtonFocus {
+    text-align: center;
+    background-image: url("../img/himedia/videoPlayer/dialog-focus.png");
+    width: 386px;
+    height: 95px;
+    line-height: 95px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+
+}
+
+#videoPlayerDiv #Vwrapper {
+    position: relative;
+    z-index: 11;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 15px;
+    /*right:10px;*/
+    width: 720px;
+    height: 672px;
+    /*background: #aaa;*/
+    /*overflow: auto;*/
+    /*overflow: hidden;*/
+    padding: 0;
+    border: 0;
+}
+
+#videoPlayerDiv #Vwrapper ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+}
+
+#videoPlayerDiv #Vwrapper li {
+    /*padding: 0 40px;*/
+    padding: 0;
+    margin: 0;
+    border: 0;
+    display: block;
+    /*background: #000;*/
+    height: 96px;
+    line-height: 96px;
+    /*border-bottom: 1px solid #666666;*/
+    /*border-top: 1px solid #666666;*/
+    /*background-color: #fafafa;*/
+
+}
+
+#videoPlayerDiv #Vwrapper li div {
+    /*padding: 0 40px;*/
+    width: 650px;
+    /*padding-top: 31px;*/
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 36px;
+    /*padding-left:65px;*/
+    color: #b2b8bf;
+    height: 96px;
+    line-height: 96px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-bottom: 2px #1b4056 solid;
+
+}
+
+#videoPlayerDiv #video_list_focus {
+    position: absolute;
+    z-index: 10;
+    top: 123px;
+    left: 30px;
+    margin: 0;
+    right: 30px;
+    padding: 0;
+    border: 0;
+
+}
+
+#videoPlayerDiv .videoPlayTime {
+    z-index: 15;
+    width: 780px;
+    height: 490px;
+    background-color: #112235;
+    position: absolute;
+    margin-top: 300px;
+    margin-left: 570px;
+    margin-right: 570px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    display: none;
+}
+
+#videoPlayerDiv .playtimeItemSpan {
+    width: 650px;
+    margin-left: 65px;
+    margin-right: 65px;
+    margin-top: 15px;
+    font-size: 36px;
+    color: #ffffff;
+}
+
+#videoPlayerDiv .playtimeError {
+    width: 650px;
+    margin-left: 65px;
+    margin-right: 65px;
+    text-align: center;
+    margin-top: 32px;
+    font-size: 36px;
+    color: #ff0000;
+
+}
+
+#videoPlayerDiv .playTimeLine {
+    width: 670px;
+    margin-left: 65px;
+    margin-top: 50px;
+    margin-right: 65px;
+}
+
+#videoPlayerDiv .PlayTime {
+    width: 120px;
+    height: 70px;
+    box-shadow: inset 0 0 0 4px #999999;
+    background-color: #112235;
+    text-align: center;
+    line-height: 70px;
+    font-size: 36px;
+    color: #b2b8bf;
+    display: inline-block;
+}
+
+#videoPlayerDiv .PlayTime_focus {
+    width: 120px;
+    height: 70px;
+    box-shadow: inset 0 0 0 1px #84ecff, inset 0 0 0 3px #84ecff, inset 0 0 0 4px #84ecff;
+    background-color: #114a6f;
+    text-align: center;
+    line-height: 70px;
+    font-size: 36px;
+    color: #ffffff;
+    display: inline-block;
+}
+
+#videoPlayerDiv .playTime_colon {
+    font-size: 36px;
+    color: #b2b8bf;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#videoPlayerDiv .playtimeAll {
+    font-size: 36px;
+    color: #b2b8bf;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+#videoPlayerDiv #pvr_showInputPassword {
+    width: 660px;
+    height: 232px;
+    position: absolute;
+    left: 630px;
+    right: 630px;
+    top: 424px;
+    background-color: #102136;
+}
+
+#videoPlayerDiv .chl_sip_text {
+    width: 600px;
+    height: 124px;
+    position: relative;
+    font-size: 34px;
+    color: #f0f0f0;
+    margin: 0px 30px 0px 30px;
+    text-align: center;
+    top: 40px;
+}
+
+#videoPlayerDiv .chl_sip_inputbg {
+    position: relative;
+    height: 54px;
+    width: 620px;
+    margin: 0px 0px 0px 40px;
+}
+
+#videoPlayerDiv .chl_sip_zipContainerNormal {
+    width: 127px;
+    height: 11px;
+    border: 0 none;
+    outline: 0;
+
+    position: relative;
+    display: inline-block;
+    bottom: 4px;
+    margin: 40px 20px 0px 0px;
+    box-shadow: inset 0 3px 0 #102136, inset 0 0 0 3px #1b3860;
+}
+
+#videoPlayerDiv .chl_sip_zipContainerFocus {
+    width: 127px;
+    height: 11px;
+    border: 0 none;
+    outline: 0;
+
+    position: relative;
+    display: inline-block;
+    bottom: 4px;
+    margin: 40px 20px 0px 0px;
+
+    box-shadow: inset 0 3px 0 #102136, inset 0 0 0 1px #84ecff, inset 0 0 0 2px #84ecff, inset 0 0 0 3px #84ecff;
+}
+
+#videoPlayerDiv .chl_sip_input {
+    padding: 0px 0px 0px 62px;
+    position: relative;
+    font-size: 32px;
+    color: #f0f0f0;
+    width: 128px;
+    height: 50px;
+    border: 0 none;
+    outline: 0;
+
+    /*margin: 0 15px;*/
+    top: -38px;
+    background-color: transparent;
+
+}

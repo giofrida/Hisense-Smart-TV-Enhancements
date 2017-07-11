@@ -1,0 +1,250 @@
+
+#dropboxContainer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 1080px;
+    width: 1920px;
+    overflow: hidden;
+}
+
+#dropboxContainer #dropboxhead {
+    background-image: url(../img/himedia/fileBrowser/head-background.png);
+    background-repeat: repeat-x;
+    height: 96px;
+    line-height: 96px;
+    width: 1920px;
+}
+
+#dropboxContainer #dropboxhead img {
+    height: 66px;
+    margin: 0px 20px 0px 30px;
+    vertical-align: middle;
+}
+
+#dropboxContainer #dropboxhead span {
+    color: white;
+    font-size: 35px;
+    vertical-align: middle;
+}
+
+#dropboxContainer #dropboxcontent div {
+    float: left;
+}
+
+#dropboxContainer #dropboxcontent p {
+    text-align: center;
+    margin: 0px;
+}
+
+#dropboxContainer #dropboxleft {
+    width: 269px;
+    height: 984px;
+    font-size: 30px;
+    background: #0f1014;
+}
+
+#dropboxContainer #dropboxleft img {
+    margin-left: 105px;
+    margin-top: 45px;
+    margin-right: 105px;
+}
+
+#dropboxContainer .dropboxleft_unfocus {
+    width: 269px;
+    height: 188px;
+    background: #0f1014;
+    color: #808080;
+}
+
+#dropboxContainer .dropboxleft_focus {
+    width: 269px;
+    height: 188px;
+    color: white;
+    background: #191a1f;
+}
+
+#dropboxContainer .dropboxleft_select {
+    width: 269px;
+    height: 188px;
+    color: white;
+    /*background: -webkit-linear-gradient(rgba(255, 224, 90, 1), rgba(255, 187, 0, 1));*/
+    /*box-shadow: 0px 3px 5px rgba(132, 97, 23, 1) inset;*/
+    box-shadow: inset 0 0 0 1px #84ecff, inset 0 0 0 3px #84ecff, inset 0 0 0 4px #84ecff;
+    background-color: #114a6f;
+}
+
+#dropboxContainer #dropboxmiddle {
+    width: 1600px;
+    height: 924px;
+    font-size: 28px;
+    background-color: #191a1f;
+}
+
+#dropboxContainer #dropboxmiddle p {
+    /*height: 40px;*/
+    width: 230px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre;
+}
+
+#dropboxContainer .dropboxmiddle_focus {
+    width: 242px;
+    height: 282px;
+    margin: 20px 0px -10px 56px;
+    color: white;
+    border: solid 6px rgba(8, 210, 247, 1);
+    /*box-shadow: inset 0 0 0 1px #0b1a39, inset 0 0 0 5px #08d2f7, inset 0 0 0 6px #bef5ff;*/
+
+    /*box-shadow: 0 0 28px rgba(250, 128, 10, .5);*/
+}
+
+#dropboxContainer .dropboxmiddle_focus img {
+    width: 230px;
+    height: 230px;
+    margin: 6px 6px 0px 6px;
+}
+
+#dropboxContainer .dropboxmiddle_unfocus {
+    width: 230px;
+    height: 260px;
+    margin: 20px 0px 0px 56px;
+    color: #b2b2b2;
+    padding: 12px;
+}
+
+#dropboxContainer .dropboxmiddle_unfocus img {
+    width: 230px;
+    height: 230px;
+    margin: 0px;
+}
+
+#dropboxContainer .dropboxmiddle_focusPVR {
+    width: 242px;
+    height: 282px;
+    margin: 20px 0px -10px 56px;
+    color: white;
+    border: solid 6px rgba(252, 213, 56, 1);
+
+    /*box-shadow: 0 0 28px rgba(250, 128, 10, .5);*/
+}
+
+#dropboxContainer .dropboxmiddle_focusPVR img {
+    width: 230px;
+    height: 129px;
+    margin: 6px 6px 0px 6px;
+}
+
+#dropboxContainer .dropboxmiddle_unfocusPVR {
+    width: 230px;
+    height: 260px;
+    margin: 20px 0px 0px 56px;
+    color: #b2b2b2;
+    padding: 12px;
+}
+
+#dropboxContainer .dropboxmiddle_unfocusPVR img {
+    width: 230px;
+    height: 129px;
+    margin: 0px;
+}
+
+#dropboxContainer .dropboxmiddle_unfocusPVR div {
+    width: 230px;
+    height: 50px;
+    font-size: 20px;
+    color: #b3b3b3;
+    margin: 0px;
+    background-color: #999999;
+    text-align: center;
+}
+
+#dropboxContainer #dropboxright {
+    width: 51px;
+    height: 924px;
+    background-color: #191a1f;
+}
+
+#dropboxContainer .dropboxlist_scroll {
+    position: relative;
+    width: 10px;
+    background-color: #889299;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#dropboxContainer #dropboxpath {
+    height: 60px;
+    line-height: 60px;
+    width: 1651px;
+    font-size: 25px;
+    background-color: #191a1f;
+
+}
+
+#dropboxContainer #folderpath {
+    margin-left: 66px;
+    color: #b2b2b2;
+    float: left;
+    max-width: 500px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#dropboxContainer #filepath {
+    color: #fff;
+    float: left;
+    max-width: 500px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#dropboxContainer #redkeyImg {
+    float: right;
+    /*color: #b2b2b2;*/
+    height: 40px;
+    width: 65px;
+    line-height: 60px;
+    white-space: nowrap;
+    display: none;
+    margin-top: 10px;
+    margin-right: 15px;
+}
+
+#dropboxContainer #redkeyText {
+    float: right;
+    color: #b2b2b2;
+    max-width: 100px;
+    height: 60px;
+    line-height: 60px;
+    white-space: nowrap;
+    display: inline-block;
+    margin-right: 60px;
+}
+
+#dropboxContainer #totalfile {
+    float: right;
+    color: #b2b2b2;
+    margin-right: 20px;
+}
+
+#dropboxContainer #dropboxloading {
+    position: absolute;
+    left: 1000px;
+    top: 480px;
+    display: none;
+}
+
+#toastBox {
+    width: 600px;
+    height: 180px;
+    border-top: 1px #173f58 solid;
+    position: fixed;
+    left: 660px;
+    top: 450px;
+    background-color: #102136;
+    z-index: 2000;
+}

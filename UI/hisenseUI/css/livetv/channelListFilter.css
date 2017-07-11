@@ -1,0 +1,120 @@
+.listFilterPanel{
+    position: relative;
+    left: 40px;
+    top: 480px;
+    height: 560px;
+    width: 836px;
+    background-color: rgba(16, 33, 54, 0.9);
+}
+.html_rtl .listFilterPanel{
+    left: -1064px;
+
+}
+#livetv_channel_list_filter span {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.listFilterNamePanel{
+}
+
+#chlist_filter_input{
+    display: none;
+}
+
+#chlist_filter_name{
+    width: 626px;
+    height: 60px;
+    line-height: 60px;
+    margin: 54px 105px 0 105px;
+	font-size: 48px;
+	text-align: center;
+}
+
+.filterNameNormal{
+	color: #b2b8bf;
+    box-shadow: inset 0 0 0 2px #585757;
+}
+
+.filterNameFocus{
+	color: #f0f0f0;
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+}
+
+.listFilterItemPanel{
+	padding: 30px;
+	width: 776px;
+	height: 384px;
+	font-size: 0;
+}
+
+.listFilterItemPanel span{
+	font-size: 36px;
+	max-width: 100px;
+    height: 96px;
+}
+#chlist_filter_row_2 span{
+    max-width: 200px;
+}
+#chlist_filter_row_3 span{
+    max-width: 200px;
+}
+
+.listFilterItemPanel ul {
+	white-space: nowrap;
+	width: 776px;
+	height: 95px;
+    border-bottom: 1px #173f58 solid;
+	overflow: hidden;
+	font-size: 0;
+}
+
+
+.listFilterItemPanel ul li{
+	height: 96px;
+	line-height: 96px;
+	/*max-width: 156px;*/
+	min-width: 150px;
+	padding: 0 22px 0 22px;
+	font-size: 0;
+	display: inline-block;
+}
+
+.listFilterItemPanel ul li div{
+	width: 36px;
+	height: 36px;
+	margin: 30px 14px 30px 0;
+	display: inline-block;
+}
+
+.html_rtl .listFilterItemPanel ul li div{
+    margin: 30px 0 30px 14px;
+}
+
+.filterItemNormal{
+	color: #b2b8bf;
+}
+.filterItemFocus{
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+	color: #f0f0f0;
+}
+.filterItemSelected{
+	color: #b2b8bf;
+}
+.filterItemDisable{
+	visibility: hidden;
+}
+.filterItemNormal div{
+	background-image: url(../../img/channellist/ic_radio_normal.png);
+}
+
+.filterItemFocus div{
+	background-image: url(../../img/channellist/ic_radio_normal.png);
+}
+.filterItemSelected div{
+	background-image: url(../../img/channellist/ic_radio_focus.png);
+}

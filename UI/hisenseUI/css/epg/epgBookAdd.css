@@ -1,0 +1,99 @@
+#epg_book_add_page{
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.epgBookAddPanel{
+	position: relative;
+	left: 449px;
+	top: 340px;
+	width: 892px;
+	height: 280px;
+	padding: 60px 65px 60px 65px;
+	font-size: 0;
+	color: #e8e8e8;
+	background-color: #102136;
+}
+
+
+.html_rtl .epgBookAddPanel{
+	left: -449px;
+}
+
+.epgBookAddPanel > span{
+	width: 892px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+    display: inline-block;
+}
+
+#book_add_channel{
+	font-size: 28px;
+	height: 40px;
+	line-height: 40px;
+}
+#book_add_program{
+	font-size: 34px;
+	height: 54px;
+	line-height: 50px;
+}
+#book_add_time{
+	font-size: 34px;
+	height: 66px;
+	line-height: 50px;
+	direction: ltr;
+}
+
+.html_rtl #book_add_time{
+    text-align: right;
+}
+
+#book_add_type{
+	font-size: 36px;
+	height: 56px;
+	line-height: 50px;
+}
+.epgBookAddBtn{
+	height: 60px;
+	line-height: 60px;
+	width: 892px;
+	font-size: 0;
+}
+#epgBookAdd_Nav >li{
+    width: 426px;
+    white-space: nowrap;
+    padding: 0 10px;
+    /*color: #b2b8bf;*/
+    text-align: center;
+    height: 60px;
+}
+#epgBookAdd_Nav span{
+    height: 60px;
+    font-size: 32px;
+    text-overflow: ellipsis;
+    max-width: 426px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.epgBookAddBtn_normal{
+    color: #b2b8bf;
+    background-color: #132f57;
+    display: inline-block;
+}
+
+.epgBookAddBtn_diable{
+    display: none;
+}
+
+.epgBookAddBtn_focus{
+	color: #e8e8e8;
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+    display: inline-block;
+}
+
+.epgBookAddBtn span.disable{
+	display: none;;
+}
+

@@ -1,0 +1,1776 @@
+
+
+/***************    公用样式    *************************/
+
+/***  按钮  **/
+
+.navNetworkBtnNormal{
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+
+    background: rgba(37,41,51,.2);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    display: inline-block;
+}
+.navNetworkBtnFocus{
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: #f1f1f1;
+
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    display: inline-block;
+}
+
+
+/***  输入框   */
+.navNetworkInputNormal{
+    display:inline-block;
+    height: 84px;
+    line-height: 84px;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+
+    background: transparent;
+    box-shadow:0 0 0 2px rgba(255,255,255,0.1) inset;
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    outline: 0 none;
+    border: 0 none;
+    text-indent: 10px;
+}
+.navNetworkInputFocus{
+    height: 84px;
+    line-height: 84px;
+    font-size: 36px;
+    color: #f1f1f1;
+
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background: transparent;
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    outline: 0 none;
+    border: 0 none;
+    text-indent: 10px;
+}
+/**************  networkbg 页面  箭头样式  begin  ******************/
+
+/*.navNetworkBGLeftArrowNormal{*/
+   /*position: absolute;*/
+   /*left: 20px;*/
+   /*width: 75px;*/
+   /*height: 75px;*/
+    /*top:50%;*/
+    /*margin-top:-37px;*/
+
+    /*background: url('../img/network/LeftArrowNormal.png') no-repeat center;*/
+/*}*/
+
+/*.navNetworkBGRightArrowNormal{*/
+    /*position: absolute;*/
+    /*right: 20px;*/
+    /*width: 75px;*/
+    /*height: 75px;*/
+    /*top:50%;*/
+    /*margin-top:-37px;*/
+    /*background: url('../img/network/RightArrowNormal.png') no-repeat center;*/
+/*}*/
+
+/**************  networkbg 页面  箭头样式  end  ******************/
+
+
+
+
+/*************  wifi 搜索页面  begin **************/
+.boe_SearchWifiPage{
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    left: 0;
+    top: 0;
+}
+.html_ltr .boeLoading{
+    position: absolute;
+    width: 850px;
+    height: 326px;
+    right: 205px;
+    top: 380px;
+    font-size: 40px;
+    color: rgba(255,255,255,0.7);
+    text-align: center
+}
+.html_rtl .boeLoading{
+    position: absolute;
+    width: 850px;
+    height: 326px;
+    left: 205px;
+    top: 380px;
+    font-size: 40px;
+    color: rgba(255,255,255,0.7);
+    text-align: center
+}
+.boeDialogLoadingDiv{
+    margin: 60px 376px 0px 376px;
+    width: 140px;
+    height: 140px;
+    display: none;
+    background:url('../img/loading_div.png') no-repeat 0 0;
+    -webkit-animation:run 1350ms steps(1) infinite 0s;
+}
+.boeDialogLoadingImg {
+    margin: 60px 376px 0px 376px;
+    width: 140px;
+    height: 140px;
+
+    display: block;
+}
+.boeDialogLoadingText {
+    margin-top: 40px;
+}
+/*************  wifi set page  **************/
+
+.boe_NetworkWifiSetPage{
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    left: 0;
+    top: 0;
+    font-size: 36px;
+}
+
+.html_ltr .navNetworkWifiSetPageContent{
+    position: absolute;
+    width: 850px;
+    height: 735px;
+    right: 195px;
+    top: 210px;
+    font-size: 36px;
+}
+.html_rtl .navNetworkWifiSetPageContent{
+    position: absolute;
+    width: 850px;
+    height: 735px;
+    left: 195px;
+    top: 210px;
+    font-size: 36px;
+}
+
+/******************    手动添加按钮    *******************/
+.html_ltr .boeWifiSetImgBtnNormal{
+    float: left;
+    margin-top:40px;
+    width: 255px;
+    height: 84px;
+    line-height: 88px;
+    text-align: center;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset;
+    background: rgba(37,41,51,.2);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+}
+.html_rtl .boeWifiSetImgBtnNormal{
+    float: right;
+    margin-top:40px;
+    width: 255px;
+    height: 84px;
+    line-height: 88px;
+    text-align: center;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset;
+    background: rgba(37,41,51,.2);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+}
+.html_ltr .boeWifiSetImgBtnFocus{
+     float: left;
+     margin-top:40px;
+     width: 255px;
+     height: 84px;
+     line-height: 88px;
+     text-align: center;
+     font-size: 36px;
+     color: #f1f1f1;
+     box-shadow: 0px 0px 0px 4px #84ecff inset;
+     background-color: rgba(11,74,111,0.6);
+
+     border-radius: 4px;
+     -moz-border-radius: 4px;
+     -webkit-border-radius: 4px;
+ }
+.html_rtl .boeWifiSetImgBtnFocus{
+    float: right;
+    margin-top:40px;
+    width: 255px;
+    height: 84px;
+    line-height: 88px;
+    text-align: center;
+    font-size: 36px;
+    color: #f1f1f1;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+.boeWifiSetImgBtnNormal .boeWifiSetImgBtnAdd{
+    background-image: url("../img/wifi_add_disable.png");
+}
+.boeWifiSetImgBtnFocus .boeWifiSetImgBtnAdd{
+    background-image: url("../img/wifi_add.png");
+}
+.boeWifiSetImgBtnNormal .boeWifiSetImgBtnRefresh{
+    background-image: url("../img/wifi_fresh_disable.png");
+}
+.boeWifiSetImgBtnFocus .boeWifiSetImgBtnRefresh{
+    background-image: url("../img/wifi_fresh.png");
+}
+.navNetworkManualUlContent{
+    clear: both;
+    position: relative;
+    display: inline-block;
+}
+
+/******************    搜索结果    *******************/
+.navNetworkWifiAutoResultUl{
+    width: 840px;
+    margin-left: 20px;
+}
+
+.navNetworkWifiAutoResultUl li {
+    /*height: 78px;*/
+    /*border-bottom: 2px #173f58 solid;*/
+    /*line-height: 78px;*/
+    /*font-size: 0;*/
+
+    height: 98px;
+    border-bottom: 2px #173f58 solid;
+    line-height: 98px;
+    font-size: 0;
+
+}
+
+.navNetworkWifiAutoResultLiNormal {
+    color: #b2b8bf;
+}
+
+.navNetworkWifiAutoResultLiFocus {
+    color: #f0f0f0;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+/*.navNetworkWifiAutoResultLiNormal{*/
+     /*width: 700px;*/
+     /*height: 92px;*/
+     /*display: inline-block;*/
+     /*text-align: center;*/
+     /*margin: 0 70px;*/
+     /*color: rgba(255,255,255,0.6);*/
+     /*line-height: 92px;*/
+     /*border-bottom: 1px solid rgba(255,255,255,0.1);*/
+ /*}*/
+/*.navNetworkWifiAutoResultLiFocus{*/
+    /*width: 700px;*/
+    /*height: 93px;*/
+    /*padding: 0 70px;*/
+    /*display: inline-block;*/
+    /*text-align: center;*/
+
+    /*color: #f1f1f1;*/
+    /*line-height: 92px;*/
+    /*box-shadow: 0px 0px 0px 4px #84ecff;*/
+    /*background-color: rgba(11,74,111,0.6);*/
+    /*border-radius: 4px;*/
+    /*-webkit-border-radius: 4px;*/
+    /*-moz-border-radius: 4px;*/
+/*}*/
+.navNetworkWifiAutoResultUl li:last-child{
+    border-bottom: 0 none;
+}
+
+/****************     显示的网络名称、连接、网络强度、网络安全信息     ******************/
+.html_ltr .navNetworkWifiName{
+
+    display: inline-block;
+    float: left;
+    width: 240px;
+    margin-right: 40px;
+    height: 78px;
+    margin-left: 70px;
+    font-size: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.html_rtl .navNetworkWifiName{
+
+    display: inline-block;
+    float: right;
+    width: 240px;
+    margin-left: 40px;
+    height: 78px;
+    margin-right: 70px;
+    font-size: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.html_ltr .navNetworkWifiConnState{
+    display: inline-block;
+    float: left;
+    width: 200px;
+    font-size: 36px;
+    height: 78px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.html_rtl .navNetworkWifiConnState{
+    display: inline-block;
+    float: right;
+    width: 200px;
+    font-size: 36px;
+    height: 78px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.html_ltr .navNetworkSecType {
+    display: inline-block;
+    float: left;
+    margin-left:50px;
+    height: 98px;
+    font-size: 98px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 0px;
+}
+.html_rtl .navNetworkSecType {
+    display: inline-block;
+    float: right;
+    margin-right:50px;
+    height: 98px;
+    font-size: 98px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 0px;
+}
+.html_ltr .boeWifiRight{
+    display: inline-block;
+    float: left;
+    margin-left: 45px;
+    width: 45px;
+    font-size: 28px;
+    height: 86px;
+    margin-top:12px;
+    line-height: 86px;
+}
+.html_rtl .boeWifiRight{
+    display: inline-block;
+    float: right;
+    margin-right: 45px;
+    width: 45px;
+    font-size: 28px;
+    height: 86px;
+    margin-top:12px;
+    line-height: 86px;
+}
+.html_ltr .boeWifiRight2{
+    display: inline-block;
+    width: 45px;
+    float:left;
+    margin-left:40px;
+    font-size: 28px;
+    height: 86px;
+    margin-top:12px;
+    line-height: 86px;
+}
+.html_rtl .boeWifiRight2{
+    display: inline-block;
+    width: 45px;
+    float:right;
+    margin-right:40px;
+    font-size: 28px;
+    height: 86px;
+    margin-top:12px;
+    line-height: 86px;
+}
+.boeNetworkWifiStateImg img,.boeNetworkWifiSecImg img{
+    vertical-align: middle;
+}
+.boeAutoScroll{
+    width: 4px;
+    height:500px;
+    position:absolute;
+    left:900px;
+    top:0px;
+}
+/**************  上下箭头  *************/
+/*.navNetworkManualUlUpArrow{*/
+    /*width: 75px;*/
+    /*height: 75px;*/
+    /*line-height: 75px;*/
+    /*margin:5px auto;*/
+/*}*/
+/*.navNetworkManualUlDownArrow{*/
+    /*width: 75px;*/
+    /*height: 75px;*/
+    /*line-height: 75px;*/
+    /*margin:0px auto;*/
+/*}*/
+
+
+
+/**************  wifi 输入密码窗体   begin  *************/
+
+
+.boe_NetworkWifiPWInputDialog{
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    left: 0;
+    top: 0;
+    font-size: 36px;
+}
+.html_ltr .boe_NetworkWifiWPSPage{
+    position: absolute;
+    width: 860px;
+    height: 644px;
+    left: 880px;
+    top: 318px;
+
+}
+.html_rtl .boe_NetworkWifiWPSPage{
+    position: absolute;
+    width: 860px;
+    height: 644px;
+    right: 880px;
+    top: 318px;
+
+}
+
+.html_ltr .networkWifiPWInputContent{
+    position: absolute;
+    width: 900px;
+    height: 500px;
+    right: 205px;
+    top: 386px;
+    font-size: 36px;
+}
+.html_rtl .networkWifiPWInputContent{
+    position: absolute;
+    width: 900px;
+    height: 500px;
+    left: 205px;
+    top: 386px;
+    font-size: 36px;
+}
+.navDialogHead {
+    width: 820px;
+    height: 46px;
+    line-height: 46px;
+}
+.html_ltr .navDialogTitle {
+    color: #35B5EC;
+    font-size: 40px;
+    margin-left: 100px;
+}
+.html_rtl .navDialogTitle {
+    color: #35B5EC;
+    font-size: 40px;
+    margin-right: 100px;
+}
+.navDialogContentFrame_240 {
+    width: 820px;
+    height: 240px;
+}
+.html_ltr .navInputLine{
+    width: 820px;
+    margin-left: 100px;
+    font-size: 0;
+}
+.html_rtl .navInputLine{
+    width: 820px;
+    margin-right: 100px;
+    font-size: 0;
+}
+.navInputTitle{
+    width: 185px;
+    height:70px;
+    font-size: 36px;
+    line-height: 70px;
+    color: #f0f0f0;
+    overflow: hidden;
+    display: inline-block
+}
+.html_ltr .boeInputPlaceHolder{
+    width: 574px;
+    height: 60px;
+    line-height: 60px;
+    color: #b2b8bf;
+    display: none;
+    position: absolute;
+    left: 320px;
+    top: 92px;
+    font-size: 30px;
+    overflow: hidden;
+}
+.html_rtl .boeInputPlaceHolder{
+    width: 574px;
+    height: 60px;
+    line-height: 60px;
+    color: #b2b8bf;
+    display: none;
+    position: absolute;
+    right: 320px;
+    top: 92px;
+    font-size: 30px;
+    overflow: hidden;
+}
+/*.navInputContentFocus{*/
+    /*width: 584px;*/
+    /*height: 70px;*/
+    /*box-shadow: 0px 0px 0px 4px #84ecff inset;*/
+    /*background-color: transparent;*/
+    /*font-size: 32px;*/
+    /*color: #b2b8bf;*/
+    /*border: 0;*/
+    /*float: left;*/
+    /*padding-left: 10px;*/
+/*}*/
+/***  标题部分   */
+.html_ltr .navCheckBoxImg{
+    vertical-align:top;
+    margin-right: 20px;
+    line-height: 36px;
+    margin-left:204px;
+}
+.html_rtl .navCheckBoxImg{
+    vertical-align:top;
+    margin-left: 20px;
+    line-height: 36px;
+    margin-right:204px;
+}
+.navSetItemTitle {
+    display: inline-block;
+    color: #F0F0F0;
+    font-size: 30px;
+}
+.navDialogFootFrame {
+    width: 820px;
+    height: 90px;
+}
+.navEthernetDialogFootFrame {
+    width: 820px;
+    height: 90px;
+    padding-top:30px;
+}
+.html_ltr .navEthernetDialogFootLeftNormal {
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+
+    background: rgba(37,41,51,.2);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    display: inline-block;
+    float: left;
+    margin-left:30px;
+}
+.html_rtl .navEthernetDialogFootLeftNormal {
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+
+    background: rgba(37,41,51,.2);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    display: inline-block;
+    float: right;
+    margin-right:30px;
+    margin-left:100px;
+}
+.html_ltr .navEthernetDialogFootLeftFocus {
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: #f1f1f1;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    float:left;
+    margin-left:30px;
+}
+.html_rtl .navEthernetDialogFootLeftFocus {
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: #f1f1f1;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    float:right;
+    margin-right:30px;
+}
+.html_ltr .navEthernetDialogFootRightNormal {
+
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+
+    background: rgba(37,41,51,.2);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    margin-left:460px;
+    display: block;
+}
+.html_rtl .navEthernetDialogFootRightNormal {
+
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+
+    background: rgba(37,41,51,.2);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    margin-right:460px;
+    display: block;
+}
+.html_ltr .navEthernetDialogFootRightFocus {
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: #f1f1f1;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    margin-left:460px;
+    display: block;
+}
+.html_rtl .navEthernetDialogFootRightFocus {
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: #f1f1f1;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    margin-right:460px;
+    display: block;
+}
+
+.html_ltr .navDialogFootLeftNormal {
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+
+    background: rgba(37,41,51,.2);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    display: inline-block;
+    float: left;
+    margin-left:120px;
+}
+.html_rtl .navDialogFootLeftNormal {
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+
+    background: rgba(37,41,51,.2);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    display: inline-block;
+    float: right;
+    margin-right:120px;
+}
+.html_ltr .navDialogFootLeftFocus {
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: #f1f1f1;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    float:left;
+    margin-left:120px;
+}
+.html_rtl .navDialogFootLeftFocus {
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: #f1f1f1;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    float:right;
+    margin-right:120px;
+}
+.html_ltr .navDialogFootLeftDisable {
+
+     width: 360px;
+     height: 84px;
+     line-height: 84px;
+     text-align: center;
+     font-size: 36px;
+     color: #85888d;
+
+     background: #243348;
+     box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+
+     border-radius: 4px;
+     -moz-border-radius: 4px;
+     -webkit-border-radius: 4px;
+
+     display: inline-block;
+     float: left;
+     margin-left:100px;
+
+ }
+.html_rtl .navDialogFootLeftDisable {
+
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: #85888d;
+
+    background: #243348;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    display: inline-block;
+    float: right;
+    margin-right:120px;
+
+}
+.html_ltr .navDialogFootRightNormal {
+
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+
+    background: rgba(37,41,51,.2);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    margin-left:550px;
+    display: block;
+}
+.html_rtl .navDialogFootRightNormal {
+
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+
+    background: rgba(37,41,51,.2);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    margin-right:550px;
+    display: block;
+}
+.html_ltr .navDialogFootRightFocus {
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: #f1f1f1;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    margin-left:550px;
+    display: block;
+}
+.html_rtl .navDialogFootRightFocus {
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: #f1f1f1;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    margin-right:550px;
+    display: block;
+}
+
+.html_ltr .navInputContentNormal{
+    width: 580px;
+    height: 70px;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.15) inset;
+    background-color: transparent;
+    font-size: 32px;
+    color: #b2b8bf;
+    border: 0;
+    float: right;
+    margin-right: 20px;
+    padding-left: 10px;
+}
+.html_rtl .navInputContentNormal{
+    width: 580px;
+    height: 70px;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.15) inset;
+    background-color: transparent;
+    font-size: 32px;
+    color: #b2b8bf;
+    border: 0;
+    float: left;
+    margin-left: 20px;
+    padding-right: 10px;
+}
+.html_ltr .navInputContentFocus{
+    width: 580px;
+    height: 70px;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: transparent;
+    font-size: 32px;
+    color: #b2b8bf;
+    border: 0;
+    float: right;
+    margin-right: 20px;
+    padding-left: 10px;
+}
+.html_rtl .navInputContentFocus{
+    width: 580px;
+    height: 70px;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: transparent;
+    font-size: 32px;
+    color: #b2b8bf;
+    border: 0;
+    float: left;
+    margin-left: 20px;
+    padding-right: 10px;
+}
+.navInputConWithTitleNormal{
+    width: 544px;
+    height: 11px;
+    border: 0 none;
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    bottom: 4px;
+    box-shadow: inset 0 3px 0 #102136, inset 0 0 0 3px rgba(255,255,255,0.15);
+}
+.networkWifiAutoConnPWTitle{
+    font-size: 46px;
+    color: rgba(0,158,161,0.7);
+    margin-bottom: 40px;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.networkWifiAutoPWInputText{
+    font-size: 46px;
+    color: rgba(254,254,254,0.7);
+    margin-bottom: 20px;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/***  input   */
+.navNetworkWifiPWInputNormal{
+    width: 700px;
+    height: 84px;
+    line-height: 84px;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+
+    background: rgba(37,41,51,.2);
+    box-shadow:0 0 0 2px rgba(255,255,255,0.1) inset;
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    outline: 0 none;
+    border: 0 none;
+    margin-bottom: 55px;
+    padding: 0 10px;
+}
+.navNetworkWifiPWInputFocus{
+    width: 700px;
+    height: 84px;
+    line-height: 84px;
+    font-size: 36px;
+    color: #f1f1f1;
+
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    outline: 0 none;
+    border: 0 none;
+    margin-bottom: 55px;
+    padding: 0 10px;
+}
+
+/***  OK按钮   */
+.navNetworkWifiOKBtnNormal{
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+
+    background: rgba(37,41,51,.2);
+    box-shadow:0 0 0 2px rgba(255,255,255,0.1) inset;
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    display: inline-block;
+}
+.navNetworkWifiOKBtnFocus{
+    width: 360px;
+    height: 84px;
+    line-height: 84px;
+    text-align: center;
+    font-size: 36px;
+    color: #f1f1f1;
+
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    display: inline-block;
+}
+
+/***  取消按钮  ***/
+#networkWifiAutoCancelBtn{
+    width: 360px;
+    margin-left: 20px;
+}
+/**************  wifi 输入密码窗体   end  *************/
+
+
+
+/**************  wifi 添加窗体   begin  *************/
+
+
+.boe_NetworkWifiAddDialog{
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    left: 0;
+    top: 0;
+    font-size: 36px;
+}
+
+.html_ltr .networkWifiAddDialogContent {
+    position: absolute;
+    width: 900px;
+    height: 500px;
+    right: 205px;
+    top: 386px;
+    font-size: 36px;
+}
+.html_rtl .networkWifiAddDialogContent {
+    position: absolute;
+    width: 900px;
+    height: 500px;
+    left: 205px;
+    top: 386px;
+    font-size: 36px;
+}
+/****  标题样式 ***/
+.navNetworkRow{
+    font-size: 0;
+    margin-bottom: 25px;
+}
+
+.networkWifiTitleText{
+    display: inline-block;
+    font-size: 46px;
+    color: rgba(254,254,254,0.5);
+
+    width: 250px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.networkSelectContainerNormal{
+    position: relative;
+    display: inline-block;
+}
+
+.networkSelectArrowImg{
+    background-image: url(../img/network/dropDownArrow-un.png);
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    right: 25px;
+    bottom: 15px;
+}
+
+/****  下拉控件 **/
+.networkSelectListFrameNormal{
+    position: absolute;
+    display: none;
+    left: 250px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+.networkSelectListFrameFocus{
+    position: absolute;
+    display: block;
+    left: 250px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.networkSelectListContent{
+    width: 450px;
+    list-style: none;
+    font-size: 36px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.1) inset;
+}
+
+.networkSelectListContent li:first-child{
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    -webkit-border-top-left-radius: 4px;
+    -webkit-border-top-right-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    -moz-border-radius-topright: 4px;
+}
+.networkSelectListContent li:last-child{
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    -moz-border-radius-bottomright: 4px;
+}
+
+.networkSelectLiNormal{
+    height: 84px;
+    text-indent: 10px;
+    color: rgba(255,255,255,0.5);
+    line-height: 84px;
+    background: rgba(20,22,26,0.9);
+}
+.networkSelectLiFocus{
+    height: 84px;
+    text-indent: 10px;
+    color: #f1f1f1;
+    line-height: 84px;
+
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+/**************  wifi 添加窗体   end  *************/
+
+.boeWifiAddDialogHead {
+    width: 900px;
+    height: 46px;
+    line-height: 46px;
+}
+.html_ltr .boeWifiAddDialogTitle {
+    color: #35B5EC;
+    font-size: 40px;
+    margin-left: 100px;
+}
+.html_rtl .boeWifiAddDialogTitle {
+    color: #35B5EC;
+    font-size: 40px;
+    margin-right: 100px;
+}
+.boeWifiAddDialogContentFrame {
+    width: 900px;
+    height: 240px;
+}
+.html_ltr .boeWifiAddInputLine{
+    width: 835px;
+    margin-left: 100px;
+    font-size: 0;
+}
+.html_rtl .boeWifiAddInputLine{
+    width: 835px;
+    margin-right: 100px;
+    font-size: 0;
+}
+/*.boeWifiAddInputTitle{*/
+    /*width: 298px;*/
+    /*height:70px;*/
+    /*font-size: 36px;*/
+    /*line-height: 70px;*/
+    /*color: #f0f0f0;*/
+    /*overflow: hidden;*/
+    /*display: inline-block*/
+/*}*/
+.boeWifiAddInputTitle {
+    width: 260px;
+    height: 70px;
+    font-size: 36px;
+    line-height: 70px;
+    color: #f0f0f0;
+    overflow: hidden;
+    display: inline-block;
+}
+.html_ltr .boeWifiAddInputContentNormal{
+    width: 564px;
+    height: 70px;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.15) inset;
+    background-color: transparent;
+    font-size: 32px;
+    color: #b2b8bf;
+    border: 0;
+    float: right;
+    padding-left: 10px;
+}
+.html_rtl .boeWifiAddInputContentNormal{
+    width: 564px;
+    height: 70px;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.15) inset;
+    background-color: transparent;
+    font-size: 32px;
+    color: #b2b8bf;
+    border: 0;
+    float: left;
+    padding-right: 10px;
+}
+.html_ltr .boeWifiAddInputContentFocus{
+    width: 564px;
+    height: 70px;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: transparent;
+    font-size: 32px;
+    color: #b2b8bf;
+    border: 0;
+    float: right;
+    padding-left: 10px;
+}
+.html_rtl .boeWifiAddInputContentFocus{
+    width: 564px;
+    height: 70px;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: transparent;
+    font-size: 32px;
+    color: #b2b8bf;
+    border: 0;
+    float: left;
+    padding-right: 10px;
+}
+.boeWifiAddSelectFrameNormal{
+    width: 574px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.15) inset;
+    background-color: transparent;
+}
+.boeWifiAddSelectFrameFocus{
+    width: 574px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: transparent;
+}
+.html_ltr .boeWifiAddSelectText{
+    color: #b2b8bf;
+    height: 70px;
+    font-size: 32px;
+    float: left;
+    margin-left: 10px;
+}
+.html_rtl .boeWifiAddSelectText{
+    color: #b2b8bf;
+    height: 70px;
+    font-size: 32px;
+    float: right;
+    margin-right: 10px;
+}
+/*.boeWifiAddSelectFrameFocus .boeWifiAddSelectText{*/
+    /*color: #f0f0f0;*/
+    /*height: 70px;*/
+    /*font-size: 32px;*/
+    /*float: left;*/
+    /*margin-left: 10px;*/
+/*}*/
+.html_ltr .boeWifiAddSelectRightImg{
+    width: 38px;
+    height: 20px;
+    background-image: url("../img/down_arrow.png");
+    float: right;
+    margin-right: 40px;
+    margin-top: 25px;
+}
+.html_rtl .boeWifiAddSelectRightImg{
+    width: 38px;
+    height: 20px;
+    background-image: url("../img/down_arrow.png");
+    float: left;
+    margin-left: 40px;
+    margin-top: 25px;
+}
+/*.boeWifiAddSelectFrameFocus .boeWifiAddSelectRightImg{*/
+    /*width: 38px;*/
+    /*height: 20px;*/
+    /*background-image: url("../img/down_arrow.png");*/
+    /*float: right;*/
+    /*margin-right: 40px;*/
+    /*margin-top: 25px;*/
+/*}*/
+.html_ltr .boeWifiAddSelectListFrameNormal{
+    position: relative;
+    width: 514px;
+    height: 348px;
+    left: 362px;
+    /*left: 387px;*/
+    top:5px;
+    display: none;
+}
+.html_rtl .boeWifiAddSelectListFrameNormal{
+    position: relative;
+    width: 514px;
+    height: 348px;
+    right: 362px;
+    /*left: 387px;*/
+    top:5px;
+    display: none;
+}
+.html_ltr .boeWifiAddSelectListFrameFocus{
+    position: relative;
+    width: 574px;
+    height: 348px;
+    left:362px;
+    /*left: 363px;*/
+    top:5px;
+    display: block;
+}
+.html_rtl .boeWifiAddSelectListFrameFocus{
+    position: relative;
+    width: 574px;
+    height: 348px;
+    right:362px;
+    /*left: 363px;*/
+    top:5px;
+    display: block;
+}
+.boeWifiAddSelectListContent{
+    width: 574px;
+    background-color: #132f58;
+}
+.boeWifiAddSelectListContent li:last-child {
+    border-bottom: 0px;
+}
+
+.boeWifiAddSelectLiNormal {
+    height: 68px;
+    width: 574px;
+    border-bottom: 2px #173f58 solid;
+}
+
+.boeWifiAddSelectLiFocus {
+    height: 68px;
+    width: 574px;
+    border-bottom: 2px #173f58 solid;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(17,74,111,0.8);
+}
+.html_ltr .boeWifiAddSelectItem{
+    font-size: 34px;
+    height: 68px;
+    line-height: 68px;
+    color: #b2b8bf;
+    margin-left: 20px;
+}
+.html_rtl .boeWifiAddSelectItem{
+    font-size: 34px;
+    color: #F0F0F0;
+    height: 68px;
+    line-height: 68px;
+    margin-left: 20px;
+}
+/**************  ethernet 类型选择窗体   begin  *************/
+
+
+.boe_NetworkEthernetType{
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    left: 0;
+    top: 0;
+    font-size: 36px;
+}
+
+
+/******************    类型列表    *******************/
+.navNetworkEthernetTypeUl{
+    list-style: none;
+    width: 720px;
+    position: relative;
+    margin-top: 386px;
+}
+
+.navNetworkEthernetTypeLiNormal{
+    width: 710px;
+    height: 120px;
+    /*display: inline-block;*/
+
+    color: rgba(255,255,255,0.6);
+    line-height: 120px;
+}
+.navNetworkEthernetTypeLiFocus{
+    width: 710px;
+    height: 120px;
+    /*display: inline-block;*/
+
+    color: #f1f1f1;
+    line-height: 120px;
+    box-shadow: 0px 0px 0px 4px #84ecff;
+    background-color: rgba(11,74,111,0.6);
+
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+.navNetworkEthernetTypeImgNormal{
+    width: 75px;
+    height: 75px;
+    margin-left: 70px;
+    margin-right:45px;
+    vertical-align: middle;
+}
+
+.navNetworkEthernetTypeTitleNormal{
+    display: inline-block;
+}
+
+/**************  ethernet 类型选择窗体   end  *************/
+
+
+
+
+
+/**************  ethernet IP设置窗体   begin  *************/
+
+
+.boe_NetworkEthernetSetPage{
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    left: 0;
+    top: 0;
+    font-size: 36px;
+}
+
+
+.html_ltr .navNetworkEthernetSetPageContent{
+    position: absolute;
+    width: 810px;
+    height: 930px;
+    right: 205px;
+    top:0;
+    font-size: 36px;
+}
+.html_rtl .navNetworkEthernetSetPageContent{
+    position: absolute;
+    width: 810px;
+    height: 930px;
+    left: 205px;
+    top:0;
+    font-size: 36px;
+}
+
+/******************    类型列表    *******************/
+.navNetworkEtherIPV4InfoUlClass{
+    list-style: none;
+    width: 910px;
+    position: relative;
+    margin-top: 250px;
+}
+
+.navNetworkEtherIPV4InfoLi{
+    width: 100%;
+    /*height: 84px;*/
+    color: rgba(255,255,255,0.6);
+    font-size: 0;
+    margin-bottom: 15px;
+}
+
+
+/***  输入框样式   *****/
+
+
+.navNetworkIpAddrInputNormal{
+    width: 124px;
+    height: 84px;
+    line-height: 84px;
+    font-size: 36px;
+    text-align: center;
+    color: #f1f1f1;
+
+    background: transparent;
+    box-shadow:0 0 0 2px rgba(255,255,255,0.1) inset;
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    outline: 0 none;
+    border: 0 none;
+
+    margin-left: 15px;
+}
+.navNetworkIpAddrInputFocus{
+    width: 124px;
+    height: 84px;
+    line-height: 84px;
+    font-size: 36px;
+    text-align: center;
+    color: #f1f1f1;
+
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background: transparent;
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    outline: 0 none;
+    border: 0 none;
+    margin-left: 15px;
+}
+
+.navNetworkIpAddrInputDisable{
+    width: 124px;
+    height: 84px;
+    line-height: 84px;
+    font-size: 36px;
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+
+    background: transparent;
+    box-shadow:0 0 0 2px rgba(255,255,255,0.1) inset;
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    outline: 0 none;
+    border: 0 none;
+    margin-left: 15px;
+}
+
+
+/*****  标题部分   *****/
+.navNetworkEtherIPV4TitleNormal{
+     display: inline-block;
+     font-size: 36px;
+     color: rgba(255,255,255,0.5);
+
+     width: 300px;
+     height: 44px;
+     text-overflow: ellipsis;
+     overflow: hidden;
+     white-space: nowrap;
+    vertical-align: middle;
+ }
+.navNetworkEtherIPV4TitleDisable{
+    display: inline-block;
+    font-size: 36px;
+    color: rgba(254,254,254,0.5);
+
+    width: 300px;
+    height: 44px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+/********** 按钮************/
+.navNetworkBtnRow{
+    font-size: 0;
+    margin-top: 40px;
+}
+/*#navNetworkEtherIPCancelBtn{*/
+    /*font-size: 36px;*/
+    /*display: inline-block;*/
+    /*width: 360px;*/
+    /*margin-right: 90px;*/
+/*}*/
+
+/*#navNetworkEtherIPSaveBtn{*/
+    /*font-size: 36px;*/
+    /*display: inline-block;*/
+    /*width: 360px;*/
+/*}*/
+
+.html_ltr .boeWifiNotPluginDialog {
+    width: 1022px;
+    height: 240px;
+    /*border-top: 1px #173f58 solid;*/
+    position: absolute;
+    left: 809px;
+    top: 420px;
+    /*background-color: #102136;*/
+}
+.html_rtl .boeWifiNotPluginDialog {
+    width: 1022px;
+    height: 240px;
+    /*border-top: 1px #173f58 solid;*/
+    position: absolute;
+    right: 809px;
+    top: 420px;
+    /*background-color: #102136;*/
+}
+
+.boeWifiNotPluginFrame {
+    width: 1022px;
+    height: 240px;
+}
+.WifiNotPluginContent {
+    width: 892px;
+    height: 240px;
+    font-size: 0;
+    color: #f0f0f0;
+    margin-left: 65px;
+    /*vertical-align: middle;*/
+    /*display:table-cell;*/
+}
+.boeNetworkWifiSetWPSPageContent{
+    width: 860px;
+    height: 644px;
+}
+.boeWifiSetWPSFrame {
+    width: 860px;
+    height: 441px;
+    overflow: hidden;
+    /*margin-left: 65px;*/
+}
+.boeWifiSetWPSCodeTitle {
+    height: 36px;
+    line-height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 34px;
+    width: 840px;
+    font-size: 0;
+}
+.boeSetWPSTitle {
+    display: inline-block;
+    color: rgba(255,255,255,0.7);
+    font-size: 36px;
+}
+.boeSetWPSProTitle {
+    height: 36px;
+    line-height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 30px;
+    width: 840px;
+    font-size: 0;
+}
+.boeWPSProgressFrame {
+    background-color: #8a8a8a;
+    display: inline-block;
+    width: 840px;
+    height: 10px;
+    border-radius: 20px;
+    margin-bottom: 7px;
+}
+.boeWPSProgressCont {
+    background-color: #2388d6;
+    width: 0px;
+    height: 10px;
+    border-radius: 20px;
+}
+.html_ltr .boeWifiSetWPSCancleBtnNormal{
+    margin-left: 250px;
+    width: 360px;
+    height: 84px;
+    line-height: 88px;
+    text-align: center;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset;
+    background: rgba(37,41,51,.2);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+.html_rtl .boeWifiSetWPSCancleBtnNormal{
+    margin-right: 250px;
+    width: 360px;
+    height: 84px;
+    line-height: 88px;
+    text-align: center;
+    font-size: 36px;
+    color: rgba(255,255,255,0.6);
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset;
+    background: rgba(37,41,51,.2);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+.html_ltr .boeWifiSetWPSCancleBtnFocus{
+    margin-left: 250px;
+    width: 360px;
+    height: 84px;
+    line-height: 88px;
+    text-align: center;
+    font-size: 36px;
+    color: #f1f1f1;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+.html_rtl .boeWifiSetWPSCancleBtnFocus{
+    margin-right: 250px;
+    width: 360px;
+    height: 84px;
+    line-height: 88px;
+    text-align: center;
+    font-size: 36px;
+    color: #f1f1f1;
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    background-color: rgba(11,74,111,0.6);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+/**************  ethernet IP设置窗体   end  *************/

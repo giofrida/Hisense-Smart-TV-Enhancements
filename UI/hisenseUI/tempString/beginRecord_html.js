@@ -1,0 +1,4 @@
+/**
+ * Created by hisense on 2015/3/25.
+ */
+var beginRecord_html = "<div id = \"beginRecordTipTitle\" class = \"beginRecordTipTitle\"></div>"+"<div id = \"beginRecordLine\" class = \"beginRecordLine\"></div>"+"<div id = \"beginRecordChannelInfo\" class = \"beginRecordChannelInfo\"></div>"+"<div id = \"beginRecordPragramName\" class = \"beginRecordPragramInfo\"></div>"+"<div id = \"beginRecordPeriod\" class= \"beginRecordPeriod\"></div>"+"<div id = \"beginRecordScheduleTime\" class = \"beginRecordScheduleTime\"></div>"+"<div id = \"beginRecordBtn\" class = \"beginRecordBtnNormal\"></div>"+"<div id = \"cancelRecordBtn\" class = \"cancelRecordBtnNormal\"></div>";

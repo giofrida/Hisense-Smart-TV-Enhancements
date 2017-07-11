@@ -1,0 +1,464 @@
+#livetv_info_bar {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 3840px;
+    height: 240px;
+    overflow: hidden;
+    /*transition: left 0.2s;*/
+}
+
+#livetv_info_bar span {
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#livetv_info_bar > div {
+    /*height: 240px;*/
+    float: left;
+}
+
+.html_rtl #livetv_info_bar > div {
+    /*height: 240px;*/
+    float: right;
+}
+
+#info_bar_page_1 {
+    width: 1920px;
+    display: none;
+}
+
+#info_bar_page_2 {
+    width: 1920px;
+    display: none;
+}
+
+.infoBarLeft {
+    width: 470px;
+    height: 176px;
+    margin: 20px 5px 20px 50px;
+    padding: 24px 30px 0px 30px;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2), 0 0 20px 2px rgba(0, 0, 0, 0.75);
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, .80);
+    float: left;
+    font-size: 0px;
+}
+
+.html_rtl .infoBarLeft {
+    float: right;
+    margin: 20px 50px 20px 5px;
+}
+
+#info_bar_left_attr_panel {
+    width: 470px;
+    height: 60px;
+    font-size: 0px;
+}
+
+#info_bar_num {
+    float: left;
+    font-size: 48px;
+    color: #f0f0f0;
+    line-height: 48px;
+}
+
+.html_rtl #info_bar_num {
+    float: right;
+}
+#info_bar_ts {
+    float: right;
+    font-size: 30px;
+    color: #a1a5ac;
+    line-height: 48px;
+}
+
+.html_rtl #info_bar_ts {
+    float: left;
+}
+#info_bar_attr {
+    float: right;
+    height: 30px;
+    padding: 9px;
+}
+
+.html_rtl #info_bar_attr {
+    float: left;
+}
+#info_bar_attr li {
+    height: 30px;
+    margin-left: 12px;
+    float: left;
+}
+
+.html_rtl #info_bar_attr li {
+    float: right;
+}
+
+#info_bar_name {
+    height: 62px;
+    line-height: 42px;
+    font-size: 42px;
+    color: #f0f0f0;
+    width: 470px;
+}
+
+#info_bar_time {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 30px;
+    width: 470px;
+}
+
+.infoBarRight {
+    width: 1220px;
+    height: 170px;
+    margin: 20px 5px 20px 5px;
+    padding: 30px 30px 0px 30px;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2), 0 0 20px 2px rgba(0, 0, 0, 0.75);
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, .80);
+    float: left;
+}
+
+.html_rtl .infoBarRight {
+    float: right;
+}
+.infoBarRightPanel_1 {
+    width: 800px;
+    height: 140px;
+    float: left;
+}
+
+.infoBarRightPanel_1 * {
+    float: left;
+}
+
+.html_rtl .infoBarRightPanel_1{
+    float: right;
+}
+.html_rtl .infoBarRightPanel_1 *  {
+    float: right;
+}
+
+.infoBarPanel_top {
+    height: 58px;
+    width: 800px;
+}
+
+.infoBarPanel_top > div{
+    width: 1200px;
+}
+
+.html_rtl .infoBarPanel_top > div *  {
+    /*float: left;*/
+    direction: ltr;
+}
+
+.infoBarPanel_top span {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 30px;
+    line-height: 30px;
+}
+
+#info_bar_crnt_start {
+    text-align: left;
+}
+
+#info_bar_crnt_stop {
+    text-align: right;
+}
+
+.infoBarPanel_top > div > div {
+    width: 270px;
+    height: 12px;
+    margin: 11px 12px 0px 12px;
+    /*box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6);*/
+    border-radius: 4px;
+    background-color: #808080;
+}
+
+#info_bar_crnt_progress {
+    height: 12px;
+    width: 10px;
+    /*background-image: url("../../img/infobar/progress_bar1.9.png");*/
+    /*background: -webkit-linear-gradient(top, #9b0661, #830051);*/
+    background-color: #00bdb9;
+    border-radius: 4px;
+    float: left;
+}
+
+.infoBarPanel_mid {
+    height: 58px;
+    line-height: 42px;
+    font-size: 42px;
+    color: #f0f0f0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 800px;
+}
+
+.infoBarPanel_bottom {
+    color: rgba(255, 255, 255, 0.6);
+    width: 1240px;
+    height: 54px;
+    font-size: 30px;
+}
+
+#info_bar_nxt_name {
+    max-width: 500px;
+    overflow: hidden;
+    margin: 0px 5px 0px 25px;
+}
+#info_bar_nxt_time{
+    direction: ltr;
+    max-width: 500px;
+}
+.infoBarPanel_bottom img {
+    width: 30px;
+    height: 30px;
+    /*margin-left: 10px;*/
+}
+
+#info_bar_nxt_rating{
+    width: 100px;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.infoBarRightPanel_2 {
+    width: 420px;
+    height: 140px;
+    float: left;
+}
+
+.html_rtl .infoBarRightPanel_2  {
+    float: right;
+}
+.infoBarRightPanel_2 ul {
+    /*width: 430px;*/
+    max-width: 420px;
+    /*height: 36px;*/
+    float: right;
+    overflow: hidden;
+}
+
+.html_rtl .infoBarRightPanel_2 ul   {
+    float: left;
+}
+.infoBarRightPanel_2 li {
+    border-right: solid 1px rgba(255, 255, 255, 0.6);
+    float: right;
+    margin-right: -1px;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 26px;
+    height: 28px;
+    line-height: 28px;
+}
+
+.html_rtl .infoBarRightPanel_2 li {
+    float: left;
+    margin-left: -1px;
+    margin-right: 0;
+}
+.infoBarRightPanel_2 li.disable {
+    display: none;
+}
+
+.infoBarRightPanel_2 li.disableDataSelected {
+    display: none;
+}
+
+
+.infoBarRightPanel_2 span {
+    margin: 0px 12px 0px 12px;
+}
+
+.infoBarArrow {
+    position: absolute;
+    left: 1870px;
+    top: 0px;
+    width: 50px;
+    height: 200px;
+    float: left;
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+    margin: 20px 0px 20px 0px;
+    background-image: url(../../img/infobar/arrow_right.png);
+    transform: scaleX(1);
+    visibility: hidden;
+}
+
+.html_rtl .infoBarArrow{
+    float: right;
+}
+#info_bar_dtl_name {
+    height: 62px;
+    width: 470px;
+    font-size: 42px;
+    color: #f0f0f0;
+    overflow: hidden;
+}
+
+#info_bar_dtl_level {
+    height: 50px;
+    width: 470px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 36px;
+}
+
+#info_bar_dtl_quality {
+    height: 50px;
+    width: 470px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 36px;
+}
+#info_bar_dtl_level.disable{
+    display: none;
+}
+#info_bar_dtl_quality.disable{
+    display: none;
+}
+#info_bar_dtl_crnt_name {
+    height: 48px;
+    font-size: 36px;
+    color: #f0f0f0;
+    width: 1220px;
+    margin-top: -20px;
+    overflow: hidden;
+}
+
+.infoBarDetailPanel {
+    height: 105px;
+    line-height: 35px;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.6);
+    overflow: hidden;
+    width: 1220px;
+}
+
+#info_bar_detail_ellipsis {
+    float: left;
+    font-size: 22px;
+    color: #a1a5ac;
+    line-height: 1px;
+    visibility: hidden;
+    height: 1px;
+}
+
+.html_rtl #info_bar_detail_ellipsis {
+    float: right;
+}
+#info_bar_not_tv {
+    display: none;
+    width: 470px;
+    height: 142px;
+    margin: 20px 5px 20px 50px;
+    padding: 18px 30px 0px 30px;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2), 0 0 20px 2px rgba(0, 0, 0, 0.75);
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, .80);
+
+    float: left;
+}
+.html_rtl #info_bar_not_tv {
+    float: right;
+}
+#info_bar_not_tv > div{
+    float: left;
+    height: 80px;
+    width: 470px;
+}
+.html_rtl #info_bar_not_tv > div {
+    float: right;
+}
+.infoBarNTVIcon {
+    height: 60px;
+    width: 60px;
+    float: left;
+}
+
+.infobarSourceName {
+    width: 300px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 42px;
+    text-indent: 20px;
+    color: rgba(255, 255, 255, 0.6);
+    float: left;
+}
+
+.html_rtl .infobarSourceName  {
+    float: right;
+}
+.infoBarNTVLock {
+    width: 30px;
+    height: 30px;
+    margin-top: 15px;
+    float: right;
+}
+
+.html_rtl .infoBarNTVLock  {
+    float: left;
+}
+.infoBarNTVMHL {
+    width: 60px;
+    height: 30px;
+    margin-top: 15px;
+    float: right;
+}
+
+.html_rtl .infoBarNTVMHL  {
+    float: left;
+}
+.infobarVideoFormat {
+    font-size: 36px;
+    color: rgba(255, 255, 255, 0.6);
+    float: left;
+}
+
+
+.html_rtl .infobarVideoFormat  {
+    float: right;
+}
+
+#info_bar_dtl_crnt_description.normal{
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+    width: 1220px;
+}
+
+.infoBarMoreButton{
+    height: 30px;
+    display: block;
+}
+
+.infoBarMoreButton span{
+    font-size: 28px;
+    color: #6b6f79;
+    height: 30px;
+    line-height: 30px;
+    margin: 0px 10px 0px 10px;
+}
+
+
+.infoBarMoreButton div{
+    width: 40px;
+    height: 30px;
+    background-image: url(../../img/common/blue.png);
+    display: inline-block;
+    background-position: 0 -5px;
+}
+
+.infoBarMoreButton *{
+    float: right;
+}
+
+.html_rtl .infoBarMoreButton * {
+    float: left;
+}
+

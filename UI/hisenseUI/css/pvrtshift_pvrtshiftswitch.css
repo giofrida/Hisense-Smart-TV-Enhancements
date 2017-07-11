@@ -1,0 +1,70 @@
+.pvrTshiftShowDialog, .pvrStopToSwitchDialog
+{
+    width: 1020px;
+    height: 277px;
+    background-color: #102136;
+    position: absolute;
+    font-size: 0;
+    left: 50%;
+    top: 50%;
+    margin-left: -511px;
+    margin-top: -139px;
+}
+.rTipNormal
+{
+    width: 890px;
+    height: 0px;
+    font-size: 32px;
+    line-height: 40px;
+    color: #f0f0f0;
+    padding-top: 50px;
+    padding-bottom: 130px;
+    margin-left:65px;
+    margin-right: 65px;
+}
+.rBtnNormal
+{
+    display: inline-block;
+    text-align: center;
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    font-size: 32px;
+    color: #f0f0f0;
+    border-top: 2px solid #173f58;
+}
+.rBtnFocus
+{
+    display: inline-block;
+    text-align: center;
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    font-size: 32px;
+    color: #f0f0f0;
+    border-top: 2px solid #173f58;
+    background-color: rgba(17, 74, 111, 0.8);
+    box-shadow: inset 0px 0px 0px 4px #84ecff;
+}
+.rBtnSelected
+{
+    display: inline-block;
+    text-align: center;
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    font-size: 32px;
+    color: #f0f0f0;
+    border-top: 2px solid #173f58;
+}
+.rBtnDisable
+{
+    display: inline-block;
+    text-align: center;
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    font-size: 32px;
+    color: #f0f0f0;
+    border-top: 2px solid #173f58;
+}

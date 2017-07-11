@@ -1,0 +1,83 @@
+#dialog_reminder {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 470px;
+    width: 1022px;
+    padding: 310px 449px 300px 449px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #f0f0f0;
+}
+
+#dialog_reminder span {
+    display: inline-block;
+}
+.dialogReminderContent span {
+    line-height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#reminder_prgrm_name{
+    max-width: 650px;
+}
+.dialogReminderContent > *{
+    width: 892px;
+}
+
+#reminder_repeat_mode{
+    float: right;
+    max-width: 240px;
+}
+
+#dialog_reminder_panel{
+
+    height: 470px;
+    width: 1022px;
+    background-color: #102136;
+}
+
+
+#dialog_reminder_title{
+
+    color: #35b5ec;
+    border-bottom: solid 6px #33b5e6;
+    text-indent: 65px;
+    font-size: 40px;
+    width: 1022px;
+    height: 100px;
+    line-height: 100px;
+}
+
+.dialogReminderContent{
+    padding: 60px 65px 60px 65px;
+    width: 892px;
+    height: 140px;
+    /* line-height: 45px; */
+    font-size: 36px;
+    border-bottom: 2px #173f58 solid;
+}
+
+.reminderBtns{
+    height: 95px;
+    width: 1022px;
+
+}
+
+.reminderBtns span{
+
+    /*display: block;*/
+    /*float: left;*/
+    width: 511px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 32px;
+}
+.reminderBtns span.focus {
+
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+}
+
+

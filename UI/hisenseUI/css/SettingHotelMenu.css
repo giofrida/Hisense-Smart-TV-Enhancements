@@ -1,0 +1,275 @@
+#setting_HotelMenu_page{
+    height: 636px;
+    width: 1022px;
+    left: 50%;
+    margin-left: -511px;
+    position: absolute;
+    overflow: hidden;
+    bottom: 70px;
+    background-color: rgba(16, 33, 54, .9);
+}
+.setting_hotelMode_all{
+    height: 1396px;
+    width: 1022px;
+    position: absolute;
+    border-radius: 4px;
+
+}
+.setting_hotelinputlock_all_div{
+    height: 630px;
+    width: 1022px;
+    background-color: rgba(16,33,54,.9);
+    position: absolute;
+    border-radius: 4px;
+    bottom:70px;
+    left: 50%;
+    margin-left: -516px;
+}
+.setting_hotelinputlock_all{
+    width: 1920px;
+    height: 1080px;
+    position: absolute;
+    top:0;
+}
+.setting_hotelinputlockEU_all_div{
+    height: 720px;
+    width: 1022px;
+    background-color: rgba(16,33,54,.9);
+    position: absolute;
+    border-radius: 4px;
+    bottom:70px;
+    left: 50%;
+    margin-left: -516px;
+}
+.setting_hotelinputlockSA_all_div{
+    height: 560px;
+    width: 1022px;
+    background-color: rgba(16,33,54,.9);
+    position: absolute;
+    border-radius: 4px;
+    bottom:70px;
+    left: 50%;
+    margin-left: -516px;
+}
+#switch_hotelMode{
+    margin-top: 60px;
+}
+#switch_SourceLock_TV{
+    margin-top: 60px;
+}
+.switch_hotelMode_con{
+    height: 50px;
+    margin-top: 30px;
+    margin-left: 65px;
+    position: relative;
+    margin-right: 65px;
+}
+.switch_hotelModespan{
+    /*float: left;*/
+    font-size: 36px;
+    color: #f0f0f0;
+}
+.switch_hotelModespanDisable{
+    /*float: left;*/
+    font-size: 36px;
+    color: rgba(186,184,191,.3);
+}
+.VolumeSliderContent{
+    float: left;
+}
+.MaxVolumecurrentsliderValue{
+    font-size: 34px;
+
+}
+.sourceLock_btn_list_normal{
+    height: 42px;
+    width: 222px;
+    border:2px solid rgba(255,255,255,0.15);
+    float: right;
+    text-align: center;
+    line-height: 42px;
+    font-size: 32px;
+    color: #f0f0f0;
+}
+.sourceLock_btn_list_focus{
+    height: 42px;
+    width: 222px;
+    box-shadow: 0 0 0 4px rgba(132,236,255,1);
+    background-color: rgba(17,74,111,.8);
+    float: right;
+    margin:2px;
+    text-align: center;
+    line-height: 42px;
+    font-size: 32px;
+    color: #f0f0f0;
+}
+.sourceLock_btn_list_disable{
+    height: 42px;
+    width: 222px;
+    border:2px solid rgba(67,81,99,0.3);
+    float: right;
+    text-align: center;
+    line-height: 42px;
+    font-size: 32px;
+    color: rgba(186,184,191,.3);
+}
+.setting_OnSourcespan{
+    margin-left: 65px;
+    font-size: 36px;
+    color: #f0f0f0;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    height: 36px;
+    margin-right: 65px;
+
+}
+.setting_OnSourcespanDisable{
+    margin-left: 65px;
+    font-size: 36px;
+    color: rgba(186,184,191,.3);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    height: 36px;
+}
+.setting_OnSource_Mode{
+    width: 1022px;
+    height: 60px;
+}
+.setting_OnSource_leftArrow{
+    width: 65px;
+    height: 60px;
+    text-align: center;
+    margin-top: 9px;
+    float: left;
+}
+.setting_OnSource_leftArrow img {
+    vertical-align: middle;
+    width: 20px;
+    height: 38px;
+}
+.setting_OnSourceItem_ul{
+    list-style: none;
+    height: 58px;
+    border-top: 2px rgba(255,255,255,.15) solid;
+    border-bottom: 2px rgba(255,255,255,.15) solid;
+    border-right: 2px rgba(255,255,255,.15) solid;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+#setting_OnSourceItem li{
+    height: 58px;
+    line-height: 58px;
+    font-size: 32px;
+    float: left;
+    text-align: center;
+    width: 219.75px;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.setting_OnSourceItem_li_normal{
+    color: #b2b8bf;
+    border-left: 2px rgba(255,255,255,.15) solid;
+}
+.setting_OnSourceItem_li_focus{
+    color: #b2b8bf;
+    box-shadow: 0 0 0 4px rgba(132,236,255,1) inset;
+    background-color: rgba(17,74,111,.8);
+    border-left: 2px rgba(255,255,255,.15) solid;
+}
+.setting_OnSourceItem_li_selected{
+    color: #F0F0F0;
+    background-color: #395a88;
+    border-left: 2px rgba(49,57,67,1) solid;
+}
+.setting_OnSourceItem_li_disable{
+    color: rgba(178,184,191,.3);
+    border-left: 2px rgba(67,81,99,.3) solid;
+}
+.setting_OnSourceItem_li_selectedDisable{
+    color: rgba(178,184,191,.3);
+    background-color: rgba(255,255,255,0.08);
+    border-left: 2px rgba(49,57,67,1) solid;
+}
+#setting_OnChannelItem{
+    margin-left: 65px;
+}
+#setting_OnChannelItem li{
+    height: 58px;
+    line-height: 58px;
+    font-size: 32px;
+    float: left;
+    text-align: center;
+    width: 444px;
+}
+#setting_PowerOnModeItem{
+    margin-left: 65px;
+}
+#setting_PowerOnModeItem li{
+    height: 58px;
+    line-height: 58px;
+    font-size: 32px;
+    float: left;
+    text-align: center;
+    width: 294px;
+}
+#setting_LogoItem{
+    margin-left: 65px;
+}
+#setting_LogoItem li{
+    height: 58px;
+    line-height: 58px;
+    font-size: 32px;
+    float: left;
+    text-align: center;
+    width: 294px;
+}
+#setting_btn_copy_btn{
+    right: 20px;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-left: 40px;
+}
+#setting_btn_recover_btn{
+    width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#MaxVolumeSlider,#MinVolumeSlider,#PowerOnVolumeSlider{
+    margin-top: 30px;
+    top: 0;
+    margin-right: 65px;
+}
+#PowerOnVolumespan{
+    font-size: 34px;
+}
+#MaxVolumeSliderContent{
+    margin-right: 65px;
+}
+#setting_MaxVolume{
+    height: 50px;
+    direction: ltr;
+}
+.setting_hotel_scroll_rail {
+    width: 4px;
+    height: 551px;
+    margin-top: 60px;
+    margin-left: 1003px;
+    /*background-color: green;*/
+    position: absolute;
+    float: right;
+    margin-right: 1003px;
+}
+
+.setting_hotel_scroll_bar {
+    margin-top: 0px;
+    height: 232px;
+    width: 6px;
+    border-radius: 2px;
+    background-color: #555b60;
+}

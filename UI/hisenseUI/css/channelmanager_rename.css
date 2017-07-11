@@ -1,0 +1,158 @@
+.chl_manager_rename_page_bg {
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 0px;
+    /*left: 0px;*/
+    width: 1920px;
+    height: 1080px;
+}
+#chl_manager_rename_page_main{
+    position: absolute;
+    /*top: 0px;*/
+    /*left: 0px;*/
+    width: 1920px;
+    height: 1080px;
+}
+#chl_manager_rename_tips{
+    position: absolute;
+    top:52px;
+    /*right: 38px;*/
+    width: 320px;
+    color: #b2b8bf;
+    font-size: 30px;
+    display: none;
+}
+#chl_manager_rename_tips_txt{
+    width: 320px;
+    height: 80px;
+    /*position: relative;   */
+    display: none;
+}
+#chl_manager_rename_page{
+    width: 1022px;
+    height: 0px;
+    margin-top: 0px;
+    /*margin-left: 449px;*/
+    border-radius: 5px;
+    background-color: #102136;
+}
+
+#chl_manager_rename_page *{
+    /*float: left;*/
+    display: inline-block;
+}
+
+#chl_manager_rename_content{
+    width: 1022px;
+    height: 540px;/*hide: 60px;*/
+    margin-top: 60px;
+    overflow: hidden;
+    /*white-space: nowrap;*/
+}
+#chl_manager_rename_scroll{
+    display: inline-block;
+    vertical-align: top;
+}
+#chl_manager_rename_list{
+    width: 892px;
+    display: inline-block;
+    margin: 0px 50px 0px 50px;
+}
+
+#chl_manager_rename_list li{
+    height: 88px;
+    width: 892px;
+}
+
+#chl_manager_rename_list li span{
+    font-size: 36px;
+    height: 88px;
+    line-height: 143px;
+    color: #F0F0F0;
+    width: 152px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+}
+#chl_manager_rename_list li div{
+    height: 88px;
+    width: 740px;
+    /*background-color: blue;*/
+    background: url(../img/channellist/textfield_default.png) no-repeat bottom;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#chl_manager_rename_list li input{
+    font-size: 32px;
+    height: 50px;
+    color: #b2b8bf;
+    width: 740px;
+    margin-bottom: 8px;
+    margin-top: 30px;
+    background-color: transparent;
+    border: none;
+    outline: 0;
+}
+#chl_manager_rename_list li.selected div{
+    /*background-color: red;*/
+    /*box-shadow: inset 0 3px 0 #102136,*/
+    /*inset 0 0 0 1px #f78701,*/
+    /*inset 0 0 0 2px #cc9400,*/
+    /*inset 0 0 0 3px #f78701;*/
+    background: url(../img/channellist/textfield_activated.png) no-repeat bottom;
+}
+
+.chl_manager_rename_shadow{
+    width: 1022px;
+    height: 110px;
+    position: absolute;
+    top: 0px;
+    /*background:-webkit-gradient(linear, 0 0, 0 bottom, from(rgba(16, 33, 53, 0.5)), to(rgba(22, 39, 59, 0.9)));*/
+    /*background:-o-linear-gradient(bottom, rgba(22, 39, 59, 0.9), rgba(16, 33, 53, 0.5));*/
+}
+.chl_manager_rename_bottom{
+    width:1022px;
+    height: 95px;
+    background: url(../img/channellist/vertical_line.png);
+    font-size: 0;
+    margin-left: 449px;
+    margin-top: -98px;
+    border-top: 2px #183f57 solid;
+}
+.html_rtl .chl_manager_rename_bottom{
+    width:1022px;
+    height: 95px;
+    background: url(../img/channellist/vertical_line.png);
+    font-size: 0;
+    margin-right: 449px;
+    margin-top: -98px;
+    border-top: 2px #183f57 solid;
+}
+.chl_manager_rename_btn_class_normal {
+    width: 510px;
+    height: 95px;
+    /*float: left;*/
+    display: inline-block;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 32px;
+    line-height: 95px;
+}
+
+.chl_manager_rename_btn_class_focus {
+    width: 510px;
+    height: 95px;
+    margin-top: 0px;
+    /*float: left;*/
+    display: inline-block;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 32px;
+    line-height: 95px;
+    background-color: rgba(17, 74, 111, 0.8);
+    box-shadow: inset 0px 0px 0px 4px #84ecff;
+    /*background-color: #AE6600;*/
+    /*box-shadow: inset 0px 0px 0px 1px #fc8700, inset 0px 0px 0px 3px #cc9500, inset 0px 0px 0px 4px #fc8700;*/
+}

@@ -1,0 +1,142 @@
+#epg_book_schedule_page{
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.epgBookSchedulePanel{
+	position: relative;
+    left: 460px;
+    top: 49px;
+    width: 1000px;
+    height: 981px;
+    font-size: 0;
+    background-color: #102136;
+}
+
+.html_rtl .epgBookSchedulePanel{
+    left: -460px;
+}
+
+.epgBookSchedulePanel span{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+    display: inline-block;
+}
+
+#schedule_title{
+	width: 1000px;
+	height: 100px;
+	line-height: 100px;
+	border-bottom: 6px #33b5e6 solid;
+	text-indent: 32px;
+	color: #33b5e6;
+	font-size: 40px;
+}
+
+.schedulePanel{
+    width: 936px;
+    height: 780px;
+    margin: 0 32px 0 32px;
+    /*background-color: rebeccapurple;*/
+    display: inline-block;
+    overflow: hidden;
+}
+
+#book_schedule_list{
+    width: 936px;
+    font-size: 0;
+}
+
+#book_schedule_list li {
+    height: 128px;
+    border-bottom: 2px #173f58 solid;
+    padding: 0 20px 0 20px;
+    width: 896px;
+}
+
+#book_schedule_list li.focus{
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+}
+
+#book_schedule_list li.focus span{
+    color: #e8e8e8;
+}
+.scheduleLine{
+    height: 64px;
+    line-height: 64px;
+}
+
+.bookScheduleChNum{
+    font-size: 26px;
+    color: #9ba2ad;
+    width: 70px;
+}
+
+.bookScheduleChName{
+    font-size: 26px;
+    color: #9ba2ad;
+    width: 576px;
+    text-indent: 20px;
+}
+
+.bookSchedulePrgrmTime{
+    font-size: 22px;
+    color: #7a7d83;
+    text-align: right;
+    width: 250px;
+    direction: ltr;
+}
+
+.html_rtl .bookSchedulePrgrmTime{
+    text-align: left;
+}
+.bookScheduleImg{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 17px;
+}
+
+.bookSchedulePrgrmName{
+    font-size: 36px;
+    color: #9ba2ad;
+    text-indent: 20px;
+    width: 676px;
+}
+
+.bookScheduleRepeat{
+    font-size: 22px;
+    color: #7a7d83;
+    text-align: right;
+    width: 180px;
+}
+
+.html_rtl .bookScheduleRepeat{
+    text-align: left;
+}
+
+#epg_schedule_scroll{
+	position: relative;
+    top: -875px;
+    left: 980px;
+}
+
+.html_rtl #epg_schedule_scroll{
+    left: -980px;
+}
+#book_schedule_clean{
+    width: 1000px;
+    height: 95px;
+    font-size: 32px;
+    color: #9ba2ad;
+    margin-top: -2px;
+    border-top: 2px #173f58 solid;
+    text-align: center;
+    line-height: 95px;
+}
+
+#book_schedule_clean.focus{
+    color: #e8e8e8;
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+}

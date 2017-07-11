@@ -1,0 +1,66 @@
+#epg_fvp_detail_page{
+    background-image: url(../../img/epg/epg_detail_back.png);
+    font-size:0;
+}
+
+
+#epg_fvp_detail_page span{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 1254px;
+    display: inline-block;
+}
+
+.epgPVPImagePanel{
+    width: 522px;
+    height: 294px;
+    display: inline-block;
+    /*background-color: red;*/
+    margin: 124px 48px 662px 48px;
+    font-size:0;
+    vertical-align: top;
+
+}
+.epgFVPProgramPanel{
+    width: 1254px;
+    height: 884px;
+    display: inline-block;
+    /*background-color: green;*/
+    margin: 124px 0 72px 0;
+    font-size: 0;
+    vertical-align: top;
+}
+
+.epgFVPChannel{
+    white-space: nowrap;
+    font-size: 36px;
+    color: rgba(255,255,255,0.87);
+    height: 48px;
+}
+
+.epgFVPProgram{
+    white-space: nowrap;
+    font-size: 30px;
+    color: rgba(255,255,255,0.87);
+    height: 42px;
+}
+
+.epgFVPDetailContentPanel{
+    width: 1254px;
+    height: 740px;
+    padding-top: 12px;
+    overflow: hidden;
+}
+
+.epgFVPDetail{
+    font-size: 30px;
+    line-height: 37px;
+    color: rgba(255,255,255,0.54);
+}
+
+#epg_fvp_detail_scroll{
+    position: relative;
+    top: -740px;
+    left: 1254px;
+    opacity: 0.5;
+}

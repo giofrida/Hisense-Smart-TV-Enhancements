@@ -1,0 +1,2 @@
+var  pvrtshift_pvrFinishDialog_html ="<div id=\"recordDialogTipImg\" class=\"recordDialogTipImg\">"+"<img id=\"recordDialogTipImgPic\" src=\"img/pvr/pvrStop.png\">"+"</div>"+"<div id=\"recordDialogTipDiv\"  class=\"recordDialogTipNormal\">"+"    <span id=\"recordDialogTipName\" class=\"recordDialogTipName\"></span> <span id=\"recordDialogTip\" class=\"\"></span>"+"</div>";
+				

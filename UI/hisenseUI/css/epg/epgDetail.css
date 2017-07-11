@@ -1,0 +1,99 @@
+#epg_detail_page{
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.epgDetailPagePanel{
+    position: relative;
+    left: 446px;
+    top: 120px;
+    width: 972px;
+    height: 780px;
+    padding: 60px 28px 0 28px;
+    font-size: 0;
+    color: #e8e8e8;
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 0 2px  rgba(178,178,183,0.3), 0 0 2px 3px rgba(0,0,0,0.2);
+    border-radius: 2px;
+}
+
+#epg_detail_page span{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+
+.html_rtl .epgDetailPagePanel{
+    left: -446px;
+}
+
+#epg_detail_title{
+    white-space: nowrap;
+    width: 892px;
+    margin: 0 40px 0 40px;
+    height: 60px;
+    color: #9ba2ad;
+    font-size: 36px;
+}
+
+.epgDetailMiddle{
+    height: 600px;
+    width: 892px;
+    margin: 0 40px 0 40px;
+    font-size: 0;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.epgContentPanel{
+    width: 892px;
+    font-size: 0;
+}
+
+.epgDetailPanel{
+    width: 892px;
+    font-size: 0;
+}
+
+.epgDetailTip{
+    font-size: 36px;
+    color: #9ba2ad;
+    white-space: nowrap;
+    margin: 20px 0;
+    width: 892px;
+}
+
+.epgDetailContent{
+    font-size: 28px;
+    line-height: 36px;
+    word-wrap: break-word;
+    word-break: break-all;
+    width: 892px;
+
+}
+
+.epgDetailDisable{
+    display: none;
+}
+
+#epg_detail_back{
+    font-size: 36px;
+    width: 892px;
+    text-align: right;
+    margin: 10px 40px 10px 40px;
+    height: 80px;
+    line-height: 80px;
+}
+
+.html_rtl #epg_detail_back{
+    text-align: left;
+}
+
+#epg_detail_scroll{
+    position: relative;
+    top: -700px;
+    left: 980px;
+}
+
+.html_rtl #epg_detail_scroll{
+    right: 980px;
+}

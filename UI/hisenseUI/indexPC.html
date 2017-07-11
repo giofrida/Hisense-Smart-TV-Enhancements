@@ -1,0 +1,1809 @@
+﻿<!DOCTYPE html>
+<html class="html_ltr">
+<head>
+<title></title>
+<meta charset="utf-8">
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<link href="css/settingsys.css" rel="stylesheet" type="text/css">
+<link href="css/musicPlayer.css" rel="stylesheet" type="text/css">
+<link href="css/videoPlayer.css" rel="stylesheet" type="text/css">
+<!--<link href="css/fileBrowser.css" rel="stylesheet" type="text/css">-->
+<link href="css/picPlayer.css" rel="stylesheet" type="text/css">
+<link href="css/kPad.css" rel="stylesheet" type="text/css">
+<link href="css/scrollbar.css" rel="stylesheet" type="text/css">
+<link href="css/boe_index.css" rel="stylesheet" type="text/css">
+<link href="css/settingChannelStyle.css" rel="stylesheet" type="text/css">
+<!--<link href="css/channelCommon.css" rel="stylesheet" type="text/css">-->
+<link href="css/livetv/liveTV.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../hiSDK/zepto.min.js"></script>
+<script type="text/javascript" src="../hiSDK/fx.js"></script>
+<script type="text/javascript" src="lang/languages_media.js"></script>
+<script type="text/javascript" src="debug.js"></script>
+<script type="text/javascript" src="xml2json.js"></script>
+<script type="text/javascript" src="keyboard/keyDefine.js"></script>
+<script type="text/javascript" src="model/model.js"></script>
+
+<script type="text/javascript" src="../hiSDK/hiUISDK.js"></script>
+
+<link href="css/wizardIndex.css" rel="stylesheet" type="text/css">
+<link href="css/wizardDialogStyle.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="parseXML.js"></script>
+<script type="text/javascript" src="modulePages/livetv/livetvDef.js"></script>
+<script type="text/javascript" src="modulePages/livetv/liveTV.js"></script>
+<!--<script type="text/javascript" src="modulePages/livetv/channelList.js"></script>-->
+<!--kpad-2015-5-19-->
+<script type="text/javascript" src="modulePages/kPad/kPad.js"></script>
+<script type="text/javascript" src="configTemplates.js"></script>
+<script type="text/javascript" src="configModules.js"></script>
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript" src="modulePages/channelManager/chnlMngService.js"></script>
+<script type="text/javascript" src="scheduleList.js"></script>
+<script type="text/javascript" src="modulePages/skb/iqqi/js/invoke.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="modulePages/pvrtshift/pvrOrtShiftDialog.js"></script>
+<script type="text/javascript" src="tvservice.js"></script>
+<script type="text/javascript" src="scrollbar.js"></script>
+<script type="text/javascript" src="modulePages/setting/SettingSndInterface.js"></script>
+<script type="text/javascript" src="modulePages/setting/SettingPubFunc.js"></script>
+<script type="text/javascript" src="scrollbar.js"></script>
+<script type="text/javascript" src="../../launcher/js/launcherString.js"></script>
+<script type="text/javascript" src="../../OEMLauncher/OEMlauncherString.js"></script>
+<script type="text/javascript" src="modulePages/channelList/blankPage.js"></script>
+<script type="text/javascript" src="modulePages/himedia/jdrag.js"></script>
+<script type="text/javascript" src="tempString/hiMediaString.js"></script>
+
+<script type="text/javascript" src="modulePages/epg/epg_tempData.js"></script>
+<script type="text/javascript" src="modulePages/livetv/livetvString.js"></script>
+<!--start the wizard -->
+<script type="text/javascript" src="tempString/boe_background_html.js"></script>
+<script type="text/javascript" src="tempString/boe_lang_html.js"></script>
+<script type="text/javascript" src="tempString/boe_cty_html.js"></script>
+<script type="text/javascript" src="tempString/boe_timezone_html.js"></script>
+<script type="text/javascript" src="tempString/boe_disclaimer_html.js"></script>
+<script type="text/javascript" src="tempString/boe_dis_info_html.js"></script>
+<script type="text/javascript" src="tempString/boe_network_html.js"></script>
+<script type="text/javascript" src="tempString/boe_input_source_html.js"></script>
+<script type="text/javascript" src="tempString/boe_complete_html.js"></script>
+<!--start the setting -->
+<script type="text/javascript" src="tempString/SettingQsPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingQsPage_SA_html.js"></script>
+
+<script type="text/javascript" src="tempString/SettingQsList_html.js"></script>
+<script type="text/javascript" src="tempString/SettingQsList1_html.js"></script>
+<script type="text/javascript" src="tempString/SettingFirPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingLang1Page_html.js"></script>
+<script type="text/javascript" src="tempString/SettingLang1_SAPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingLang1_EUPage_html.js"></script>
+
+<script type="text/javascript" src="tempString/SettingLang2Page_html.js"></script>
+<script type="text/javascript" src="tempString/SettingMenuTimeoutPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingTimePage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingTimeSAPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingUsermodePage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingUsermode_EU_Page_html.js"></script>
+<script type="text/javascript" src="tempString/SettingCecPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSecurityPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingAgelockPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysPvrListPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysPvrCheck_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysPvrFormat_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysLocationPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSystimelistPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSystimeDatePage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysWeeklyPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysTimeStandbyPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysInputLabelPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysAppSetPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysAppSet_SA_Page_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysAppSet_SA_Page2_html.js"></script>
+
+<script type="text/javascript" src="tempString/SettingSysBlockTimePage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysProglock_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysCloseCaption_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysCloseCaption_SA_html.js"></script>
+
+<script type="text/javascript" src="tempString/SettingSysinputdate_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysinputdateSA_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysinputtime_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysUpdateSwitchPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysinputblock_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysRatinglist1Page_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysUsRating_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysOpenVchipCls1_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysOpenVchipCls2_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysOpenVchipCls3_html.js"></script>
+<script type="text/javascript" src="tempString/SettingPVRPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingPvrdialog_html.js"></script>
+<script type="text/javascript" src="tempString/SettingCecDevPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingNavPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingWizard2page_html.js"></script>
+<script type="text/javascript" src="tempString/Settingdialog1Page_html.js"></script>
+<script type="text/javascript" src="tempString/SettingDiskcheckPage_html.js"></script>
+<!--<script type="text/javascript" src="tempString/SettingPVRPage_html.js"></script>-->
+<script type="text/javascript" src="tempString/SettingAdPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingAdxt910Page_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysAdLightPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingAd_EUPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingAd_EUPage2_html.js"></script>
+<script type="text/javascript" src="tempString/SettingAdxt910_EUPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingAd_EMPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingAdxt910_EMPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysADlistPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysUpdatePage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysdis_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysdisfir_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysdisfir_EU_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysChl_html.js"></script>
+<script type="text/javascript" src="tempString/SettingAbVer_html.js"></script>
+<script type="text/javascript" src="tempString/SettingAbVerEM_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysLocktime_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysAutotime_html.js"></script>
+<script type="text/javascript" src="tempString/SettingUpdateFir_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysUpdateReport_html.js"></script>
+<script type="text/javascript" src="tempString/SettingVerlistPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingUpdateLoad_html.js"></script>
+<!--<script type="text/javascript" src="tempString/SettingPvrdialog_html.js"></script>-->
+<script type="text/javascript" src="tempString/SettingUpdateProgress_html.js"></script>
+<script type="text/javascript" src="tempString/SettingUpdateVerifying_html.js"></script>
+<script type="text/javascript" src="tempString/SettingUpdateVerifyok_html.js"></script>
+<script type="text/javascript" src="tempString/SettingUpdateVerpage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingAutoUpdatePage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingForceUpdatePage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingUpdateSpaceCheckPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingAppUpdateVerPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingAppForUpdateVerPage_html.js"></script>
+
+<script type="text/javascript" src="tempString/SettingAppUpdateProPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingappupdatedialogPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysLocktime2_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysChgpwd2_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysChgpwd_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysinput_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysTvname_html.js"></script>
+<script type="text/javascript" src="tempString/SettingPwdError_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysTimeInfo_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysCClistPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysSleeplistPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysTxtlistPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSysSubtlistPage_html.js"></script>
+
+
+<script type="text/javascript" src="tempString/SettingPicPage_html.js"></script>
+<script type="text/javascript" src="tempString/SettingSndPage_html.js"></script>
+
+<!--<script type="text/javascript" src="tempString/setting_settingPicZoom_html.js"></script>-->
+<!--<script type="text/javascript" src="tempString/setting_settingPicMode_html.js"></script>-->
+<script type="text/javascript" src="tempString/setting_settingPicAdvance_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicVGA_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicComponent_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicComponentRestore_html.js"></script>
+<!--<script type="text/javascript" src="tempString/setting_settingPicColor_html.js"></script>-->
+<!--<script type="text/javascript" src="tempString/setting_settingPicBackLight_html.js"></script>-->
+<script type="text/javascript" src="tempString/setting_settingPicFactory_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicColorTuner_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicColorTunerRestore_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicWhiteBalance_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicWhiteBalanceRestore_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicWhiteBalance10Point_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicWhiteBalance10PointLevel_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicWhiteBalance10PointRestore_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicSource_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicSourceLock_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicTint_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicSharpness_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicHue_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicWBOffset_html.js"></script>
+<script type="text/javascript" src="tempString/setting_settingPicWBRed_html.js"></script>
+<script type="text/javascript" src="tempString/HotelCloneUsb_html.js"></script>
+    <script type="text/javascript" src="tempString/HotelCloneDialog_html.js"></script>
+
+<script type="text/javascript" src="tempString/settingChSetScanTypeListDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetAutoScanPage_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetAutoScanPage_EU_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetClearChannelDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetDTVManuPage_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetDTVTManuSetPage_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetDTVCManuSetPage_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetATVManuSetPage_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetATVManuSetPage_EU_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetATVManuSetPage_SA_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetFavListDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetSkipListDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetChListUpSwitchDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetParLockInputDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetATVColorSysListDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetATVSoundSysListDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetMainPage_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetDVBC2Page_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetScramListDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetNetIdInputDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetDVBCOperListDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetDVBSOperListDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetDVBT2Page_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetDVBTUKAreaListDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetDVBS2Page_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetDVBS3Page_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetDVBS4Page_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetDVBAutoPage_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetSatelliteListDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetBandFreInputDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingChSetChNumberChangeDialog_html.js"></script>
+<script type="text/javascript" src="tempString/miracast_miracast_html.js"></script>
+<script type="text/javascript" src="tempString/miracast_exitmira_html.js"></script>
+<script type="text/javascript" src="tempString/miracast_mirawifi_html.js"></script>
+<script type="text/javascript" src="tempString/settingHotelMenu_html.js"></script>
+<script type="text/javascript" src="tempString/settingHotelInputLock_html.js"></script>
+<script type="text/javascript" src="tempString/settingHotelInputLockSA_html.js"></script>
+<script type="text/javascript" src="tempString/settingHotelInputLockEU_html.js"></script>
+<!--end the setting -->
+
+<!--epos-2014-12-3-->
+<script type="text/javascript" src="tempString/eposPage_html.js"></script>
+
+<!--pvr-2014-12-17-->
+<script type="text/javascript" src="tempString/PvrTshiftPvrPage_html.js"></script>
+<!--pvr-2014-12-17-->
+<!--epos start countdown box-2015-1-15-->
+<script type="text/javascript" src="tempString/SettingEposStartCountDownBox.js"></script>
+<!--standby record-2015-1-26-->
+<script type="text/javascript" src="tempString/standbyRecord_html.js"></script>
+<!--pvr finish-2015-1-27-->
+<script type="text/javascript" src="tempString/pvrtshift_pvrFinishDialog_html.js"></script>
+<!--pvr tshift switch-2015-2-9-->
+<script type="text/javascript" src="tempString/pvrtshift_pvrTshiftShowDialog_html.js"></script>
+<!--pvr stop to switch-2015-3-4-->
+<script type="text/javascript" src="tempString/pvrStopToSwitch_html.js"></script>
+<!--new record tip dialog-2015-3-7-->
+<script type="text/javascript" src="tempString/newRecordTipDialog_html.js"></script>
+<!--pvr hard disk check-2015-3-8-->
+<script type="text/javascript" src="tempString/pvrHardDiskCheck_html.js"></script>
+<!--pvr hard disk check-2015-3-8-->
+<script type="text/javascript" src="tempString/pvrHDCheckRetryDialog_html.js"></script>
+<!--pvr hard disk check-2015-3-8-->
+<script type="text/javascript" src="tempString/pvrHDList_html.js"></script>
+<!--pvr begin or cancel record dialog-2015-3-25-->
+<script type="text/javascript" src="tempString/beginRecord_html.js"></script>
+<!--pvr hard disk speed check result-2015-3-29-->
+<script type="text/javascript" src="tempString/pvrHDSpeedCheckResult_html.js"></script>
+<!--pvr record tip-2015-4-3-->
+<script type="text/javascript" src="tempString/pvrRecordTip_html.js"></script>
+
+<!--network setting start-->
+<script type="text/javascript" src="tempString/settingNetSetMainPage_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetStatusDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetWakeUpByWifiDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetWakeUpPowerDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetDMRDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetTVNameListDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetTVNameInputDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetSetNetTypeListDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetSetWifiSetPage_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetSetSearWifiDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetSetWifiAddDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetSetAdvanceListDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetSetPinDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetSetPBCDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetSetPWInputDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetSetConnNetDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetSetConnResDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetSetWifiNotPluginDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetSetEtherSetPage_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetSetTestDialog_html.js"></script>
+<script type="text/javascript" src="tempString/settingNetSetTestResDialog_html.js"></script>
+<script type="text/javascript" src="tempString/skb_skb_html.js"></script>
+<script type="text/javascript" src="tempString/skb_skblan_html.js"></script>
+
+<script type="text/javascript" src="tempString/skb_iqqi_iqqi_html.js"></script>
+<script type="text/javascript" src="tempString/mixBar_tmpStr.js"></script>
+<!--<script type="text/javascript" src="tempString/blankPageString.js"></script>-->
+<!--start channel manager -->
+<script type="text/javascript" src="tempString/channelmanager_html.js"></script>
+<script type="text/javascript" src="tempString/channelmanagerbg_html.js"></script>
+<script type="text/javascript" src="tempString/channelmanager_fav_html.js"></script>
+<script type="text/javascript" src="tempString/channelmanagerbg_EU_html.js"></script>
+<script type="text/javascript" src="tempString/channelmanager_fav_EU_html.js"></script>
+<script type="text/javascript" src="tempString/channelmanagerbg_SA_html.js"></script>
+<script type="text/javascript" src="tempString/channelmanager_fliter_html.js"></script>
+<script type="text/javascript" src="tempString/channelmanager_rename_html.js"></script>
+<script type="text/javascript" src="tempString/channelmanager_dialog_html.js"></script>
+
+    <!--<script type="text/javascript" src="util.js"></script>-->
+    <!--tshift code-->
+    <link href="css/tshift.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="tempString/tshift.js"></script>
+    <script type="text/javascript" src="tempString/pvrtshift_tshiftMediaDialog_html.js"></script>
+    <script type="text/javascript" src="tempString/pvrOrTshiftDialog_html.js"></script>
+    <script type="text/javascript" src="tempString/speech_tmpStr.js"></script>
+    <script type="text/javascript" src="tempString/bluetooth_tmpStr.js"></script>
+    <script type="text/javascript" src="tempString/bluetoothMatch_tmpStr.js"></script>
+    <script type="text/javascript" src="tempString/bluetoothResult_tmpStr.js"></script>
+    <script type="text/javascript" src="tempString/voice_help_mainpage_html.js"></script>
+    <script type="text/javascript" src="tempString/voice_help_subpage_html.js"></script>
+    <script type="text/javascript" src="tempString/speech_Lan_html.js"></script>
+    <script type="text/javascript" src="tempString/tShiftMsg_html.js"></script>
+	<script type="text/javascript" src="tempString/speech_Lan_ResureHtml.js"></script>
+<script type="text/javascript" src="../../OEMLauncher/OEMLauncherLiveTv.js"></script>
+
+    <script type="text/javascript" src="tempString/OEMLauncherAppDeleteDialog_html.js"></script>
+<script type="text/javascript">
+//以下代码正式环境注释----
+var htmlRead = function (a) {
+
+    var tempStr = "";
+    switch (a) {
+        case "launcher/html/launcherStaBar.html":
+        case "launcher/html/launcherNavBar.html":
+        case "launcher/html/launcherAllApps.html":
+        case "launcher/html/launcherApps.html":
+        case "launcher/html/launcherUSAVod.html":
+        case "launcher/html/launcherCanadaVod.html":
+	    case "launcher/html/launcherTemplate14Vod.html":
+	    case "launcher/html/launcherTemplate42Apps.html":
+        case "launcher/html/launcherLiveTV.html":
+        case "launcher/html/launcherHimediaPage.html":
+        case "launcher/html/launcherMovieEUGer.html":
+        case "launcher/html/launcherMovieEUEng.html":
+        case "launcher/html/launcherKidEU.html":
+
+        case "launcher/html/accuweatherMain.html":
+        case "launcher/html/accuweatherDeleteCity.html":
+        case "launcher/html/accuweatherAddCity.html":
+        case "launcher/html/accuweatherSearchList.html":
+        case "launcher/html/accuweatherCityList.html":
+        case "UI/hisenseUI/modulePages/dialog/dialogCommon.html":
+        case "UI/hisenseUI/modulePages/dialog/dialogUSB.html":
+        case "UI/hisenseUI/modulePages/dialog/dialogNetwork.html":
+        case "UI/hisenseUI/modulePages/dialog/dialogReminder.html":
+        case "UI/hisenseUI/modulePages/livetv/liveTV.html":
+        case "UI/hisenseUI/modulePages/livetv/channelList.html":
+        case "UI/hisenseUI/modulePages/livetv/infoBar.html":
+        case "UI/hisenseUI/modulePages/livetv/volume.html":
+        case "UI/hisenseUI/modulePages/livetv/autoStandby.html":
+        case "UI/hisenseUI/modulePages/livetv/passwordDialog.html":
+        case "UI/hisenseUI/modulePages/livetv/searchDialog.html":
+        case "UI/hisenseUI/modulePages/livetv/operateTip.html":
+        case "OEMLauncher/launcherFavlist.html":
+        case "OEMLauncher/launcherRecentwatch.html":
+        case "UI/hisenseUI/modulePages/ginga/ginga.html":
+        case "launcher/html/launcherModule8.html":
+        case "launcher/html/launcherModule9.html":
+        case "launcher/html/launcherModule25.html":
+            var key = a.split(/[/,.]/g);
+            tempStr = eval(key[key.length - 2] + 'String');
+            break;
+        case "UI/hisenseUI/modulePages/dialog/dialogOEMAppDelete.html":
+            tempStr = OEMLauncherAppDeleteDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/epg/epg_main.html":
+        case "UI/hisenseUI/modulePages/epg/epg_channellist.html":
+        case "UI/hisenseUI/modulePages/epg/epg_date.html":
+        case "UI/hisenseUI/modulePages/epg/epg_detail.html":
+        case "UI/hisenseUI/modulePages/epg/epg_dialog.html":
+        case "UI/hisenseUI/modulePages/epg/epg_reminderadd.html":
+        case "UI/hisenseUI/modulePages/epg/epg_reminderedit.html":
+        case "UI/hisenseUI/modulePages/epg/epg_reminderconflict.html":
+        case "UI/hisenseUI/modulePages/epg/epg_schedule.html":
+
+            var key = a.split(/[_,.]/g)[1];
+
+            tempStr = eval('epg_' + key + '_html');
+
+            break;
+        case "UI/hisenseUI/modulePages/skb/skb.html":
+            tempStr = skb_skb_html;
+            break;
+		   //5657 Wizard Applied
+        case "UI/hisenseUI/modulePages/boe/boe_background.html":
+            tempStr = boe_background_html;
+            break;
+        case "UI/hisenseUI/modulePages/boe/boe_lang.html":
+            tempStr = boe_lang_html;
+            break;
+        case "UI/hisenseUI/modulePages/boe/boe_cty.html":
+            tempStr = boe_cty_html;
+            break;
+        case "UI/hisenseUI/modulePages/boe/boe_timezone.html":
+            tempStr = boe_timezone_html;
+            break;
+        case "UI/hisenseUI/modulePages/boe/boe_usemode.html":
+            tempStr = boe_usemode_html;
+            break;
+        case "UI/hisenseUI/modulePages/boe/boe_remotepair.html":
+            tempStr = boe_remotepair_html;
+            break;
+        case "UI/hisenseUI/modulePages/boe/boe_remotepair_result.html":
+            tempStr = boe_remotepair_result_html;
+            break;
+        case "UI/hisenseUI/modulePages/boe/boe_disclaimer.html":
+            tempStr = boe_disclaimer_html;
+            break;
+        case "UI/hisenseUI/modulePages/boe/boe_dis_info.html":
+            tempStr = boe_dis_info_html;
+            break;
+
+        /************网络设置模块  begin  *********/
+        case "UI/hisenseUI/modulePages/boe/boe_network.html":
+        case "UI/hisenseUI/modulePages/boe/boe_netbg.html":
+        case "UI/hisenseUI/modulePages/boe/boe_search_wifi.html":
+        case "UI/hisenseUI/modulePages/boe/boe_NetSetWifiNotPlugin.html":
+        case "UI/hisenseUI/modulePages/boe/boe_NetworkWifiSetPage.html":
+        case "UI/hisenseUI/modulePages/boe/boe_NetworkWifiPWInputDialog.html":
+        case "UI/hisenseUI/modulePages/boe/boe_NetworkWifiAddDialog.html":
+        case "UI/hisenseUI/modulePages/boe/boe_NetworkConnNetDialog.html":
+        case "UI/hisenseUI/modulePages/boe/boe_NetworkConnResDialog.html":
+        case "UI/hisenseUI/modulePages/boe/boe_NetworkEthernetType.html":
+        case "UI/hisenseUI/modulePages/boe/boe_NetworkEthernetSetPage.html":
+
+            var key = a.split(/[_,.]/g)[1];
+            tempStr = eval('boe_' + key + '_html');
+
+           break;
+       /************网络设置模块  end  *********/
+
+        case "UI/hisenseUI/modulePages/boe/boe_input_source.html":
+            tempStr = boe_input_source_html;
+            break;
+
+        case "UI/hisenseUI/modulePages/boe/boe_complete.html":
+            tempStr = boe_complete_html;
+            break;
+        //epos-2014-12-3
+        case "UI/hisenseUI/modulePages/epos/epos.html":
+            tempStr = eposPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/epos/EM_AUS/epos.html":
+            tempStr = eposPage_aus_html;
+            break;
+        case "UI/hisenseUI/modulePages/epos/EM_OEM/epos.html":
+            tempStr = eposPage_oem_html;
+            break;
+        case "UI/hisenseUI/modulePages/epos/EU/epos.html":
+            tempStr = eposPage_eu_html;
+            break;
+        case "UI/hisenseUI/modulePages/epos/EU/epos_xt910.html":
+            tempStr = eposPage_eu_html_xt910;
+            break;
+        //epos countdown box-2015-1-15
+        case "UI/hisenseUI/modulePages/setting/SettingEposStartCountDownBox.html":
+            tempStr = SettingEposStartCountDownBox;
+            break;
+        //ModernTV Applied
+        case "UI/hisenseUI/modulePages/setting/settingQSPage.html":
+            tempStr = SettingQsPage_html;
+            debugPrint("get the SettingQsPage_html");
+            break;
+        case "UI/hisenseUI/modulePages/setting/SA/settingQSPage.html":
+            tempStr = SettingQsPage_SA_html;
+            debugPrint("get the SettingQsPage_SA_html");
+            break;
+     	case "UI/hisenseUI/modulePages/setting/settingQSList.html":
+		    tempStr = SettingQSList_html;
+
+		    break;
+	    case "UI/hisenseUI/modulePages/setting/settingQSList1.html":
+		    tempStr = SettingQSList1_html;
+
+		    break;
+        case "UI/hisenseUI/modulePages/setting/SettingFirPage.html":
+            tempStr = SettingFirPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingLang1Page.html":
+            tempStr = SettingLang1Page_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SA/SettingLang1Page.html":
+            tempStr = SettingLang1_SAPage_htm;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/EU/SettingLang1Page.html":
+            tempStr = SettingLang1_EUPage_htm;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingLang2Page.html":
+            tempStr = SettingLang2Page_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingMenuTimeoutPage.html":
+            tempStr = SettingMenuTimeoutPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingTimePage.html":
+            tempStr = SettingTimePage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SA/SettingTimePage.html":
+            tempStr = SettingTimeSAPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingUsermodePage.html":
+            tempStr = SettingUsermodePage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/EU/SettingUsermodePage.html":
+            tempStr = SettingUsermode_EU_Page_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingCecPage.html":
+            tempStr = SettingCecPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSecurityPage.html":
+            tempStr = SettingSecurityPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingAgelockPage.html":
+            tempStr = SettingAgelockPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingList2Page.html":
+            tempStr = SettingList2Page_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysLocationPage.html":
+            tempStr = SettingSysLocationPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysPvrListPage.html":
+            tempStr = SettingSysPvrList_html;
+
+            break;
+	    case "UI/hisenseUI/modulePages/setting/SettingSysPvrCheck.html":
+		    tempStr = SettingSysPvrCheck_html;
+
+		    break;
+	    case "UI/hisenseUI/modulePages/setting/SettingSysPvrFormat.html":
+		    tempStr = SettingSysPvrFormat_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSystimelistPage.html":
+            tempStr = SettingSystimelistPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSystimeDatePage.html":
+            tempStr = SettingSystimeDatePage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysAppSetPage.html":
+            tempStr = SettingSysAppSetPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SA/SettingSysAppSetPage.html":
+            tempStr = SettingSysAppSetsaPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SA/SettingSysAppSetSAPage2.html":
+            tempStr = SettingSysAppSetsaPage2_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysBlockTimePage.html":
+            tempStr = SettingSysBlockTimePage_html;
+            break;
+
+        case "UI/hisenseUI/modulePages/setting/SettingSysWeeklyPage.html":
+            tempStr = SettingSysWeeklyPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysTimeStandbyPage.html":
+            tempStr = SettingSysTimeStandbyPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysProglock.html":
+            tempStr = SettingSysProglockPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysCloseCaption.html":
+            tempStr = SettingSysCloseCaption_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SA/SettingSysCloseCaption.html":
+            tempStr = SettingSysCloseCaption_SA_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysinputdate.html":
+            tempStr = SettingSysinputdate_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SA/SettingSysinputdate.html":
+            tempStr = SettingSysinputdateSA_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysinputtime.html":
+            tempStr = SettingSysinputtime_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysUpdateSwitchPage.html":
+            tempStr = SettingSysUpdateSwitchPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysinputblock.html":
+            tempStr = SettingSysinputblock_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysOpenVchipCls1.html":
+            tempStr = SettingSysOpenVchipCls1_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysOpenVchipCls2.html":
+            tempStr = SettingSysOpenVchipCls2_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysRatinglist1Page.html":
+            tempStr = SettingSysRatinglist1Page_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysOpenVchipCls3.html":
+            tempStr = SettingSysOpenVchipCls3_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysUsRating.html":
+            tempStr = SettingSysUsRating_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysInputLabelPage.html":
+            tempStr = SettingSysInputLabelPage_html;
+
+            break;
+
+        case "UI/hisenseUI/modulePages/setting/SettingCecDevPage.html":
+            tempStr = SettingCecDevPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingNavPage.html":
+            tempStr = SettingNavPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingWizard2page.html":
+            tempStr = SettingWizardPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/Settingdialog1Page.html":
+            tempStr = Settingdialog1Page_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingDiskcheckPage.html":
+            tempStr = SettingDiskcheckPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingUpdateSpaceCheckPage.html":
+            tempStr = SettingUpdateSpaceCheckPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingPVRPage.html":
+            tempStr = SettingPVRPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingAdPage.html":
+            tempStr = SettingAdPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingAdxt910Page.html":
+            tempStr = SettingAdxt910Page_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/EU/SettingAdPage.html":
+            tempStr = SettingAdEUPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/EU/SettingAdPage2.html":
+            tempStr = SettingAdEUPage2_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/EU/SettingAdxt910Page.html":
+            tempStr = SettingAdxt910EUPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/EM/SettingAdPage.html":
+            tempStr = SettingAdEMPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/EM/SettingAdxt910Page.html":
+            tempStr = SettingAdxt910EMPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysAdLightPage.html":
+            tempStr = SettingSysAdLightPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysADlistPage.html":
+            tempStr = SettingSysADlistPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysUpdatePage.html":
+            tempStr = SettingSysUpdatePage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysdis.html":
+            tempStr = SettingSysdis_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysdisfir.html":
+            tempStr = SettingSysdisfir_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/EU/SettingSysdisfir.html":
+            tempStr = SettingSysdisfir_eu_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysChl.html":
+            tempStr = SettingSysChl_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingAbVer.html":
+            tempStr = SettingAbVer_html;
+
+        break;
+        case "UI/hisenseUI/modulePages/setting/EM/SettingAbVer.html":
+            tempStr = SettingAbVerEM_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysLocktime.html":
+            tempStr = SettingSysLocktime_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysLocktime2.html":
+            tempStr = SettingSysLocktime2_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysAutotime.html":
+            tempStr = SettingSysAutotime_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingUpdateFir.html":
+            tempStr = SettingUpdateFir_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingUpdateReport.html":
+            tempStr = SettingUpdateReport_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingVerlistPage.html":
+            tempStr = SettingVerlistPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingUpdateLoad.html":
+            tempStr = SettingUpdateLoad_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingPvrdialog.html":
+            tempStr = SettingPvrdialog_html;
+
+            break;
+        //pvr-2014-12-17
+        case "UI/hisenseUI/modulePages/pvrtshift/pvrtshift_pvr.html":
+            tempStr = PvrTshiftPvrPage_html;
+            break;
+        //standby record tip-2015-1-26
+        case "UI/hisenseUI/modulePages/pvrtshift/standbyRecord.html":
+            tempStr = standbyRecord_html;
+            break;
+        //pvr finish-2015-1-27
+        case "UI/hisenseUI/modulePages/pvrtshift/pvrFinishDialog.html":
+            tempStr = pvrtshift_pvrFinishDialog_html;
+            break;
+        //pvr tshift switch dialog-2015-2-9
+        case "UI/hisenseUI/modulePages/pvrtshift/pvrTshiftShowDialog.html":
+            tempStr = pvrtshift_pvrTshiftShowDialog_html;
+            break;
+        //pvr stop to switch dialog-2015-3-4
+        case "UI/hisenseUI/modulePages/pvrtshift/pvrStopToSwitch.html":
+            tempStr = pvrStopToSwitch_html;
+            break;
+        //new record tip dialog-2015-3-7
+        case "UI/hisenseUI/modulePages/pvrtshift/newRecordTipDialog.html":
+            tempStr = newRecordTipDialog_html;
+            break;
+        //pvr hard disk check-2015-3-8
+        case "UI/hisenseUI/modulePages/pvrtshift/pvrHardDiskCheck.html":
+            tempStr = pvrHardDiskCheck_html;
+            break;
+        //pvr hard disk check retry-2015-3-8
+        case "UI/hisenseUI/modulePages/pvrtshift/pvrHDCheckRetryDialog.html":
+            tempStr = pvrHDCheckRetryDialog_html;
+            break;
+        //pvr hard disk list-2015-3-8
+        case "UI/hisenseUI/modulePages/pvrtshift/pvrHDList.html":
+            tempStr = pvrHDList_html;
+            break;
+        //pvr begin or cancel record dialog-2015-3-25
+        case "UI/hisenseUI/modulePages/pvrtshift/beginRecord.html":
+            tempStr = beginRecord_html;
+            break;
+        //pvr hard disk speed check result-2015-3-29
+        case "UI/hisenseUI/modulePages/pvrtshift/pvrHDSpeedCheckResult.html":
+            tempStr = pvrHDSpeedCheckResult_html;
+            break;
+        //pvr record tip-2015-4-2
+        case "UI/hisenseUI/modulePages/pvrtshift/pvrRecordTip.html":
+            tempStr = pvrRecordTip_html;
+            break;
+        //tshift media dialog-2015-3-4
+        case "UI/hisenseUI/modulePages/pvrtshift/tshiftMediaDialog.html":
+            tempStr = pvrtshift_tshiftMediaDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingUpdateProgress.html":
+            tempStr = SettingUpdateProgress_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingUpdateVerifying.html":
+            tempStr = SettingUpdateVerifying_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingAppUpdateVerPage.html":
+            tempStr = SettingAppUpdateVerPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingAppForUpdateVerPage.html":
+            tempStr = SettingAppForUpdateVerPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingAppUpdateProPage.html":
+            tempStr = SettingAppUpdateProPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingappupdatedialogPage.html":
+            tempStr = SettingappupdatedialogPage_html;
+
+            break;
+
+        case "UI/hisenseUI/modulePages/setting/SettingUpdateVerifyok.html":
+            tempStr = SettingUpdateVerifyok_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingUpdateVerpage.html":
+            tempStr = SettingUpdateVerpage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingAutoUpdatePage.html":
+            tempStr = SettingAutoUpdatePage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingForceUpdatePage.html":
+            tempStr = SettingForceUpdatePage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysChgpwd.html":
+            tempStr = SettingSysChgpwd_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysChgpwd2.html":
+            tempStr = SettingSysChgpwd2_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysinput.html":
+            tempStr = SettingSysinput_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysTvname.html":
+            tempStr = SettingSysTvname_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingPwdError.html":
+            tempStr = SettingPwdError_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysTimeInfo.html":
+            tempStr = SettingSysTimeInfo_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysCClistPage.html":
+            tempStr = SettingSysCClistPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysSleeplistPage.html":
+            tempStr = SettingSysSleeplistPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSystxtlistPage.html":
+            tempStr = SettingSystxtlistPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSysSubtlistPage.html":
+            tempStr = SettingSysSubtlistPage_html;
+
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingPic3D.html":
+            tempStr = SettingPic3D_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingChnlCI.html":
+            tempStr = SettingChnlCI_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingChnlCIPINSet.html":
+            tempStr = SettingChnlCIPINSet_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingChnlAdvanced.html":
+            tempStr = SettingChnlAdvanced_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSndMode.html":
+            tempStr = SettingSndMode_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSndDBX.html":
+            tempStr = SettingSndDBX_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSndSAP.html":
+            tempStr = SettingSndSAP_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSndAdvanced.html":
+            tempStr = SettingSndAdvanced_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSndEqualizer.html":
+            tempStr = SettingSndEqualizer_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSndResetAudio.html":
+            tempStr = SettingSndResetAudio_html;
+            break;
+        case "UI/hisenseUI/modulePages/ginga/GingaCCSwitch.html":
+            tempStr = GingaCCSwitch_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSndHeadPhone.html":
+            tempStr = SettingSndHeadPhone_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSndBassBoost.html":
+            tempStr = SettingSndBassBoost_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSndSubWoofer.html":
+            tempStr = SettingSndSubWoofer_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSndHelpInfo.html":
+            tempStr = SettingSndHelpInfo_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingSndPopUpHeadphoneSpeaker.html":
+            tempStr = SettingSndPopUpHeadphoneSpeaker_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/CIOPSearchAnswer.html":
+            tempStr = CIOPSearchAnswer_html;
+            break;
+        case "UI/hisenseUI/modulePages/mheg5/Mheg5PasswordOsd.html":
+            tempStr = Mheg5PasswordOsd_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingChnlEPGMark.html":
+            tempStr = SettingChnlEPGMark_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingChnlExportToUSB.html":
+            tempStr = SettingChnlExportToUSB_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingChnlImportFromUSB.html":
+            tempStr = SettingChnlImportFromUSB_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingMsgPage.html":
+            tempStr = SettingMsgPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingEnergyWarningMsg.html":
+            tempStr = SettingEnergyWarningMsg_html;
+            break;
+
+
+        case "UI/hisenseUI/modulePages/setting/SettingPicBackLight.html":
+            tempStr = SettingPicBackLight_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingPicMode_New.html":
+            tempStr = SettingPicMode_New_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingPicAspectRatio.html":
+            tempStr = SettingPicAspectRatio_html;
+            break;
+//        case "UI/hisenseUI/modulePages/setting/SettingPicBrtCtrColor_New.html":
+//            tempStr = SettingPicBrtCtrColor_html;
+//            break;
+
+//        case "UI/hisenseUI/modulePages/setting/settingPicZoom.html":
+//            tempStr = setting_settingPicZoom_html;
+//            break;
+
+        case "UI/hisenseUI/modulePages/setting/settingPicAdvance.html":
+            tempStr = setting_settingPicAdvance_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicVGA.html":
+            tempStr = setting_settingPicVGA_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicComponent.html":
+            tempStr = setting_settingPicComponent_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicComponentRestore.html":
+            tempStr = setting_settingPicComponentRestore_html;
+            break;
+//        case "UI/hisenseUI/modulePages/setting/settingPicColor.html":
+//            tempStr = setting_settingPicColor_html;
+//            break;
+//        case "UI/hisenseUI/modulePages/setting/settingPicBackLight.html":
+//            tempStr = setting_settingPicBackLight_html;
+//            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicFactory.html":
+            tempStr = setting_settingPicFactory_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicColorTuner.html":
+            tempStr = setting_settingPicColorTuner_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicColorHue.html":
+            tempStr = setting_settingPicColorHue_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicColorTunerRetore.html":
+            tempStr = setting_settingPicColorTunerRestore_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicWhiteBalance.html":
+            tempStr = setting_settingPicWhiteBalance_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicWhiteBalanceRoffset.html":
+            tempStr = setting_settingPicWhiteBalanceRoffset_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicWhiteBalanceRed.html":
+            tempStr = setting_settingPicWhiteBalanceRed_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicWhiteBalanceRestore.html":
+            tempStr = setting_settingPicWhiteBalanceRestore_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicWhiteBalance10Point.html":
+            tempStr = setting_settingPicWhiteBalance10Point_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicWhiteBalance10PointLevel.html":
+            tempStr = setting_settingPicWhiteBalance10PointLevel_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicWhiteBalance10PointRetore.html":
+            tempStr = setting_settingPicWhiteBalance10PointRestore_html;
+            break;
+			
+        case "UI/hisenseUI/modulePages/setting/SettingHotelMenu.html":
+            tempStr = setting_HotelMenu_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingHotelMenuInputLock.html":
+            tempStr = setting_HotelInputLock_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/EU/SettingHotelMenuInputLock.html":
+            tempStr = setting_HotelInputLockEU_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SA/SettingHotelMenuInputLock.html":
+            tempStr = setting_HotelInputLockSA_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingHotelCloneUsb.html":
+            tempStr = HotelCloneUsb_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingHotelModeCloneDialog.html":
+            tempStr = HotelModeCloneDialog_html;
+            break;
+		  case "UI/hisenseUI/modulePages/setting/settingPicTint.html":
+            tempStr = setting_settingPicTint_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicSharpness.html":
+            tempStr = setting_settingPicSharpness_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicSource.html":
+            tempStr = setting_settingPicSource_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingPicSourceLock.html":
+            tempStr = setting_settingPicSourceLock_html;
+            break;
+        case "UI/hisenseUI/modulePages/miracast/miracast.html":
+            tempStr = miracast_miracast_html;
+            break;
+        case "UI/hisenseUI/modulePages/miracast/exitmira.html":
+            tempStr = miracast_exitmira_html;
+            break;
+        case "UI/hisenseUI/modulePages/miracast/mirawifi.html":
+            tempStr = miracast_mirawifi_html;
+            break;
+        case "UI/hisenseUI/modulePages/wizard/wizardNetSetDisclaimerPage.html":
+            tempStr = wizard_wizardNetSetDisclaimerPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/wizard/wizardNetSetDisInfoPage.html":
+            tempStr = wizard_wizardNetSetDisInfoPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetMainPage.html":
+            tempStr = settingNetSetMainPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetStatusDialog.html":
+            tempStr = settingNetStatusDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetWakeUpByWifiDialog.html":
+            tempStr = settingNetWakeUpByWifiDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetWakeUpPowerDialog.html":
+            tempStr = settingNetWakeUpPowerDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetDMRDialog.html":
+            tempStr = settingNetDMRDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetTVNameListDialog.html":
+            tempStr = settingNetTVNameListDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetTVNameInputDialog.html":
+            tempStr = settingNetTVNameInputDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetNetTypeListDialog.html":
+            tempStr = settingNetSetNetTypeListDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetEtherSetPage.html":
+            tempStr = settingNetSetEtherSetPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetWifiSetPage.html":
+            tempStr = settingNetSetWifiSetPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetSearWifiDialog.html":
+            tempStr = settingNetSetSearWifiDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetTestDialog.html":
+            tempStr = settingNetSetTestDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetTestResDialog.html":
+            tempStr = settingNetSetTestResDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetPWInputDialog.html":
+            tempStr = settingNetSetPWInputDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetConnNetDialog.html":
+            tempStr = settingNetSetConnNetDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetConnResDialog.html":
+            tempStr = settingNetSetConnResDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetWifiNotPluginDialog.html":
+            tempStr = settingNetSetWifiNotPluginDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetWifiAddDialog.html":
+            tempStr = settingNetSetWifiAddDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetAdvanceListDialog.html":
+            tempStr = settingNetSetAdvanceListDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetPinDialog.html":
+            tempStr = settingNetSetPinDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingNetSetPBCDialog.html":
+            tempStr = settingNetSetPBCDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetScanTypeListDialog.html":
+            tempStr = settingChSetScanTypeListDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetAutoScanPage.html":
+            tempStr = settingChSetAutoScanPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/EU/settingChSetAutoScanPage.html":
+            tempStr = settingChSetAutoScanPage_EU_html;
+            break;
+	    case "UI/hisenseUI/modulePages/setting/settingChSetClearChannelDialog.html":
+            tempStr = settingChSetClearChannelDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SettingChSetDTVManuPage.html":
+            tempStr = settingChSetDTVManuPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetDTVTManuSetPage.html":
+            tempStr = settingChSetDTVTManuSetPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetDTVCManuSetPage.html":
+            tempStr = settingChSetDTVCManuSetPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetATVManuSetPage.html":
+            tempStr = settingChSetATVManuSetPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/EU/settingChSetATVManuSetPage.html":
+            tempStr = settingChSetATVManuSetPage_EU_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/SA/settingChSetATVManuSetPage.html":
+            tempStr = settingChSetATVManuSetPage_SA_html;
+            break;
+		case "UI/hisenseUI/modulePages/setting/settingChSetATVColorSysListDialog.html":
+            tempStr = settingChSetATVColorSysListDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetATVSoundSysListDialog.html":
+            tempStr = settingChSetATVSoundSysListDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetFavListDialog.html":
+            tempStr = settingChSetFavListDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetSkipListDialog.html":
+            tempStr = settingChSetSkipListDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetNoChannelDialog.html":
+            tempStr = settingChSetNoChannelDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetChListUpSwitchDialog.html":
+            tempStr = settingChSetChListUpSwitchDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetParLockInputDialog.html":
+            tempStr = settingChSetParLockInputDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetMainPage.html":
+            tempStr = settingChSetMainPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetDVBC2Page.html":
+            tempStr = settingChSetDVBC2Page_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetScramListDialog.html":
+            tempStr = settingChSetScramListDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetNetIdInputDialog.html":
+            tempStr = settingChSetNetIdInputDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetDVBCOperListDialog.html":
+            tempStr = settingChSetDVBCOperListDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetDVBSOperListDialog.html":
+            tempStr = settingChSetDVBSOperListDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetDVBT2Page.html":
+            tempStr = settingChSetDVBT2Page_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetDVBTUKAreaListDialog.html":
+            tempStr = settingChSetDVBTUKAreaListDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetDVBS2Page.html":
+            tempStr = settingChSetDVBS2Page_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetDVBS3Page.html":
+            tempStr = settingChSetDVBS3Page_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetDVBS4Page.html":
+            tempStr = settingChSetDVBS4Page_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetDVBAutoPage.html":
+            tempStr = settingChSetDVBAutoPage_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetSatelliteListDialog.html":
+            tempStr = settingChSetSatelliteListDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetBandFreInputDialog.html":
+            tempStr = settingChSetBandFreInputDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/setting/settingChSetChNumberChangeDialog.html":
+            tempStr = settingChSetChNumberChangeDialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/skb/skb.html":
+            tempStr = skb_skb_html;
+            break;
+        case "UI/hisenseUI/modulePages/skb/skblan.html":
+            tempStr = skb_skblan_html;
+            break;
+        case "UI/hisenseUI/modulePages/channelList/blankPage.html":
+            tempStr = blank_tmpStr;
+            break;
+		case "UI/hisenseUI/modulePages/channelManager/channelmanager.html":
+            tempStr = channelmanager_html;
+            break;
+        case "UI/hisenseUI/modulePages/channelManager/channelmanagerbg.html":
+            tempStr = channelmanagerbg_html;
+            break;
+        case "UI/hisenseUI/modulePages/channelManager/EU/channelmanagerbg.html":
+        tempStr = channelmanagerbg_EU_html;
+        break;
+        case "UI/hisenseUI/modulePages/channelManager/SA/channelmanagerbg.html":
+            tempStr = channelmanagerbg_SA_html;
+            break;
+        case "UI/hisenseUI/modulePages/channelManager/channelmanager_fav.html":
+            tempStr = channelmanager_fav_html;
+            break;
+        case "UI/hisenseUI/modulePages/channelManager/EU/channelmanager_fav.html":
+            tempStr = channelmanager_fav_EU_html;
+            break;
+        case "UI/hisenseUI/modulePages/channelManager/channelmanager_fliter.html":
+            tempStr = channelmanager_fliter_html;
+            break;
+        case "UI/hisenseUI/modulePages/channelManager/channelmanager_rename.html":
+            tempStr = channelmanager_rename_html;
+            break;
+        case "UI/hisenseUI/modulePages/channelManager/channelmanager_dialog.html":
+            tempStr = channelmanager_dialog_html;
+            break;
+        case "UI/hisenseUI/modulePages/skb/iqqi/iqqi.html":
+            var curLang = !!localStorage.curLang ? localStorage.curLang : "ENG";
+            if(curLang == "ENG") {
+                tempStr = iqqiRootHead + iqqiEnHome + iqqiRootTail;
+            }
+            break;
+        case "UI/hisenseUI/modulePages/pvrtshift/tShift.html":
+            tempStr = tshift_html;
+            break;
+        case "UI/hisenseUI/modulePages/pvrtshift/pvrOrtShiftDialog.html":
+            tempStr = pvrOrTshiftDialogtempString;
+            break;
+
+        case "UI/hisenseUI/modulePages/himedia/dlna_videoPlayer.html":
+            tempStr = dlnaVideoPlayer;
+            break;
+        case "UI/hisenseUI/modulePages/himedia/dlna_musicPlayer.html":
+            tempStr = dlnaMusicPlayer;
+            break;
+        case "UI/hisenseUI/modulePages/himedia/dlna_picPlayer.html":
+            tempStr = dlnaPicPlayer;
+            break;
+        case "UI/hisenseUI/modulePages/speech/speech.html":
+            tempStr = speechtempString;
+            break;
+        case "UI/hisenseUI/modulePages/speech/bluetooth.html":
+            tempStr = BluetoothtempString;
+            break;
+        case "UI/hisenseUI/modulePages/speech/bluetoothMatch.html":
+            tempStr = BluetoothMatchtempString;
+            break;
+        case "UI/hisenseUI/modulePages/speech/bluetoothResult.html":
+            tempStr = BluetoothResulttempString;
+            break;
+        case "UI/hisenseUI/modulePages/speech/voice_help_mainpage.html":
+            tempStr = voice_help_mainpage_html;
+            break;
+        case "UI/hisenseUI/modulePages/speech/voice_help_subpage.html":
+            tempStr = voice_help_subpage_html;
+            break;
+        case "UI/hisenseUI/modulePages/speech/speechLan.html":
+            tempStr = speechLantempString;
+            break;
+		 case "UI/hisenseUI/modulePages/speech/speechLanResure.html":
+            tempStr = speechLanResuretempString;
+            break;
+        case "UI/hisenseUI/modulePages/mixBar/mixBar.html":
+            tempStr = mixBar_tmpStr;
+            break;
+        case "UI/hisenseUI/modulePages/pvrtshift/tShiftMsgPage.html":
+            tempStr = tShiftMsg_tmpString;
+            break;
+
+        default :
+            break;
+    }
+    return tempStr;
+}
+
+function viewSDKPages() {
+    //hiWebOsFrame.aaaa.getCaE("listViewItem_programList_sys1_programListName_sys2").setCurrentSelectTree();
+}
+
+</script>
+
+</head>
+<body>
+<div id="sdkImgPreLoading" style="width: 1000px;height: 10px;position: absolute;z-index: 2000;opacity: 0.01"></div>
+<div id="mainOEMLauncher" style="height: 1080px;width: 1920px;overflow: hidden;display: none">
+        <div id="mainFocus" class="oem_launcherFocus" ></div>
+        <img id="mainFocusTL" class="oem_launcherFocusTL" src="img/cTL.png">
+        <img id="mainFocusTR" class="oem_launcherFocusTR" src="img/cTR.png">
+        <img id="mainFocusBL" class="oem_launcherFocusBL" src="img/cBL.png">
+        <img id="mainFocusBR" class="oem_launcherFocusBR" src="img/cBR.png">
+        <div class="OEMlauncherBackgroundTop"></div>
+        <div class="OEMlauncherBackgroundLeft"></div>
+        <div class="OEMlauncherBackgroundMiddle"></div>
+        <!--<div class="OEMlauncherBackgroundMiddleVideo"></div>-->
+        <div class="OEMlauncherBackgroundRight"></div>
+        <div class="OEMlauncherBackgroundBottom"></div>
+
+    <div id="OEMlauncherPage" class="oem_launcherContainer">
+        <div id="_blank" style="width:70px;height: 100px;float:left;display:block;"></div>
+    </div>
+</div>
+
+<!--epos-2014-12-3-->
+<div id="epos" class="epos" style="display:none"></div>
+<!--pvr-2014-12-17-->
+<div id = "pvrtshift_pvr_page" style = "display: none;"></div>
+<!--epos countdown box-2015-1-15-->
+<div id="setting_epos_countdown_page" class="setting_sys_bg_cls" style="display: none"></div>
+<!--standby record dialog-2015-1-26-->
+<div id="standbyRecordDialog" class="standbyRecordDialog" style="display: none"></div>
+<!--pvr finish dialog-2015-1-27-->
+<div id="pvrFinishDialog" class="pvrFinishDialog" style="display: none"></div>
+<!--pvr tshift switch dialog-2015-2-9-->
+<div id="pvrTshiftShowDialog" class="pvrTshiftShowDialog" style="display: none"></div>
+<!--pvr stop to switch-2015-3-4-->
+<div id="pvrStopToSwitchDialog" class="pvrStopToSwitchDialog" style="display:none"></div>
+<!--new record tip dialog-2015-3-7-->
+<div id="newRecordTipDialog" class="newRecordTipDialog" style="display:none"></div>
+<!--pvr hard disk check-2015-3-8-->
+<div id="pvrHardDiskCheck" class="pvrHardDiskCheck" style="display:none"></div>
+<!--pvr hard disk check retry-2015-3-8-->
+<div id="pvrHDCheckRetryDialog" class="pvrHDCheckRetryDialog" style="display:none"></div>
+<!--pvr hard disk list-2015-3-8-->
+<div id="pvrHDList" class="pvrHDList" style="display:none"></div>
+<!--pvr begin or cancel record dialog-2015-3-25-->
+<div id="beginRecordDialog" class="beginRecordDialog" style="display:none"></div>
+<!--pvr hard disk speed check result-2015-3-29-->
+<div id="pvrHDSpeedCheckResult" class="pvrHDSpeedCheckResult" style="display:none"></div>
+<!--pvr record tip-2015-4-3-->
+<div id="pvrRecordTip" class="pvrRecordTip" style="display:none"></div>
+<!--modulePages-->
+
+<div id="launcher_stabar" style="display:none"></div>
+<div id="myLauncher" style="display:none"></div>
+<div id="launcher_allapps" style="display:none"></div>
+<div id="launcher_apps" style="display:none"></div>
+<div id="launcher_usa_vod" style="display:none"></div>
+<div id="launcher_canada_vod" style="display:none"></div>
+<div id="launcher_template14_vod" style="display:none"></div>
+<div id="launcher_template42_apps" style="display:none"></div>
+<div id="launcher_template43_vod" style="display:none"></div>
+<div id="launcherHimediaPageId" style="display: none"></div>
+<div id="liveTv_launcher" style="display:none"></div>
+<div id="launcher_module25" class="launcher_module25" style="display:none"></div>
+<div id="launcher_module8" class="launcher_module8" style="display:none"></div>
+<div id="launcher_module9" class="launcher_module9" style="display:none"></div>
+<div id="launcher_EU_movie_Ger" class = "launcher_EU_movie_Ger" style="display:none"></div>
+<div id="launcher_EU_movie_Eng" class = "launcher_EU_movie_Eng" style="display:none"></div>
+<div id="launcher_EU_kids" class = "launcher_EU_kids" style="display:none"></div>
+<div id="launcher_favoritelist" style="display:none"></div>
+<div id="launcher_recentwatch" class="launcher_recentwatch" style="display:none"></div>
+
+<div id="app_youtube" style="display:none"></div>
+<div id="app_vudu" style="display:none"></div>
+<div id="app_amazon" style="display:none"></div>
+<div id="app_netflix" style="display:none"></div>
+<div id="app_lau_browser" style="display:none"></div>
+<div id="app_bridge" style="display:none"></div>
+<div id="app_factory" style="display: none;"></div>
+
+<!--wizard Begin-->
+<div id="boe_bg_page_id" class="boe_bg" style="display: none"></div>
+<div id="boe_lang_page_id" class="boe_Page" style="display: none"></div>
+<div id="boe_cty_page_id" class="boe_Page" style="display: none"></div>
+<div id="boe_timezone_page_id" class="boe_Page" style="display: none"></div>
+<div id="boe_complete_page_id" class="boe_Page" style="display: none"></div>
+<div id="boe_retail_dialog" class="boe_retail_dialog_bg_cls" style="display: none"></div>
+<div id="boe_disclaimer_page_id" class="boe_Page" style="display: none"></div>
+<div id="boe_disinfo_page_id" class="boe_Page" style="display: none;background-color:rgba(0,0,0,0.6)"></div>
+<div id="boe_netbg_page_id" class="boe_Page" style="display: none"></div>
+<div id="boe_ethernet_result" class="boe_Page" style="display: none"></div>
+<div id="boe_search_wifi" class="boe_SearchWifiPage" style="display: none;"></div>
+<div id="boe_search_ethernet" class="boe_SearchWifiPage" style="display: none;"></div>
+<div id="boe_wifi_notplugin" class="boe_NetworkWifiSetPage" style="display: none;"></div>
+<div id="boe_NetworkWifiSetPage" class="boe_NetworkWifiSetPage" style="display: none;"></div>
+<div id="boe_NetworkWifiWPS" class="boe_NetworkWifiWPSPage" style="display: none"></div>
+<div id="boe_NetworkWifiPWInputDialog" class="boe_NetworkWifiPWInputDialog" style="display: none"></div>
+<div id="boe_NetworkWifiAddDialog" class="boe_NetworkWifiAddDialog" style="display: none"></div>
+<div id="boe_NetworkConnNetDialog" class="boe_SearchWifiPage" style="display: none"></div>
+<div id="boe_NetworkConnResDialog" class="boe_SearchWifiPage" style="display: none"></div>
+<div id="boe_NetworkEthernetType" class="boe_NetworkEthernetType" style="display: none"></div>
+<div id="boe_NetworkEthernetSetPage" class="boe_NetworkEthernetSetPage" style="display: none"></div>
+<div id="boe_input_source_page_id" class="boe_Page" style="display: none"></div>
+<!--setting Begin-->
+
+<div id="setting_sys_qs_page" style="display: none"></div>
+<div id="setting_sys_qs_list" class="setting_sys_qs_list" style="display: none"></div>
+<div id="setting_sys_qs_list1" class="setting_sys_qs_list" style="display: none"></div>
+<div id="setting_fircls_page" class="setting_first_page" style="display: none"></div>
+<div id="setting_sys_lang1_page" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_lang2_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_mode_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_menu_timeout_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_cec_page" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_time_page" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_security_page" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_agelock_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_locaton_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_pvrlist_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_pvr_check_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_pvr_format_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_timelist_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_timedate_page" class="setting_sys_lang1__cls" style="width:1082px;display: none"></div>
+<div id="setting_sys_weekly_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_time_standby_page" class="setting_sys_lang1__cls" style="width:1082px;display: none;"></div>
+<div id="setting_sys_inputlable_page" class="setting_sys_lang1__cls" style="width:1082px;display: none;"></div>
+<div id="setting_sys_appset_page" class="setting_sys_lang1__cls" style="display: none;"></div>
+<div id="setting_sys_appset_sa_page2" class="setting_sys_lang1__cls" style="display: none;"></div>
+
+<div id="setting_sys_blocktime_page" class="setting_sys_lang1__cls" style="width:1082px ;display: none"></div>
+<div id="setting_sys_locktime2_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_proglock_page" class="setting_sys_lang1__cls" style="width:1082px;display: none"></div>
+<div id="setting_sys_cc_page" class="setting_sys_cc_cls" style="display: none"></div>
+<div id="setting_sys_inputdate_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_inputtime_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_inputblock_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_tvrating_list1_page" class="setting_sys_menu_timeout_cls" style="display: none;"></div>
+<div id="setting_sys_us_tvrating_page" class="setting_sys_menu_timeout_cls" style="display: none;"></div>
+<div id="setting_sys_open_vchip_cls1_page" class="setting_sys_lang1__cls" style="width:1112px;display: none;"></div>
+<div id="setting_sys_open_vchip_cls2_page" class="setting_sys_lang1__cls" style="width:1142px;display: none;"></div>
+<div id="setting_sys_open_vchip_cls3_page" class="setting_sys_menu_timeout_cls" style="display: none;"></div>
+
+
+<div id="setting_ver_list_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_cecdev_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_nav_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_pvrdialog_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_dialog1_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_diskcheck_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_pvr_page" class="setting_sys_lang1__cls" style="width:1082px;display: none"></div>
+<div id="setting_sys_ad_page" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_ad_page2" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_xt910ad_page" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_ind_light_page" class="setting_sys_lang1__cls" style="display: none;width: 1082px;"></div>
+<div id="setting_sys_ad_submode_page" class="setting_sys_menu_timeout_cls" style="display: none;"></div>
+
+<div id="setting_sys_update_page" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_disclaimer_page" class="setting_sys_lang1__cls" style="display: none;width: 1082px;"></div>
+<div id="setting_sys_dis_fir_page" class="setting_sys_lang1__cls" style="display: none"></div>
+
+<div id="setting_sys_channel_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_about_ver_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_locktime_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_autotime_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_update_fir_page" class="setting_first_page" style="display: none"></div>
+<div id="setting_update_load_page" class="setting_sys_update_page_cls" style="display: none"></div>
+<div id="setting_update_progressing_page" class="setting_sys_update_page_cls" style="display: none"></div>
+<div id="setting_update_verifying_page" class="setting_sys_update_page_cls" style="display: none"></div>
+<div id="setting_update_verifyok_page" class="setting_sys_update_page_cls" style="display: none"></div>
+<div id="setting_update_ver_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_chgpwd_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_inputmodule_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_tvname_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_pwd_error_dialog" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_time_info_dialog" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_autoupdate_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_forceupdate_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_update_report_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_towizard_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_update_spacecheck_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_appupdate_page" class="setting_sys_bg_cls" style="display: none;"></div>
+<div id="setting_appupdate_progress_page" class="setting_sys_bg_cls" style="display: none;"></div>
+<div id="setting_appupdate_dialog_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_chgpwd2_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_update_switch_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_cc_list_page" class="setting_sys_menu_timeout_cls" style="display: none;background-color:transparent"></div>
+<div id="setting_sleep_list_page" class="setting_sys_menu_timeout_cls" style="display: none;"></div>
+<div id="setting_subtitle_list_page" class="setting_sys_menu_timeout_cls" style="display: none;background-color:transparent"></div>
+<div id="setting_txt_list_page" class="setting_sys_menu_timeout_cls" style="display: none;background-color:transparent"></div>
+<div id="setting_appForupdate_page" class="setting_sys_bg_cls" style="display: none;"></div>
+
+
+<!--picture Begin-->
+<div id="setting_pic_backlight" class="setting_pic_backlight" style="display: none"></div>
+<div id="setting_pic_mode" class="setting_snd_mode" style="display: none"></div>
+<div id="setting_pic_brightness_contrast_color" class="setting_pic_brightness_contrast_color" style="display: none"></div>
+<div id="setting_pic_aspect_ratio" class="setting_snd_mode" style="display: none"></div>
+<div id="setting_pic_reset" class="setting_snd_reset_audio_settings_all_black" style="display: none"></div>
+<div id="setting_pic_color_tuner_reset" class="setting_snd_reset_audio_settings_all_black" style="display: none"></div>
+
+
+<div id="setting_pic_advanced_page" style="display: none"></div>
+<div id="setting_pic_vga_page" style="display: none"></div>
+<div id="setting_pic_component_page" style="display: none"></div>
+<div id="component_reset_page" style="display: none"></div>
+<!--<div id="setting_pic_color_page" style="display: none"></div>-->
+<!--<div id="setting_pic_backLight_page" style="display: none"></div>-->
+<div id="setting_pic_colorTuner_page" style="display: none"></div>
+<!--<div id="setting_pic_colorTunerRestore_page" style="display: none"></div>-->
+<div id="setting_pic_whiteBalance_page" style="display: none"></div>
+<div id="setting_pic_whiteBalance_reset_page" style="display: none"></div>
+<div id="setting_pic_whiteBalance10Point_page" style="display: none"></div>
+<div id="setting_pic_whiteBalance10PointLevel_page" style="display: none"></div>
+<div id="setting_pic_whiteBalance10PointReset_page" style="display: none"></div>
+<div id="setting_pic_Tint_page" style="display: none"></div>
+<div id="setting_pic_Sharpness_page" style="display: none"></div>
+<div id="setting_pic_colorHue_page" style="display: none"></div>
+<div id="setting_pic_WBRoffset_page" style="display: none"></div>
+<div id="setting_pic_WBRed_page" style="display: none"></div>
+
+<div id="setting_pic_Source_page" style="display: none"></div>
+<div id="setting_pic_SourceLock_page" style="display: none"></div>
+<div id="setting_HotelMenu_page"  style="display: none"></div>
+<div id="setting_HotelInputLock_page" class="setting_hotelinputlock_all" style="display: none"></div>
+<div id="setting_HotelInputLockSA_page" class="setting_hotelinputlock_all" style="display: none"></div>
+<div id="setting_HotelCloneDialog_Page" class="wizardDialogBlackBg" style="display: none"></div>
+<!--picture End-->
+<!--network set begin-->
+<div id="settingNetSetMainPageId" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="settingNetStatusDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetWakeUpByWifiDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetWakeUpPowerDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetDMRDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetTVNameListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetTVNameInputDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetDisclaimerPageId" class="setting_sys_lang1__cls" style="display:none"></div>
+<div id="settingNetSetDisInfoPageId" class="setting_sys_lang1__cls" style="display:none"></div>
+<div id="settingNetSetNetTypeListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetWifiSetPageId" class="settingNetSetMainChildPageClass" style="display: none"></div>
+<div id="settingNetSetSearWifiDialogId" class="settingNetSetMainChildPageClass" style="display: none"></div>
+<div id="settingNetSetPWInputDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetConnNetDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetConnResDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetWifiNotPluginDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetWifiAddDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetAdvanceListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetPinDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetPBCDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetEtherSetPageId" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="settingNetSetEtherIpSetPageId" class="settingNetSetMainChildPageClass" style="display: none"></div>
+<div id="settingNetSetWifiIpSetDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetTestDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetTestResDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<!--network set end-->
+<!--channel set begin-->
+<div id="settingChSetScanTypeListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetAutoScanPageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetClearChannelDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetDTVManuPageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetDTVTManuSetPageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetDTVCManuSetPageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetATVManuSetPageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetFavListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetSkipListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetNoChannelDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetChListUpSwitchDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetParLockInputDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetATVColorSysListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetATVSoundSysListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+
+<div id="settingChSetMainPageId" class="settingChSetCommPageCls" style="display: none;"></div>
+<div id="settingChSetDVBC2PageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetScramListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetNetIdInputDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetDVBCOperListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetDVBSOperListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetDVBT2PageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetDVBTUKAreaListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetDVBTLCNListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetDVBS2PageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetDVBS3PageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetDVBS4PageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetDVBAutoPageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetSatelliteListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetBandFreInputDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetChNumberChangeDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+
+<div id="settingChSetTunerModePageId" class="settingChSetEUPageCls" style="display: none"></div>
+<div id="settingChSetSatelliteModePageId" class="settingChSetEUPageCls" style="display: none"></div>
+<div id="settingChSetDVBOperatorPageId" class="settingChSetEUPageCls" style="display: none"></div>
+<div id="settingChSetSelSatellitePageId" class="settingChSetEUPageCls" style="display: none"></div>
+<div id="settingChSetCommDVBSPageId" class="ChannelCommMainPage" style="display: none"></div>
+<div id="settingChSetCommDVBTPageId" class="ChannelCommMainPage" style="display: none"></div>
+<div id="settingChSetCommDVBCPageId" class="ChannelCommMainPage" style="display: none"></div>
+<div id="settingChSetAntSetupPageId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetAutoSatelliteListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetEUAutoPageId" class="settingChSetEUPageCls" style="display: none"></div>
+<div id="settingChSetEUAutoScanPageId" class="settingChSetEUPageCls" style="display: none"></div>
+<div id="settingChSetExitSetupDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+
+<!--channel set end-->
+
+<!--channel manager begin-->
+<div id="channel_manager_page" class="chl_manager_page1" style="display: none"></div>
+<div id="channel_manager_bg" class="chl_manager_bg_main" style="display: none"></div>
+<div id="channel_manager_type" style="position: absolute;display: none"></div>
+<div id="channel_manager_delete" style="position: absolute;display: none"></div>
+<div id="channel_manager_fav_edit" class="chl_manager_bg_main" style="display: none"></div>
+<div id="channel_manager_fliter" class="chl_manager_fliter_page_bg" style="display: none"></div>
+<div id="channel_manager_rename" class="chl_manager_rename_page_bg" style="display: none"></div>
+<div id="channel_manager_dialog" class="chl_manager_dialog_page_bg" style="display: none"></div>
+<!--channel manager end-->
+<!--软键盘End-->
+<div id="softKeyBoard" class="softKeyBoard" style="display: none"></div>
+<div id="softKeyBoardLanguage" class="softKeyBoardLanguage" style="display: none"></div>
+<div id="iqqi" class="iqqi" style="display: none"></div>
+<div id="iqqi_lan_switch_page" class="iqqi_lan_switch_page_presto_1080P_normal" style="display: none"></div>
+<!--软键盘 Begin-->
+
+<!--Miracast &language key About-->
+
+<div id="setting_pic_Mira_page" style="display: none"></div>
+<div id="setting_Mira_exit_page" style="display: none"></div>
+<div id="setting_Mira_wifi_page" style="display: none"></div>
+<div id="setting_HotelUsbClone_Page" style="display: none"></div>
+<!--setting end-->
+
+<div id="mixBar_page" style="display: none"></div>
+
+<!-- accuweather beg-->
+<div id="accuweather_main" style="display:none"></div>
+<div id="accuweather_deletecity" style="display:none"></div>
+<div id="accuweather_addcity" style="display:none"></div>
+<div id="accuweather_searchlist" style="display:none"></div>
+<div id="accuweather_citylist" style="display:none"></div>
+
+<div id="dialog_common" style="display:none"></div>
+<div id="dialog_usb" style="display: none"></div>
+<div id="dialog_network" style="display: none"></div>
+<div id="dialog_reminder" style="display: none"></div>
+<div id="OEMLauncherAppDeleteDialog" class="wizardDialogBlackBg" style="display: none"></div>
+<!-- accuweather end-->
+<!--pic new start-->
+<div id="setting_pic_3d" class="setting_pic_3d" style="display: none"></div>
+
+<div id="setting_chnl_ci" class="setting_chnl_CI_osd_full_screen_bkg" style="display: none"></div>
+<div id="setting_chnl_CI_PIN_set_page" class="setting_chnl_CI_osd_full_screen_bkg" style="display: none"></div>
+<div id="setting_chnl_advanced" class="setting_chnl_EPG_mark" style="display: none"></div>
+<div id="mheg5_password_osd" class="setting_chnl_CI_osd_full_screen_bkg" style="display: none"></div>
+<div id="setting_chnl_advanced_export_to_usb_dialog" class="setting_chnl_CI_osd_full_screen_bkg"
+     style="display: none"></div>
+<div id="setting_chnl_advanced_import_from_usb_dialog" class="setting_chnl_CI_osd_full_screen_bkg"
+     style="display: none"></div>
+
+<div id="setting_msg_page" class="setting_msg_info_normal_bkg" style="display: none"></div>
+<div id="setting_energy_warning" class="setting_energy_warning" style="display: none"></div>
+
+
+<!--pic new end-->
+
+<!--speech begin-->
+<div id="Voice_assistant_page" style="display: none"></div>
+<div id="voice_help_mainpage" style="display: none"></div>
+<div id="voice_help_subpage" style="display: none"></div>
+<div id="Bluetooth_speech_page" style="display: none"></div>
+<div id="BluetoothMatch_speech_page" style="display: none"></div>
+<div id="BluetoothResult_speech_page" style="display: none"></div>
+<div id="speech_Lan_page" style="display: none"></div>
+<div id="speech_LanResure_page" style="display: none"></div>
+<!--speech end-->
+
+<div id="setting_snd_mode" class="setting_snd_mode" style="display: none"></div>
+<div id="setting_snd_dbx" class="setting_snd_dbx" style="display: none"></div>
+<div id="setting_snd_sap" class="setting_snd_sap" style="display: none"></div>
+<div id="setting_snd_advanced_settings" class="setting_snd_advanced_settings" style="display: none"></div>
+<div id="setting_snd_equalizer_dialog" class="setting_snd_equalizer_dialog" style="display: none"></div>
+<div id="setting_snd_reset_audio_settings" class="setting_snd_reset_audio_settings_all_black"
+     style="display: none"></div>
+<div id="setting_snd_head_phone" class="setting_snd_head_phone" style="display: none"></div>
+<div id="setting_snd_bassboost" class="setting_snd_bassboost" style="display: none"></div>
+<div id="setting_snd_subwoofer" class="setting_chnl_CI_osd_full_screen_bkg" style="display: none"></div>
+<div id="setting_snd_help_info" class="setting_snd_help_info" style="display: none"></div>
+<div id="setting_snd_popup_headphone_speaker" class="snd_popup_headphone_speaker" style="display: none"></div>
+<div id="ci_op_search_answer_page" class="ci_op_search_answer_page" style="display: none"></div>
+<div id="setting_chnl_EPG_mark" class="setting_chnl_EPG_mark" style="display: none"></div>
+
+
+<div id="dlna_videoPlayer" style="display:none"></div>
+<div id="dlna_musicPlayer" style="display:none"></div>
+<div id="dlna_picPlayer" style="display:none"></div>
+<div name="scrollbarDemo" class="scrollbar_class_demo">
+    <div name="contentPanel">
+    </div>
+    <div name="controlPanel">
+        <!--<div><img name="img1" src="img/up.png"></div>-->
+        <div name="scrollPanel">
+            <div name="sliderPanel"></div>
+        </div>
+        <!--<div><img name="img2" src="img/down.png"></div>-->
+    </div>
+</div>
+<!--tShift begin-->
+<div id="tshiftProgressPage_id" style="display: none"></div>
+<div id="pvrOrtShiftDialogPage_id" style="display: none"></div>
+<div id="tshiftMediaDialog" style="display: none"></div>
+<div id="tShiftMsg_id" style="display:none"></div>
+<!--tShift end-->
+<div id="livetv_main" style="display: none"></div>
+<div id="livetv_info_bar" style="display: none"></div>
+<div id="livetv_channel_list" style="display: none"></div>
+<div id="livetv_volume" style="display: none"></div>
+<div id="livetv_auto_standby" style="display: none"></div>
+<div id="livetv_password_dialog" style="display: none;"></div>
+<div id="livetv_search_dialog" style="display: none;"></div>
+<div id="livetv_operate_tip" style="display: none"></div>
+
+<div id="ginga_app" style="display: none"></div>
+<div id="ginga_cc_switch" class="setting_snd_reset_audio_settings_all_black" style="display: none"></div>
+<!--SDKPages-->
+<div id="sdkPages"
+     style="width: 1000px;height: 600px;position:absolute ;z-index:1005;background-color: rgba(0,255,0,0.9);margin: 100px auto auto 460px;padding: 10px;display: none;">
+    当前按钮树：<span id='sdkPges'></span><br>
+
+    <div id='sdkPagesContent'></div>
+</div>
+<div id="sdkLoading"
+     style="display:none;position: absolute;width: 1920px;height: 1080px;left:0px;right:0px;background-color: rgba(0,0,0,0.5);z-index: 2005">
+    <img src="img/sdk/loading.png" style="position: relative;left:885px;top:465px; ">
+</div>
+
+<!--message pages-->
+<div id="mymsgbox" style="display: none">
+    <span id="msg_title"></span>
+    <span id="msg_content"></span>
+</div>
+
+<div  id="livetv_no_text_txt1" class="livetv_no_text_cls1">No Teletext</div>
+<div id="debugLog"
+     style="display:none;background-color:rgba(0,0,0,0.8);font-size: 28px; color:#ffffff; position: absolute;  height:500px; width:1500px;z-index: 1500;left:100px;top:500px;"></div>
+<div id="backgroundPreload" class="launcherBackgroundPreload"></div>
+<div id="black_screen"></div>
+<div id="iconPreload" class="iconPreload">
+    <!--<img src="img/channellist/nomark.png">-->
+    <!--<img src="img/channellist/mark.png">-->
+</div>
+<div id="kpad"
+     style="width: 966px;height: 282px;position:absolute ;z-index:1004;background-color: rgba(34,37,41,1);
+     margin: 738px auto auto 477px;display: none;">
+    <table id="kPadTable" class="kPadTable">
+        <tr><td><div id="kpad1" style="background-color: #00aaa6">1</div></td>
+            <td><div id="kpad2">2</div></td>
+            <td><div id="kpad3">3</div></td>
+            <td><div id="kpad4">4</div></td>
+            <td><div id="kpad5">5</div></td></tr>
+        <tr><td><div id="kpad6">6</div></td>
+            <td><div id="kpad7">7</div></td>
+            <td><div id="kpad8">8</div></td>
+            <td><div id="kpad9">9</div></td>
+            <td><div id="kpad10">0</div></td></tr>
+        <tr><td><div id="kpad11"><img id="kpad11img" src="img/kPad/setting.png"/></div></td>
+            <td><div id="kpad12"><img id="kpad12img" src="img/kPad/apps.png"/></div></td>
+            <td><div id="kpad13"><img id="kpad13img" src="img/kPad/txt.png"/></div></td>
+            <td><div id="kpad14"><img id="kpad14img" src="img/kPad/Subtitle.png"/></div></td>
+            <td><div id="kpad15"><img id="kpad15img" src="img/kPad/EPG.png"/></div></td></tr>
+    </table>
+
+</div>
+</body>
+</html>

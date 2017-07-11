@@ -1,0 +1,500 @@
+#livetv_channel_list{
+    direction: ltr;
+}
+#livetv_channel_list span{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#livetv_channel_list > div{
+    display: block;
+    float: right;
+}
+
+.CHListArrow{
+    height: 200px;
+    width: 50px;
+    margin: 10px 6px 0 0;
+    border-radius: 6px;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.CHListArrow img{
+    margin: 75px 0 75px 0;
+    width: 50px;
+    height: 50px;
+}
+
+.CHListMainPanel{
+    width: 620px;
+    height: 1080px;
+    font-size: 0;
+    box-shadow: inset 0 0 0 1px #585757;
+    overflow: hidden;
+}
+
+.CHListTop{
+    height: 75px;
+    line-height: 75px;
+    background-image: url(../../img/channellist/title_unfocus_eu.png);
+    overflow: hidden;
+}
+
+.CHListTop span{
+    font-size: 36px;
+    width: 240px;
+    text-align: center;
+    box-shadow: 0 0 0 1px #585757;
+    color: #f0f0f0;
+}
+
+.CHListTop span.CHListTitleFocus{
+    width: 380px;
+    background-image: url(../../img/channellist/title_focus_eu.png);
+}
+
+.CHListMiddle{
+    height: 945px;
+    width: 1240px;
+    background-color: rgba(0,0,0,0.7);
+    /*background-image: url(../../img/channellist/list_background.png);*/
+
+    overflow: hidden;
+}
+
+.CHListItems{
+    width: 620px;
+    height: 945px;
+    float: left;
+    /*box-shadow: inset 0 0 0 1px #585757;*/
+}
+
+#livetv_chlist_channels{
+    min-height: 945px;
+    width: 580px;
+    margin: 0 20px 0 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.pageFlipClass{
+    top: 0;
+}
+.nonPageFlipClass{
+    top: 405px;
+}
+
+#livetv_chlist_channels li{
+    padding: 15px;
+    height: 105px;
+    width: 550px;
+    background: url(../../img/channellist/itemborder.png);
+    background-size: contain;
+    font-size: 0;
+    color: #a1a5ac;
+}
+
+#livetv_chlist_channels li.disable {
+    display: none;
+}
+#livetv_chlist_channels li.pageFlipFocus{
+    color: #f0f0f0;
+}
+#livetv_chlist_channels li.nonPageFlipFocus{
+    color: #f0f0f0;
+}
+.pageFlipFocus{
+    box-shadow: inset 0 0 0 4px #84ecff;
+}
+.nonPageFlipFocus{
+}
+
+#livetv_chlist_channels li.selected{
+    /*height: 123px;*/
+}
+#livetv_chlist_channels li.dataSelected{
+    /*height: 123px;*/
+}
+
+.ChannelItem{
+    height: 42px;
+    line-height: 42px;
+    font-size: 0;
+}
+
+.ProgramItem{
+    height: 60px;
+    line-height: 60px;
+    font-size: 0;
+}
+
+.ChannelItem > img{
+    width: 30px;
+    height: 30px;
+    margin: 6px 0 6px 5px;
+    float: right;
+}
+
+.ProgramItem > span{ /*program name*/
+    height: 60px;
+    line-height: 60px;
+    font-size: 28px;
+    color: #a1a5ac;
+    width: 550px;
+}
+
+.ProgramProgrees{
+    height: 6px;
+    width: 550px;
+    background-color: #808080;
+    /*margin-top: -15px;*/
+    margin-top: -30px;
+    display: none;
+}
+
+.ProgramProgrees > div{
+    height: 6px;
+    width: 0;
+    background-color: #00bdb9;
+}
+
+
+.ChannelNumber{
+    width: 100px;
+    font-size: 34px;
+    height: 42px;
+}
+
+.ChannelName{
+    max-width: 330px;
+    font-size: 34px;
+    height: 42px;
+}
+
+#livetv_chlist_channels li.dataSelected .ProgramProgrees{
+    /*display: block;*/
+}
+#livetv_chlist_channels li.pageFlipFocus .ProgramProgrees{
+    display: block;
+}
+#livetv_chlist_channels li.nonPageFlipFocus .ProgramProgrees{
+    display: block;
+}
+
+
+
+.CHListInfo{
+    width: 620px;
+    height: 945px;
+    float: left;
+    /*background-color: green;*/
+    box-shadow: inset 0 0 0 1px #585757;
+}
+
+.CHListCurrent{
+    padding: 0 40px 0 40px;
+    width: 540px;
+    height: 94px;
+    line-height: 94px;
+    color: #c5cbda;
+    background: url(../../img/channellist/itemborder.png);
+    background-size: contain;
+    font-size: 0;
+}
+
+#current_channel_number{
+    width: 100px;
+    font-size: 36px;
+}
+#current_channel_name{
+    width: 340px;
+    font-size: 36px;
+}
+.CHListCurrent img{
+    width: 30px;
+    margin: 32px 0 32px 2px;
+}
+
+#livetv_chlist_programs{
+    height: 850px;
+    width: 580px;
+    margin: 0 20px 0 20px;
+    overflow: hidden;
+
+}
+
+#livetv_chlist_programs li{
+    padding: 20px;
+    height: 74px;
+    width: 540px;
+    background: url(../../img/channellist/itemborder.png);
+    background-size: contain;
+    font-size: 0;
+}
+
+#livetv_chlist_programs li.focus{
+    box-shadow: inset 0 0 0 4px #84ecff;
+    height: 468px;
+}
+#livetv_chlist_programs li.disable{
+    display: none;
+}
+.CHListProgramName{
+    height: 40px;
+    line-height: 40px;
+    font-size: 26px;
+    color: #9ca0ac;
+}
+
+.CHListProgramName span{
+    max-width: 400px;
+}
+.CHListProgramTime{
+    height: 34px;
+    line-height: 34px;
+    font-size: 24px;
+    color: #9ca0ac;
+}
+
+
+.CHListProgramProgress{
+    display: inline-block;
+    width: 10px;
+    height: 4px;
+    background-color: #808080;
+    margin: 15px 5px 15px 5px;
+    overflow: hidden;
+}
+
+.CHListProgramProgress div{
+    height: 4px;
+    width: 10px;
+    background-color: #00bdb9;
+    margin-top: -4px;
+}
+
+.CHListProgramDetail{
+    height: 380px;
+    width: 540px;
+    /*background-color: red;*/
+    font-size: 0;
+    overflow: hidden;
+    display: none;
+}
+
+.CHListProgramDetail span{
+    font-size: 26px;
+    color: #9ca0ac;
+    line-height: 38px;
+    width: 540px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.CHListEllipsis{
+    height: 10px;
+    font-size: 26px;
+    line-height: 1px;
+    color: #9ca0ac;
+    display: none;
+}
+
+#livetv_chlist_programs li.focus > div.CHListProgramName{
+    font-size: 28px;
+    color: #e8e8e8;
+}
+
+#livetv_chlist_programs li.focus > div.CHListProgramTime{
+    color: #c5cbda;
+}
+
+
+#livetv_chlist_programs li.focus div.CHListProgramProgress{
+    width: 200px;
+    height: 4px;
+    margin: 15px 5px 15px 5px;
+}
+#livetv_chlist_programs li.focus div.CHListProgramProgress div{
+    margin-top: 0;
+}
+
+#livetv_chlist_programs li.focus > div.CHListProgramDetail{
+    display: block;
+}
+
+#livetv_chlist_programs li.focus > div.CHListEllipsis{
+    display: block;
+}
+
+#livetv_chlist_programs li.focus > div.CHListProgramDetail span{
+    white-space: normal;
+}
+
+.CHListBottom{
+    height: 60px; /*1080 - 75 - 945*/
+    box-shadow: 0 0 0 1px #383a3d;
+    background-color: rgba(0,0,0,0.7);
+    padding: 0 10px 0 10px;
+    /*background-image: url(../../img/channelList/list_background.png);*/
+}
+
+.CHListBottom span {
+    max-width: 260px;
+    min-width: 90px;
+    float: right;
+    font-size: 24px;
+    color: #9ca0ac;
+    height: 60px;
+    line-height: 60px;
+}
+
+.CHListBottom img {
+    width: 40px;
+    height: 40px;
+    float: right;
+    margin: 10px;
+}
+
+#ch_list_focus_bar{
+    position: absolute;
+    left: 1320px;
+    top: 480px;
+    height: 135px;
+    box-shadow: inset 0 0 0 4px #84ecff;
+    width: 580px;
+    font-size: 34px;
+    color: #f0f0f0;
+    line-height: 135px;
+    text-align: center;
+    visibility: hidden;
+}
+
+.CHListNoItem{
+    position: absolute;
+    left: 1320px;
+    top: 480px;
+    height: 135px;
+    box-shadow: inset 0 0 0 4px #84ecff;
+    width: 580px;
+    font-size: 34px;
+    color: #f0f0f0;
+    line-height: 135px;
+    text-align: center;
+    /*background-color: rgba(0,0,0,0.7);*/
+    display: none;
+}
+
+#channel_list_scroll_bar{
+    position: relative;
+    left: 600px;
+    top: -945px;
+    opacity: 0.5;
+}
+
+
+.CHListFunctionPanel{
+    width: 274px;
+    height: 300px;
+    border-radius: 6px;
+    background-color: rgba(0,0,0,0.9);
+    margin: 10px -50px 0 0;
+    visibility: hidden;
+}
+
+.CHListFunctionHalfPanel{
+    width: 274px;
+    height: 206px;
+    border-radius: 0 0 6px 6px;
+    background-color: rgba(0,0,0,0.9);
+    margin: 104px -50px 0 0;
+    overflow: hidden;
+}
+#livetv_chlist_functions{
+    width: 234px;
+    height: 280px;
+    padding: 10px 20px;
+    font-size: 0;
+}
+
+.CHListFunctionHalfPanel #livetv_chlist_functions{
+    margin-top: -94px;
+}
+
+#livetv_chlist_functions li{
+    width: 234px;
+    height: 84px;
+    line-height: 84px;
+    color: #a1a5ac;
+    font-size: 0;
+    background: url(../../img/channellist/itemborder.png);
+    background-size: contain;
+}
+
+#livetv_chlist_functions img{
+    height: 42px;
+    width: 42px;
+    margin: 21px 18px 21px 8px;
+    opacity: 0.8;
+}
+
+#livetv_chlist_functions span{
+    width: 160px;
+    font-size: 34px;
+}
+#livetv_chlist_functions li.focus{
+    box-shadow: inset 0 0 0 4px #84ecff;
+    color: #f0f0f0;
+}
+
+#livetv_chlist_functions li.focus img{
+    opacity: 1;
+}
+
+.CHListListPanel{
+    /*width: 300px;*/
+    height: 74px;
+    border-radius: 6px 6px 0 6px;
+    background-color: rgba(0,0,0,0.9);
+    margin: 10px -274px 0 0;
+    /*width: 1080px;*/
+    max-width: 1080px;
+    min-width: 224px;
+    padding: 10px 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    visibility: hidden;
+ }
+
+#livetv_chlist_list{
+    height: 74px;
+    font-size: 0;
+}
+
+#livetv_chlist_list li{
+    display: inline-block;
+    padding: 0 15px 0 25px;
+    height: 74px;
+    line-height: 74px;
+    color: #a1a5ac;
+    font-size: 0;
+    width: 140px;
+}
+
+#livetv_chlist_list li span{
+    max-width: 150px;
+    font-size: 34px;
+    height: 74px;
+}
+
+#livetv_chlist_list li.disable{
+    display: none;
+}
+#livetv_chlist_list li.focus{
+    box-shadow: inset 0 0 0 4px #84ecff;
+    color: #f0f0f0;
+}
+.CHListProgramName img.disable {
+    padding-bottom: 7px;
+}

@@ -1,0 +1,395 @@
+/*
+*Created by Summer on 2014/12/1.
+*/
+/*所有元素的padding,border,margin设为0*/
+/*pvr界面的样式*/
+#pvr
+{
+    width: 1920px;
+    height: 1080px;
+    font-family: Arial;
+    color: #9ba2ad;
+    direction: ltr;
+    /*background: url("../img/pvr/pvrbg.png") no-repeat;*/
+}
+/*页面顶部背景的样式*/
+#top_background
+{
+    width: 1920px;
+    height: 160px;
+    background:-webkit-linear-gradient(top, rgba(0, 0, 0, 1),rgba(0,0,0,0.9) 30%,rgba(0,0,0,0.9) 31%,rgba(0, 0, 0, 0));
+    background:-o-linear-gradient(top, rgba(0, 0, 0, 1),rgba(0,0,0,0.9) 30%,rgba(0,0,0,0.9) 31%,rgba(0, 0, 0, 0));
+    position: absolute;
+    border: 0 none;
+}
+/*节目名称的样式*/
+#program_name
+{
+    display: inline-block;
+    margin: 27px 0 0 44px;
+    font-size: 34px;
+    text-align: center;
+    height: 34px;
+    line-height: 34px;
+}
+/*节目进度条背景的样式*/
+.programProgressBarNormal
+{
+    display: inline-block;
+    position: relative;
+    float: right;
+    width: 250px;
+    height: 10px;
+    margin: 34px 41px 0 0;
+    background: rgba(76, 83, 92, 0.8);
+    vertical-align: bottom;
+}
+/*节目进度条标题的样式*/
+.programProgressTitleNormal
+{
+    display: inline-block;
+    position: relative;
+    float: right;
+    margin: 26px 14px 0 0;
+    font-size: 24px;
+    text-align: center;
+    height: 24px;
+    line-height: 24px;
+}
+/*节目进度条进度值的样式*/
+.programProgressValueNormal
+{
+    width: 0;
+    height: 10px;
+    background: #00bdb9;
+}
+/*底部背景的样式*/
+#bottom_background
+{
+    position: absolute;
+    top: 830px;
+    left: 363px;
+    width: 1190px;
+    height: 230px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    box-shadow: 0 0 0 3px rgba(178, 178, 183, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+/*record文字的样式*/
+.recordProgressTitleNormal
+{
+    display: inline-block;
+    position: relative;
+    margin-left: 30px;
+    margin-right: 20px;
+    font-size: 38px;
+    height: 40px;
+    line-height: 40px;
+    width: 170px;
+
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/*节目已播放了多长时间的样式*/
+.recordProgressTextNormal
+{
+    position: relative;
+    font-size: 22px;
+    color: #00bdb9;
+    width: 0px;/*SDK中的进度条控件利用left改变show text的位置，在此需要设置width为0才能使left初始值为0*/
+    margin: 20px 0 0 173px;
+}
+/*record进度条背景的样式*/
+.recordProgressBarNormal
+{
+    position: absolute;
+    top: 59px;
+    right: 50px;
+    width: 940px;
+    height: 15px;
+    margin: 0 0 11px 0;
+    background: rgba(76, 83, 92, 0.8);
+    vertical-align: bottom;
+}
+/*record进度条进度值的样式*/
+.recordProgressValueNormal
+{
+    width: 0;
+    height: 15px;
+    background: #00bdb9;
+}
+/*节目播放的开始时间的样式*/
+#begin_time
+{
+    display: inline-block;
+    position: absolute;
+    top: 85px;
+    left: 198px;
+    margin: 0 887px 24px 0;
+    font-size: 22px;
+    color: #9ba2ad;
+}
+/*节目播放的结束时间的样式*/
+#end_time
+{
+    display: inline-block;
+    position: absolute;
+    top: 85px;
+    right: 50px;
+    margin: 0 0 24px 0;
+    font-size: 22px;
+    color: #9ba2ad;
+}
+/*stop按钮获得焦点时背景的样式*/
+.button_stop_bg_focus
+{
+    display: inline-block;
+    position: absolute;
+    top: 137px;
+    left: 440px;
+    width: 310px;
+    height: 65px;
+    background: url("../img/pvr/btnfocus.png") no-repeat;
+    margin: 0 30px 28px 0;
+    font-size: 30px;
+    color: #7b420b;
+    text-align: center;
+}
+.button_media_bg_focus
+{
+    display: inline-block;
+    position: absolute;
+    top: 137px;
+    left: 100px;
+    width: 310px;
+    height: 65px;
+    background: url("../img/pvr/btnfocus.png") no-repeat;
+    margin: 0 30px 28px 0;
+    font-size: 30px;
+    color: #7b420b;
+    text-align: center;
+}
+/*stop按钮失去焦点时背景的样式*/
+.button_stop_bg_unfocus {
+    display: inline-block;
+    position: absolute;
+    top: 137px;
+    left: 440px;
+    width: 310px;
+    height: 65px;
+    background: url("../img/pvr/btnunfocus.png") no-repeat;
+    margin: 0 30px 28px 0;
+    font-size: 30px;
+    color: #bec7ce;
+    text-align: center;
+}
+
+.button_media_bg_unfocus {
+    display: inline-block;
+    position: absolute;
+    top: 137px;
+    left: 100px;
+    width: 310px;
+    height: 65px;
+    background: url("../img/pvr/btnunfocus.png") no-repeat;
+    margin: 0 30px 28px 0;
+    font-size: 30px;
+    color: #bec7ce;
+    text-align: center;
+}
+/*stop按钮内的方块获得焦点时的样式*/
+.block_in_stop_focus
+{
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 27px;
+    height: 27px;
+    background: url("../img/pvr/Stopfocus.png") no-repeat;
+    margin: 19px 18px 19px 80px;
+}
+
+.block_in_media_focus
+{
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 27px;
+    height: 27px;
+    background: url("../img/pvr/Stopfocus.png") no-repeat;
+    margin: 19px 13px 19px 50px;
+}
+/*stop按钮内的方块失去焦点时的样式*/
+.block_in_stop_unfocus
+{
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 27px;
+    height: 27px;
+    background: url("../img/pvr/Stopunfocus.png") no-repeat;
+    margin: 19px 18px 19px 80px;
+}
+.block_in_media_unfocus
+{
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 27px;
+    height: 27px;
+    background: url("../img/pvr/Stopunfocus.png") no-repeat;
+    margin: 19px 13px 19px 50px;
+}
+/*Stop按钮里的stop文字获得焦点时的样式*/
+.text_stop_focus
+{
+    /*display: inline-block;*/
+    /*position: relative;*/
+    float: left;
+    font-size: 30px;
+    color: #85ecff;
+    height: 65px;
+    max-width: 180px;
+    /*text-align: center;*/
+    line-height: 65px;
+}
+
+.text_media_focus
+{
+    /*display: inline-block;*/
+    /*position: relative;*/
+    float: left;
+    font-size: 30px;
+    color: #85ecff;
+    height: 65px;
+    width: 310px;
+    text-align: center;
+    line-height: 65px;
+}
+/*Stop按钮里的stop文字失去焦点时的样式*/
+.text_stop_unfocus
+{
+    /*display: inline-block;*/
+    /*position: relative;*/
+    float: left;
+    font-size: 30px;
+    color: #c2c9d4;
+    height: 65px;
+    line-height: 65px;
+    max-width: 180px;
+
+    /*text-align: center;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.text_media_unfocus
+{
+    /*display: inline-block;*/
+    /*position: relative;*/
+    float: left;
+    font-size: 30px;
+    color: #c2c9d4;
+    height: 65px;
+    line-height: 65px;
+    width: 310px;
+
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/*standby record失去焦点时背景的样式*/
+.button_standby_bg_unfocus
+{
+    display: inline-block;
+    position: absolute;
+    top: 135px;
+    right: 100px;
+    width: 310px;
+    height: 65px;
+    background: url("../img/pvr/btnunfocus.png") no-repeat;
+    margin: 0 0 28px 0;
+    font-size: 30px;
+    color: #bec7ce;
+}
+/*standby record得到焦点时背景的样式*/
+.button_standby_bg_focus
+{
+    display: inline-block;
+    position: absolute;
+    top: 135px;
+    right: 100px;
+    width: 310px;
+    height: 65px;
+    background: url("../img/pvr/btnfocus.png") no-repeat;
+    margin: 0 0 28px 0;
+    font-size: 30px;
+    /*color: #7b420b;*/
+    text-align: center;
+}
+/*standby失去焦点时里边小圆圈的样式*/
+.circle_in_standby_unfocus
+{
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 27px;
+    height: 27px;
+    background: url("../img/pvr/StandbyRecordunfocus.png") no-repeat;
+    margin: 19px 12px 19px 25px;
+}
+/*standby获得焦点时里边小圆圈的样式*/
+.circle_in_standby_focus
+{
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 27px;
+    height: 27px;
+    background: url("../img/pvr/StandbyRecordfocus.png") no-repeat;
+    margin: 19px 12px 19px 25px;
+}
+/*standby record文字失去焦点时的样式*/
+.text_standby_unfocus
+{
+    /*display: inline-block;*/
+    /*position: relative;*/
+    float: left;
+    height: 65px;
+    width: 240px;
+    line-height: 65px;
+    color: #c2c9d4;
+    text-align: center;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/*standby record文字获得焦点时的样式*/
+.text_standby_focus
+{
+    /*display: inline-block;*/
+    /*position: relative;*/
+    float: left;
+    width: 240px;
+    text-align: center;
+    height: 65px;
+    line-height: 65px;
+    color: #85ecff;
+}
+/*录制剩余时间的样式*/
+.recordSurplusMinutesNormal
+{
+    display: none;
+    position: absolute;
+    top: 105px;
+    right: 50px;
+    font-size: 22px;
+    color: #9ba2ad;
+}

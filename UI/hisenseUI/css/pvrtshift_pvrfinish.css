@@ -1,0 +1,66 @@
+.pvrFinishDialog
+{
+    padding: 10px;
+    max-width: 780px;
+    min-width: 625px;
+    min-height: 232px;
+    background-color: #102136;
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    margin-left: -375px;
+    margin-top: -116px;
+}
+.recordDialogTipName
+{
+    font-size: 34px;
+    max-width: 365px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+}
+.recordDialogTip
+{
+    display: inline-block;
+}
+.recordDialogTipImg{
+    text-align: center;
+    margin: 38px auto 30px auto;
+}
+.recordDialogTipImg
+{
+    text-align: center;
+    margin: 38px auto 30px auto;
+}
+.recordDialogTipImg img
+{
+    width: 80px;
+    height: 80px;
+}
+.recordDialogTipNormal
+{
+    font-size: 34px;
+    color: #f0f0f0;
+    text-align: center;
+    vertical-align: middle;
+}
+.recordDialogTipName
+{
+    font-size: 34px;
+    max-width: 365px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow:ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+}
+.recordDialogTip
+{
+    display: inline-block;
+}

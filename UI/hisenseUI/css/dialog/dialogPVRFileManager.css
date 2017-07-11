@@ -1,0 +1,310 @@
+
+.dialog_pvr_file_manager {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+
+    height: 1080px;
+    width: 1920px;
+    position: absolute;
+}
+
+.pvr_file_manager_frame {
+    margin-top: 140px;
+    margin-left: 360px;
+    margin-right: 360px;
+    width: 1200px;
+    height: 800px;
+    /*background-color: #3c424b;*/
+    background-color: rgba(16, 33, 54, 1);
+    border-radius: 4px;
+}
+
+.pvr_file_manager_head {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    /*height: 200px;*/
+    height: 100px;
+    width: 1200px;
+}
+
+.pvr_file_manager_title_0 {
+    margin-left: 65px;
+    margin-right: 65px;
+    margin-top: 0px;
+    height: 65px;
+    width: 1070px;
+    font-size: 40px;
+    line-height: 100px;
+    color: #f0f0f0;
+}
+
+.pvr_file_manager_title_1 {
+    margin-left: 65px;
+    margin-right: 65px;
+    margin-top: 0px;
+    height: 65px;
+    width: 1070px;
+    font-size: 40px;
+    line-height: 100px;
+    color: #f0f0f0;
+}
+
+.pvr_file_manager_head_separate_line_blue {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 1200px;
+    height: 6px;
+    background-color: #f0f0f0;
+}
+
+.pvr_file_manager_bottom_frame {
+    margin-top: 620px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 1200px;
+    height: 80px;
+    /*background-color: rgba(256, 256,256, 0.3);*/
+    box-shadow: inset 0px 2px 0px 0px rgba(17, 74, 111, 0.8);
+}
+
+.pvr_file_manager_bottom_btn_red_img {
+    width: 40px;
+    height: 40px;
+    margin-top:20px;
+    margin-left: 950px;
+    display: inline-block;
+    float: left;
+}
+
+.pvr_file_manager_bottom_btn_red_text {
+    height: 40px;
+    font-size: 36px;
+    line-height: 36px;
+    color: rgba(200, 200,200, 1);
+    margin-top:20px;
+    margin-left: 10px;
+    float: left;
+    display: inline-block;
+}
+
+.html_rtl .pvr_file_manager_bottom_btn_red_img {
+    width: 40px;
+    height: 40px;
+    margin-top:10px;
+    margin-right: 950px;
+    margin-left: 10px;
+    display: inline-block;
+    float: right;
+}
+
+.html_rtl .pvr_file_manager_bottom_btn_red_text {
+    height: 40px;
+    font-size: 36px;
+    line-height: 36px;
+    color: rgba(200, 200,200, 1);
+    margin-top:10px;
+    margin-right: 10px;
+    float: right;
+    display: inline-block;
+}
+/*.gingaAppPanel {*/
+
+/*height: 780px;*/
+/*width: 900px;*/
+/*background-color: #102136;*/
+/*/!*border: 1px #102136 solid;*!/*/
+/*border-radius: 4px;*/
+
+/*}*/
+
+.pvr_file_manager_ul {
+    margin-top: 20px;
+    width: 1120px;
+    height: 600px;
+    margin-left: 40px;
+    margin-right: 40px;
+    float: left;
+    /*background-color: red;*/
+}
+
+#pvr_file_manager_cmp li {
+    height: 50px;
+    line-height: 50px;
+    /*border-bottom: 2px #173f58 solid;*/
+    padding: 20px 20px 20px 20px;
+    margin-top: 0px;
+    color: #9ba2ad;
+    font-size: 36px;
+    text-align: left;
+}
+
+
+
+#pvr_file_manager_cmp li.focus {
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+    color: #f0f0f0;
+    border-bottom: solid 2px rgba(0, 0, 0, 0);
+}
+
+#pvr_file_manager_cmp li.normal {
+    /*box-shadow: 0 0 0 4px #84ecff inset;*/
+    /*background-color: rgba(17, 74, 111, 0.8);*/
+    /*box-shadow: inset 0px -2px 0px 0px rgba(17, 74, 111, 0.8);*/
+    border-bottom: solid 2px rgba(17, 74, 111, 0.8);
+    color: #f0f0f0;
+}
+
+#pvr_file_manager_cmp > li:last-child {
+    border-bottom: solid 2px rgba(0, 0, 0, 0);
+}
+
+
+/*#ginga_app_list li span {*/
+/*display: block;*/
+/*float: left;*/
+/*overflow: hidden;*/
+/*text-overflow: ellipsis;*/
+/*white-space: nowrap;*/
+/*width: 200px;*/
+/*font-size: 26px;*/
+/*text-indent: 20px;*/
+/*height: 30px;*/
+/*}*/
+
+/*#ginga_app_list li span:nth-child(2) {*/
+/*color: #84ecff;*/
+/*float: right;*/
+/*}*/
+
+.pvr_file_manager_scroll_container {
+    height: 540px;
+    width: 4px;
+    margin-top: -680px;
+    margin-left: 1180px;
+    margin-right:20px;
+    float: left;
+    /*position: absolute;*/
+
+    /*background: #ffffff;*/
+}
+.html_rtl .pvr_file_manager_scroll_container {
+    height: 540px;
+    width: 4px;
+    margin-top: -680px;
+    margin-right: 1180px;
+    margin-left:20px;
+    float: right;
+    /*position: absolute;*/
+
+    /*background: #ffffff;*/
+}
+.pvr_file_manager_scroll_bar {
+    position: absolute;
+    margin-top: 0px;
+    height: 50px;
+    width: 4px;
+    background: #555b60;
+    border-radius: 4px;
+}
+
+.dialog_pvr_file_manager_dialog {
+    margin-left: 0px;
+    margin-top: 0px;
+    width: 1920px;
+    height: 1080px;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+}
+
+.dialog_pvr_file_manager_dialog_body {
+    margin: 371px 449px 0px 449px;
+
+    border-radius: 4px;
+    width: 1022px;
+    height: 337px;
+    background-color: #173f58;
+    position: absolute;
+    opacity: 0.9;
+}
+
+
+.dialog_pvr_file_manager_dialog_content_container {
+    margin-top: 0px;
+    width: 1022px;
+    height: 240px;
+    background-color: #102136;
+}
+
+.dialog_pvr_file_manager_dialog_content_div {
+    display: table-cell;
+    padding: 0 65px 0 65px;
+    height: 240px;
+    width: 892px;
+    /*width: auto;*/
+    margin-top: 0px;
+    vertical-align: middle;
+}
+
+.dialog_pvr_file_manager_dialog_content_text {
+    display: inline-block;
+    font-size: 36px;
+    color: #f0f0f0;
+    word-wrap: break-word;
+    word-break: normal;
+    vertical-align: middle;
+}
+
+
+.dialog_pvr_file_manager_dialog_btn_content {
+    width: 1024px;
+    margin-left: -1px;
+    margin-right: -1px;
+}
+
+.dialog_pvr_file_manager_dialog_btn_normal {
+    width: 510px;
+    height: 95px;
+    margin-top: 2px;
+    background-color: #102136;
+    /*float: left;*/
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 32px;
+    line-height: 95px;
+    margin-left: 1px;
+    margin-right: 1px;
+    float: left;
+}
+
+
+.html_rtl .dialog_pvr_file_manager_dialog_btn_normal {
+    float: right;
+}
+
+
+.dialog_pvr_file_manager_dialog_btn_focus {
+    width: 510px;
+    height: 95px;
+    margin-top: 2px;
+    /*float: left;*/
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 32px;
+    line-height: 95px;
+    background-color: rgba(17, 74, 111, 0.8);
+    box-shadow: inset 0px 0px 0px 4px #84ecff;
+    /*background-color: #AE6600;*/
+    /*box-shadow: inset 0px 0px 0px 1px #fc8700, inset 0px 0px 0px 3px #cc9500, inset 0px 0px 0px 4px #fc8700;*/
+    margin-left: 1px;
+    margin-right: 1px;
+    float: left;
+}
+
+.html_rtl .dialog_pvr_file_manager_dialog_btn_focus {
+    float: right;
+}
+

@@ -1,0 +1,270 @@
+#setting_sys_qs_page{
+
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1920px;
+    height: 1080px;
+}
+
+#setting_sys_qs_page * {
+
+    float: left;
+}
+
+#setting_qsp_ul span{
+
+    width: 470px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#setting_qsp_Modes span{
+
+    width: 470px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/*RobMyth*/
+/*#setting_qs_panel {*/
+    /*height: 670px;*/
+    /*width: 1022px;*/
+    /*margin: 190px 449px 0px 449px;*/
+    /*background-color: #102136;*/
+/*}*/
+#setting_qs_panel {
+
+    height: 1080px;
+    width: 600px;
+    /*background-color: #102136;*/
+    background-color: rgba(16,33,54,0.9);
+}
+
+/*RobMyth*/
+/*.settingQSHead{*/
+    /*border-bottom: solid 6px #33b5e6;*/
+    /*width: 1022px;*/
+    /*height: 100px;*/
+/*}*/
+.settingQSHead{
+
+    width: 600px;
+    height: 92px;
+    border-bottom: solid 3px #33b5e6;
+}
+
+/*RobMyth*/
+/*#setting_qsp_img{*/
+/*margin: 30px 20px 30px 60px;*/
+/*width: 40px;*/
+/*height: 40px;*/
+/*}*/
+#setting_qsp_img{
+
+    margin: 26px 25px 26px 35px;
+    width: 40px;
+    height: 40px;
+}
+
+/*RobMyth*/
+/*#setting_qsp_title{*/
+
+    /*color: #35b5ec;*/
+    /*font-size: 40px;*/
+    /*width: 902px;*/
+    /*height: 100px;*/
+    /*line-height: 100px;*/
+/*}*/
+#setting_qsp_title{
+
+    color: #F0F0F0;
+    font-size: 36px;
+    height: 92px;
+    line-height: 92px;
+}
+
+/*RobMyth*/
+/*#setting_qsp_Modes{*/
+
+    /*margin: 30px 65px 0px 65px;*/
+
+    /*width: 888px;*/
+    /*height: 380px;*/
+    /*border-bottom: solid 2px #173f58;*/
+/*}*/
+#setting_qsp_Modes{
+
+    margin: 0px 65px 0px 65px;
+    width: 470px;
+}
+
+/*RobMyth*/
+/*#setting_qsp_Modes li{*/
+    /*width: 888px;*/
+    /*height: 95px;*/
+    /*line-height: 95px;*/
+    /*font-size: 36px;*/
+    /*color: #b2b8bf;*/
+    /*text-indent: 65px;*/
+/*}*/
+#setting_qsp_Modes li{
+
+    width: 470px;
+    height: 68px;
+    line-height: 68px;
+    font-size: 32px;
+    color: #b2b8bf;
+    text-indent: 30px;
+}
+
+#setting_qsp_Modes li.focus{
+
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17,74,111,0.8);
+    color: #f0f0f0;
+}
+
+#setting_qsp_Modes li span:nth-child(1){
+
+    display: block;
+}
+
+#setting_qsp_Modes li span:nth-child(2){
+    display: none;
+}
+
+#setting_qsp_Modes li.focus span:nth-child(1){
+
+    display: none;
+}
+
+#setting_qsp_Modes li.focus span:nth-child(2){
+
+    display: block;
+}
+
+/*RobMyth-11-27-2014*/
+#setting_qsp_ul{
+
+    margin: 30px 65px 0px 65px;
+    width: 470px;
+}
+
+#setting_qsp_ul li{
+
+    width: 470px;
+    height: 68px;
+    line-height: 68px;
+    font-size: 32px;
+    color: #b2b8bf;
+    text-indent: 30px;
+}
+
+#setting_qsp_ul li.focus{
+
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17,74,111,0.8);
+    color: #f0f0f0;
+}
+
+#setting_qsp_ul li.disable{
+
+    color: rgba(178,184,191,0.3);
+}
+
+#setting_headphone_ul{
+
+    margin: 0px 65px 0px 65px;
+    width: 470px;
+}
+
+#setting_headphone_ul li {
+    width: 470px;
+    height: 68px;
+    line-height: 68px;
+    font-size: 32px;
+    color: #b2b8bf;
+    text-indent: 30px;
+}
+
+#setting_headphone_ul li.focus{
+
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17,74,111,0.8);
+    color: #f0f0f0;
+}
+
+#setting_qs_history_txt{
+
+    margin: 30px 65px 0px 65px;
+    color: #f0f0f0;
+    font-size: 28px;
+    width: 470px;
+    height: 48px;
+    line-height: 48px;
+    text-indent: 30px;
+    border-bottom: solid 2px #173f58;
+}
+
+/*RobMyth-12-11-2014*/
+#setting_qsp_more{
+
+    position: absolute;
+    margin-top: 447.5px;
+}
+
+.setting_qsp_bottom{
+
+    /*position: absolute;*/
+    /*left: 95px;*/
+    /*bottom: 26px;*/
+    /*position: absolute; */
+    /* left: 95px; */
+    /*bottom: 26px;*/
+    width: 470px;
+    height: 34px;
+    margin: 36px 0 0 95px;
+}
+
+#setting_qsp_bottom_txt{
+
+    font-size: 28px;
+    color: #b2b8bf;
+
+}
+
+#setting_qsp_bottom_img{
+
+    margin-top: 2px;
+    margin-left: 18px;
+}
+
+/*RobMyth-1-8-2015*/
+.all_txt_normal{
+
+    margin: 30px 65px 0px 65px;
+    color: #b2b8bf;
+    font-size: 32px;
+    width: 470px;
+    height: 68px;
+    line-height: 68px;
+    text-indent: 30px;
+    border-top: solid 2px #173f58;
+}
+.all_txt_focus{
+
+    margin: 30px 65px 0px 65px;
+    font-size: 32px;
+    width: 470px;
+    height: 68px;
+    line-height: 68px;
+    text-indent: 30px;
+    border-top: solid 2px #173f58;
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17,74,111,0.8);
+    color: #f0f0f0;
+}

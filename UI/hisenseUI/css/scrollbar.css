@@ -1,0 +1,101 @@
+
+.scrollbar_class_demo {
+    display: none;
+    float: left;
+    /*background-color:wheat;*/
+    overflow: hidden;
+}
+
+.scrollbar_class_demo [name='controlPanel'] div {
+    /*padding-left: 2px;*/
+    overflow-y: hidden;
+}
+
+.scrollbar_class_demo [name='contentPanel'] {
+    float: left;
+    overflow: hidden;
+    /*padding-right: 2px;*/
+}
+
+.scrollbar_class_demo [name='scrollPanel'] {
+    background-color: green;
+}
+
+.scrollbar_class_demo [name='sliderPanel'] {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    background-color: orange;
+    /*transition: all 0.5s;*/
+}
+
+
+.scrollbar_class_detail {
+    display: none;
+    float: left;
+    /*background-color:wheat;*/
+    overflow: hidden;
+}
+
+.scrollbar_class_detail [name='controlPanel'] div {
+    /*padding-left: 2px;*/
+    overflow-y: hidden;
+}
+
+.scrollbar_class_detail [name='contentPanel'] {
+    float: left;
+    overflow: hidden;
+    /*padding-right: 2px;*/
+}
+
+.scrollbar_class_detail [name='scrollPanel'] {
+    /*background-color: green;*/
+}
+
+.scrollbar_class_detail [name='sliderPanel'] {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 4px;
+    border-radius: 4px;
+    background-color: #9ba2ad;
+    /*transition: all 0.5s;*/
+}
+
+
+.accuScroll {
+    display: none;
+    float: left;
+    /*background-color:wheat;*/
+    overflow: hidden;
+}
+
+.accuScroll [name='controlPanel'] div {
+    /*padding-left: 2px;*/
+    overflow-y: hidden;
+}
+
+.accuScroll [name='contentPanel'] {
+    float: left;
+    overflow: hidden;
+    /*padding-right: 2px;*/
+}
+
+.accuScroll [name='scrollPanel'] {
+    /*background-color: green;*/
+}
+
+.accuScroll [name='sliderPanel'] {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 4px;
+    border-radius: 4px;
+    background-color: #9ba2ad;
+    margin: 25px 0px 25px 0px;
+    /*transition: all 0.5s;*/
+}
+
+
+
+

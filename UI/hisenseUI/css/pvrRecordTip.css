@@ -1,0 +1,60 @@
+/*
+* created by hisense-2015-4-3
+*/
+/*页面的样式*/
+.pvrRecordTip
+{
+    position: absolute;
+    width: 1022px;
+    height: 272px;
+    background-color: #102136;
+    margin-left: 449px;
+    margin-right: 449px;
+    margin-top: 404px;
+}
+/*录制图片的样式*/
+.pvrRecordTipPicture
+{
+    position: relative;
+    display: inline-block;
+    margin-left: 65px;
+    margin-right: 65px;
+    margin-top: 60px;
+    /*margin-right: 20px;*/
+}
+/*对话框标题的样式*/
+.pvrRecordTipTitle
+{
+    position: relative;
+    display: inline-block;
+    height: 36px;
+    font-size: 36px;
+    color: #f0f0f0;
+    margin-top: 60px;
+    margin-left: -45px;
+    margin-right: -45px;
+}
+/*频道信息的样式*/
+.pvrRecordTipChannelInfo
+{
+    position: relative;
+    height: 30px;
+    font-size: 30px;
+    color: #f0f0f0;
+    margin-top: 30px;
+    margin-left: 65px;
+    margin-right: 65px;
+}
+/*节目信息的样式*/
+.pvrRecordTipPragramInfo
+{
+    position: relative;
+    display: inline-block;
+    height: 36px;
+    font-size: 36px;
+    color: #f0f0f0;
+    margin-top: 20px;
+    margin-left: 65px;
+    margin-right: 65px;
+    margin-bottom: 60px;
+}

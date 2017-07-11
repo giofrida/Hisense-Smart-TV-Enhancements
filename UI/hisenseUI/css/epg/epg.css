@@ -1,0 +1,487 @@
+#epg span{
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.epgTop{
+    height: 79px;
+    line-height: 79px;
+    padding: 0 20px 0 20px;
+    border-bottom: #3d4041 1px solid;
+    white-space: nowrap;
+    background-color: #080c13;
+	overflow: hidden;
+}
+
+#epg_title {
+    color: #9ba2ad;
+    font-size: 40px;
+    float: left;
+    text-indent: 20px;
+}
+
+.html_rtl #epg_title {
+	float: right;
+}
+
+#epg_time {
+    font-size: 24px;
+    color: #7a7d83;
+    float: right;
+    direction: ltr;
+}
+
+.html_rtl #epg_time {
+	float: left;
+}
+
+
+.epgDesc{
+    height: 332px;
+    width: 1920px;
+    font-size: 0;
+	white-space: nowrap;
+}
+.epgDesc > div{
+	display: inline-block;
+	vertical-align:top;
+}
+.epgPIP{
+    background-color: transparent;
+    width: 520px;
+    height: 292px;
+    border: #080c13 solid;
+    border-width: 35px 40px 6px 40px;
+    display: inline-block;
+}
+
+#epg_pip_channel{
+	width: 520px;
+    height: 45px;
+    background-color: rgba(0,0,0,0.2);
+    text-align: center;
+    font-size: 30px;
+    color: #85c5f9;
+    line-height: 45px;
+    margin-top: 247px;
+}
+.epgInfo{
+    height: 332px;
+    width: 1280px;
+    padding-right: 40px;
+    background-color: #080c13;
+}
+.html_rtl .epgInfo{
+    padding-left: 40px;
+    padding-right: 0;
+}
+
+.epgInfoTop{
+	height: 48px;
+	width: 1280px;
+	font-size: 28px;
+	padding-top: 45px;
+}
+
+#epg_channel_number{
+	color: #e8e8e8;
+	margin-right: 20px;
+	max-width: 120px;
+}
+
+#epg_channel_name{
+	color: #e8e8e8;
+	margin-right: 20px;
+	max-width: 560px;
+}
+
+.epgInfoTop > img{
+	margin-right: 2px;
+	height: 30px;
+	width: 30px;
+}
+
+.html_rtl #epg_channel_number{
+	margin-left: 20px;
+	margin-right: 0;
+}
+
+
+.html_rtl #epg_channel_name{
+	margin-left: 20px;
+	margin-right: 0;
+}
+
+.html_rtl .epgInfoTop > img{
+	margin-left: 2px;
+	margin-right: 0;
+}
+
+
+.epgProgramType{
+	max-width: 430px;
+	color: #a1a5ac;
+	display: inline-block;
+	float: right;
+}
+.epgProgramType span{
+	max-width: 110px;
+	float: right;
+}
+
+
+.html_rtl .epgProgramType {
+	float: left;
+}
+
+.html_rtl .epgProgramType span{
+	float: left;
+}
+
+
+
+
+#epg_type_color_purple{
+	border-bottom: 5px #c225b2 solid;
+}
+#epg_type_color_green{
+	border-bottom: 5px #02d9b8 solid;
+	margin-left: 50px;
+}
+#epg_type_color_pink{
+	border-bottom: 5px #d07364 solid;
+	margin-left: 50px;
+}
+
+#epg_type_color_purple.disable{
+    display: none;
+}
+
+#epg_type_color_green.disable{
+    display: none;
+}
+#epg_type_color_pink.disable{
+    display: none;
+}
+.html_rtl #epg_type_color_green{
+	margin-right: 50px;
+	margin-left: 0;
+}
+
+.html_rtl #epg_type_color_pink{
+	margin-right: 50px;
+	margin-left: 0;
+}
+
+
+.epgInfoMid{
+	height: 70px;
+	width: 1280px;
+	font-size: 40px;
+	color: #a1a5ac;
+}
+#epg_progrm_name{
+	max-width: 1100px;
+	margin-right: 30px;
+}
+.epgInfoMid img{
+	margin-right: 10px;
+}
+
+.html_rtl #epg_progrm_name{
+	margin-left: 30px;
+	margin-right: 0;
+}
+
+.html_rtl .epgInfoMid img{
+	margin-left: 10px;
+	margin-right: 0;
+}
+
+
+
+
+#epg_program_time{
+	max-width: 1100px;
+	height: 40px;
+	font-size: 28px;
+	color: #e8e8e8;
+	direction: ltr;
+}
+
+#epg_program_detail{
+	max-height: 110px;
+	line-height: 35px;
+	font-size: 26px;
+	color: #a1a5ac;
+	overflow: hidden;
+	white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+#epg_detail_ellipsis{
+    height: 15px;
+    font-size: 28px;
+    color: #a1a5ac;
+    line-height: 1px;
+    visibility: hidden;
+}
+
+.epgEventList{
+    width: 1840px;
+    height: 565px;
+    padding: 30px 40px 0px 40px;
+    background-color: #080c13;
+}
+
+
+.epgTimeAxis{
+    width: 1840px;
+	height: 54px;
+	border-bottom: #3d4041 1px solid;
+	background-color: #1e1e1e;
+    font-size: 0;
+}
+.epgTimeAxis > span{
+	font-size: 24px;
+	color: #767d88;
+	text-indent: 10px;
+	background-image: url(../../img/epg/npg_img_tli_lst_col_bk.png);
+	width: 450px;
+	height: 54px;
+	line-height: 54px;
+	background-repeat: no-repeat;
+}
+
+.epgTimeAxis > div{
+	width: 490px;
+	height: 54px;
+	line-height: 54px;
+	display: inline-block;
+}
+
+.epgTimeAxis > div span{
+	font-size: 24px;
+	color: #767d88;
+	text-indent: 20px;
+}
+
+#epg_channel_list{
+	height: 510px;
+    width: 1840px;
+    font-size: 0;
+}
+
+#epg_channel_list > li{
+	height: 84px;
+	/*line-height: 85px;*/ /*for vertical-align*/
+    border: #3d4041 solid;
+    border-width: 0 1px 1px 1px;
+	width: 1838px;
+	font-size: 0;
+	white-space: nowrap;
+}
+
+#epg_channel_list > li.disable > *{
+	display: none;
+}
+.epgChannels{
+	width: 490px;
+	display: inline-block;
+	height: 84px;
+    vertical-align: top;
+}
+
+
+.epgListChannelNum{
+	font-size: 30px;
+	color: #a1a5ac;
+	width: 90px;
+	text-indent: 10px;
+    height: 84px;
+    line-height: 84px;
+}
+
+.epgListChannelName{
+	font-size: 30px;
+	color: #e8e8e8;
+	width: 280px;
+	text-indent: 10px;
+	margin-right: 10px;
+    height: 84px;
+    line-height: 84px;
+}
+
+.html_rtl .epgListChannelName{
+	margin-left: 10px;
+	margin-right: 0;
+}
+
+.epgListChannelImg{
+	width: 30px;
+	height: 30px;
+	margin: 27px 10px 27px 0;
+}
+
+.html_rtl .epgListChannelImg{
+	margin: 27px 0 27px 10px;
+}
+
+#epg_channel_list > li.focus > div span{
+    color: #85c5f9;
+}
+#epg_channel_list > li.selected > div span{
+	color: #85c5f9;
+}
+
+
+#epg_channel_list ul{
+	width: 1348px;
+	height: 84px;
+	display: inline-block;
+    background-color: #0c1526;
+    overflow: hidden;
+}
+
+#epg_channel_list ul li{
+	height: 84px;
+	display: inline-block;
+	/*transition: width 0.3s ease-in-out;*/
+}
+
+#epg_channel_list ul li > span{
+	height: 80px;
+	width: inherit;
+	font-size: 28px;
+	line-height: 84px;
+	text-indent: 20px;
+}
+#epg_channel_list ul li > img{
+	height: 4px;
+	width: inherit;
+    display: block;
+}
+
+#epg_channel_list ul li > div{
+    position: relative;
+    top: -80px;
+    height: 30px;
+    text-align: right;
+}
+
+.html_rtl #epg_channel_list ul li > div{
+    text-align: left;
+}
+
+
+#epg_channel_list ul li > div img{
+	width: 30px;
+	height: 30px;
+    margin-right: 10px;
+}
+
+.html_rtl #epg_channel_list ul li > div img{
+    margin-left: 10px;
+	margin-right: 0;
+}
+
+.epgEventListNormal{
+	color: #a1a5ac;
+	width: 0;
+	/*background-image: url(../../img/epg/normal_event.png);*/
+    background: -o-linear-gradient(top, #263643, #2a3e4e);
+    background: -webkit-linear-gradient(top, #263643, #2a3e4e);
+	border-left: 1px #3d4041 solid;
+}
+.epgEventListDisable{
+}
+.epgEventListFocus{
+	color: #e8e8e8;
+	box-shadow: 0 0 0 4px #84ecff inset;
+	/*background-image: url(../../img/epg/normal_event.png);*/
+    background: -o-linear-gradient(top, #263643, #2a3e4e);
+    background: -webkit-linear-gradient(top, #263643, #2a3e4e);
+	border-left: 1px #3d4041 solid;
+}
+.epgEventListSelected{
+	color: #e8e8e8;
+	/*background-image: url(../../img/epg/current_event.png);*/
+    background: -o-linear-gradient(top, #164775, #1263a2);
+    background: -webkit-linear-gradient(top, #164775, #1263a2);
+	border-left: 1px #3d4041 solid;
+}
+
+.epgEventListFocus > img{
+	visibility: hidden;
+}
+
+
+#epg_time_line_current.normal{
+    background-image: url(../../img/epg/time_line.png);
+    width: 85px;
+    height: 565px;
+    position: relative;
+    top: -565px;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #293036;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#epg_time_line_current.disable{
+	display: none;
+}
+
+.epgBottom{
+	height: 80px;
+    width: 1920px;
+    background-color: #080c13;
+}
+
+#epg_opertion_btn{
+	height: 80px;
+    width: 1840px;
+    padding: 0 40px 0 40px;
+}
+
+
+#epg_opertion_btn li{
+	display: inline-block;
+	margin-left: 40px;
+	text-indent: 20px;
+	font-size: 22px;
+	color: #6b6f79;
+	height: 80px;
+	float: right;
+}
+
+.html_rtl #epg_opertion_btn li {
+	float: left;
+	margin-right: 40px;
+	margin-left: 0;
+}
+
+
+#epg_opertion_btn li img{
+    margin: 20px 0 20px 0;
+}
+#epg_opertion_btn li span{
+	height: 80px;
+	line-height: 80px;
+}
+
+.freeviewLogo{
+	display: none;
+	position: relative;
+	top: -70px;
+	left: 12px;
+	background-image: url(../../img/epg/Freeview.png);
+	height: 64px;
+	width: 282px;
+}

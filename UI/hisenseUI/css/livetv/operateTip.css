@@ -1,0 +1,109 @@
+#livetv_operate_tip{
+    position: absolute;
+    height: 1080px;
+    width: 1920px;
+}
+
+#livetv_operate_tip span{
+    display: block;
+    float: left;
+    font-size: 30px;
+    color: #9ba2ad;
+    text-align: center;
+    /*width: inherit;*/
+    margin-left: 25px;
+}
+#livetv_operate_tip > div{
+    display: none;
+}
+
+.infoBarTip{
+    position: absolute;
+    left: 718px;
+    top: 0px;
+    background-image: url(../../img/infobar/bgup.png);
+    width: 485px;
+    height: 325px;
+}
+.infoBarTip div{
+    background-image: url(../../img/infobar/up.png);
+    height: 240px;
+    background-repeat: no-repeat;
+    background-position: 50% 70%;
+}
+
+
+.chListTip{
+    position: absolute;
+    left: 1454px;
+    top: 353px;
+    background-image: url(../../img/infobar/bgok.png);
+    width: 466px;
+    height: 303px;
+}
+.chListTip div{
+    background-image: url(../../img/infobar/ok.png);
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: 50% 70%;
+}
+
+.pvrTshiftTip{
+    position: absolute;
+    left: 737px;
+    top: 755px;
+    background-image: url(../../img/infobar/bgdown.png);
+    width: 445px;
+    height: 325px;
+}
+.pvrTshiftTip div{
+    background-image: url(../../img/infobar/down.png);
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: 50% 70%;
+}
+
+.recentTip{
+    position: absolute;
+    left: 217px;
+    top: 819px;
+    background-image: url(../../img/infobar/bgback.png);
+    width: 445px;
+    height: 261px;
+}
+.recentTip div{
+    background-image: url(../../img/infobar/back.png);
+    height: 150px;
+    background-repeat: no-repeat;
+    background-position: 50% 70%;
+}
+
+#operate_tip_info{
+    width: 435px;
+}
+#operate_tip_chlist{
+    width: 416px;
+}
+#operate_tip_pvr{
+    width: 395px;
+}
+#operate_tip_recent{
+    width: 395px;
+}
+
+#operate_tip_key_back{
+    position: absolute;
+    right: 60px;
+    bottom: 60px;
+    width: 234px;
+    height: 66px;
+    line-height: 60px;
+    font-size: 30px;
+    background-color: #292a33;
+    text-align: center;
+    box-shadow: inset 0 0 0 4px #84ecff;
+}
+
+#operate_tip_key_back.focus{
+    color: #f0f0f0;
+}

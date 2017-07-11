@@ -1,0 +1,5 @@
+/**
+ * Created by xuehongfeng on 14-11-7.
+ */
+
+var boe_lang_html="<div class=\"boe_page_ContentFrame\">"+"    <ul id=\"boeLanGridUl\" class style=\"width: 1440px;height:550px;float: left;margin-top: 0px\">"+"        <li class=\"boeGridUlLi_2_Normal\">"+"            <span id=\"langName\" class = \"langName\"></span>"+"            <span id=\"langName_marquee\" class = \"langName_marquee\"></span>"+"            <span id=\"langSelectImg\" style=\"margin-left: 250px;margin-top:10px;line-height: 110px\"><img/></span>"+"        </li>"+"    </ul>"+"    <div style=\"position:absolute;left:1450px;top:20px;width: 4px;height:550px\">"+"        <div id=\"LangScrollBar\" style=\"width: 8px;position:relative;background-color:#555b60;border-radius: 4px;\"></div>"+"    </div>"+"</div>"+"<div class=\"boePageRightArrowFrame\">"+"    <div id=\"langPageRightArrowBtn\" class=\"boeRightArrowBtnNormal\"></div>"+"</div>";

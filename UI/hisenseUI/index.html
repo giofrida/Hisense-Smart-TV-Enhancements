@@ -1,0 +1,583 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" class="html_ltr">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="css/settingsys.css" rel="stylesheet" type="text/css">
+    <link href="css/musicPlayer.css" rel="stylesheet" type="text/css">
+    <link href="css/videoPlayer.css" rel="stylesheet" type="text/css">
+    <!--<link href="css/fileBrowser.css" rel="stylesheet" type="text/css">-->
+    <link href="css/picPlayer.css" rel="stylesheet" type="text/css">
+    <link href="css/kPad.css" rel="stylesheet" type="text/css">
+    <link href="css/scrollbar.css" rel="stylesheet" type="text/css">
+    <link href="css/boe_index.css" rel="stylesheet" type="text/css">
+    <!--<link href="css/channelCommon.css" rel="stylesheet" type="text/css">-->
+    <link href="css/livetv/liveTV.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../hiSDK/zepto.min.js"></script>
+    <script type="text/javascript" src="../hiSDK/fx.js"></script>
+    <script type="text/javascript" src="lang/languages_media.js"></script>
+    <script type="text/javascript" src="debug.js"></script>
+    <script type="text/javascript" src="HisPreDef.js"></script>
+    <script type="text/javascript" src="parseXML.js"></script>
+    <script type="text/javascript" src="keyboard/keyDefine.js"></script>
+    <script type="text/javascript" src="model/model.js"></script>
+
+    <script type="text/javascript" src="../hiSDK/hiUISDK.js"></script>
+    <script type="text/javascript" src="modulePages/livetv/livetvDef.js"></script>
+    <script type="text/javascript" src="modulePages/livetv/liveTV.js"></script>
+    <!--<script type="text/javascript" src="modulePages/livetv/channelList.js"></script>-->
+    <!--kpad-2015-5-19-->
+    <script type="text/javascript" src="modulePages/kPad/kPad.js"></script>
+    <script type="text/javascript" src="configTemplates.js"></script>
+    <script type="text/javascript" src="configModules.js"></script>
+    <script type="text/javascript" src="config.js"></script>
+
+    <link href="css/wizardIndex.css" rel="stylesheet" type="text/css">
+    <link href="css/wizardDialogStyle.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="scheduleList.js"></script>
+    <script type="text/javascript" src="modulePages/skb/iqqi/js/invoke.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="tvservice.js"></script>
+    <script type="text/javascript" src="scrollbar.js"></script>
+    <script type="text/javascript" src="modulePages/setting/SettingSndInterface.js"></script>
+    <script type="text/javascript" src="modulePages/setting/SettingPubFunc.js"></script>
+    <!--<script type="text/javascript" src="modulePages/channelList/blankPage.js"></script>-->
+
+    <!--<script type="text/javascript" src="../../launcher/js/launcherString.js"></script>-->
+    <!-- // <script type="text/javascript" src="../../launcher/js/launcherTempString.js"></script> -->
+    <script type="text/javascript" src="modulePages/himedia/jdrag.js"></script>
+    <!-- // <script type="text/javascript" src="modulePages/epg/epg_tempData.js"></script> -->
+    <!-- // <script type="text/javascript" src="modulePages/livetv/livetvString.js"></script> -->
+    <!--<script type="text/javascript" src="tempString/blankPageString.js"></script>-->
+    <script type="text/javascript" src="../../OEMLauncher/OEMLauncherLiveTv.js"></script>
+
+    <!--end the setting -->
+
+
+    <!--<script type="text/javascript" src="util.js"></script>-->
+    <!--tshift code-->
+    <link href="css/tshift.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="txtComputeWidth" style="position:absolute;visibility:hidden;white-space:pre;"></div>
+<div id="sdkImgPreLoading" style="width: 1000px;height: 10px;position: absolute;z-index: 2000;opacity: 0.01"></div>
+<div id="mainOEMLauncher" style="position: absolute;left: 0px;top: 0px;height: 1080px;width: 1920px;overflow: hidden;display: none">
+    <div id="mainFocus" class="oem_launcherFocus" ></div>
+    <img id="mainFocusTL" class="oem_launcherFocusTL" src="img/cTL.png">
+    <img id="mainFocusTR" class="oem_launcherFocusTR" src="img/cTR.png">
+    <img id="mainFocusBL" class="oem_launcherFocusBL" src="img/cBL.png">
+    <img id="mainFocusBR" class="oem_launcherFocusBR" src="img/cBR.png">
+     <div class="OEMlauncherBackgroundTop"></div>
+     <div class="OEMlauncherBackgroundLeft"></div>
+     <div class="OEMlauncherBackgroundMiddle"></div>
+     <!--<div class="OEMlauncherBackgroundMiddleVideo"></div>-->
+     <div class="OEMlauncherBackgroundRight"></div>
+     <div class="OEMlauncherBackgroundBottom"></div>
+    <div id="OEMlauncherPage" class="oem_launcherContainer">
+        <div id="_blank" style="width:70px;height: 100px;float:left;display:block;"></div>
+    </div>
+</div>
+<div id="VIDAALiteBackgroundPage" style="z-index:0;position:absolute;height: 1080px;width: 1920px;background-color:rgba(0, 0, 0, .80);overflow: hidden;display: none;"></div>
+<div id="VIDAALiteNavPage" style="display:none"></div>
+<div id="VIDAALiteAppPage" style="display:none"></div>
+<div id="VIDAALiteMediaPage" class="VIDAALiteMediaCommon" style="display:none"></div>
+<div id="VIDAALiteRecommendPage" class="VIDAALiteRecommendCommon" style="display:none"></div>
+<div id="VIDAALiteRecommendationEUPage" class="VIDAALiteRecommendationEUCommon" style="display:none"></div>
+<div id="VIDAALiteFreeViewPage" class="VIDAALiteFreeViewCommon" style="display:none"></div>
+<div id="VIDAALiteTvInput"class="VIDAALiteTvInputCommon" style="display:none"></div>
+<div id="VIDAALiteVideoPage" class = "VIDAALiteVideoCommon"style="display:none"></div>
+<div id="OEMLauncherAppDeleteDialog" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="VIDAALiteLauncherEULADialog" class="wizardDialogBlackBg" style="display: none"></div>
+
+<!--epos-2014-12-3-->
+<div id="epos" class="epos" style="display:none"></div>
+<!--epos countdown box-2015-1-15-->
+<div id="setting_epos_countdown_page" class="setting_sys_bg_cls" style="display: none"></div>
+<!--standby record dialog-2015-1-26-->
+<div id="standbyRecordDialog" class="standbyRecordDialog" style="display: none"></div>
+<!--pvr finish dialog-2015-1-27-->
+<div id="pvrFinishDialog" class="pvrFinishDialog" style="display: none"></div>
+<!--pvr tshift switch dialog-2015-2-9-->
+<div id="pvrTshiftShowDialog" class="pvrTshiftShowDialog" style="display: none"></div>
+<div id="shiftHdSizeList" class="shiftHdSizeList" style="display: none"></div>
+<!--pvr stop to switch-2015-3-4-->
+<div id="pvrStopToSwitchDialog" class="pvrStopToSwitchDialog" style="display:none"></div>
+<!--new record tip dialog-2015-3-7-->
+<div id="newRecordTipDialog" class="newRecordTipDialog" style="display:none"></div>
+<!--pvr hard disk check-2015-3-8-->
+<div id="pvrHardDiskCheck" class="pvrHardDiskCheck" style="display:none"></div>
+<!--pvr hard disk check retry-2015-3-8-->
+<div id="pvrHDCheckRetryDialog" class="pvrHDCheckRetryDialog" style="display:none"></div>
+<!--pvr hard disk list-2015-3-8-->
+<div id="pvrHDList" class="pvrHDList" style="display:none"></div>
+<!--pvr begin or cancel record dialog-2015-3-25-->
+<div id="beginRecordDialog" class="beginRecordDialog" style="display:none"></div>
+<!--pvr hard disk speed check result-2015-3-29-->
+<div id="pvrHDSpeedCheckResult" class="pvrHDSpeedCheckResult" style="display:none"></div>
+<!--pvr record tip-2015-4-3-->
+<div id="pvrRecordTip" class="pvrRecordTip" style="display:none"></div>
+<!--modulePages-->
+
+
+<div id="epg" class="commonPageClass"></div>
+<div id="epg_list_page" class="commonPageClass"></div>
+<div id="epg_book_add_page" class="commonPageClass"></div>
+<div id="epg_book_edit_page" class="commonPageClass"></div>
+<div id="epg_book_schedule_page" class="commonPageClass"></div>
+<div id="epg_book_conflict_page" class="commonPageClass"></div>
+<div id="epg_book_weekly_page" class="commonPageClass"></div>
+<div id="epg_detail_page" class="commonPageClass"></div>
+<div id="epg_fvp_detail_page" class="commonPageClass"></div>
+
+<div id="epg_theme_color_page" class="commonPageClass"></div>
+
+
+<div id="launcher_stabar" style="display:none"></div>
+<div id="myLauncher" style="display:none"></div>
+<div id="launcher_allapps" style="display:none"></div>
+<div id="launcher_apps" style="display:none"></div>
+<div id="launcher_usa_vod" style="display:none"></div>
+<div id="launcher_canada_vod" style="display:none"></div>
+<div id="launcher_template14_vod" style="display:none"></div>
+<div id="launcher_template42_apps" style="display:none"></div>
+<div id="launcher_template43_vod" style="display:none"></div>
+<div id="launcherHimediaPageId" style="display: none"></div>
+<div id="launcherHimediaPageIdBGH" style="display: none"></div>
+<div id="liveTv_launcher" dir="ltr" style="display:none"></div>
+<div id="launcher_module25" class="launcher_module25" style="display:none"></div>
+<div id="launcher_module8" class="launcher_module8" style="display:none"></div>
+<div id="launcher_module9" class="launcher_module9" style="display:none"></div>
+<div id="launcher_EU_movie_Ger" class = "launcher_EU_movie_Ger" style="display:none"></div>
+<div id="launcher_EU_movie_Eng" class = "launcher_EU_movie_Eng" style="display:none"></div>
+<div id="launcher_EU_kids" class = "launcher_EU_kids" style="display:none"></div>
+<div id="launcher_favoritelist" style="display:none"></div>
+<div id="launcher_recentwatch" class="launcher_recentwatch" style="display:none"></div>
+
+<div id="app_youtube" style="display:none"></div>
+<div id="app_vudu" style="display:none"></div>
+<div id="app_amazon" style="display:none"></div>
+<div id="app_amazonruby" style="display:none"></div>
+<div id="app_netflix" style="display:none"></div>
+<div id="app_lau_browser" style="display:none"></div>
+<div id="app_bridge" style="display:none"></div>
+<div id="app_factory" style="display: none;"></div>
+
+<!--wizard Begin-->
+<div id="boe_bg_page_id" class="boe_bg" style="display: none"></div>
+<div id="boe_lang_page_id" class="boe_Page" style="display: none"></div>
+<div id="boe_cty_page_id" class="boe_Page" style="display: none"></div>
+<div id="boe_timezone_page_id" class="boe_Page" style="display: none"></div>
+<div id="boe_complete_page_id" class="boe_Page" style="display: none"></div>
+<div id="boe_retail_dialog" class="boe_retail_dialog_bg_cls" style="display: none"></div>
+<div id="boe_disclaimer_page_id" class="boe_Page" style="display: none"></div>
+<div id="boe_disinfo_page_id" class="boe_Page" style="display: none;background-color:rgba(0,0,0,0.6)"></div>
+<div id="boe_netbg_page_id" class="boe_Page" style="display: none"></div>
+<div id="boe_ethernet_result" class="boe_Page" style="display: none"></div>
+<div id="boe_search_wifi" class="boe_SearchWifiPage" style="display: none;"></div>
+<div id="boe_search_ethernet" class="boe_SearchWifiPage" style="display: none;"></div>
+<div id="boe_wifi_notplugin" class="boe_NetworkWifiSetPage" style="display: none;"></div>
+<div id="boe_NetworkWifiSetPage" class="boe_NetworkWifiSetPage" style="display: none;"></div>
+<div id="boe_NetworkWifiWPS" class="boe_NetworkWifiWPSPage" style="display: none"></div>
+<div id="boe_NetworkWifiPWInputDialog" class="boe_NetworkWifiPWInputDialog" style="display: none"></div>
+<div id="boe_NetworkWifiAddDialog" class="boe_NetworkWifiAddDialog" style="display: none"></div>
+<div id="boe_NetworkConnNetDialog" class="boe_SearchWifiPage" style="display: none"></div>
+<div id="boe_NetworkConnResDialog" class="boe_SearchWifiPage" style="display: none"></div>
+<div id="boe_NetworkEthernetType" class="boe_NetworkEthernetType" style="display: none"></div>
+<div id="boe_NetworkEthernetSetPage" class="boe_NetworkEthernetSetPage" style="display: none"></div>
+<div id="boe_input_source_page_id" class="boe_Page" style="display: none"></div>
+<!--setting Begin-->
+
+<div id="setting_sys_qs_page" style="display: none"></div>
+<div id="setting_sys_qs_list" class="setting_sys_qs_list" style="display: none"></div>
+<div id="setting_sys_qs_list1" class="setting_sys_qs_list" style="display: none"></div>
+<div id="setting_fircls_page" class="setting_first_page" style="display: none"></div>
+<div id="setting_sys_lang1_page" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_lang2_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_mode_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_menu_timeout_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_cec_page" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_time_page" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_security_page" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_agelock_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_locaton_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_pvrlist_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="SettingThiftHdSizeList" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_pvr_check_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_pvr_format_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_timelist_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_timedate_page" class="setting_sys_lang1__cls" style="width:1082px;display: none"></div>
+<div id="setting_sys_time_poweron_page" class="setting_sys_lang1__cls" style="width:1082px;display: none"></div>
+<div id="setting_sys_time_poweroff_page" class="setting_sys_lang1__cls" style="width:1082px;display: none"></div>
+<div id="setting_sys_weekly_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_time_standby_page" class="setting_sys_lang1__cls" style="width:1082px;display: none;"></div>
+<div id="setting_sys_inputlable_page" class="setting_sys_lang1__cls" style="width:1082px;display: none;"></div>
+<div id="setting_sys_appset_page" class="setting_sys_lang1__cls" style="display: none;"></div>
+<div id="setting_sys_appset_sa_page2" class="setting_sys_lang1__cls" style="display: none;"></div>
+<div id="setting_sys_blocktime_page" class="setting_sys_lang1__cls" style="width: 1082px;display: none"></div>
+<div id="setting_sys_locktime2_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_proglock_page" class="setting_sys_lang1__cls" style="width:1082px;display: none"></div>
+<div id="setting_sys_cc_page" class="setting_sys_cc_cls" style="display: none"></div>
+<div id="setting_sys_inputdate_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_inputtime_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_inputblock_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_tvrating_list1_page" class="setting_sys_menu_timeout_cls" style="display: none;"></div>
+<div id="setting_sys_us_tvrating_page" class="setting_sys_menu_timeout_cls" style="display: none;"></div>
+<div id="setting_sys_open_vchip_cls1_page" class="setting_sys_lang1__cls" style="width:1112px;display: none;"></div>
+<div id="setting_sys_open_vchip_cls2_page" class="setting_sys_lang1__cls" style="width:1142px;display: none;"></div>
+<div id="setting_sys_open_vchip_cls3_page" class="setting_sys_menu_timeout_cls" style="display: none;"></div>
+
+
+<div id="setting_ver_list_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_cecdev_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_nav_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_pvrdialog_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_dialog1_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_diskcheck_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_pvr_page" class="setting_sys_lang1__pvr" style="width:1082px;display: none"></div>
+<div id="setting_sys_ad_page" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_ad_page2" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_xt910ad_page" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_ind_light_page" class="setting_sys_lang1__cls" style="display: none;width: 1082px;"></div>
+<div id="setting_sys_ad_submode_page" class="setting_sys_menu_timeout_cls" style="display: none;"></div>
+
+<div id="setting_sys_update_page" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="setting_sys_update_page2" class="setting_sys_lang1__cls" style="display: none"></div>
+
+<div id="setting_sys_disclaimer_page" class="setting_sys_lang1__cls" style="display: none ;  width: 1082px;"></div>
+<div id="setting_sys_dis_fir_page" class="setting_sys_lang1__cls" style="display: none"></div>
+
+<div id="setting_sys_channel_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_about_ver_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_locktime_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_autotime_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_update_fir_page" class="setting_first_page" style="display: none"></div>
+<div id="setting_update_load_page" class="setting_sys_update_page_cls" style="display: none"></div>
+<div id="setting_update_progressing_page" class="setting_sys_update_page_cls" style="display: none"></div>
+<div id="setting_update_verifying_page" class="setting_sys_update_page_cls" style="display: none"></div>
+<div id="setting_update_verifyok_page" class="setting_sys_update_page_cls" style="display: none"></div>
+<div id="setting_update_ver_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_chgpwd_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_inputmodule_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_tvname_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_pwd_error_dialog" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_time_info_dialog" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_autoupdate_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_forceupdate_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_update_report_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_towizard_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_update_spacecheck_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_appupdate_page" class="setting_sys_bg_cls" style="display: none;"></div>
+<div id="setting_appupdate_progress_page" class="setting_sys_bg_cls" style="display: none;"></div>
+<div id="setting_appupdate_dialog_page" class="setting_sys_bg_cls" style="display: none"></div>
+<div id="setting_sys_chgpwd2_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_sys_update_switch_page" class="setting_sys_menu_timeout_cls" style="display: none"></div>
+<div id="setting_cc_list_page" class="setting_sys_menu_timeout_cls" style="display: none;background-color:transparent"></div>
+<div id="setting_sleep_list_page" class="setting_sys_menu_timeout_cls" style="display: none;"></div>
+<div id="setting_subtitle_list_page" class="setting_sys_menu_timeout_cls" style="display: none;background-color:transparent"></div>
+<div id="setting_txt_list_page" class="setting_sys_menu_timeout_cls" style="display: none;background-color:transparent"></div>
+<div id="setting_appForupdate_page" class="setting_sys_bg_cls" style="display: none;"></div>
+
+
+<!--picture Begin-->
+<div id="setting_pic_backlight" class="setting_pic_backlight" style="display: none"></div>
+<div id="setting_pic_mode" class="setting_snd_mode" style="display: none"></div>
+<div id="setting_pic_apply_mode_page" class="setting_snd_head_phone" style="display: none"></div>
+<div id="setting_pic_brightness_contrast_color" class="setting_pic_brightness_contrast_color" style="display: none"></div>
+<div id="setting_pic_aspect_ratio" class="setting_snd_mode" style="display: none"></div>
+<div id="setting_pic_reset" class="setting_snd_reset_audio_settings_all_black" style="display: none"></div>
+<div id="setting_pic_color_tuner_reset" class="setting_snd_reset_audio_settings_all_black" style="display: none"></div>
+<div id="setting_pic_hue_sat_bri_page" class="setting_pic_hue_sat_bri_page" style="display: none"></div>
+<div id="setting_pic_color_tuner" class="setting_pic_color_tuner" style="display: none"></div>
+<div id="setting_pic_white_balance_10point_reset" class="setting_snd_reset_audio_settings_all_black" style="display: none"></div>
+<div id="setting_pic_white_balance_2point_reset" class="setting_snd_reset_audio_settings_all_black" style="display: none"></div>
+<div id="setting_pic_white_balance_10point_rgb_page" class="setting_pic_hue_sat_bri_page" style="display: none"></div>
+<div id="setting_pic_white_balance_2point_rgb_offset_gain_page" class="setting_pic_hue_sat_bri_page" style="display: none"></div>
+<div id="setting_pic_white_balance_10point_level" class="setting_pic_white_balance_10point_level" style="display: none"></div>
+<div id="setting_pic_white_balance_2point_page" class="setting_pic_white_balance_2point_page" style="display: none"></div>
+<div id="setting_pic_white_balance_10point_page" class="setting_pic_white_balance_10point_page" style="display: none"></div>
+<div id="setting_pic_display_component_reset_page" class="setting_snd_reset_audio_settings_all_black" style="display: none"></div>
+<div id="setting_pic_display_component_page" class="setting_snd_head_phone" style="display: none"></div>
+<div id="setting_pic_tint_page_new"  class="setting_pic_hue_sat_bri_page" style="display: none"></div>
+<div id="setting_pic_sharpness_page_new" class="setting_pic_hue_sat_bri_page" style="display: none"></div>
+<div id="setting_pic_advanced_page_new" class="setting_pic_advanced_page_new" style="display: none"></div>
+
+
+<div id="setting_pic_Source_page" style="display: none"></div>
+<div id="setting_pic_SourceLock_page" style="display: none"></div>
+<div id="setting_HotelMenu_page" style="display: none"></div>
+<div id="setting_HotelInputLock_page" class="setting_hotelinputlock_all" style="display: none"></div>
+<div id="setting_HotelInputLockSA_page" class="setting_hotelinputlock_all" style="display: none"></div>
+<div id="setting_HotelCloneDialog_Page" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="setting_HotelUsbClone_Page" style="display: none"></div>
+<!--picture End-->
+
+<div id="mixBar_page" style="display: none"></div>
+<!--network set begin-->
+<div id="settingNetSetMainPageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingNetStatusDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetWakeUpByWifiDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetWakeUpPowerDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetDMRDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetTVNameListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetTVNameInputDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetDisclaimerPageId" class="setting_sys_lang1__cls" style="display:none"></div>
+<div id="settingNetSetDisInfoPageId" class="setting_sys_lang1__cls" style="display:none"></div>
+<div id="settingNetSetNetTypeListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetWifiSetPageId" class="settingNetSetMainChildPageClass" style="display: none"></div>
+<div id="settingNetSetSearWifiDialogId" class="settingNetSetMainChildPageClass" style="display: none"></div>
+<div id="settingNetSetPWInputDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetConnNetDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetConnResDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetWifiNotPluginDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetWifiAddDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetAdvanceListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetPinDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetPBCDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetEtherSetPageId" class="setting_sys_lang1__cls" style="display: none"></div>
+<div id="settingNetSetEtherIpSetPageId" class="settingNetSetMainChildPageClass" style="display: none"></div>
+<div id="settingNetSetWifiIpSetDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetTestDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingNetSetTestResDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<!--network set end-->
+<!--channel set begin-->
+<div id="settingChSetScanTypeListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetAutoScanPageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetClearChannelDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetDTVTManuSetPageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetDTVCManuSetPageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetDTVManuPageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetATVManuSetPageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetFavListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetSkipListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetChListUpSwitchDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetNoChannelDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetParLockInputDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetATVColorSysListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetATVSoundSysListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+
+<div id="settingChSetMainPageId" class="settingChSetCommPageCls" style="display: none;"></div>
+<div id="settingChSetDVBC2PageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetScramListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetNetIdInputDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetDVBCOperListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetDVBSOperListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetDVBT2PageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetDVBTUKAreaListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetDVBTLCNListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetDVBS2PageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetDVBS3PageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetDVBS4PageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetDVBAutoPageId" class="settingChSetCommPageCls" style="display: none"></div>
+<div id="settingChSetSatelliteListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetBandFreInputDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetChNumberChangeDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetTunerModePageId" class="settingChSetEUPageCls" style="display: none"></div>
+<div id="settingChSetSatelliteModePageId" class="settingChSetEUPageCls" style="display: none"></div>
+<div id="settingChSetDVBOperatorPageId" class="settingChSetEUPageCls" style="display: none"></div>
+<div id="settingChSetSelSatellitePageId" class="settingChSetEUPageCls" style="display: none"></div>
+<div id="settingChSetCommDVBSPageId" class="ChannelCommMainPage" style="display: none"></div>
+<div id="settingChSetCommDVBTPageId" class="ChannelCommMainPage" style="display: none"></div>
+<div id="settingChSetCommDVBCPageId" class="ChannelCommMainPage" style="display: none"></div>
+<div id="settingChSetAntSetupPageId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetAutoSatelliteListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetEUAutoPageId" class="settingChSetEUPageCls" style="display: none"></div>
+<div id="settingChSetEUAutoScanPageId" class="settingChSetEUPageCls" style="display: none"></div>
+<div id="settingChSetExitSetupDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<!--channel set end-->
+
+<!--channel manager begin-->
+<div id="channel_manager_page" class="chl_manager_page1" style="display: none"></div>
+<div id="channel_manager_bg" class="chl_manager_bg_main" style="display: none"></div>
+<div id="channel_manager_type" style="position: absolute;display: none"></div>
+<div id="channel_manager_delete" style="position: absolute;display: none"></div>
+<div id="channel_manager_fav_edit" class="chl_manager_bg_main" style="display: none"></div>
+<div id="channel_manager_fliter" class="chl_manager_fliter_page_bg" style="display: none"></div>
+<div id="channel_manager_rename" class="chl_manager_rename_page_bg" style="display: none"></div>
+<div id="channel_manager_dialog" class="chl_manager_dialog_page_bg" style="display: none"></div>
+<!--channel manager end-->
+<!--软键盘End-->
+<div id="softKeyBoard" class="softKeyBoard" style="display: none"></div>
+<div id="softKeyBoardLanguage" class="softKeyBoardLanguage" style="display: none"></div>
+<div id="iqqi" class="iqqi" style="display: none"></div>
+<div id="iqqi_lan_switch_page" class="iqqi_lan_switch_page_presto_1080P_normal" style="display: none"></div>
+<!--软键盘 Begin-->
+
+<!--speech begin-->
+<div id="Voice_assistant_page" style="display: none"></div>
+<div id="voice_help_mainpage" style="display: none"></div>
+<div id="voice_help_subpage" style="display: none"></div>
+<div id="speech_Lan_page" style="display: none"></div>
+<div id="speech_LanResure_page" style="display: none"></div>
+
+<div id="Bluetooth_speech_page" style="display: none"></div>
+<div id="BluetoothMatch_speech_page" style="display: none"></div>
+<div id="BluetoothResult_speech_page" style="display: none"></div>
+<!--speech end-->
+<!--Miracast &language key About-->
+
+<div id="setting_pic_Mira_page" style="display: none"></div>
+<div id="setting_Mira_exit_page" style="display: none"></div>
+<div id="setting_Mira_wifi_page" style="display: none"></div>
+
+<!--setting end-->
+<!-- accuweather beg-->
+<div id="accuweather_main" style="display:none"></div>
+<div id="accuweather_deletecity" style="display:none"></div>
+<div id="accuweather_addcity" style="display:none"></div>
+<div id="accuweather_searchlist" style="display:none"></div>
+<div id="accuweather_citylist" style="display:none"></div>
+
+<div id="dialog_common" style="display:none"></div>
+<div id="dialog_usb" style="display: none"></div>
+<div id="dialog_network" style="display: none"></div>
+<div id="dialog_reminder" style="display: none"></div>
+<div id="dialog_headphone_insert" class="snd_popup_headphone_speaker" style="display: none"></div>
+<div id="dialog_pvr_file_manager" class="dialog_pvr_file_manager" style="display: none"></div>
+<div id="dialog_pvr_file_manager_dialog" class="dialog_pvr_file_manager_dialog" style="display: none"></div>
+<!-- accuweather end-->
+<!--pic new start-->
+<div id="setting_pic_3d" class="setting_pic_3d" style="display: none"></div>
+
+<div id="setting_chnl_ci" class="setting_chnl_CI_osd_full_screen_bkg" style="display: none"></div>
+<div id="setting_chnl_CI_PIN_set_page" class="setting_chnl_CI_osd_full_screen_bkg" style="display: none"></div>
+<div id="setting_chnl_advanced" class="setting_chnl_advanced" style="display: none"></div>
+<div id="mheg5_password_osd" class="setting_chnl_CI_osd_full_screen_bkg" style="display: none"></div>
+<div id="setting_msg_page" class="setting_msg_info_normal_bkg" style="display: none"></div>
+<div id="setting_energy_warning" class="setting_energy_warning" style="display: none"></div>
+
+
+
+<!--pic new end-->
+<div id="span_width_only" class="span_width_only"></div>
+<div id="span_scale_only" class="span_scale_only"></div>
+<div id="setting_snd_mode" class="setting_snd_mode_container" style="display: none"></div>
+<div id="setting_snd_apply_mode" class="setting_snd_apply_mode" style="display: none"></div>
+<div id="setting_snd_tv_speaker" class="setting_snd_apply_mode" style="display: none"></div>
+<div id="setting_snd_dbx" class="setting_snd_dbx" style="display: none"></div>
+<div id="setting_snd_sap" class="setting_snd_sap" style="display: none"></div>
+<div id="setting_snd_advanced_settings" class="setting_snd_advanced_settings" style="display: none"></div>
+<div id="setting_snd_equalizer_dialog" class="setting_snd_equalizer_dialog" style="display: none"></div>
+<div id="setting_snd_reset_audio_settings" class="setting_snd_reset_audio_settings_all_black"
+     style="display: none"></div>
+<div id="setting_snd_head_phone" class="setting_snd_head_phone" style="display: none"></div>
+<div id="setting_snd_bassboost" class="setting_snd_bassboost" style="display: none"></div>
+<div id="setting_snd_subwoofer" class="setting_chnl_CI_osd_full_screen_bkg" style="display: none"></div>
+<div id="setting_snd_help_info" class="setting_snd_help_info" style="display: none"></div>
+<div id="setting_snd_popup_headphone_speaker" class="snd_popup_headphone_speaker" style="display: none"></div>
+<div id="ci_op_search_answer_page" class="ci_op_search_answer_page" style="display: none"></div>
+<div id="setting_chnl_EPG_mark" class="setting_chnl_EPG_mark" style="display: none"></div>
+<div id="setting_chnl_advanced_export_to_usb_dialog" class="setting_chnl_CI_osd_full_screen_bkg"
+     style="display: none"></div>
+<div id="setting_chnl_advanced_import_from_usb_dialog" class="setting_chnl_CI_osd_full_screen_bkg"
+     style="display: none"></div>
+
+<div id="dlna_videoPlayer" style="display:none"></div>
+<div id="dlna_musicPlayer" style="display:none"></div>
+<div id="dlna_picPlayer" style="display:none"></div>
+<div name="scrollbarDemo" class="scrollbar_class_demo">
+    <div name="contentPanel">
+    </div>
+    <div name="controlPanel">
+        <!--<div><img name="img1" src="img/up.png"></div>-->
+        <div name="scrollPanel">
+            <div name="sliderPanel"></div>
+        </div>
+        <!--<div><img name="img2" src="img/down.png"></div>-->
+    </div>
+</div>
+<!--tShift begin-->
+<div id="tshiftProgressPage_id" style="display: none"></div>
+<div id="pvrOrtShiftDialogPage_id" style="display: none"></div>
+<div id="tshiftMediaDialog" style="display: none"></div>
+<div id="tShiftMsg_id" style="display: none"></div>
+<!--tShift end-->
+<!--pvr-2014-12-17-->
+<div id="pvrtshift_pvr_page" style="display: none;"></div>
+<!--pvr-2014-12-17-->
+
+<div id="livetv_main" style="display: none"></div>
+<div id="livetv_info_bar" style="display: none"></div>
+<div id="livetv_channel_list" class="commonPageClass"></div>
+<div id="livetv_channel_list_filter" class="commonPageClass"></div>
+<div id="livetv_volume" style="display: none"></div>
+<div id="livetv_auto_standby" style="display: none"></div>
+<div id="livetv_password_dialog" style="display: none;"></div>
+<div id="livetv_search_dialog" style="display: none;"></div>
+<div id="livetv_operate_tip" style="display: none"></div>
+<div id="ginga_app" style="display: none"></div>
+<div id="ginga_cc_switch" class="setting_snd_reset_audio_settings_all_black" style="background-color: rgba(0,0,0,0);display: none"></div>
+<!--SDKPages-->
+<div id="sdkPages"
+     style="width: 1000px;height: 600px;position:absolute ;z-index:1005;background-color: rgba(0,255,0,0.9);margin: 100px auto auto 460px;padding: 10px;display: none;">
+    当前按钮树：<span id='sdkPges'></span><br>
+
+    <div id='sdkPagesContent'></div>
+</div>
+<div id="sdkLoading"
+     style="display:none;position: absolute;width: 1920px;height: 1080px;left:0px;right:0px;background-color: rgba(0,0,0,0.5);z-index: 2005">
+    <img id="loadingImg" src="img/sdk/loading.png" style="display:none;position: relative;left:885px;top:465px; ">
+
+    <div id="loadingDiv" style="display:none;position: relative;left:885px;top:465px;height: 140px;width: 140px;">
+    </div>
+</div>
+<div id="sdkDynamicLoading" class="sdkLoadingPanelHide">
+
+</div>
+<!--message pages-->
+<div id="mymsgbox" style="display: none">
+    <span id="msg_title"></span>
+    <span id="msg_content"></span>
+</div>
+
+<div id="tv_tips_bkg" style="display: none">
+    <div id="tv_tips_osd">
+        <div id="tv_tips_content">AD Mode: On</div>
+    </div>
+</div>
+
+<div  id="livetv_no_text_txt1" class="livetv_no_text_cls1">No Teletext</div>
+<div id="debugLog"
+     style="display:none;background-color:rgba(0,0,0,0.8);font-size: 28px; color:#ffffff; position: absolute;  height:500px; width:1500px;z-index: 1500;left:100px;top:500px;"></div>
+<div id="backgroundPreload" class="launcherBackgroundPreload"></div>
+<div id="black_screen"></div>
+<div id="iconPreload" class="iconPreload">
+    <img src="img/channellist/nomark.png">
+    <img src="img/channellist/mark.png">
+    <img src="img/mixbar/HDMI1In.png">
+    <img src="img/mixbar/HDMI2In.png">
+    <img src="img/mixbar/HDMI3In.png">
+    <img src="img/mixbar/HDMI4In.png">
+    <img src="img/mixbar/AVIn.png">
+    <img src="img/mixbar/componetIn.png">
+    <img src="img/mixbar/scartIn.png">
+</div>
+<div id="my_Myanmar_Font" style="display: none; font-family: my_Myanmar_Font"></div>
+<div id="my_Hindi_Font" style="display: none; font-family: my_Hindi_Font"></div>
+<div id="my_Thai_Font" style="display: none; font-family: my_Thai_Font"></div>
+<div id="kpad"
+     style="width: 966px;height: 282px;position:absolute ;z-index:3004;background-color: rgba(34,37,41,1);
+     margin: 738px auto auto 477px;display: none;">
+    <table id="kPadTable" class="kPadTable">
+        <tr><td><div id="kpad1" style="background-color: #00aaa6">1</div></td>
+            <td><div id="kpad2">2</div></td>
+            <td><div id="kpad3">3</div></td>
+            <td><div id="kpad4">4</div></td>
+            <td><div id="kpad5">5</div></td></tr>
+        <tr><td><div id="kpad6">6</div></td>
+            <td><div id="kpad7">7</div></td>
+            <td><div id="kpad8">8</div></td>
+            <td><div id="kpad9">9</div></td>
+            <td><div id="kpad10">0</div></td></tr>
+        <tr><td><div id="kpad11"><img id="kpad11img" src="img/kPad/setting.png"/></div></td>
+            <td><div id="kpad12"><img id="kpad12img" src="img/kPad/apps.png"/></div></td>
+            <td><div id="kpad13"><img id="kpad13img" src="img/kPad/txt.png"/></div></td>
+            <td><div id="kpad14"><img id="kpad14img" src="img/kPad/Subtitle.png"/></div></td>
+            <td><div id="kpad15"><img id="kpad15img" src="img/kPad/EPG.png"/></div></td></tr>
+    </table>
+
+</div>
+<div class="powerOffTipClass" id="power_off_tip"></div>
+<div id="launcher_default_data_tip">No Update Service</div>
+</body>
+</html>

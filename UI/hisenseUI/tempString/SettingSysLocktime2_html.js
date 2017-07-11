@@ -1,0 +1,4 @@
+/**
+ * Created by Administrator on 14-9-9.
+ */
+var SettingSysLocktime2_html="<div  class=\"setting_sys_autotime_content\">"+"    <div >"+"        <div class=\"setting_sys_locktime_line\" style=\"margin-top: 60px;margin-left: 332px\" >"+"            <input id=\"setting_sys_locktime_input1\" class=\"setting_sys_input1_cls\">"+"            <div style=\"float: left;width: 78px; text-align: center\">:</div>"+"            <input id=\"setting_sys_locktime_input2\" class=\"setting_sys_input1_cls\">"+"        </div>"+"        <div  class=\"setting_sys_locktime_tip_cls\" id=\"setting_sys_locktime2_tip\" style=\"margin-left: 0px; width: 1022px;text-align: center\">Please use the number keys only</div>"+"    </div>"+"    <div >"+"        <div id=\"setting_sys_locktime2_btn1\"class=\"setting_sys_button_normal\">Ok</div>"+"        <div id=\"setting_sys_locktime2_btn2\" class=\"setting_sys_button_normal\">Cancel</div>"+"    </div>"+"</div>"

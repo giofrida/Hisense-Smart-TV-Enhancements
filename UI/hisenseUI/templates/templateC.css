@@ -1,0 +1,43 @@
+#templateC{
+    background-color: #ffff00;
+    width: 800px;
+    height: 500px;
+}
+
+#templateC ul{padding-left: 0px;}
+#templateC li:nth-of-type(odd){
+    list-style: none;
+    /*background:#00ccff;*/
+}
+#templateC li:nth-of-type(even){
+    list-style: none;
+    /*background:#cc00ff;*/
+}
+
+.gridul_normal {
+    height: 166px;
+    line-height: 166px;
+    width: 200px;
+    float: left;
+    background: yellowgreen;
+}
+
+.gridul_focus {
+    height: 166px;
+    line-height: 166px;
+    width: 200px;
+    float: left;
+    background-color:#0000ff;
+    background-image: url(images/selected.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.gridul_dataSelected {
+    height: 166px;
+    line-height: 166px;
+    width: 200px;
+    float: left;
+    background: green;
+}
+

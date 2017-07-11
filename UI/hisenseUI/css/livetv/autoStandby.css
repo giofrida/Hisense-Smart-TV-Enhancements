@@ -1,0 +1,55 @@
+#livetv_auto_standby{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1920px;
+    height: 1080px;
+    background-color:rgba(0,0,0,0.85);
+    z-index: 5000;
+}
+
+#livetv_standby_panel{
+    height: 440px;
+    width: 1022px;
+    margin: 250px 449px 0px 449px;
+    background-color: #102136;
+    color: #F0F0F0;
+}
+
+.livetvStandbyImg{
+
+    height: 120px;
+    width: 1022px;
+    padding-top: 40px;
+    text-align: center;
+
+}
+
+#livetv_standby_panel span{
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    margin-top: 35px;
+
+}
+
+#livetv_sp_text{
+    font-size: 36px;
+    height: 100px;
+    line-height: 100px;
+    width: 1022px;
+}
+#livetv_sp_btn{
+    font-size: 32px;
+    height: 70px;
+    line-height: 70px;
+    width: 1022px;
+    /*margin-left: 370px;*/
+}
+#livetv_sp_btn.focus{
+
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+}

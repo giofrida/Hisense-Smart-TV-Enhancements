@@ -1,0 +1,217 @@
+.chl_manager_page1{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#chl_manager_page {
+    width: 1060px;
+    height: 860px;
+    position: absolute;
+    left: 430px;
+    top: 109px;
+    background-color: #102136;
+    overflow: hidden;
+}
+
+.chlManagerPageHeadFrame {
+    width: 1060px;
+    height: 100px;
+    line-height: 100px;
+    border-bottom: 6px #33b5e6 solid;
+}
+
+.chlPageTitle {
+    color: #35B5EC;
+    font-size: 40px;
+    margin-left: 33px;
+    margin-right:33px;
+}
+
+#chl_manager_container{
+    width: 1018px;
+    height: 760px;
+    /*float: left;*/
+    margin-left: 22px;
+    margin-right: 22px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.chl_manager_content {
+    width: 998px;
+    display: inline-block;
+    /*height: 760px;*/
+    /*float: left;*/
+    /*margin-left: 32px;*/
+}
+
+.chl_manager_content ul {
+    /*float: left;*/
+}
+
+.chl_manager_content span {
+    display: inline-block;
+    height: 96px;
+    line-height: 96px;
+    font-size: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.chl_manager_content li {
+
+    height: 96px;
+    border-bottom: 2px #183f57 solid;;
+    /*color: #ffffff;*/
+}
+
+.chl_manager_content li.disable {
+    /*visibility: collapse;*/
+    opacity: 0.5;
+}
+
+.chl_manager_content li.focus {
+
+    /*background-color: #cc9400;*/
+    /*box-shadow: 0px 0px 0px 1px #f78701 inset,*/
+    /*0px 0px 0px 3px #cc9400 inset,*/
+    /*0px 0px 0px 4px #f78701 inset;*/
+    background-color: rgba(17, 74, 111, 0.8);
+    box-shadow: inset 0px 0px 0px 4px #84ecff;
+    /*background-color: rgba(17,74,111,0.8);*/
+    /*-webkit-box-shadow: inset 0px 0px 0px 4px #84ecff;*/
+}
+
+.chl_manager_content ul {
+    /*height: 760px;*/
+}
+
+.chl_manager_list_type {
+    width: 306px;
+    height: 760px;
+}
+
+.chl_manager_list_type li {
+    width: 306px;
+}
+
+.chl_manager_list_type li span {
+    width: 306px;
+    text-indent: 40px;
+    color:#9ba2ad;
+}
+
+.chl_manager_list_display {
+
+    width: 445px;
+}
+
+.chl_manager_list_display div {
+    top: -30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 36px;
+    height: 36px;
+    position: relative;
+    /*float: left;*/
+}
+
+.chl_manager_list_display span {
+    width: 350px;
+    text-indent: 20px;
+    /*float: left;*/
+    color:#e8e8e8;
+}
+
+.chl_manager_list_edit {
+    width: 235px;
+    /*padding-left: 10px;*/
+}
+
+.chl_manager_list_edit li {
+    width: 235px;
+}
+
+.chl_manager_list_edit li span {
+    width: 235px;
+    text-indent: 40px;
+    color:#e8e8e8;
+}
+#chl_manager_bottom{
+    width: 1060px;
+    height: 70px;
+    position: absolute;
+    top: 798px;
+    background:-webkit-gradient(linear, 0 0, 0 bottom, from(rgba(16, 33, 53, 0.5)), to(rgba(22, 39, 59, 0.9)));
+    background:-o-linear-gradient(bottom, rgba(22, 39, 59, 0.9), rgba(16, 33, 53, 0.5));
+    display: none;
+}
+#chl_manager_scroll{
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+
+
+
+#chl_manager_page_eu {
+    width: 900px;
+    height: 860px;
+    position: absolute;
+    left: 560px;
+    top: 109px;
+    background-color: #102136;
+    overflow: hidden;
+}
+.chlManagerPageHeadFrame_eu {
+    width: 900px;
+    height: 100px;
+    line-height: 100px;
+    border-bottom: 6px #33b5e6 solid;
+}
+.chl_manager_container_eu{
+    width: 865px;
+    height: 760px;
+    /*float: left;*/
+    margin-left: 22px;
+    margin-right: 22px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.chl_manager_list_type_eu {
+    width: 565px;
+    height: 760px;
+}
+
+.chl_manager_list_type_eu li {
+    width: 565px;
+}
+
+.chl_manager_list_type_eu li span:first-child {
+    /*width: 446px;*/
+    text-indent: 40px;
+    color:#9ba2ad;
+}
+.chl_manager_list_type_eu li span:nth-child(2) {
+    /*margin-top: -10px;*/
+    /*position: relative;*/
+    width: 10px;
+    color: #9ba2ad;
+}
+
+.chl_manager_list_edit_eu {
+    width: 280px;
+    /*padding-left: 10px;*/
+}
+
+.chl_manager_list_edit_eu li {
+    width: 280px;
+}
+
+.chl_manager_list_edit_eu li span {
+    width: 280px;
+    text-indent: 40px;
+    color:#e8e8e8;
+}

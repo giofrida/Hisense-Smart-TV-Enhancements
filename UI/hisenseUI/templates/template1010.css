@@ -1,0 +1,268 @@
+.OEMTemplate1010Left{
+    height: 732px;
+    width: 726px;
+    display: inline-block;
+    float: left;
+}
+.OEMTemplate1010Right{
+    height: 732px;
+    /*width: 726px;*/
+    display: inline-block;
+    float: left;
+}
+.OEMTem1010_360_240_img{
+    width: 360px;
+    height: 240px;
+}
+.OEMTem1010_360_486_img{
+    width: 360px;
+    height: 486px;
+}
+.OEMTem1010_426_240_img{
+    width: 426px;
+    height: 240px;
+}
+.OEMTem1010Position1Normal{
+    width: 360px;
+    height: 486px;
+    position: relative;
+    top: -714px;
+    left: 366px;
+}
+.OEMTem1010Position1Focus{
+    width: 360px;
+    height: 486px;
+    position: relative;
+    top: -714px;
+    left: 366px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px #0b1a39, 0 0 0 6px #bef5ff, 0 0 20px 6px rgba(8, 210, 247, 0.8), 0 0 80px 15px rgba(0, 0, 0, 0.8);
+    /*box-shadow: inset 0 0 0 2px #0b1a39, 0 0 0 4px #bef5ff, 0 0 15px 4px #08d2f7;*/
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+    z-index: 2;
+}
+.OEMTem1010Position2Normal{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: 0;
+}
+.OEMTem1010Position2Focus{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: 0;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px #0b1a39, 0 0 0 6px #bef5ff, 0 0 20px 6px rgba(8, 210, 247, 0.8), 0 0 80px 15px rgba(0, 0, 0, 0.8);
+    /*box-shadow: inset 0 0 0 2px #0b1a39, 0 0 0 4px #bef5ff, 0 0 15px 4px #08d2f7;*/
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+    z-index: 2;
+}
+.OEMTem1010Position3Normal{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: -234px;
+}
+.OEMTem1010Position3Focus{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: -234px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px #0b1a39, 0 0 0 6px #bef5ff, 0 0 20px 6px rgba(8, 210, 247, 0.8), 0 0 80px 15px rgba(0, 0, 0, 0.8);
+    /*box-shadow: inset 0 0 0 2px #0b1a39, 0 0 0 4px #bef5ff, 0 0 15px 4px #08d2f7;*/
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+    z-index: 2;
+}
+.OEMTem1010Position4Normal{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: -228px;
+}
+.OEMTem1010Position4Focus{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: -228px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px #0b1a39, 0 0 0 6px #bef5ff, 0 0 20px 6px rgba(8, 210, 247, 0.8), 0 0 80px 15px rgba(0, 0, 0, 0.8);
+    /*box-shadow: inset 0 0 0 2px #0b1a39, 0 0 0 4px #bef5ff, 0 0 15px 4px #08d2f7;*/
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+    z-index: 2;
+
+}
+.OEMTem1010Position5Normal{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: -240px;
+    left: 366px;
+    /*overflow: hidden;*/
+}
+.OEMTem1010Position5Focus{
+    width: 360px;
+    height: 240px;
+    position: relative;
+    top: -240px;
+    left: 366px;
+    /*overflow: hidden;*/
+
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px #0b1a39, 0 0 0 6px #bef5ff, 0 0 20px 6px rgba(8, 210, 247, 0.8), 0 0 80px 15px rgba(0, 0, 0, 0.8);
+    /*box-shadow: inset 0 0 0 2px #0b1a39, 0 0 0 4px #bef5ff, 0 0 15px 4px #08d2f7;*/
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+    z-index: 2;
+}
+.OEMTem1010Position1Normal .OEMTem1010PositionFixed_txt{
+    display: none;
+}
+.OEMTem1010Position2Normal .OEMTem1010PositionFixed_txt{
+    display: none;
+}
+.OEMTem1010Position3Normal .OEMTem1010PositionFixed_txt{
+    display: none;
+}
+.OEMTem1010Position4Normal .OEMTem1010PositionFixed_txt{
+    display: none;
+}
+.OEMTem1010Position5Normal .OEMTem1010PositionFixed_txt{
+    display: none;
+}
+.OEMTem1010PositionFixed_txt{
+    width: 312px;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    top: -64px;
+    padding-left: 24px;
+    padding-right:24px ;
+    /*text-align: center;*/
+    display: inline-block;
+    background-color: rgba(0,0,0,0.6);
+    color: #ffffff;
+    font-size: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.OEMTem1010EditAppListNormal{
+    height: 732px;
+}
+.OEMTem1010EditAppListDelete{
+    height: 732px;
+}
+.OEMTem1010EditAppListNormal li{
+    height: 240px;
+    width: 426px;
+    margin: 0 0 6px 6px;
+    /*text-align: center;*/
+}
+.OEMTem1010EditAppListDelete li{
+    height: 240px;
+    width: 426px;
+    margin: 0 0 6px 6px;
+    /*text-align: center;*/
+}
+.OEMTem1010EditAppListNormal ul li:last-child{
+    margin: 0 0 0px 6px;
+}
+.OEMTem1010EditAppListDelete ul li:last-child{
+    margin: 0 0 0px 6px;
+}
+
+.OEMTem1010EditAppNormal{
+
+}
+
+.OEMTem1010EditAppFocus{
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px #0b1a39, 0 0 0 6px #bef5ff, 0 0 20px 6px rgba(8, 210, 247, 0.8), 0 0 80px 15px rgba(0, 0, 0, 0.8);
+    /*box-shadow: inset 0 0 0 2px #0b1a39, 0 0 0 4px #bef5ff, 0 0 15px 4px #08d2f7;*/
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+    z-index: 2;
+}
+.OEMTem1010EditAppNormal .OEMTem1010EditAppName{
+    display: none;
+}
+.OEMTem1010EditAppFocus .OEMTem1010EditAppName{
+    width: 378px;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    top: -64px;
+    padding-left: 24px;
+    padding-right:24px ;
+    display: inline-block;
+    background-color: rgba(0,0,0,0.6);
+    color: #ffffff;
+    font-size: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.OEMTem1010EditAppListNormal ul:last-child li:last-child .OEMTem1010EditAppName{
+    width: 378px;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    top: -64px;
+    padding-left: 24px;
+    padding-right:24px ;
+    display: inline-block;
+    background-color: rgba(0,0,0,0.6);
+    color: #ffffff;
+    font-size: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.OEMTem1010EditAppListDelete ul:last-child li:last-child .OEMTem1010EditAppName{
+    width: 378px;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    top: -64px;
+    padding-left: 24px;
+    padding-right:24px ;
+    display: inline-block;
+    background-color: rgba(0,0,0,0.6);
+    color: #ffffff;
+    font-size: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.OEMTem1010EditAppListNormal .OEMTem1010EditAppDelete{
+    display: none;
+}
+.OEMTem1010EditAppDisable{
+
+}
+.OEMTem1010EditAppListDelete .OEMTem1010EditAppDisable .OEMTem1010EditAppDelete{
+    display: none;
+}
+.OEMTem1010EditAppListDelete .OEMTem1010EditAppDisable .OEMTem1010EditAppName{
+    display: none;
+}
+.OEMTem1010EditAppListDelete .OEMTem1010EditAppNormal .OEMTem1010EditAppDelete{
+    position: relative;
+    top: -240px;
+    left: 356px;
+}
+.OEMTem1010EditAppListDelete .OEMTem1010EditAppFocus .OEMTem1010EditAppDelete{
+    position: relative;
+    top: -306px;
+    left: 356px;
+}
+.OEMTem1010EditAppListDelete ul:last-child li:last-child .OEMTem1010EditAppDelete{
+    display: none;
+}

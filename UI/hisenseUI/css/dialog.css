@@ -1,0 +1,381 @@
+/* Let's get this party started */
+#launcher ::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+#launcher ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+
+/* Handle */
+#launcher ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    background: #8c99a1;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+#launcher ::-webkit-scrollbar-thumb:window-inactive {
+    background: #c6cccd;
+}
+
+#launcher .dialog_back {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 1920px;
+    height: 1080px;
+    background: #000;
+    opacity: 0.8;
+    z-index: 99;
+}
+
+#launcher .dialog_5_class {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top:465px;
+    left: 885px;
+    z-index: 100;
+}
+
+#launcher .dialog_1_class {
+    height: 283px;
+    width: 499px;
+    background: #c4ccd1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 1px solid #369;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -o-border-radius: 20px;
+    border-radius: 20px;
+    z-index: 100;
+}
+
+#launcher .dialog_1_title {
+    background-image: url(../img/head.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 47px;
+    color: #FFF;
+    height: 80px;
+    line-height: 80px;
+    outline: none;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+}
+
+#launcher .dialog_1_pic {
+    background-image: url(../img/3.png);
+    background-size: 100% 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 114px;
+    width: 99px;
+    height: 69px;
+}
+
+#launcher .dialog_1_text {
+    position: absolute;
+    bottom: 35px;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    color: #454e56;
+}
+
+#launcher .dialog_2_class {
+    height: 285px;
+    width: 633px;
+    background: #c4ccd1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 1px solid #369;
+    -o-border-radius: 20px;
+    z-index: 100;
+}
+
+#launcher .dialog_2_pic {
+    background-image: url(../img/3.png);
+    background-size: 100% 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 35px;
+    width: 127px;
+    height: 115px;
+}
+
+#launcher .dialog_2_text_1 {
+    position: absolute;
+    top: 175px;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    color: #454e56;
+}
+
+#launcher .dialog_2_text_2 {
+    position: absolute;
+    bottom: 35px;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    color: #454e56;
+}
+
+#launcher .dialog_3_class {
+    height: 419px;
+    width: 540px;
+    background: #c4ccd1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 1px solid #369;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -o-border-radius: 20px;
+    border-radius: 20px;
+    z-index: 100;
+}
+
+#launcher .dialog_3_title {
+    background-image: url(../img/head.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 47px;
+    color: #FFF;
+    height: 80px;
+    line-height: 80px;
+    outline: none;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+}
+
+#launcher .dialog_3_pic {
+    background-image: url(../img/3.png);
+    background-size: 100% 100%;
+    position: absolute;
+    left: 25px;
+    top: 105px;
+    width: 195px;
+    height: 128px;
+}
+
+#launcher .dialog_3_text {
+    position: absolute;
+    top: 258px;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    color: #454e56;
+}
+
+#launcher .dialog_6_text {
+    position: absolute;
+    top: 128px;
+    height: 90px;
+    line-height: 30px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    color: #454e56;
+}
+
+#launcher .dialog_3_appName {
+    position: absolute;
+    top: 128px;
+    height: 36px;
+    line-height: 36px;
+    width: 260px;
+    left: 255px;
+    text-align: left;
+    font-size: 36px;
+    color: #454e56;
+}
+
+#launcher .dialog_6_appName {
+    position: absolute;
+    top: 128px;
+    height: 36px;
+    line-height: 36px;
+    width: 480px;
+    left: 25px;
+    text-align: left;
+    font-size: 36px;
+    color: #454e56;
+}
+
+#launcher .dialog_3_appV {
+    position: absolute;
+    top: 186px;
+    height: 36px;
+    line-height: 30px;
+    width: 260px;
+    left: 255px;
+    text-align: left;
+    font-size: 28px;
+    color: #6d747a;
+}
+
+#launcher .dialog_6_appV {
+    position: absolute;
+    top: 186px;
+    height: 36px;
+    line-height: 30px;
+    width: 480px;
+    left: 25px;
+    text-align: left;
+    font-size: 28px;
+    color: #6d747a;
+}
+
+#launcher .dialog_button_focus {
+
+    background-image: url(../img/pop_up_list_button_selected_bk.png);
+    background-size: 100% 100%;
+    text-align: center;
+
+    height: 62px;
+    line-height: 62px;
+    width: 217px;
+
+    font-size: 36px;
+    color: #7b420b;
+    border:9px solid transparent;
+    -webkit-border-image:url(../img/pop_up_list_button_selected.png) 9 9 9 9 stretch ;
+    -o-border-image:url(../img/pop_up_list_button_selected.png) 9 9 9 9 stretch ;
+    border-image:url(../img/pop_up_list_button_selected.png) 9 9 9 9 stretch;
+    border-radius: 9px;
+}
+
+#launcher .dialog_button_normal {
+
+    background-image: url(../img/pop_up_list_button_normal_bk.png);
+    background-size: 100% 100%;
+    /*background-repeat: no-repeat;*/
+
+    height: 62px;
+    line-height: 62px;
+    width: 217px;
+
+    text-align: center;
+    font-size: 36px;
+    color: #7b420b;
+    border:9px solid transparent;
+    -webkit-border-image:url(../img/pop_up_list_button_normal.png) 9 9 9 9 stretch ;
+    -o-border-image:url(../img/pop_up_list_button_normal.png) 9 9 9 9 stretch ;
+    border-image:url(../img/pop_up_list_button_normal.png) 9 9 9 9 stretch;
+    border-radius: 9px;
+}
+
+#launcher .dialog_4_class {
+    height: 677px;
+    width: 715px;
+    background: #c4ccd1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 1px solid #369;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -o-border-radius: 20px;
+    border-radius: 20px;
+    z-index: 100;
+}
+
+#launcher .dialog_4_title {
+    background-image: url(../img/head.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 47px;
+    color: #FFF;
+    height: 80px;
+    line-height: 80px;
+    outline: none;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+}
+
+#launcher .dialog_4_pic {
+    background-image: url(../img/3.png);
+    background-size: 100% 100%;
+    position: absolute;
+    left: 54px;
+    top: 0px;
+    width: 600px;
+    height: 355px;
+}
+
+#launcher .dialog_4_text {
+    position: absolute;
+    top: 362px;
+    height: 150px;
+    line-height: 45px;
+    width: 665px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: justify;
+    font-size: 30px;
+    color: #454e56;
+}
+
+#launcher .dialog_4_body {
+    position: absolute;
+    top: 115px;
+    bottom: 35px;
+    left: 10px;
+    width: 695px;
+    overflow: hidden;
+}

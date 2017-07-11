@@ -1,0 +1,93 @@
+#mixBar_page{
+    height: 675px;
+    width: 380px;
+    background-color: rgba(16, 33, 54, .9);
+    position: absolute;
+    border-radius: 4px;
+    left: 18px;
+    /*bottom: 18px;*/
+    top:387px
+}
+#mixBar_title_1{
+    height: 80px;
+}
+.mixBarTitle_span{
+    font-size: 32px;
+    color:#f0f0f0;
+    height: 80px;
+    line-height: 80px;
+    margin-left: 40px;
+    margin-right: 40px
+
+}
+.mixBarTitle_bottom_line{
+    box-shadow:0 0 0 2px rgba(255,255,255,.1) inset ;
+    height: 2px;
+    width:340px ;
+    margin-left: 20px;
+}
+.mixBar_Item_ul{
+    list-style-type: none;
+    float: left;
+    margin-top: 20px;
+    padding: 0;
+}
+.mixBar_Item_ul li {
+    height: 68px;
+    width: 380px;
+}
+.mixBar_Item_ul li img{
+    width: 48px;
+    left: 40px;
+    right: 40px;
+    height: 48px;
+    position: relative;
+    margin-top: 10px;
+}
+.mixBar_Item_ul li span{
+    position: relative;
+    top: -7px;
+    color: #b2bfb8;
+    line-height: 48px;
+    margin-left: 35px;
+    font-size: 28px;
+    height: 48px;
+    margin-right: 35px;
+}
+.mixBar_Item_li_normal{
+    height: 68px;
+    width: 380px;
+}
+.mixBar_Item_li_focus{
+    background-color: rgba(17,74,111,.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+.mixBar_Item_li_select{
+    background-color: rgba(17, 74, 111, .8);
+}
+.mixBar_bottom{
+    font-size: 32px;
+    color: #f0f0f0;
+    margin-top: -50px;
+    margin-left: 120px;
+    margin-right: 120px;
+    width: 250px;
+}
+#mixBarTitle_bottom_line_2 {
+    margin-top: 500px;
+    position: relative;
+}
+#mixBar_powerImg{
+    margin-top: 15px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.mixBar_power_normal{
+    width: 380px;
+    height: 95px;
+}
+.mixBar_power_focus{
+    background-color: rgba(17,74,111,.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    height: 95px;
+}

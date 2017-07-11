@@ -1,0 +1,4 @@
+/**
+ * Created by xuehongfeng on 14-11-17.
+ */
+var boe_dis_info_html="<div id=\"DisInfoBody\" class=\"disclaimer_info_Page\">"+"    <div class=\"disclaimer_info_PageHeadFrame\">"+"        <div class=\"disclaimer_info_PageHead\">"+"            <span id=\"DisInfoPageTitle\" ></span>"+"        </div>"+"    </div>"+"    <div class=\"disclaimer_info_PageContFrame\">"+"        <div id=\"DisInfoCon\" style=\"width: 1100px;height: 680px;overflow: hidden\">"+"            <div id=\"DisInfoBox\" style=\"width: 990px;float: left;margin-left: 60px;position: relative;top:0px;color:#f0f0f0\">"+"            </div>"+"            <div style=\"width: 4px;height:680px;float: right ;margin-right: 14px;margin-bottom:40px;margin-top: 0px\">"+"                <div id=\"DisInfoScrollBar\" style=\"width: 4px;position:relative;background-color:#555b60;border-radius: 4px;\"></div>"+"            </div>"+"        </div>"+"    </div>"+"</div>";

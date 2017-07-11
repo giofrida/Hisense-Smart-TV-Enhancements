@@ -1,0 +1,134 @@
+/*
+* created by hisense-2015-3-7
+*/
+/*页面的样式*/
+.newRecordTipDialog
+{
+    position: absolute;
+    background-color: #102136;
+    /*margin-left: 449px;*/
+    /*margin-top: 202px;*/
+    width: 1022px;
+    height: 478px;
+    margin: 202px 449px 0 449px
+}
+/*对话框标题的样式*/
+.newRecordTipTitle
+{
+    position: relative;
+    height: 40px;
+    font-size: 40px;
+    color: #35b5c4;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 65px;
+    margin-right: 65px;
+}
+/*横线的样式*/
+.line
+{
+    position: relative;
+    width: 1014px;
+    border: solid 3px #173f58
+}
+/*频道信息的样式*/
+.channelInfo
+{
+    position: relative;
+    height: 32px;
+    font-size: 32px;
+    color: #f0f0f0;
+    margin-top: 60px;
+    margin-left: 65px;
+    margin-right: 65px;
+}
+/*节目信息的样式*/
+.pragramInfo
+{
+    position: relative;
+    display: inline-block;
+    height: 36px;
+    font-size: 36px;
+    color: #f0f0f0;
+    margin-top: 20px;
+    margin-left: 65px;
+    margin-right: 65px;
+}
+/*重复周期的样式*/
+.period
+{
+    position: absolute;
+    display: none;
+    height: 28px;
+    font-size: 28px;
+    color: #f0f0f0;
+    top: 197px;
+    right: 65px;
+}
+/*预约时间的样式*/
+.scheduleTime
+{
+    position: relative;
+    height: 36px;
+    font-size: 36px;
+    color: #f0f0f0;
+    margin-top: 30px;
+    margin-left: 65px;
+    margin-right: 65px;
+}
+/*开始新录制按钮的普通样式*/
+.beginNewRecordBtnNormal
+{
+    display: inline-block;
+    text-align: center;
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    font-size: 32px;
+    color: #f0f0f0;
+    border-top: 2px solid #173f58;
+    margin-top: 60px;
+}
+/*开始新录制按钮的焦点样式*/
+.beginNewRecordBtnFocus
+{
+    display: inline-block;
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 32px;
+    color: #f0f0f0;
+    border-top: 2px solid #173f58;
+    background-color: rgba(17, 74, 111, 0.8);
+    box-shadow: inset 0px 0px 0px 4px #84ecff;
+    margin-top: 60px;
+}
+/*取消新录制按钮的普通样式*/
+.cancelNewRecordBtnNormal
+{
+    display: inline-block;
+    text-align: center;
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    font-size: 32px;
+    color: #f0f0f0;
+    border-top: 2px solid #173f58;
+    margin-top: 60px;
+}
+/*取消新录制按钮的焦点样式*/
+.cancelNewRecordBtnFocus
+{
+    display: inline-block;
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 32px;
+    color: #f0f0f0;
+    border-top: 2px solid #173f58;
+    background-color: rgba(17, 74, 111, 0.8);
+    box-shadow: inset 0px 0px 0px 4px #84ecff;
+    margin-top: 60px;
+}

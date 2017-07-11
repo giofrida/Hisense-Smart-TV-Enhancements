@@ -1,0 +1,83 @@
+
+#dialog_usb {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1920px;
+    height: 1080px;
+}
+
+.dialogUSBPanel {
+    background-color: #102136;
+    width: 814px;
+    height: 498px;
+    margin: 291px 553px 0px 553px;
+    overflow: hidden;
+}
+
+.dialogUSBPanel span {
+
+    display: inline-block;
+    font-size: 36px;
+    color: #ffffff;
+}
+
+
+#dialog_usb_title {
+
+    color: #35b5ec;
+    border-bottom: solid 6px #33b5e6;
+    text-indent: 65px;
+    font-size: 40px;
+    width: 814px;
+    height: 100px;
+    line-height: 100px;
+}
+
+#dialog_usb_media_list{
+
+    width: 806px;
+    height: 284px;
+    margin: 10px 8px 0px 8px;
+    border-bottom: solid 2px #173f58;
+}
+
+#dialog_usb_media_list li{
+    width: 180px;
+    height: 224px;
+    margin: 30px 10px 30px 10px;
+    /*float: left;*/
+    display: inline-block;
+    border-radius: 10px;
+}
+
+#dialog_usb_media_list li img{
+    width: 128px;
+    height: 128px;
+    margin: 20px 26px 20px 26px;
+}
+
+#dialog_usb_media_list li span{
+    width: 180px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#dialog_usb_media_list li.focus{
+
+    box-shadow:  0 0 0 4px #bef5ff, 0 0 15px 6px #08d2f7;
+
+}
+#dialog_usb_cancel {
+    height: 95px;
+    line-height: 95px;
+    width: 814px;
+    text-align: center;
+}
+
+#dialog_usb_cancel.focus {
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+}

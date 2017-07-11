@@ -1,0 +1,1709 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wizardWelcomeBg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+    height: 1080px;
+}
+
+#wizard {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+}
+
+.wizardBtnNormal {
+    display: inline-block;
+    width: 230px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    text-indent: 5px;
+    color: #f0f0f0;
+    background-color: #172c4a;
+    font-size: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.15) inset
+}
+
+.wizardBtnFocus {
+    display: inline-block;
+    width: 230px;
+    height: 55px;
+    line-height: 55px;
+    text-indent: 5px;
+    text-align: center;
+    color: #f0f0f0;
+    font-size: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+.wizardBtnDisable {
+    display: inline-block;
+    width: 230px;
+    height: 55px;
+    line-height: 55px;
+    text-indent: 5px;
+    text-align: center;
+    color: #85888d;
+    font-size: 36px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: rgba(36,51,72,0.5);
+    background-color: #243348;
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset;
+    /*opacity: 0.5;*/
+}
+
+.html_ltr .wizardAdjustBtnNormal {
+    display: inline-block;
+    width: 230px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 32px;
+    opacity: 0.85;
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset;
+    float: right;
+}
+.html_rtl .wizardAdjustBtnNormal {
+    display: inline-block;
+    width: 230px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 32px;
+    opacity: 0.85;
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset;
+    float: left;
+}
+.html_ltr .wizardAdjustBtnFocus {
+    display: inline-block;
+    width: 230px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #f0f0f0;
+    font-size: 32px;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    float: right;
+}
+.html_rtl .wizardAdjustBtnFocus {
+    display: inline-block;
+    width: 230px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #f0f0f0;
+    font-size: 32px;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    float: left;
+}
+.html_rtl .wizardAdjustBtnDisable {
+    display: inline-block;
+    width: 230px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #85888d;
+    opacity: 0.7;
+    font-size: 32px;
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset;
+    float: left;
+}
+.html_rtl .wizardAdjustBtnDisable {
+    display: inline-block;
+    width: 230px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #85888d;
+    opacity: 0.7;
+    font-size: 32px;
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset;
+    float: left;
+}
+
+.wizardSwitchFrameOpen {
+    display: inline-block;
+    width: 230px;
+    height: 55px;
+    line-height: 55px;
+    text-align: right;
+    background-color: #172c4a;
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset
+}
+
+.wizardSwitchFrameClose {
+    display: inline-block;
+    width: 230px;
+    height: 55px;
+    line-height: 55px;
+    text-align: left;
+    background-color: #172c4a;
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset
+}
+
+.wizardSwitchIn {
+    display: inline-block;
+    width: 111px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    background-color: #204579;
+    color: #f0f0f0;
+    font-size: 32px;
+}
+#wizardMainNav li:first-child {
+    margin-left: 0px;
+}
+
+#wizardMainNav li {
+    margin-left: 18px;
+    /*float: left;*/
+    width: 290px;
+    height: 6px;
+}
+.wizardNavLi_disSet {
+    background-color: #243348;
+}
+
+.wizardNavLi_unset {
+    background-color: #1c2b3e;
+}
+
+.wizardNavLi_setting {
+    background-color: #5a6c80;
+}
+
+.wizardNavLi_setted {
+    background-color: #5a6c80;
+    opacity: 0.6;
+}
+
+.wizardPage {
+    /*background-color: #102136;*/
+    background-color: rgba(10,21,36,0.75);
+    width: 1022px;
+    height: 860px;
+    /*opacity: 0.75;*/
+    position: absolute;
+    top: 150px;
+    left: 449px;
+    border-top: 1px #173f58 solid;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.wizardPage2 {
+    /*background-color: #102136;*/
+    background-color: rgba(10,21,36,0.75);
+    width: 1700px;
+    height: 861px;
+    /*opacity: 0.75;*/
+    position: absolute;
+    top: 150px;
+    left: 110px;
+    border-top: 1px #173f58 solid;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.wizardPageHeadFrame {
+    width: 1022px;
+    height: 100px;
+    line-height: 100px;
+    border-bottom: 6px #33b5e6 solid;
+}
+
+.wizardPageTitle {
+    color: #35B5EC;
+    font-size: 40px;
+    margin-left: 65px;
+}
+
+.wizardPageContentFrame {
+    width: 1022px;
+    height: 657px;
+    overflow: hidden;
+}
+
+.wizardPageContentFrWithBd {
+    width: 1020px;
+    height: 655px;
+    background-color: rgba(13, 20, 31, 0.5);
+    border: 1px #173f58 solid;
+}
+
+.wizardPageFootFrame {
+    width: 1022px;
+    height: 95px;
+    border-top: 2px #173f58 solid;
+}
+
+.wizardPage2Left {
+    width: 800px;
+    height: 859px;
+    border-right: 2px #173f58 solid;
+    /*float: left;*/
+}
+
+.wizardPage2Right {
+    width: 898px;
+    height: 859px;
+    /*float: right;*/
+}
+
+.wizardPage2Head {
+    height: 100px;
+    line-height: 100px;
+    color: #35B5E4;
+    border-bottom: 6px #33b5e6 solid;
+    font-size: 40px;
+}
+
+.wizardPage2Title {
+    position: relative;
+    left: 65px;
+}
+
+.wizardPage2LeftContent {
+    width: 800px;
+    height: 659px;
+    overflow: hidden;
+}
+
+.wizardPage2LeftFoot {
+    width: 800px;
+    height: 95px;
+}
+
+.wizardPage2RightContent {
+    height: 763px;
+}
+
+.wizardPage2RightFoot {
+    height: 95px;
+    border-top: 2px #173f58 solid;
+}
+
+.wizardSingleBtnNormal {
+    width: 1022px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #f0f0f0;
+}
+
+.wizardSingleBtnFocus {
+    width: 1022px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #ffffff;
+    border-top: 2px #173f58 solid;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+.wizardDLeftBtnNormal {
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #f0f0f0;
+    border-right: 2px #173f58 solid;
+    /*float: left;*/
+}
+
+.wizardDLeftBtnFocus {
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #ffffff;
+    border-right: 2px #173f58 solid;
+    /*float: left;*/
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+
+}
+
+.wizardDRightBtnNormal {
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #ffffff;
+    /*border-left: 1px #173f58 solid;*/
+    /*float: right;*/
+}
+
+.wizardDRightBtnFocus {
+    width: 510px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #ffffff;
+    /*border-left: 1px #173f58 solid;*/
+    /*float: right;*/
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+.wizardPage2LeftBtnNormal {
+    width: 448px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #f0f0f0;
+    border-right: 2px #173f58 solid;
+    /*float: left;*/
+}
+
+.wizardPage2LeftBtnFocus {
+    width: 448px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #f0f0f0;
+    border-right: 2px #173f58 solid;
+    /*float: left;*/
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+
+}
+
+.wizardPage2RightBtnNormal {
+    width: 448px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #f0f0f0;
+    /*float: right;*/
+}
+
+.wizardPage2RightBtnFocus {
+    width: 448px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 36px;
+    color: #f0f0f0;
+    /*float: right;*/
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+/*包含两列的UL样式*/
+.GridUl_2_Column {
+    width: 892px;
+    list-style-type: none;
+}
+
+.GridUl_2_Column li:nth-child(2n) {
+    margin-left: 92px;
+}
+
+.GridUlLi_2_Normal {
+    height: 95px;
+    line-height: 95px;
+    width: 400px;
+    float: left;
+    font-size: 0;
+    color: #f0f0f0;
+}
+
+.GridUlLi_2_Focus {
+    height: 95px;
+    line-height: 95px;
+    width: 400px;
+    float: left;
+    font-size: 0;
+    color: #f0f0f0;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+.GridUlLi_2_Disable {
+    height: 95px;
+    line-height: 95px;
+    width: 400px;
+    /*float: left;*/
+    font-size: 0;
+    color: #85888C;
+    background-color: #293241;
+    box-shadow: 0px 0px 0px 4px #445162 inset;
+}
+.GridUlLi_Img{
+    margin-left:15px;
+    position: relative;
+    top: -30px;
+    display: inline-block;
+}
+.GridUlLi_text{
+    width: 320px;
+    display: inline-block;
+    margin-left: 22px;
+    font-size: 32px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*语言设置页css样式*/
+#wizardLanGridUl li:nth-child(2n) {
+    margin-left: 92px;
+}
+
+/*国家设置页css样式*/
+#wizardCountryGridUl li:nth-child(2n) {
+    margin-left: 92px;
+}
+
+/*区域设置页css样式*/
+#areaGridUl li:nth-child(2n) {
+    margin-left: 92px;
+}
+
+/*模式设置页css样式*/
+#wizardModelUl li:last-child {
+    border-bottom: 0px;
+}
+
+.wizardModelLiNormal {
+    height: 155px;
+    width: 960px;
+    border-bottom: 2px #173f58 solid;
+    padding-top: 25px;
+}
+
+.wizardModelLiFocus {
+    height: 155px;
+    width: 960px;
+    border-bottom: 2px #173f58 solid;
+    padding-top: 25px;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+/*选择环境弹出框的css样式*/
+.wizardEnvironLiNormal {
+    height: 95px;
+    line-height: 95px;
+    width: 892px;
+    font-size: 0;
+    color: #f0f0f0;
+}
+
+.wizardEnvironLiFocus {
+    height: 95px;
+    line-height: 95px;
+    width: 892px;
+    font-size: 0px;
+    color: #f0f0f0;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+/*频道搜索主页CSS样式*/
+.wizardSetItemTitle {
+    display: inline-block;
+    color: #F0F0F0;
+    font-size: 36px;
+}
+
+.wizardSetItemTitleDisable {
+    display: inline-block;
+    color: #85888d;
+    font-size: 36px;
+}
+
+.wizardSetItemValue {
+    color: #b2b8bf;
+    font-size: 34px;
+    margin: 0 22px 0 22px;
+}
+
+.wizardSetItemValueDisable {
+    color: #85888d;
+    font-size: 34px;
+    margin: 0 22px 0 22px;
+}
+.settingNetSetPinCodeClass{
+    height: 32px;
+    line-height: 32px;
+    margin-left: 65px;
+    margin-right: 65px;
+    margin-top: 20px;
+    width: 892px;
+    font-size: 32px;
+    color: #b2b8bf;
+}
+.settingChSetPerFrame {
+    margin-left: 11px;
+    margin-right: 11px;
+    background-color: #8a8a8a;
+    display: inline-block;
+    width: 230px;
+    height: 10px;
+    border-radius: 20px;
+    margin-bottom: 7px;
+}
+
+.wizardChSetPerCont {
+    background-color: #2388d6;
+    width: 200px;
+    height: 10px;
+    border-radius: 20px;
+}
+.settingProgressFrame_892 {
+    background-color: #8a8a8a;
+    display: inline-block;
+    width: 892px;
+    height: 10px;
+    border-radius: 20px;
+    margin-bottom: 7px;
+}
+
+.settingProgressCont_892 {
+    background-color: #2388d6;
+    width: 0px;
+    height: 10px;
+    border-radius: 20px;
+}
+.wizardChPageStateLi {
+    font-size: 34px;
+    display: inline-block;
+    padding-top: 16px;
+    padding-left: 245px;
+    line-height: 34px;
+    color: #b2b8bf;
+}
+
+/*网络页样式设置*/
+.wizardPage2LeftItemTitle {
+    color: #FFFFFF;
+    font-size: 36px;
+    line-height: 36px;
+}
+
+.wizardPage2LeftItemValue {
+    height: 541px;
+    padding-left: 65px;
+    padding-right: 60px;
+    padding-top: 22px;
+    color: #b2b8bf;
+    font-size: 34px;
+    vertical-align: top;
+    line-height: 50px;
+}
+
+/*免责声明弹出页样式 */
+.settingNetDisServStateNormal {
+    display: inline-block;
+    width: 375px;
+    text-align: center;
+    background-color: #172c4a;
+    font-size: 36px;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.15) inset;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wizardDisclaimerServStateBtnFocus {
+    display: inline-block;
+    width: 375px;
+    text-align: center;
+    font-size: 36px;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wizardNetDisReminderClass{
+    display: inline-block;
+    width: 497px;
+    margin-left: 20px;
+    font-size: 32px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wizardDisclaimAgreeDsc {
+    padding-left: 70px;
+    font-size: 28px;
+    color: #b2b8bf;
+    line-height: 38px;
+    margin-top: 5px;
+}
+
+.wizardDisclaimImg {
+    display: inline-block;
+    height: 44px;
+    line-height: 44px;
+    position: relative;
+    top:8px;
+}
+
+.wizardLeftArrow {
+    float: left;
+    width: 65px;
+    text-align: center;
+}
+
+.wizardRightArrow {
+    float: right;
+    width: 65px;
+    text-align: center;
+}
+
+.wizardSetItemListLeftArrow {
+    float: left;
+    width: 65px;
+    text-align: center;
+    margin-top: 11px;
+}
+
+.wizardSetItemListRightArrow {
+    float: right;
+    width: 42px;
+    margin-top: 11px;
+}
+
+.wizardSetItemListUl {
+    list-style: none;
+    height: 58px;
+    /*border-top: 2px #183f57 solid;*/
+    border-top: 2px rgba(255,255,255,0.15) solid;
+    border-bottom: 2px rgba(255,255,255,0.15) solid;
+    border-left: 2px rgba(255,255,255,0.15) solid;
+    float: left;
+}
+
+.wizardSetItemListUl li {
+    height: 58px;
+    line-height: 58px;
+    font-size: 32px;
+    /*float: left;*/
+    display: inline-block;
+    text-align: center;
+    border-right: 2px rgba(255,255,255,0.15) solid;
+}
+.wizardSetItemListUl li div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 58px;
+}
+.wizardSetItemListLi_4_Normal {
+    width: 221px;
+    color: #b2b8bf;
+    /*background-color: #132f58;*/
+}
+
+.wizardSetItemListLi_4_Selected {
+    width: 221px;
+    color: #F0F0F0;
+    background-color: rgba(17,74,111,0.8);
+}
+
+.wizardSetItemListLi_4_Focus {
+    width: 221px;
+    color: #F0F0F0;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+.wizardSetItemListLi_4_Disable {
+    width: 221px;
+    color: #85888d;
+    /*background-color: rgba(17,74,111,0.2);*/
+}
+
+.wizardSetItemListLi_3_Normal {
+    width: 295px;
+    color: #b2b8bf;
+    /*background-color: #132f58;*/
+}
+
+.wizardSetItemListLi_3_Selected {
+    width: 295px;
+    color: #F0F0F0;
+    background-color: rgba(17,74,111,0.8);
+}
+
+.wizardSetItemListLi_3_Focus {
+    width: 295px;
+    color: #F0F0F0;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+.wizardSetItemListLi_3_Disable {
+    width: 295px;
+    color: #85888d;
+    /*background-color: rgba(17,74,111,0.2);*/
+}
+
+.wizardSetItemListLi_2_Normal {
+    width: 444px;
+    color: #b2b8bf;
+    /*background-color: #132f58;*/
+}
+
+.wizardSetItemListLi_2_Selected {
+    width: 444px;
+    color: #F0F0F0;
+    background-color: rgba(17,74,111,0.8);
+}
+
+.wizardSetItemListLi_2_Focus {
+    width: 444px;
+    color: #F0F0F0;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+.wizardSetItemListLi_2_Disable {
+    width: 444px;
+    color: #85888d;
+    /*background-color: rgba(17,74,111,0.2);*/
+}
+
+.wizardNavBarUl {
+    list-style: none;
+    height: 61px;
+    float: left;
+}
+
+.wizardNavBarUl li {
+    height: 56px;
+    font-size: 36px;
+    line-height: 56px;
+    float: left;
+    text-align: center;
+    border-bottom-width: 5px;
+}
+.wizardNavBarUl li div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wizardNavBarLi_4_Normal {
+    width: 221px;
+    color: #b2b8bf;
+    border-bottom-width: 5px;
+}
+
+.wizardNavBarLi_4_Selected {
+    width: 221px;
+    color: #F0F0F0;
+    border-bottom: 5px #135A8E solid;
+}
+
+.wizardNavBarLi_4_Focus {
+    width: 221px;
+    color: #b2b8bf;
+    border-bottom: 5px #135A8E solid;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+.wizardNavBarLi_3_Normal {
+    width: 295px;
+    color: #b2b8bf;
+    border-bottom: 5px;
+}
+
+.wizardNavBarLi_3_Selected {
+    width: 295px;
+    color: #F0F0F0;
+    border-bottom: 5px #135A8E solid;
+}
+
+.wizardNavBarLi_3_Focus {
+    width: 295px;
+    color: #b2b8bf;
+    border-bottom: 5px #135A8E solid;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+.wizardModeTypeUl {
+    width: 892px;
+    height: 627px;
+    padding-top: 30px;
+    margin-left: 65px;
+}
+
+.wizardSetItemListFrame {
+    width: 1022px;
+    height: 60px;
+    margin-top: 15px;
+    font-size: 0;
+}
+
+.wizardNavBarFrame {
+    width: 1022px;
+    height: 61px;
+}
+
+.settingSetTabsClass {
+    position: relative;
+    width: 1022px;
+    height: 883px;
+}
+
+.settingChManuSetTabPageNormal {
+    position: absolute;
+    width: 1022px;
+    height: 849px;
+    display: inline-block;
+    vertical-align: top;
+    /*margin-top: 34px;*/
+}
+
+.settingChManuSetTabPageFocus {
+    position: absolute;
+    width: 1022px;
+    height: 849px;
+    display: inline-block;
+    vertical-align: top;
+    /*margin-top: 34px;*/
+}
+
+.settingChManuSetTabPageSelected {
+    position: absolute;
+    width: 1022px;
+    height: 849px;
+    display: inline-block;
+    vertical-align: top;
+    /*margin-top: 34px;*/
+}
+
+.settingChManuSetTabPageDisable {
+    position: absolute;
+    width: 1022px;
+    height: 849px;
+    display: none;
+    vertical-align: top;
+    margin-top: 34px;
+}
+
+/*************TabBody的样式**************/
+
+.settingChManuSetTabPageNormal .settingChManuSetTabBodyNormal {
+    height: 788px;
+    display: none;
+    vertical-align: top;
+}
+
+.settingChManuSetTabPageSelected .settingChManuSetTabBodyNormal {
+    height: 788px;
+    display: block;
+}
+
+.settingChManuSetTabPageSelected .settingChManuSetTabBodyFocus {
+    display: block;
+    height: 788px;
+}
+
+.settingChManuSetTabPageSelected .settingChManuSetTabBodySeleted {
+    display: block;
+    height: 788px;
+}
+
+.settingChManuSetTabPageSelected .settingChManuSetTabBodyDisable {
+    display: block;
+    height: 788px;
+}
+
+.settingChManuSetTabBodyDisable {
+    display: none;
+}
+
+/*************TabTitle的样式**************/
+
+.settingChManuSetTabPageNormal .settingChManuSetTab4TitleNormal {
+    position: relative;
+    width: 298px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    border-bottom: 5px;
+    font-size: 36px;
+    color: #f0f0f0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.settingChManuSetTabPageNormal .settingChManuSetTab2TitleNormal {
+    position: relative;
+    width: 446px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    border-bottom: 5px;
+    font-size: 36px;
+    color: #f0f0f0;
+}
+
+.settingChManuSetTabPageNormal .settingChManuSetTab4TitleFocus {
+    position: relative;
+    width: 298px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    border-bottom: 5px;
+    font-size: 36px;
+    color: #f0f0f0;
+}
+
+.settingChManuSetTabPageNormal .settingChManuSetTab4TitleFocus {
+    position: relative;
+    width: 298px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    border-bottom: 5px;
+    font-size: 36px;
+    color: #f0f0f0;
+}
+
+.settingChManuSetTabPageSelected .settingChManuSetTab4TitleNormal {
+    position: relative;
+    width: 298px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    border-bottom: 5px #135A8E solid;
+    font-size: 36px;
+    color: #f0f0f0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.settingChManuSetTabPageSelected .settingChManuSetTab2TitleNormal {
+    position: relative;
+    width: 446px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    border-bottom: 5px #135A8E solid;
+    font-size: 36px;
+    color: #f0f0f0;
+}
+
+.settingChManuSetTabPageSelected .settingChManuSetTab4TitleFocus {
+    position: relative;
+    width: 298px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    border-bottom: 5px #135A8E solid;
+    font-size: 36px;
+    color: #f0f0f0;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.settingChManuSetTabPageSelected .settingChManuSetTab2TitleFocus {
+    position: relative;
+    width: 446px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    border-bottom: 5px #135A8E solid;
+    font-size: 36px;
+    color: #f0f0f0;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+.settingChManuSetTabPageSelected .settingChManuSetTab4TitleSelected {
+    position: relative;
+    width: 298px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    border-bottom: 5px #135A8E solid;
+    font-size: 36px;
+    color: #f0f0f0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.settingChManuSetTabPageSelected .settingChManuSetTab2TitleSelected {
+    position: relative;
+    width: 446px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    border-bottom: 5px #135A8E solid;
+    font-size: 36px;
+    color: #f0f0f0;
+}
+
+
+#settingChManuSetAntTitle {
+    left: 362px;
+
+}
+.html_rtl #settingChManuSetAntTitle {
+    right: 362px;
+
+}
+#settingChManuSetCabTitle {
+    left: 660px;
+}
+
+.html_rtl #settingChManuSetCabTitle {
+    right: 660px;
+}
+
+
+#settingChManuSetSateTitle {
+    left: 65px;
+
+}
+.html_rtl #settingChManuSetSateTitle {
+    right: 65px;
+
+}
+#settingWifiManuTitle {
+    left: 511px;
+}
+
+#settingWifiAutoTitle {
+    left: 65px;
+}
+
+.settingNetDisclaimItemNormal {
+    width: 892px;
+    height: 155px;
+    margin-left: 65px;
+    border-top: 2px #173f58 solid
+}
+
+.settingNetDisclaimItemFocus {
+    width: 892px;
+    height: 155px;
+    margin-left: 65px;
+    border-top: 2px #173f58 solid;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+.html_ltr .settingWifiResulUl {
+    /*height: 505px;*/
+    width: 892px;
+    margin-left: 35px;
+    float: left;
+}
+.html_rtl .settingWifiResulUl {
+    /*height: 505px;*/
+    width: 892px;
+    margin-right: 35px;
+    float: right;
+}
+.settingWifiResulUl li:last-child{
+    height: 78px;
+    border-bottom: 2px #132031 solid;
+    line-height: 78px;
+    font-size: 0;
+}
+.settingWifiResulUl li {
+    height: 78px;
+    border-bottom: 2px #173f58 solid;
+    line-height: 78px;
+    font-size: 0;
+}
+
+.settingWifiSearLiNormal {
+    color: #b2b8bf;
+}
+
+.settingWifiSearLiFocus {
+    color: #f0f0f0;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+}
+
+.settingWifiLeft {
+    display: inline-block;
+    /*float: left;*/
+    width: 300px;
+    height: 78px;
+    font-size: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.settingWifiMiddle1 {
+    display: inline-block;
+    /*float: left;*/
+    width: 200px;
+    font-size: 28px;
+    height: 78px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.settingWifiMiddle2 {
+    display: inline-block;
+    /*float: left;*/
+    height: 78px;
+    font-size: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 250px;
+
+}
+.settingWifiRight2{
+    display: inline-block;
+    width: 36px;
+    font-size: 28px;
+    height: 78px;
+    line-height: 78px;
+}
+.settingWifiRight {
+    display: inline-block;
+    /*float: right;*/
+    /*margin-right: 65px;*/
+    width: 36px;
+    font-size: 28px;
+    height: 78px;
+    line-height: 78px;
+}
+
+.settingEtherIPV4InfoUlClass {
+    width: 892px;
+    margin-left: 65px;
+    margin-right: 65px;
+    margin-top: 30px;
+}
+
+.settingIpAddrSpaceClass {
+    display: inline-block;
+    width: 48px;
+    height: 50px;
+    text-align: center;
+    font-size: 36px;
+    color: #85888d;
+}
+
+.settingIpAddrInputNormal {
+    display: inline-block;
+    width: 96px;
+    height: 46px;
+    color: #b2b8bf;
+    font-size: 32px;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.15) inset;
+    border: 0;
+    background-color: #102136;
+    text-align: center;
+}
+
+.settingIpAddrInputFocus {
+    display: inline-block;
+    width: 96px;
+    height: 46px;
+    color: #f0f0f0;
+    font-size: 32px;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    border: 0;
+    text-align: center;
+}
+
+.settingIpAddrInputDisable {
+    display: inline-block;
+    width: 96px;
+    height: 46px;
+    color: #85888d;
+    font-size: 32px;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.15) inset;
+    border: 0;
+    background-color: #102136;
+    text-align: center;
+}
+
+.settingNumberInputNormal {
+    display: inline-block;
+    width: 187px;
+    height: 50px;
+    color: #b2b8bf;
+    font-size: 34px;
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset;
+    border: 0;
+    background-color: #102136;
+    text-align: center;
+}
+
+.settingNumberInputFocus {
+    display: inline-block;
+    width: 187px;
+    height: 50px;
+    color: #f0f0f0;
+    font-size: 34px;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    border: 0;
+    text-align: center;
+}
+
+.settingNumberInputDisable {
+    display: inline-block;
+    width: 187px;
+    height: 50px;
+    color: #85888d;
+    font-size: 34px;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.15) inset;
+    border: 0;
+    background-color: #102136;
+    text-align: center;
+}
+.settingEtherIPV4InfoLi {
+    height: 50px;
+    line-height: 50px;
+    width: 892px;
+    margin-top: 15px;
+    font-size: 0;
+}
+
+/*DVBS2页面样式*/
+#settingChSetDVBS2SateANameGridUl li:nth-child(2n) {
+    margin-left: 92px;
+}
+
+#settingChSetDVBS2SateBNameGridUl li:nth-child(2n) {
+    margin-left: 92px;
+}
+
+#settingChSetDVBS2SateCNameGridUl li:nth-child(2n) {
+    margin-left: 92px;
+}
+
+#settingChSetDVBS2SateDNameGridUl li:nth-child(2n) {
+    margin-left: 92px;
+}
+
+#settingChSetDVBS2SateATitle {
+    left: 65px;
+}
+
+#settingChSetDVBS2SateBTitle {
+    left: 288px;
+}
+
+#settingChSetDVBS2SateCTitle {
+    left: 511px;
+}
+
+#settingChSetDVBS2SateDTitle {
+    left: 734px;
+}
+
+.settingDVBS5FreInputNormal {
+    display: inline-block;
+    width: 230px;
+    height: 46px;
+    color: #b2b8bf;
+    font-size: 32px;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.15) inset;
+    border: 0;
+    background-color: #102136;
+    text-align: right;
+    margin-left: 20px;
+    padding-right: 5px;
+}
+
+.settingDVBS5FreInputFocus {
+    display: inline-block;
+    width: 230px;
+    height: 46px;
+    color: #f0f0f0;
+    font-size: 32px;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    border: 0;
+    text-align: right;
+    margin-left: 20px;
+    padding-right: 5px;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////*/
+.wizardChSetPage {
+    width: 1022px;
+    /*height: 986px;*/
+    height: 985px;
+    background-color: #102136;
+    position: fixed;
+    left: 449px;
+    top: 47px;
+    /*border-top: 1px #173f58 solid;*/
+    /*border-radius: 4px;*/
+    /*-webkit-border-radius: 4px;*/
+    /*-moz-border-radius: 4px;*/
+}
+
+.setting2LevelSetPage {
+    width: 1022px;
+    height: 985px;
+    background-color: #102136;
+}
+
+.settingChSetPageHeadFrame {
+    width: 1022px;
+    height: 102px;
+    font-size: 40px;
+    color: #35B5E4;
+}
+
+.settingChSetPageContFrame {
+    width: 1022px;
+    height: 788px;
+    overflow: hidden;
+}
+
+.settingSetTabPageConFrame {
+    width: 1022px;
+    height: 883px;
+    overflow: hidden;
+}
+
+.settingChSetPageNav6Step {
+    position: relative;
+    left: 37px;
+}
+
+.settingChSetPageNav6Step li:first-child {
+    margin-left: 0px;
+}
+
+.settingChSetPageNav6Step li {
+    margin-left: 6px;
+    float: left;
+    width: 152px;
+    height: 6px;
+}
+.settingChSetPageNav4Step {
+    position: relative;
+    left: 37px;
+}
+
+.settingChSetPageNav4Step li:first-child {
+    margin-left: 0px;
+}
+
+.settingChSetPageNav4Step li {
+    margin-left: 6px;
+    float: left;
+    width: 232px;
+    height: 6px;
+}
+.settingChSetPageNav2Step {
+    position: relative;
+    left: 37px;
+}
+
+.settingChSetPageNav2Step li:first-child {
+    margin-left: 0px;
+}
+
+.settingChSetPageNav2Step li {
+    margin-left: 6px;
+    float: left;
+    width: 471px;
+    height: 6px;
+}
+
+.channelScanDialogContent {
+    margin-left: 65px;
+    margin-top: 40px;
+    width: 892px;
+    height: 748px
+}
+
+.settingChSetPageFootFrame {
+    width: 1022px;
+    height: 95px;
+    text-align: center;
+    font-size: 0;
+}
+
+.settingChSetPageHead {
+    height: 96px;
+    line-height: 96px;
+    width: 892px;
+    padding-left: 65px;
+    padding-right: 65px;
+}
+
+.settingChSetPageTitleImg {
+    position: relative;
+    top: 6px;
+}
+
+.wizardLineWithBtn {
+    height: 50px;
+    line-height: 50px;
+    margin-left: 65px;
+    margin-right: 65px;
+    margin-top: 30px;
+    width: 892px;
+    font-size: 0;
+}
+
+.wizardFirstLineWithBtn {
+    height: 50px;
+    line-height: 50px;
+    margin-left: 65px;
+    margin-right: 65px;
+    margin-top: 34px;
+    width: 892px;
+    font-size: 0;
+}
+.wizardLineNoBtn {
+    height: 36px;
+    line-height: 36px;
+    margin-left: 65px;
+    margin-right: 65px;
+    margin-top: 30px;
+    width: 892px;
+    font-size: 0;
+}
+
+.wizardFirstLineNoBtn {
+    height: 36px;
+    line-height: 36px;
+    margin-left: 65px;
+    margin-right: 65px;
+    margin-top: 34px;
+    width: 892px;
+    font-size: 0;
+}
+.html_rtl .wizardLineWithBtnInfo{
+    display: inline-block;
+    width: 662px;
+    float: right;
+}
+.html_ltr .wizardLineWithBtnInfo{
+    display: inline-block;
+    width: 662px;
+    float: left;
+}
+.html_ltr .wizardLineWithFlipInfo{
+    display: inline-block;
+    width: 766px;
+    float: left;
+}
+.html_rtl .wizardLineWithFlipInfo{
+    display: inline-block;
+    width: 766px;
+    float: right;
+}
+
+
+.settingLevel2HeadTitle {
+    display: inline-block;
+    height: 28px;
+    font-size: 28px;
+    line-height: 28px;
+    color: #f0f0f0;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 30px;
+    /*border-bottom: 2px #143348 solid;*/
+}
+
+.settingLevel2SplitLine {
+    width: 948px;
+    height: 2px;
+    background-color: #143348;
+    margin-top: 10px;
+    margin-left: 37px;
+    margin-right: 37px;
+}
+.wizardPage2Figure{
+    margin-top: 140px;
+    margin-left: 65px;
+}
+.html_ltr .wizardScrollBarFrame{
+    width: 4px;
+    margin-top: 25px;
+    float: right;
+    margin-right: 16px;
+}
+.html_rtl .wizardScrollBarFrame{
+    width: 4px;
+    margin-top: 25px;
+    float: left;
+    margin-left: 16px;
+}
+.wizardScrollBarCont{
+    width: 4px;
+    position:relative;
+    background-color:#555b60;
+    border-radius: 4px;
+}
+.html_ltr .settingNetSetEtherIpSetClass{
+    position: absolute;
+    width: 1022px;
+    height: 540px;
+    left: 540px;
+    top: 400px;
+    background-color: #0d1723;
+}
+.html_rtl .settingNetSetEtherIpSetClass{
+    position: absolute;
+    width: 1022px;
+    height: 540px;
+    right: 540px;
+    top: 400px;
+    background-color: #0d1723;
+}
+.html_ltr .settingNetSetMainChildPageClass{
+    position: absolute;
+    width: 1022px;
+    height: 576px;
+    left: 540px;
+    top: 340px;
+    background-color: #0d1723;
+}
+.html_rtl .settingNetSetMainChildPageClass{
+    position: absolute;
+    width: 1022px;
+    height: 576px;
+    right: 540px;
+    top: 340px;
+    background-color: #0d1723;
+}
+.settingNetSetMainChildPageClass .settingNetSetSearDiv{
+    height: 576px;
+}
+.html_ltr .settingNetSetWifiSearClass{
+    position: absolute;
+    width: 962px;
+    height: 530px;
+    left: 570px;
+    top: 515px;
+    background-color: rgba(0,0,0,0.2);
+}
+.html_rtl .settingNetSetWifiSearClass{
+    position: absolute;
+    width: 962px;
+    height: 530px;
+    left: 570px;
+    top: 515px;
+    background-color: rgba(0,0,0,0.2);
+}
+.settingNetSetWifiSearClass .settingNetSetSearDiv{
+    height: 420px;
+}
+.html_ltr .settingWifiSetImgBtnNormal {
+    display: inline-block;
+    width: 110px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 32px;
+    opacity: 0.85;
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset;
+    float: right;
+    margin-left: 10px;
+}
+.html_rtl .settingWifiSetImgBtnNormal {
+    display: inline-block;
+    width: 110px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 32px;
+    opacity: 0.85;
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.15) inset;
+    float: left;
+    margin-right: 10px;
+}
+.html_ltr .settingWifiSetImgBtnFocus {
+    display: inline-block;
+    width: 110px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #f0f0f0;
+    font-size: 32px;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    float: right;
+    margin-left: 10px;
+}
+.html_rtl .settingWifiSetImgBtnFocus {
+    display: inline-block;
+    width: 110px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 32px;
+    background-color: rgba(17,74,111,0.8);
+    box-shadow: 0px 0px 0px 4px #84ecff inset;
+    float: left;
+    margin-right: 10px;
+}
+
+.settingWifiSetImgBtnNormal .settingWifiSetImgBtnRefresh{
+    background-image: url("../img/wifi_fresh.png");
+}
+.settingWifiSetImgBtnFocus .settingWifiSetImgBtnRefresh{
+    background-image: url("../img/wifi_fresh.png");
+}
+.settingWifiSetImgBtnNormal .settingWifiSetImgBtnAdd{
+    background-image: url("../img/wifi_add.png");
+}
+.settingWifiSetImgBtnFocus .settingWifiSetImgBtnAdd{
+    background-image: url("../img/wifi_add.png");
+}

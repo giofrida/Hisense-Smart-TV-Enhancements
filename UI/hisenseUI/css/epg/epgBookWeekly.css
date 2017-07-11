@@ -1,0 +1,55 @@
+
+#epg_book_weekly_page{
+    /*background-color: rgba(0, 0, 0, 0.8);*/
+}
+
+.epgBookWeeklyPanel{
+    position: relative;
+    left: 660px;
+    top: 100px;
+    width: 540px;
+    height: 700px;
+    padding: 20px;
+    font-size: 0;
+    color: #e8e8e8;
+    background-color: #102136;
+}
+
+
+.html_rtl .epgBookEditPanel{
+    left: -660px;
+}
+
+.epgBookWeeklyPanel span{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    font-size: 36px;
+    height: 96px;
+    width: 440px;
+}
+
+.epgBookWeeklyPanel img{
+    margin: 24px;
+}
+
+#book_weekly_mode{
+    width: 540px;
+    height: 686px;
+}
+
+#book_weekly_mode li{
+    width: 540px;
+    height: 96px;
+    line-height: 96px;
+    border-bottom: 2px #173f58 solid;
+    display: inline-block;
+    color: #b2b8bf;
+}
+
+#book_weekly_mode li.focus{
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+    color: #e8e8e8;
+}

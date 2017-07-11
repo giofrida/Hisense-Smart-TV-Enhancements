@@ -1,0 +1,199 @@
+#epg_book_edit_page{
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.epgBookEditPanel{
+	position: relative;
+    left: 449px;
+    top: 160px;
+    width: 892px;
+    height: 550px;
+    padding: 60px 65px 0 65px;
+    font-size: 0;
+    color: #e8e8e8;
+    background-color: #102136;
+}
+
+
+.html_rtl .epgBookEditPanel{
+	left: -449px;
+}
+
+.epgBookEditPanel > span{
+	width: 892px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+    display: inline-block;
+}
+
+#book_edit_channel{
+	font-size: 28px;
+	height: 40px;
+	line-height: 40px;
+}
+#book_edit_program{
+	font-size: 34px;
+	height: 54px;
+	line-height: 50px;
+}
+#book_edit_time{
+	font-size: 34px;
+	height: 66px;
+	line-height: 50px;
+	direction: ltr;
+}
+.html_rtl #book_edit_time{
+    text-align: right;
+}
+
+#book_edit_type{
+	font-size: 36px;
+	height: 56px;
+	line-height: 50px;
+}
+
+#book_edit_time_tip{
+	font-size: 36px;
+	height: 56px;
+	line-height: 50px;
+	direction: ltr;
+}
+.html_rtl #book_edit_time_tip{
+    text-align: right;
+}
+
+#book_edit_repeat_tip{
+	font-size: 36px;
+	height: 56px;
+	line-height: 50px;	
+}
+.epgBookEditPanel > ul{
+	height: 60px;
+	line-height: 60px;
+	width: 892px;
+	margin-bottom: 30px;
+	font-size: 0;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.epgBookEditPanel ul li{
+	height: 60px;
+	line-height: 60px;
+    display: inline-block;
+    background-color: #132f57;
+	color: #b2b8bf;
+}
+.epgBookEditPanel ul span{
+	font-size: 32px;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+    display: inline-block;
+}
+
+#book_edit_time_mode span{
+	width: 446px;
+	direction: ltr;
+}
+
+#book_edit_repeat_mode span{
+	width: 297px;
+}
+
+#book_edit_operate_btn{
+	height: 95px;
+	line-height: 95px;
+	width: 1022px;
+	margin: 0 0 0 -65px;
+    border-top: 2px #173f58 solid;
+}
+
+.html_rtl #book_edit_operate_btn{
+	margin: 0  -65px 0 0;
+
+}
+
+#book_edit_operate_btn li{
+	height: 95px;
+	line-height: 95px;
+	background-color: transparent;
+}
+#book_edit_operate_btn span{
+	width: 511px;
+    /*background-image: url('../../img/epg/vertical_line.png');*/
+    box-shadow: 0 0 0 1px #173f58;
+    background-repeat-x: no-repeat;
+    background-position-x: 100%;
+}
+
+
+.epgBookEditPanel > ul li.focus{
+	color: #e8e8e8;
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+}
+
+.epgBookEditPanel > ul li.dataSelected{
+    background-color: #264571;
+    color: #e8e8e8;
+}
+
+.epgBookEditPanel > ul li.selected{
+    background-color: #264571;
+    color: #e8e8e8;
+}
+
+.epgBookEditPanel > ul li.disable{
+    /*display: none;*/
+    color: #b2b8bf;
+    opacity: 0.3;
+}
+.epgBookEditPanel > ul li.disableDataSelected{
+	color: #b2b8bf;
+	opacity: 0.3;
+}
+#book_edit_operate_btn li.disable{
+    display: none;
+}
+
+.epgBookEditInputsRecord{
+    left: 446px;
+    width: 446px;
+}
+
+.html_rtl .epgBookEditInputsRecord{
+	left: -446px;
+}
+
+.epgBookEditInputsReminder{
+    left: 0;
+    width: 892px;
+}
+
+#book_edit_input_panel{
+	position: relative;
+    top: -333px;
+    box-shadow: 0 0 0 4px #173f58 inset;
+    background-color: #102136;
+    height: 60px;
+    display: none;
+}
+
+#book_edit_time_inputs_box{
+    height: 60px;
+    text-align: center;
+    direction: ltr;
+}
+
+#book_edit_time_inputs_box li{
+    background-color: transparent;
+    height: 45px;
+}
+
+#book_edit_time_inputs_box li.focus{
+    background-color: transparent;
+    border-bottom: 1px solid #f78701;
+}

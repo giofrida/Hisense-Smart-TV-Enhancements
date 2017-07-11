@@ -1,0 +1,271 @@
+#dialog_common {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+#dialog_common span {
+    display: inline-block;
+}
+
+/*dialog_delcity*/
+.dialog_delcity_page {
+    height: 337px;
+    width: 1022px;
+    padding: 372px 449px 371px 449px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #f0f0f0;
+}
+
+.dialog_delcity_panel {
+
+    height: 337px;
+    width: 1022px;
+    background-color: #102136;
+}
+
+.dialog_delcity_panel #dialog_cp_title {
+
+}
+
+.dialog_delcity_panel #dialog_cp_content {
+
+    padding: 80px 65px 0px 65px;
+    width: 892px;
+    height: 140px;
+    line-height: 45px;
+    font-size: 36px;
+    border-bottom: 2px #173f58 solid;
+}
+
+.dialog_delcity_btns {
+    height: 95px;
+    width: 1022px;
+}
+
+.dialog_delcity_btns span {
+    display: block;
+    float: left;
+    width: 511px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 32px;
+}
+
+.dialog_delcity_btns span.focus {
+
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+}
+
+/*dialog_delhomecity*/
+.dialog_delhomecity_page {
+    height: 528px;
+    width: 1022px;
+    padding: 276px 449px 276px 449px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #f0f0f0;
+}
+
+.dialog_delhomecity_panel {
+
+    height: 528px;
+    width: 1022px;
+    background-color: #102136;
+}
+
+.dialog_delhomecity_panel #dialog_cp_title {
+
+    color: #35b5ec;
+    border-bottom: solid 6px #33b5e6;
+    text-indent: 65px;
+    font-size: 40px;
+    width: 1022px;
+    height: 100px;
+    line-height: 100px;
+}
+
+.dialog_delhomecity_panel #dialog_cp_content {
+
+    padding: 60px 65px 0px 65px;
+    width: 892px;
+    height: 265px;
+    line-height: 45px;
+    font-size: 36px;
+    border-bottom: 2px #173f58 solid;
+}
+
+.dialog_delhomecity_btns {
+    height: 95px;
+    width: 1022px;
+}
+
+.dialog_delhomecity_btns span {
+    display: block;
+    float: left;
+    width: 511px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 32px;
+}
+
+.dialog_delhomecity_btns span.focus {
+
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+}
+
+
+/*remove app*/
+.dialog_removeapp_page{
+    height: 528px;
+    width: 1022px;
+    padding: 276px 449px 276px 449px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #f0f0f0;
+}
+
+.dialog_removeapp_panel {
+
+    height: 528px;
+    width: 1022px;
+    background-color: #102136;
+}
+
+
+.dialog_removeapp_panel #dialog_cp_title {
+
+    color: #35b5ec;
+    border-bottom: solid 6px #33b5e6;
+    text-indent: 65px;
+    font-size: 40px;
+    width: 1022px;
+    height: 100px;
+    line-height: 100px;
+}
+
+.dialog_removeapp_panel #dialog_cp_content {
+    width: 1022px;
+    height: 324px;
+    color: #F0F0F0;
+    border-bottom: 2px #173f58 solid;
+}
+
+.dialog_removeapp_panel #dialog_cp_content img{
+    width: 213px;
+    height: 120px;
+    margin: 30px 404px 0px 404px;
+}
+.dialog_removeapp_panel #dialog_cp_content span{
+    font-size: 32px;
+    opacity: 0.5;
+    width: 1022px;
+    text-align: center;
+    margin-top: 20px;
+}
+.dialog_removeapp_panel #dialog_cp_content div{
+    font-size: 36px;
+    width: 1022px;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.dialog_removeapp_btns {
+    height: 95px;
+    width: 1022px;
+}
+
+.dialog_removeapp_btns span {
+    /*display: block;*/
+    /*float: left;*/
+    width: 511px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 32px;
+    color: #F0F0F0;
+}
+
+.dialog_removeapp_btns span.focus {
+
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+}
+
+
+/*dialog_default*/
+.dialog_default_page {
+    height: 337px;
+    width: 1022px;
+    padding: 372px 449px 371px 449px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #f0f0f0;
+}
+
+.dialog_default_panel {
+
+    height: 337px;
+    width: 1022px;
+    background-color: #102136;
+}
+
+.dialog_default_panel #dialog_cp_title {
+
+}
+
+.dialog_default_panel #dialog_cp_content {
+
+    padding: 80px 65px 0px 65px;
+    width: 892px;
+    height: 140px;
+    line-height: 45px;
+    font-size: 36px;
+    border-bottom: 2px #173f58 solid;
+}
+
+.dialog_default_btns {
+    height: 95px;
+    width: 1022px;
+}
+
+.dialog_default_btns span {
+    /*display: block;*/
+    /*float: left;*/
+    display: inline-block;
+    width: 511px;
+    height: 95px;
+    line-height: 95px;
+    text-align: center;
+    font-size: 32px;
+}
+
+.dialog_default_btns span.focus {
+
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+}
+
+
+.dialog_channel_update_panel {
+
+    height: 337px;
+    width: 1022px;
+    background-color: #102136;
+}
+
+.dialog_channel_update_panel #dialog_cp_title {
+
+}
+
+.dialog_channel_update_panel #dialog_cp_content {
+
+    padding: 30px 65px 0px 65px;
+    width: 892px;
+    height: 190px;
+    line-height: 45px;
+    font-size: 36px;
+    border-bottom: 2px #173f58 solid;
+    text-align: justify;
+}

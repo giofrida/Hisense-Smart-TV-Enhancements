@@ -1,0 +1,258 @@
+/**
+ * Created by Brad on 14-2-14.
+ */
+
+#audioPlayerDiv {
+    font-family: myFirstFont;
+    font-size: 12px;
+    background-image: url("../img/himedia/musicPlayer/audio_player_frame_bg.png");
+    width: 1920px;
+    height: 1080px;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    position: absolute;
+    overflow: hidden;
+    /*z-index: 5;*/
+}
+
+#audioPlayerDiv #audioheader {
+    position: absolute;
+    /*background-image: url("../img/himedia/musicPlayer/head-background.png");*/
+    /*background-repeat: repeat-x;*/
+    /*z-index: 2;*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 95px;
+    line-height: 95px;
+    padding: 0;
+}
+
+#audioPlayerDiv #audioheader img {
+    height: 66px;
+    margin: 0px 20px 0px 30px;
+    vertical-align: middle;
+}
+
+#audioPlayerDiv #audioheader span {
+    color: white;
+    font-size: 35px;
+    vertical-align: middle;
+}
+
+#audioPlayerDiv #list_header {
+    position: relative;
+    font-size: 30px;
+    top: 110px;
+    left: 65px;
+    color: #cccccc;
+}
+
+#audioPlayerDiv #list_footer {
+    position: relative;
+    font-size: 28px;
+    top: 900px;
+    left: 280px;
+    color: #999999;
+}
+
+#audioPlayerDiv #cPage {
+    margin-left: 20px;
+}
+
+#audioPlayerDiv #footer {
+    position: absolute;
+    /*z-index: 2;*/
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 77px;
+    font-size: 25px;
+    color: #808080;
+    padding: 0;
+
+}
+
+#audioPlayerDiv #footerContent {
+    position: relative;
+    float: right;
+    top: 20px;
+    right: 10px;
+    /*display: none;*/
+}
+
+#audioPlayerDiv #footerContent img {
+    position: relative;
+
+}
+
+#audioPlayerDiv #footerContent span {
+    position: relative;
+    top: -10px;
+    margin-left: 15px;
+    margin-top: 0;
+    padding: 0;
+    border: 0;
+}
+
+#audioPlayerDiv #pageUp {
+    margin-left: 100px;
+}
+
+#audioPlayerDiv #progressBar {
+    position: absolute;
+    left: 722px;
+    top: 832px;
+    width: 925px;
+    height: 28px;
+    background-image: url(../img/himedia/musicPlayer/pg_bk.gif);
+    /*z-index: 100;*/
+}
+
+#audioPlayerDiv #pg {
+    /*-o-transition-property: width;*/
+    /*-o-transition-duration: 1s;*/
+    position: relative;
+    margin-left: 4px;
+    height: 28px;
+    width: 0px;
+}
+
+/*#audioPlayerDiv #vpb {*/
+/*width: 0;*/
+/*}*/
+
+#audioPlayerDiv #playStatus {
+    position: absolute;
+    top: 880px;
+    left: 722px;
+    width: 925px;
+    height: 35px;
+    font-size: 30px;
+    color: #999999;
+}
+
+#audioPlayerDiv #currentTime {
+    margin-left: 650px;
+}
+
+#audioPlayerDiv #playStatus span {
+    position: relative;
+    top: -7px;
+}
+
+#audioPlayerDiv #mode {
+    margin-left: 30px;
+}
+
+#audioPlayerDiv #wrapper {
+    position: absolute;
+    /*z-index: 1;*/
+    top: 162px;
+    bottom: 48px;
+    left: 0;
+    /*right:10px;*/
+    width: 450px;
+    height: 752px;
+    /*background: #aaa;*/
+    /*overflow: auto;*/
+    /*overflow: hidden;*/
+    padding: 0;
+    border: 0;
+}
+
+#audioPlayerDiv #effects {
+
+    position: relative;
+    /*z-index: 1; *//* -webkit-touch-callout:none;*/
+    left: 515px;
+    top: 95px;
+    padding: 0;
+    /*scrollbar-face-color:#fff;*/
+}
+
+#audioPlayerDiv #music_focus {
+    position: absolute;
+    /*z-index: 5;*/
+    top: 135px;
+    left: -30px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#audioPlayerDiv #wrapper ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+}
+
+#audioPlayerDiv #wrapper li {
+    /*padding: 0 40px;*/
+    padding: 0;
+    margin: 0;
+    border: 0;
+    display: block;
+    /*background: #000;*/
+    height: 94px;
+
+    line-height: 94px;
+    /*border-bottom: 1px solid #666666;*/
+    /*border-top: 1px solid #666666;*/
+    /*background-color: #fafafa;*/
+
+}
+
+#audioPlayerDiv #wrapper li div {
+    /*padding: 0 40px;*/
+    width: 400px;
+    padding-left: 15px;
+    font-size: 32px;
+    height: 94px;
+    line-height: 94px;
+    /*padding-left:65px;*/
+    color: #999999;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}
+
+#audioPlayerDiv #wrapper li div img {
+    padding-right: 15px;
+    visibility: hidden;
+}
+
+#audioPlayerDiv #info {
+    position: absolute;
+    top: 504px;
+    left: 722px;
+    width: 925px;
+    text-align: center;
+}
+
+#audioPlayerDiv #musicIcon {
+    position: absolute;
+    right: 595px;
+    top: 196px;
+    width: 280px;
+}
+
+#audioPlayerDiv #audioTitle {
+    font-size: 36px;
+    color: #ffffff;
+}
+
+#audioPlayerDiv #audioSinger {
+    margin-top: 28px;
+    font-size: 30px;
+    color: #808080;
+}
+
+#audioPlayerDiv #audioCD {
+    margin-top: 24px;
+    font-size: 30px;
+    color: #808080;
+}

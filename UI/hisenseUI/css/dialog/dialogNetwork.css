@@ -1,0 +1,66 @@
+
+#dialog_network{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1920px;
+    height: 1080px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #f0f0f0;
+}
+
+
+#dialog_network_panel {
+    height: 577px;
+    width: 1022px;
+    margin: 250px 449px 0px 449px;
+    background-color: #102136;
+}
+
+.dialogNetworkImg{
+    height: 260px;
+    width: 1022px;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.dialogNetworkTip{
+    height: 150px;
+    width: 1022px;
+    margin-top: 30px;
+
+}
+
+.dialogNetworkTip span{
+    display: block;
+    width: 1022px;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 14px;
+}
+
+
+.dialogNetworkBtn{
+    height: 100px;
+    width: 957px;
+    margin-left: 65px;
+}
+
+.dialogNetworkBtn span{
+    display: inline-block;
+    width: 277px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    font-size: 32px;
+    margin-right: 30px;
+    box-shadow: 0 0 0 2px #808080 inset;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dialogNetworkBtn span.focus{
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+}

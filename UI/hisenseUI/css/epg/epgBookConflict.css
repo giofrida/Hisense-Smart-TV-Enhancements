@@ -1,0 +1,144 @@
+
+#epg_book_conflict_page{
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.epgBookConflictPanel{
+	position: relative;
+	left: 241px;
+	top: 261px;
+	width: 1437px;
+	height: 557px;
+    background-color: #102136;
+    font-size: 0;
+}
+
+.html_rtl .epgBookConflictPanel{
+    left: -241px;
+
+}
+
+.epgBookConflictPanel span{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+    display: inline-block;
+}
+
+#book_conflict_title{
+    height: 100px;
+    line-height: 100px;
+	width: 1437px;
+    font-size: 40px;
+    text-align: center;
+    color: #33b5e6;
+    border-bottom: 6px #33b5e6 solid;
+}
+
+.epgBookConflictTimeAxis {
+    height: 55px;
+    width: 1400px;
+    padding-left: 37px;
+    padding-right: 0;
+	border-bottom: #3d4041 1px solid;
+	background-color: #1e1e1e;
+    font-size: 0;
+}
+
+.html_rtl .epgBookConflictTimeAxis {
+    padding-right: 37px;
+    padding-left: 0;
+}
+
+.epgBookConflictTimeAxis > span {
+    height: 55px;
+    width: 350px;
+    background-image: url(../../img/epg/npg_img_tli_lst_col_bk.png);
+    background-size: 100% 100%;
+    font-size: 24px;
+    text-indent: 10px;
+    line-height: 55px;
+	color: #767d88;
+	background-repeat: no-repeat;
+}
+
+#book_conflict_list{
+	width: 1437px;
+    height: 258px;
+    border-bottom: 2px #173f58 solid;
+}
+#book_conflict_list li{
+    height: 84px;
+    line-height: 84px;
+    width: 1437px;
+    border-bottom: 1px #061626 solid;
+
+}
+
+.conflictContentPanel{
+    height: 84px;
+    background-color: #26343f;
+}
+.conflictItemPanel{
+	height: 84px;
+    position: relative;
+    top: -84px;
+    color: #a1a5ac;
+    white-space: nowrap;
+    font-size: 0;
+    overflow: hidden;
+}
+.conflictArea{
+    background-color: #ff0000;
+    height: 84px;
+    opacity: 0.5;
+}
+
+#book_conflict_list li span{
+    text-indent: 10px;
+    font-size: 28px;
+}
+
+#book_conflict_list li img{
+    /*visibility: hidden;*/
+    display: none;
+    margin: 25px 0;
+}
+
+#book_conflict_list li.disable{
+    visibility: hidden;
+}
+
+#book_conflict_list li.focus .conflictItemPanel{
+	color: #e8e8e8;
+    box-shadow: 0 0 0 4px #84ecff inset;
+}
+#book_conflict_list li.focus img{
+    /*visibility: visible;*/
+    display: inline-block;
+}
+
+.epgBookConflictBtn{
+    height: 55px;
+    width: 1397px;
+    margin: 40px 103px 40px 103px;
+}
+
+.epgBookConflictBtn span{
+    color: #a1a5ac;
+    font-size: 28px;
+    width: 260px;
+    height: 55px;
+    line-height: 55px;
+    box-shadow: 0 0 0 4px #1d3b61 inset;
+    background-color: #172c4b;
+    text-align: center;
+    margin: 0 75px 0 75px;
+}
+
+.epgBookConflictBtn span.focus{
+    color: #e8e8e8;
+    box-shadow: 0 0 0 4px #84ecff inset;
+    background-color: rgba(17, 74, 111, 0.8);
+}
+

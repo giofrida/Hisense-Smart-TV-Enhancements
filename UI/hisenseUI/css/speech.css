@@ -1,0 +1,451 @@
+#Voice_assistant_page{
+    height: 1080px;
+    width: 1920px;
+    position: absolute;
+
+}
+#speech_Lan_page{
+    height: 610px;
+    width: 1022px;
+    background-color: rgba(16, 33, 54, .9);
+    position: absolute;
+    border-radius: 4px;
+    left: 50%;
+    margin-left: -511px;
+    bottom: 70px;
+}
+.Voice_assistantContent{
+    width: 1920px;
+    height: 1080px;
+    position: absolute;
+
+}
+.Voice_assistantTip{
+    width: 960px;
+    height: 210px;
+    margin-left: 480px;
+    top: 0;
+    background-color: rgba(0,0,0,.7);
+    border-bottom:5px;
+    display: block;
+    position: absolute;
+    display:none;
+}
+.Voice_assistant_tip1{
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 40px;
+    position: relative;
+    width: 960px;
+    height: 40px;
+}
+.Voice_assistant_tip2{
+    margin-left: 20px;
+    margin-top: 20px;
+    height:40px ;
+    width: 960px;
+    position: relative;
+}
+.volume_number1{
+    font-size: 30px;
+    color: #ffd044;
+}
+.volume_number2{
+    font-size: 30px;
+    color: #ffffff;
+}
+.Voice_assistantItem{
+    width: 1920px;
+    height: 500px;
+    bottom:0px;
+    background-image: url(../img/speech/voicedialog.png);
+    position: absolute;
+}
+.Voice_assistant_bottom1{
+    font-size: 30px;
+    color: rgba(255,255,255,.5);
+    display: inline-block;
+    margin-left: 18px;
+    margin-right: 18px;
+
+}
+.Voice_assistant_bottom_0 {
+    display: inline-block;
+    visibility: hidden;
+}
+#Voice_assistant_bottom3{
+    width: 1920px;
+    text-align: center;
+
+}
+.Voice_assistant_spanContain{
+    margin-top: 110px;
+    width: 960px;
+    height: 150px;
+    margin-left: 480px;
+    position: relative;
+}
+.Voice_assistant_spanContain .Voice_assistant_bottomTip1,
+.Voice_assistant_spanContain .Voice_assistant_bottomTip2,
+.Voice_assistant_spanContain .Voice_assistant_bottomTip3
+.Voice_assistant_spanContain .Voice_assistant_bottomTipNone{
+    /*transition:all 1s linear;*/
+    /*-moz-transition:all 1s linear;*/
+    /*-o-transition:all 1s linear;*/
+}
+.Voice_assistant_bottomTip1{
+    font-size: 28px;
+    color: rgba(255,255,255,.2);
+    text-align: center;
+    height: 30px;
+    width: 1920px;
+    margin-top:220px;
+    /*display: none;*/
+}
+.Voice_assistant_bottomTip2{
+    font-size: 28px;
+    color: rgba(255,255,255,.5);
+    text-align: center;
+    height: 30px;
+    width: 960px;
+    /*margin-top: 30px;*/
+    position: absolute;
+    /*display: none;*/
+}
+.Voice_assistant_bottomTip3{
+    font-size: 28px;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    height: 30px;
+    width: 960px;
+    /*margin-top: 30px;*/
+    position: absolute;
+    /*display: none;*/
+    /*bottom: 0;*/
+}
+.Voice_assistant_bottomTipNone{
+    font-size: 28px;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    height: 30px;
+    width: 960px;
+    position: absolute;
+}
+.Voice_assistant_imgMicLoading{
+    background-iamge: url(../img/speech/export_loading.png);
+    /*width: 200px;*/
+    /*height: 200px;*/
+    /*margin-left: 860px;*/
+}
+.Voice_assistant_imgMicNormal{
+    background: url(../img/speech/export_normal.png);
+    /*width: 200px;*/
+    /*height: 200px;*/
+    /*margin-left: 860px;*/
+
+    /*background-image: url(../img/speech/complete.png);*/
+    /*width: 200px;*/
+    /*height: 200px;*/
+
+
+}
+.Voice_assistant_imgMicSpeaking{
+    background-image: url(../img/speech/export_speaking.png);
+    /*width: 200px;*/
+    /*height: 200px;*/
+    /*margin-left: 860px;*/
+}
+#Voice_assistant_bottom_2{
+    width: 200px;
+    height: 200px;
+}
+#export_status{
+    position: absolute;
+    width: 1920px;
+    height: 200px;
+    /*background-image: url(../img/speech/complete.png);*/
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#microphone_status{
+    /*background-image: url(../img/speech/export_speaking.png);*/
+    height: 200px;
+    position: absolute;
+    width: 1920px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#border_status{
+    width: 120px;
+    height: 120px;
+    border-radius: 120px;
+    position: absolute;
+    bottom: 89px;
+    left: 900px;
+
+    animation: buttonLight 1s infinite;
+    -webkit-animation: buttonLight 1s infinite; /*Safari and Chrome*/
+}
+.export_status_img{
+    background-image: url(../img/speech/load.png);
+    /*width: 200px;*/
+    /*height: 200px;*/
+    -webkit-animation:Speechrun 1350ms steps(1) infinite 0s;
+}
+.export_status_imgcomplete{
+    background: url(../img/speech/complete.png);
+    /*width: 200px;*/
+    /*height: 200px;*/
+
+    /*background-image: url(../img/speech/export_normal.png);*/
+
+}
+@-webkit-keyframes Speechrun {
+    0% { -webkit-transform: rotate(0deg); }
+    10% { -webkit-transform: rotate(36deg); }
+    20% { -webkit-transform: rotate(72deg); }
+    30% { -webkit-transform: rotate(108deg); }
+    40% { -webkit-transform: rotate(144deg); }
+    50% { -webkit-transform: rotate(180deg); }
+    60% { -webkit-transform: rotate(216deg); }
+    70% { -webkit-transform: rotate(252deg); }
+    80% { -webkit-transform: rotate(288deg); }
+    90% { -webkit-transform: rotate(326deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes buttonLight {
+    from {
+        border-color: rgba(32, 252, 193, 1);
+        box-shadow: 0 0 30px rgba(32, 252, 193, .5);
+    }
+    25% {
+    border-color: rgba(32, 252, 193, 1);
+    box-shadow: 0 0 92px rgba(32, 252, 193, 1);
+
+    }
+    50% {
+        border-color: rgba(32, 252, 193, 1);
+        box-shadow: 0 0 92px rgba(32, 252, 193, .7);
+
+    }
+    75% {
+    border-color: rgba(32, 252, 193, 1);
+    box-shadow: 0 0 92px rgba(32, 252, 193, .5);
+    }
+    to {
+        border-color: rgba(32, 252, 193, 1);
+        box-shadow: 0 0 30px rgba(32, 252, 193, .5);
+    }
+}
+@-webkit-keyframes buttonLight /*Safari and Chrome*/
+{
+    from {
+        border-color: rgba(32, 252, 193, 1);
+        box-shadow: 0 0 30px rgba(32, 252, 193, .5);
+    }
+    25% {
+        border-color: rgba(32, 252, 193, 1);
+        box-shadow: 0 0 92px rgba(32, 252, 193, 1);
+
+    }
+    50% {
+        border-color: rgba(32, 252, 193, 1);
+        box-shadow: 0 0 92px rgba(32, 252, 193, .7);
+        /*transform:scale(1.05)*/
+    }
+    75% {
+        border-color: rgba(32, 252, 193, 1);
+        box-shadow: 0 0 92px rgba(32, 252, 193, .5);
+    }
+    to {
+        border-color: rgba(32, 252, 193, 1);
+        box-shadow: 0 0 30px rgba(32, 252, 193, .5);
+    }
+}
+.export_status_imgSpeaking{
+    background-image: url(../img/speech/speeking_1.png);
+    /*width: 200px;*/
+    /*height: 200px;*/
+}
+.Voice_assistant_btn_class_normal{
+    width: 120px;
+    height: 48px;
+    margin-top: 20px;
+    background-color: #102136;
+    float: left;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 26px;
+    line-height: 48px;
+    margin-left: 20px;
+}
+.Voice_assistant_btn_class_focus{
+    width: 120px;
+    height: 48px;
+    margin-top: 20px;
+    float: left;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 26px;
+    line-height: 48px;
+    box-shadow: 0 0 0 4px rgba(132,236,255,1) inset;
+    background-color: rgba(17,74,111,.8);
+    margin-left: 20px;
+}
+.bluetooth_tip_speech_container{
+    width: 1022px;
+    height: 656px;
+    background-color: #102136;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -221.5px;
+    margin-left: -511px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+#bluetoothResult_tip_speech_container{
+    height: 556px;
+}
+#bluetoothResult_tip_start_div_1{
+    height: 355px;
+}
+#speechLanResure_container{
+    background-color: #173f58;
+    height: 506px;
+}
+
+.bluetoothMatch_tip_speech_container{
+    width: 1022px;
+    height: 426px;
+    background-color: #102136;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -221.5px;
+    margin-left: -511px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+.bluetooth_tip_speech_title{
+    width: 1022px;
+    height: 100px;
+    line-height: 100px;
+    border-bottom: 6px #33b5e6 solid;
+    background-color: #102136;
+}
+.bluetooth_tip_speech_span{
+    color: #41b6e3;
+    font-size: 40px;
+    margin-left: 65px;
+    margin-right: 65px;
+}
+.bluetooth_tip_start_div{
+    width: 1022px;
+    height: 455px;
+    color: #f0f0f0;
+    text-align: center;
+}
+.bluetooth_tip_start_img{
+    margin-top: 60px;
+}
+
+.bluetooth_tip_start_img1 {
+    top: 60px;
+    position: relative;
+}
+
+.bluetooth_tip_start_img2 {
+    display: block;
+    margin-left: 410px;
+    position: relative;
+    margin-right: 490px;
+}
+.bluetooth_tip_start_text{
+    font-size: 36px;
+    line-height: 50px;
+    text-align: center;
+    position: relative;
+    max-width: 1022px;
+    word-wrap: break-word;
+    margin-top: 40px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.bluetooth_tip_start_btn_class_focus{
+    height: 95px;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 32px;
+    line-height: 95px;
+    box-shadow: 0 0 0 4px rgba(132,236,255,1) inset;
+    background-color: rgba(17,74,111,.8);
+}
+.bluetooth_tip_start_btn_class_normal{
+    width: 1022px;
+    height: 95px;
+    background-color: #102136;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 32px;
+    line-height: 95px;
+}
+.speechLanResure_btn_class_normal{
+    width: 510px;
+    height: 95px;
+    margin-top: 2px;
+    background-color: #102136;
+    float: left;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 32px;
+    line-height: 95px;
+}
+.speechLanResure_btn_class_focus {
+    width: 510px;
+    height: 95px;
+    margin-top: 2px;
+    float: left;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 32px;
+    line-height: 95px;
+    box-shadow: 0 0 0 4px rgba(132,236,255,1) inset;
+    background-color: rgba(17,74,111,.8);
+}
+.speechLanResure_start_div{
+    width: 1022px;
+    height: 305px;
+    background-color: #102136;
+}
+.speechLanResure_text{
+    display: inline-block;
+    font-size: 32px;
+    color: #f0f0f0;
+    margin-top: 40px;
+    position: relative;
+    left: 65px;
+    right: 65px;
+
+}
+.speechLanResure_text2{
+    display: inline-block;
+    font-size: 32px;
+    color: #f0f0f0;
+    margin-top: 40px;
+    position: relative;
+    left: 65px;
+    right: 65px;
+}
+.speechLanResure_text_item{
+    color: #f0f0f0;
+    font-size: 32px;
+    line-height: 50px;
+    margin-left: 65px;
+    position: relative;
+    max-width: 1022px;
+    word-wrap: break-word;
+    top: 30px;
+    margin-right: 65px;
+}
