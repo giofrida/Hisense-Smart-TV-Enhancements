@@ -2,6 +2,9 @@
  * Created by Brad on 14-9-12.
  */
 
+var FILES_PER_PAGE = 19;
+var FILES_FAST_JUMP  = 5;
+
 
 var cLanguage_himedia = "eng";
 
@@ -1357,13 +1360,13 @@ function showDropboxData(deltadata) {
 }
 
 function nextPageTest() {
-    HiFileBrowser.curFile = (HiFileBrowser.curPage + 1) * 15;
+    HiFileBrowser.curFile = (HiFileBrowser.curPage + 1) * FILES_PER_PAGE;
     changePage(HiFileBrowser.curPage, HiFileBrowser.curPage + 1);
 
 }
 
 function previewPageTest() {
-    HiFileBrowser.curFile = (HiFileBrowser.curPage - 1) * 15
+    HiFileBrowser.curFile = (HiFileBrowser.curPage - 1) * FILES_PER_PAGE
     changePage(HiFileBrowser.curPage, HiFileBrowser.curPage - 1);
 }
 
@@ -1429,8 +1432,8 @@ function goToList() {
 }
 
 function goToContent() {
-    setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curPage * 15);
-    HiFileBrowser.curFile = HiFileBrowser.curPage * 15;
+    setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curPage * FILES_PER_PAGE);
+    HiFileBrowser.curFile = HiFileBrowser.curPage * FILES_PER_PAGE;
     $("#all").attr("class", "dropboxleft_unfocus");
     $("#music").attr("class", "dropboxleft_unfocus");
     $("#photo").attr("class", "dropboxleft_unfocus");
@@ -1981,7 +1984,7 @@ function changePage(curind, nxtind) {
 
         HiFileBrowser.thumbnailxhrs = [];
         HiFileBrowser.curPage = nxtind;
-//        HiFileBrowser.curFile = curind > nxtind ? HiFileBrowser.curFile - 1 : nxtind * 15;
+//        HiFileBrowser.curFile = curind > nxtind ? HiFileBrowser.curFile - 1 : nxtind * FILES_PER_PAGE;
 
         setScroll(HiFileBrowser.sliderHeight, HiFileBrowser.sliderHeight * HiFileBrowser.curPage);
         $("#dropboxmiddle").html(HiFileBrowser.fileHTML[nxtind]);
@@ -2069,7 +2072,7 @@ function setFilePath(file) {
 function setImageIcon(files) {
     debugPrint("setImageIcon function begin, and the param files.length is : " + files.length);
     if (!!files) {
-        for (var i = HiFileBrowser.curPage * 15; i < (HiFileBrowser.curPage + 1) * 15 && i < files.length; i++) {
+        for (var i = HiFileBrowser.curPage * FILES_PER_PAGE; i < (HiFileBrowser.curPage + 1) * FILES_PER_PAGE && i < files.length; i++) {
             getFileIcon(files[i], $("#fileimg" + i));
         }
     }
@@ -2180,7 +2183,7 @@ function setHTML(files) {
     //debugPrint(JSON.stringify(files));
     debugPrint("setHTML function begin,and the patam firstInit is : " + HiFileBrowser.firstInit);
     if (!!files) {
-        HiFileBrowser.totalPage = Math.ceil(files.length / 15);
+        HiFileBrowser.totalPage = Math.ceil(files.length / FILES_PER_PAGE);
         HiFileBrowser.totalFile = files.length;
     }
     else {
@@ -2206,10 +2209,10 @@ function setHTML(files) {
             //            debugPrint("come in_________________ 1");
             for (var kk = 0; kk < HiFileBrowser.totalPage; kk++) {
                 html = "";
-                for (var ii = 0; ii < 15 && kk * 15 + ii < files.length; ii++) {
-                    html += '<div id="file' + (kk * 15 + ii) + '" class="dropboxmiddle_unfocus">' +
-                        '<img id="fileimg' + (kk * 15 + ii) + '" src="' + 'img/himedia/fileBrowser/defaultimg.png" onerror="useDefaultImg(this)">' +
-                        '<p id="filename' + (kk * 15 + ii) + '">' + files[kk * 15 + ii].usbFileName + '</p>' +
+                for (var ii = 0; ii < FILES_PER_PAGE && kk * FILES_PER_PAGE + ii < files.length; ii++) {
+                    html += '<div id="file' + (kk * FILES_PER_PAGE + ii) + '" class="dropboxmiddle_unfocus">' +
+                        '<img id="fileimg' + (kk * FILES_PER_PAGE + ii) + '" src="' + 'img/himedia/fileBrowser/defaultimg.png" onerror="useDefaultImg(this)">' +
+                        '<p id="filename' + (kk * FILES_PER_PAGE + ii) + '">' + files[kk * FILES_PER_PAGE + ii].usbFileName + '</p>' +
                         '</div>';
                 }
                 HiFileBrowser.fileHTML.push(html);
@@ -2233,10 +2236,10 @@ function setHTML(files) {
             // debugPrint("come in_________________ 1");
             for (var kk = 0; kk < HiFileBrowser.totalPage; kk++) {
                 html = "";
-                for (var ii = 0; ii < 15 && kk * 15 + ii < files.length; ii++) {
-                    html += '<div id="file' + (kk * 15 + ii) + '" class="dropboxmiddle_unfocus">' +
-                        '<img id="fileimg' + (kk * 15 + ii) + '" src="' + 'img/himedia/fileBrowser/defaultimg.png" onerror="useDefaultImg(this)">' +
-                        '<p id="filename' + (kk * 15 + ii) + '">' + getFileName(files[kk * 15 + ii]) + '</p>' +
+                for (var ii = 0; ii < FILES_PER_PAGE && kk * FILES_PER_PAGE + ii < files.length; ii++) {
+                    html += '<div id="file' + (kk * FILES_PER_PAGE + ii) + '" class="dropboxmiddle_unfocus">' +
+                        '<img id="fileimg' + (kk * FILES_PER_PAGE + ii) + '" src="' + 'img/himedia/fileBrowser/defaultimg.png" onerror="useDefaultImg(this)">' +
+                        '<p id="filename' + (kk * FILES_PER_PAGE + ii) + '">' + getFileName(files[kk * FILES_PER_PAGE + ii]) + '</p>' +
                         '</div>';
                 }
                 HiFileBrowser.fileHTML.push(html);
@@ -2263,45 +2266,45 @@ function setHTML(files) {
                 //  debugPrint("come in_________________ 1");
                 for (var kk = 0; kk < HiFileBrowser.totalPage; kk++) {
                     html = "";
-                    for (var ii = 0; ii < 15 && kk * 15 + ii < files.length; ii++) {
-                        debugPrint(files[kk * 15 + ii].thumb_url + "_______lock mark");
-//                            if (!files[kk * 15 + ii].thumb_url)
+                    for (var ii = 0; ii < FILES_PER_PAGE && kk * FILES_PER_PAGE + ii < files.length; ii++) {
+                        debugPrint(files[kk * FILES_PER_PAGE + ii].thumb_url + "_______lock mark");
+//                            if (!files[kk * FILES_PER_PAGE + ii].thumb_url)
 //                                lockerClass = "dropboxmiddle_focus_pvr_img_lock";
 //                            else
 //                                lockerClass = "dropboxmiddle_focus_pvr_img_lock_none";
-                        if (kk * 15 + ii == 0) {
+                        if (kk * FILES_PER_PAGE + ii == 0) {
                             html = '<div id="file0" class="dropboxmiddle_unfocus_pvr">' +
                                 '<img id="fileimg0" src="' + 'img/himedia/fileBrowser/backup.png" onerror="useDefaultImg(this)">' +
                                 '<p id="filename0">' + hiMediaLanguages[cLanguage_himedia]["Return"] + '</p>' +
                                 '</div>';
-                        } else if (!!files[kk * 15 + ii].thumb_url)
-                            html += "<div id=\"file" + (kk * 15 + ii) + "\" class=\"dropboxmiddle_unfocus_pvr\">" +
+                        } else if (!!files[kk * FILES_PER_PAGE + ii].thumb_url)
+                            html += "<div id=\"file" + (kk * FILES_PER_PAGE + ii) + "\" class=\"dropboxmiddle_unfocus_pvr\">" +
                                 "    <img src=\"" + "img/himedia/fileBrowser/deleteBlock.png\" class=\"dropboxmiddle_focus_pvr_img_lock\"/>" +
                                 "    <img src=\"" + "img/himedia/fileBrowser/pvr1.png\" class=\"dropboxmiddle_focus_pvr_img_pvr\"/>" +
                                 "" + "    <div id=\"pvr_info\" class=\"dropboxmiddle_focus_pvr_img_pvr_info\">" +
                                 "        <div class=\"pvr_play_logo\"><img id=\"playLogo\" src=\"" + "img/himedia/fileBrowser/pvrPlay.png\"/></div>" +
                                 "        <div class=\"pvr_date_info\">" +
-                                "            <span class=\"pvr_date\">" + files[kk * 15 + ii].artist + "</span></br>" +
-                                "            <span class=\"pvr_time\">" + files[kk * 15 + ii].icon + "-" + files[kk * 15 + ii].album + "</span>" +
+                                "            <span class=\"pvr_date\">" + files[kk * FILES_PER_PAGE + ii].artist + "</span></br>" +
+                                "            <span class=\"pvr_time\">" + files[kk * FILES_PER_PAGE + ii].icon + "-" + files[kk * FILES_PER_PAGE + ii].album + "</span>" +
                                 "        </div>" + "    </div>" + "" +
-                                " <div class=\"dropboxmiddle_focus_pvr_text_pvr\">   <p id=\"filename" + (kk * 15 + ii) + "\" >" + getFileName(files[kk * 15 + ii]) + "</p></div>" + "</div>";
+                                " <div class=\"dropboxmiddle_focus_pvr_text_pvr\">   <p id=\"filename" + (kk * FILES_PER_PAGE + ii) + "\" >" + getFileName(files[kk * FILES_PER_PAGE + ii]) + "</p></div>" + "</div>";
                         else
-                            html += "<div id=\"file" + (kk * 15 + ii) + "\" class=\"dropboxmiddle_unfocus_pvr\">" +
+                            html += "<div id=\"file" + (kk * FILES_PER_PAGE + ii) + "\" class=\"dropboxmiddle_unfocus_pvr\">" +
                                 // "    <img src=\"" + "img/himedia/fileBrowser/deleteBlock.png\" class=\"dropboxmiddle_focus_pvr_img_lock\"/>" +
                                 "    <img src=\"" + "img/himedia/fileBrowser/pvr1.png\" class=\"dropboxmiddle_focus_pvr_img_pvr\"/>" +
                                 "" + "    <div id=\"pvr_info\" class=\"dropboxmiddle_focus_pvr_img_pvr_info\">" +
                                 "        <div class=\"pvr_play_logo\"><img id=\"playLogo\" src=\"" + "img/himedia/fileBrowser/pvrPlay.png\"/></div>" +
                                 "        <div class=\"pvr_date_info\">" +
-                                "            <span class=\"pvr_date\">" + files[kk * 15 + ii].artist + "</span></br>" +
-                                "            <span class=\"pvr_time\">" + files[kk * 15 + ii].icon + "-" + files[kk * 15 + ii].album + "</span>" +
+                                "            <span class=\"pvr_date\">" + files[kk * FILES_PER_PAGE + ii].artist + "</span></br>" +
+                                "            <span class=\"pvr_time\">" + files[kk * FILES_PER_PAGE + ii].icon + "-" + files[kk * FILES_PER_PAGE + ii].album + "</span>" +
                                 "        </div>" + "    </div>" + "" +
-                                " <div class=\"dropboxmiddle_focus_pvr_text_pvr\">   <p id=\"filename" + (kk * 15 + ii) + "\" >" + files[kk * 15 + ii].usbFileName + "</p></div>" + "</div>";
+                                " <div class=\"dropboxmiddle_focus_pvr_text_pvr\">   <p id=\"filename" + (kk * FILES_PER_PAGE + ii) + "\" >" + files[kk * FILES_PER_PAGE + ii].usbFileName + "</p></div>" + "</div>";
 
 //                            html += '<div id="file' + (kk * k + ii) + '" class="dropboxmiddle_unfocusPVR">' +
-//                                '<img id="fileimg' + (kk * 15 + ii) + '" src="'+baseLauncherDir+'img/himedia/fileBrowser/defaultimg.png" onerror="useDefaultImg(this)">' +
-//                                '<div id="PVRdate' + (kk * 15 + ii) + '">' + files[kk * 15 + ii].usbFileName + '</div>' +
-//                                '<div id="PVRtime' + (kk * 15 + ii) + '">' + files[kk * 15 + ii].usbFileName + '</div>' +
-//                                '<p id="filename' + (kk * 15 + ii) + '">' + files[kk * 15 + ii].usbFileName + '</p>' +
+//                                '<img id="fileimg' + (kk * FILES_PER_PAGE + ii) + '" src="'+baseLauncherDir+'img/himedia/fileBrowser/defaultimg.png" onerror="useDefaultImg(this)">' +
+//                                '<div id="PVRdate' + (kk * FILES_PER_PAGE + ii) + '">' + files[kk * FILES_PER_PAGE + ii].usbFileName + '</div>' +
+//                                '<div id="PVRtime' + (kk * FILES_PER_PAGE + ii) + '">' + files[kk * FILES_PER_PAGE + ii].usbFileName + '</div>' +
+//                                '<p id="filename' + (kk * FILES_PER_PAGE + ii) + '">' + files[kk * FILES_PER_PAGE + ii].usbFileName + '</p>' +
 //                                '</div>';
                     }
                     HiFileBrowser.fileHTML.push(html);
@@ -2321,10 +2324,10 @@ function setHTML(files) {
                 //            debugPrint("come in_________________ 1");
                 for (var kk = 0; kk < HiFileBrowser.totalPage; kk++) {
                     html = "";
-                    for (var ii = 0; ii < 15 && kk * 15 + ii < files.length; ii++) {
-                        html += '<div id="file' + (kk * 15 + ii) + '" class="dropboxmiddle_unfocus">' +
-                            '<img id="fileimg' + (kk * 15 + ii) + '" src="' + 'img/himedia/fileBrowser/defaultimg.png" onerror="useDefaultImg(this)">' +
-                            '<p id="filename' + (kk * 15 + ii) + '">' + files[kk * 15 + ii].usbFileName + '</p>' +
+                    for (var ii = 0; ii < FILES_PER_PAGE && kk * FILES_PER_PAGE + ii < files.length; ii++) {
+                        html += '<div id="file' + (kk * FILES_PER_PAGE + ii) + '" class="dropboxmiddle_unfocus">' +
+                            '<img id="fileimg' + (kk * FILES_PER_PAGE + ii) + '" src="' + 'img/himedia/fileBrowser/defaultimg.png" onerror="useDefaultImg(this)">' +
+                            '<p id="filename' + (kk * FILES_PER_PAGE + ii) + '">' + files[kk * FILES_PER_PAGE + ii].usbFileName + '</p>' +
                             '</div>';
                     }
                     HiFileBrowser.fileHTML.push(html);
@@ -2352,10 +2355,10 @@ function setHTML(files) {
     else {
         $("#dropboxmiddle div").css("float", "right");
     }
-    setDropboxTextScroll("0", "0");
+
     if (!!files && files.length > 0) {
         setFilePath(files[0]);
-        setImageIcon(files.slice(0, 15));
+        setImageIcon(files.slice(0, FILES_PER_PAGE));
     }
     else {
         setFilePath(null);
@@ -2363,42 +2366,8 @@ function setHTML(files) {
 
 }
 
-/**
- * 设置文字滚动
- * @param stop_id 停止滚动的id
- * @param start_id 启动滚动的id
- * @param len 字符超长滚动的长度，默认为16
- */
-function setDropboxTextScroll(stop_id, start_id, len) {
-
-    $("#filename" + stop_id).html(getText(stop_id));
-    debugPrint($("#filename" + stop_id).width());
-    if (start_id === null) {
-        return;
-    }
-    if (!len) {
-        len = 14;
-    }
-
-    var text = getText(start_id);
-    if (text.length > len) {
-        // $("#filename" + start_id).html('<marquee>' + text + '</marquee>');
-        $("#filename" + start_id).html('<marquee style="width: inherit" scrollAmount=4 scrollDelay=100>' + text + '</marquee>');
-
-    }
-    else {
-        $("#filename" + start_id).html(text);
-    }
-}
-
 function getText(id) {
-    var chil = $("#filename" + id).find('marquee');
-    if (chil.length > 0) {
-        return chil.html();
-    }
-    else {
-        return $("#filename" + id).html();
-    }
+    return $("#filename" + id).html();
 }
 
 /**
@@ -2432,7 +2401,6 @@ function setFileFocus(lst_id, nxt_id) {
             //debugPrint("4_lst_id: __" + lst_id + "__nxtid__:" + nxt_id);
 
             debugPrint("1_lst_id: __" + lst_id + "__nxtid__:" + nxt_id);
-            setDropboxTextScroll(lst_id, nxt_id);
 
             $("#file" + lst_id).attr("class", "dropboxmiddle_unfocus");
             if (nxt_id !== null) {
@@ -2450,7 +2418,6 @@ function setFileFocus(lst_id, nxt_id) {
             break;
         case 0:
             //debugPrint("0_lst_id: __" + lst_id + "__nxtid__:" + nxt_id);
-            setDropboxTextScroll(lst_id, nxt_id);
 
             $("#file" + lst_id).attr("class", "dropboxmiddle_unfocus");
             if (nxt_id !== null) {
@@ -2469,7 +2436,6 @@ function setFileFocus(lst_id, nxt_id) {
             //暂时不单独处理PVR，&&PVR
             if (HiFileBrowser.currentDevice == 3 && false) {
                 debugPrint("PVR_1_lst_id: __" + lst_id + "__nxtid__:" + nxt_id);
-                setDropboxTextScroll(lst_id, nxt_id);
 
                 $("#file" + lst_id).attr("class", "dropboxmiddle_unfocus_pvr");
                 if (nxt_id !== null) {
@@ -2486,7 +2452,6 @@ function setFileFocus(lst_id, nxt_id) {
             }
             else {
                 //debugPrint("1_lst_id: __" + lst_id + "__nxtid__:" + nxt_id);
-                setDropboxTextScroll(lst_id, nxt_id);
 
                 $("#file" + lst_id).attr("class", "dropboxmiddle_unfocus");
                 if (nxt_id !== null) {
@@ -2632,61 +2597,28 @@ function dropboxListKeyDown(event) {
 function dropboxConetentKeyDown(event) {
     debugPrint("dropboxConetentKeyDown begin and keyCode is :" + event.keyCode);
     switch (checkDMPkeycode(event.keyCode)) {
-        case VK_DOWN:
-            if (HiFileBrowser.curFile + 5 < HiFileBrowser.totalFile) {
-
-                if (HiFileBrowser.curFile + 5 < (HiFileBrowser.curPage + 1) * 15) {
-                    setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile + 5);
-                    HiFileBrowser.curFile += 5;
-                }
-                else {
-                    HiFileBrowser.curFile += 5;
-                    changePage(HiFileBrowser.curPage, HiFileBrowser.curPage + 1);
-                }
-            }
-            else if (Math.floor(HiFileBrowser.totalFile / 5) != Math.floor(HiFileBrowser.curFile / 5)) {
-                if (HiFileBrowser.curFile + 5 < (HiFileBrowser.curPage + 1) * 15) {
-                    setFileFocus(HiFileBrowser.curFile, HiFileBrowser.totalFile - 1);
-                    HiFileBrowser.curFile = HiFileBrowser.totalFile - 1;
-                }
-                else if (HiFileBrowser.curFile + 5 > (HiFileBrowser.curPage + 1) * 15 && HiFileBrowser.curFile + 5 >= HiFileBrowser.totalFile && HiFileBrowser.totalFile > (HiFileBrowser.curPage + 1) * 15) {
-                    HiFileBrowser.curFile = HiFileBrowser.totalFile - 1;
-                    changePage(HiFileBrowser.curPage, HiFileBrowser.curPage + 1);
-                }
-
-            }
-            break;
         case VK_UP:
-            if (HiFileBrowser.curFile - 5 >= 0) {
-                if (HiFileBrowser.curFile - 5 >= HiFileBrowser.curPage * 15) {
-                    setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile - 5);
-                    HiFileBrowser.curFile -= 5;
-                }
-                else {
-                    HiFileBrowser.curFile -= 5;
-                    changePage(HiFileBrowser.curPage, HiFileBrowser.curPage - 1);
-                }
-            }
+	       	if (HiFileBrowser.curFile > 0) {
+	            if (HiFileBrowser.curFile == HiFileBrowser.curPage * FILES_PER_PAGE) {
+	                HiFileBrowser.curFile--;
+	                changePage(HiFileBrowser.curPage, HiFileBrowser.curPage - 1);
+	            }
+	            else {
+	                setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile - 1);
+	                HiFileBrowser.curFile--;
+	            }
+	        }
+	        // If current file is the first one
+	        else {
+	        	// Go to the last file
+                changePage(HiFileBrowser.curPage, HiFileBrowser.totalPage - 1);
+                setFileFocus(HiFileBrowser.curFile, HiFileBrowser.totalFile - 1);
+                HiFileBrowser.curFile = HiFileBrowser.totalFile - 1;
+	        }
             break;
-        case VK_LEFT:
-            if (HiFileBrowser.curFile == 0) {
-
-//                pathStack.pop();
-                goToList();
-            }
-            else if (HiFileBrowser.curFile == HiFileBrowser.curPage * 15) {
-                HiFileBrowser.curFile--;
-                changePage(HiFileBrowser.curPage, HiFileBrowser.curPage - 1);
-            }
-            else {
-                setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile - 1);
-
-                HiFileBrowser.curFile--;
-            }
-            break;
-        case VK_RIGHT:
+        case VK_DOWN:
             if (HiFileBrowser.curFile < HiFileBrowser.totalFile - 1) {
-                if (HiFileBrowser.curFile + 1 == (HiFileBrowser.curPage + 1) * 15) {
+                if (HiFileBrowser.curFile + 1 == (HiFileBrowser.curPage + 1) * FILES_PER_PAGE) {
                     HiFileBrowser.curFile++;
                     changePage(HiFileBrowser.curPage, HiFileBrowser.curPage + 1);
                 }
@@ -2695,7 +2627,53 @@ function dropboxConetentKeyDown(event) {
                     HiFileBrowser.curFile++;
                 }
             }
+            // If current file is the last one
+            else {
+            	// Go to the first file
+                changePage(HiFileBrowser.curPage, 0);
+                setFileFocus(HiFileBrowser.curFile, 0);
+                HiFileBrowser.curFile = 0;
+            }
 
+            break;
+        case VK_RIGHT:
+            if (HiFileBrowser.curFile + FILES_FAST_JUMP < HiFileBrowser.totalFile) {
+
+                if (HiFileBrowser.curFile + FILES_FAST_JUMP < (HiFileBrowser.curPage + 1) * FILES_PER_PAGE) {
+                    setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile + FILES_FAST_JUMP);
+                    HiFileBrowser.curFile += FILES_FAST_JUMP;
+                }
+                else {
+                    HiFileBrowser.curFile += FILES_FAST_JUMP;
+                    changePage(HiFileBrowser.curPage, HiFileBrowser.curPage + 1);
+                }
+            }
+            // If the jump cannot be done
+            else {
+            	// Go to the last file
+                changePage(HiFileBrowser.curPage, HiFileBrowser.totalPage - 1);
+                setFileFocus(HiFileBrowser.curFile, HiFileBrowser.totalFile - 1);
+                HiFileBrowser.curFile = HiFileBrowser.totalFile - 1;
+            }
+            break;
+        case VK_LEFT:
+            if (HiFileBrowser.curFile - FILES_FAST_JUMP > 0) {
+                if (HiFileBrowser.curFile - FILES_FAST_JUMP >= HiFileBrowser.curPage * FILES_PER_PAGE) {
+                    setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile - FILES_FAST_JUMP);
+                    HiFileBrowser.curFile -= FILES_FAST_JUMP;
+                }
+                else {
+                    HiFileBrowser.curFile -= FILES_FAST_JUMP;
+                    changePage(HiFileBrowser.curPage, HiFileBrowser.curPage - 1);
+                }
+            }
+            // If the jump cannot be done
+            else {
+            	// Go to the first file
+                changePage(HiFileBrowser.curPage, 0);
+                setFileFocus(HiFileBrowser.curFile, 0);
+                HiFileBrowser.curFile = 0;
+            }
             break;
         case VK_ENTER:
             //Brad change keyevent
@@ -2900,15 +2878,6 @@ HiFileBrowser.closeFileBrowser = function () {
 HiFileBrowser.openFileBrowser = function () {
     DBG_ALWAYS("Function openFileBrowser and curFile is " + HiFileBrowser.curFile);
     HiFileBrowser.initLanguage();
-    if (HiFileBrowser.curFile > 0) {
-        var text = getText(HiFileBrowser.curFile);
-        if (text.length > 14) {
-            // $("#filename" + start_id).html('<marquee>' + text + '</marquee>');
-            $("#filename" + HiFileBrowser.curFile).html('<marquee style="width: inherit" scrollAmount=4 scrollDelay=100>' + text + '</marquee>');
-
-        }
-    }
-
 }
 
 //用于回复焦点位置

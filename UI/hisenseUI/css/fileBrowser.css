@@ -76,48 +76,52 @@
 
 #dropboxContainer #dropboxmiddle {
     width: 1600px;
-    height: 924px;
+    height: 934px;
     font-size: 28px;
     background-color: #191a1f;
 }
 
 #dropboxContainer #dropboxmiddle p {
-    /*height: 40px;*/
-    width: 230px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: pre;
+    
+    margin-left: 50px;     /* moves text far from image (42 + 8) */
+    text-align: left;
+    line-height: 40px;
 }
 
 #dropboxContainer .dropboxmiddle_focus {
-    width: 242px;
-    height: 282px;
-    margin: 20px 0px -10px 56px;
+    width: 1535px;         /* window_width - scrollbar_width - 2*border_width (1600 - 51 - 2*7) */
+    height: 42px;
+    margin-bottom: -7px;   /* compensate for the border */
+    margin-left: 51px;     /* move of a scrollbar_width amount */
     color: white;
-    border: solid 6px rgba(8, 210, 247, 1);
+    border: solid 7px rgba(8, 210, 247, 1);
+    position: relative;
     /*box-shadow: inset 0 0 0 1px #0b1a39, inset 0 0 0 5px #08d2f7, inset 0 0 0 6px #bef5ff;*/
 
     /*box-shadow: 0 0 28px rgba(250, 128, 10, .5);*/
 }
 
 #dropboxContainer .dropboxmiddle_focus img {
-    width: 230px;
-    height: 230px;
-    margin: 6px 6px 0px 6px;
+    height: inherit;
+    position: absolute;
 }
 
 #dropboxContainer .dropboxmiddle_unfocus {
-    width: 230px;
-    height: 260px;
-    margin: 20px 0px 0px 56px;
+    width: 1535px;
+    height: 42px;
+    margin-top: 3px;       /* border_width / 2 - 1 */
+    margin-left: 58px;     /* scrollbar_width + border_width */
     color: #b2b2b2;
-    padding: 12px;
+    padding-top: 3px;
+    border-top: 1px solid #282828;
 }
 
 #dropboxContainer .dropboxmiddle_unfocus img {
-    width: 230px;
-    height: 230px;
-    margin: 0px;
+    height: inherit;
+    position: absolute;
 }
 
 #dropboxContainer .dropboxmiddle_focusPVR {
@@ -162,7 +166,7 @@
 
 #dropboxContainer #dropboxright {
     width: 51px;
-    height: 924px;
+    height: 934px;
     background-color: #191a1f;
 }
 
@@ -175,8 +179,8 @@
 }
 
 #dropboxContainer #dropboxpath {
-    height: 60px;
-    line-height: 60px;
+    height: 50px;
+    line-height: 50px;
     width: 1651px;
     font-size: 25px;
     background-color: #191a1f;
@@ -196,7 +200,7 @@
 #dropboxContainer #filepath {
     color: #fff;
     float: left;
-    max-width: 500px;
+    max-width: 980px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
