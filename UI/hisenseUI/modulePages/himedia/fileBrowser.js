@@ -2355,7 +2355,7 @@ function setHTML(files) {
     else {
         $("#dropboxmiddle div").css("float", "right");
     }
-    setDropboxTextScroll("0", "0");
+
     if (!!files && files.length > 0) {
         setFilePath(files[0]);
         setImageIcon(files.slice(0, FILES_PER_PAGE));
@@ -2366,42 +2366,8 @@ function setHTML(files) {
 
 }
 
-/**
- * 设置文字滚动
- * @param stop_id 停止滚动的id
- * @param start_id 启动滚动的id
- * @param len 字符超长滚动的长度，默认为16
- */
-function setDropboxTextScroll(stop_id, start_id, len) {
-
-    $("#filename" + stop_id).html(getText(stop_id));
-    debugPrint($("#filename" + stop_id).width());
-    if (start_id === null) {
-        return;
-    }
-    if (!len) {
-        len = 14;
-    }
-
-    var text = getText(start_id);
-    if (text.length > len) {
-        // $("#filename" + start_id).html('<marquee>' + text + '</marquee>');
-        $("#filename" + start_id).html('<marquee style="width: inherit" scrollAmount=4 scrollDelay=100>' + text + '</marquee>');
-
-    }
-    else {
-        $("#filename" + start_id).html(text);
-    }
-}
-
 function getText(id) {
-    var chil = $("#filename" + id).find('marquee');
-    if (chil.length > 0) {
-        return chil.html();
-    }
-    else {
-        return $("#filename" + id).html();
-    }
+    return $("#filename" + id).html();
 }
 
 /**
@@ -2435,7 +2401,6 @@ function setFileFocus(lst_id, nxt_id) {
             //debugPrint("4_lst_id: __" + lst_id + "__nxtid__:" + nxt_id);
 
             debugPrint("1_lst_id: __" + lst_id + "__nxtid__:" + nxt_id);
-            setDropboxTextScroll(lst_id, nxt_id);
 
             $("#file" + lst_id).attr("class", "dropboxmiddle_unfocus");
             if (nxt_id !== null) {
@@ -2453,7 +2418,6 @@ function setFileFocus(lst_id, nxt_id) {
             break;
         case 0:
             //debugPrint("0_lst_id: __" + lst_id + "__nxtid__:" + nxt_id);
-            setDropboxTextScroll(lst_id, nxt_id);
 
             $("#file" + lst_id).attr("class", "dropboxmiddle_unfocus");
             if (nxt_id !== null) {
@@ -2472,7 +2436,6 @@ function setFileFocus(lst_id, nxt_id) {
             //暂时不单独处理PVR，&&PVR
             if (HiFileBrowser.currentDevice == 3 && false) {
                 debugPrint("PVR_1_lst_id: __" + lst_id + "__nxtid__:" + nxt_id);
-                setDropboxTextScroll(lst_id, nxt_id);
 
                 $("#file" + lst_id).attr("class", "dropboxmiddle_unfocus_pvr");
                 if (nxt_id !== null) {
@@ -2489,7 +2452,6 @@ function setFileFocus(lst_id, nxt_id) {
             }
             else {
                 //debugPrint("1_lst_id: __" + lst_id + "__nxtid__:" + nxt_id);
-                setDropboxTextScroll(lst_id, nxt_id);
 
                 $("#file" + lst_id).attr("class", "dropboxmiddle_unfocus");
                 if (nxt_id !== null) {
@@ -2903,15 +2865,6 @@ HiFileBrowser.closeFileBrowser = function () {
 HiFileBrowser.openFileBrowser = function () {
     DBG_ALWAYS("Function openFileBrowser and curFile is " + HiFileBrowser.curFile);
     HiFileBrowser.initLanguage();
-    if (HiFileBrowser.curFile > 0) {
-        var text = getText(HiFileBrowser.curFile);
-        if (text.length > 14) {
-            // $("#filename" + start_id).html('<marquee>' + text + '</marquee>');
-            $("#filename" + HiFileBrowser.curFile).html('<marquee style="width: inherit" scrollAmount=4 scrollDelay=100>' + text + '</marquee>');
-
-        }
-    }
-
 }
 
 //用于回复焦点位置
