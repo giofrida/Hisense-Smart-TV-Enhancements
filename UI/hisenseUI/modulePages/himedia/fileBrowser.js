@@ -2597,6 +2597,45 @@ function dropboxListKeyDown(event) {
 function dropboxConetentKeyDown(event) {
     debugPrint("dropboxConetentKeyDown begin and keyCode is :" + event.keyCode);
     switch (checkDMPkeycode(event.keyCode)) {
+        case VK_UP:
+	       	if (HiFileBrowser.curFile > 0) {
+	            if (HiFileBrowser.curFile == HiFileBrowser.curPage * FILES_PER_PAGE) {
+	                HiFileBrowser.curFile--;
+	                changePage(HiFileBrowser.curPage, HiFileBrowser.curPage - 1);
+	            }
+	            else {
+	                setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile - 1);
+	                HiFileBrowser.curFile--;
+	            }
+	        }
+	        // If current file is the first one
+	        else {
+	        	// Go to the last file
+                changePage(HiFileBrowser.curPage, HiFileBrowser.totalPage - 1);
+                setFileFocus(HiFileBrowser.curFile, HiFileBrowser.totalFile - 1);
+                HiFileBrowser.curFile = HiFileBrowser.totalFile - 1;
+	        }
+            break;
+        case VK_DOWN:
+            if (HiFileBrowser.curFile < HiFileBrowser.totalFile - 1) {
+                if (HiFileBrowser.curFile + 1 == (HiFileBrowser.curPage + 1) * FILES_PER_PAGE) {
+                    HiFileBrowser.curFile++;
+                    changePage(HiFileBrowser.curPage, HiFileBrowser.curPage + 1);
+                }
+                else {
+                    setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile + 1);
+                    HiFileBrowser.curFile++;
+                }
+            }
+            // If current file is the last one
+            else {
+            	// Go to the first file
+                changePage(HiFileBrowser.curPage, 0);
+                setFileFocus(HiFileBrowser.curFile, 0);
+                HiFileBrowser.curFile = 0;
+            }
+
+            break;
         case VK_RIGHT:
             if (HiFileBrowser.curFile + FILES_FAST_JUMP < HiFileBrowser.totalFile) {
 
@@ -2609,15 +2648,16 @@ function dropboxConetentKeyDown(event) {
                     changePage(HiFileBrowser.curPage, HiFileBrowser.curPage + 1);
                 }
             }
+            // If the jump cannot be done
             else {
-                HiFileBrowser.curPage = HiFileBrowser.totalPage - 1;
+            	// Go to the last file
+                changePage(HiFileBrowser.curPage, HiFileBrowser.totalPage - 1);
+                setFileFocus(HiFileBrowser.curFile, HiFileBrowser.totalFile - 1);
                 HiFileBrowser.curFile = HiFileBrowser.totalFile - 1;
-                changePage(0, HiFileBrowser.curPage);
-                setFileFocus(0, HiFileBrowser.curFile);
             }
             break;
         case VK_LEFT:
-            if (HiFileBrowser.curFile - FILES_FAST_JUMP >= 0) {
+            if (HiFileBrowser.curFile - FILES_FAST_JUMP > 0) {
                 if (HiFileBrowser.curFile - FILES_FAST_JUMP >= HiFileBrowser.curPage * FILES_PER_PAGE) {
                     setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile - FILES_FAST_JUMP);
                     HiFileBrowser.curFile -= FILES_FAST_JUMP;
@@ -2627,47 +2667,13 @@ function dropboxConetentKeyDown(event) {
                     changePage(HiFileBrowser.curPage, HiFileBrowser.curPage - 1);
                 }
             }
+            // If the jump cannot be done
             else {
+            	// Go to the first file
                 changePage(HiFileBrowser.curPage, 0);
                 setFileFocus(HiFileBrowser.curFile, 0);
                 HiFileBrowser.curFile = 0;
-                HiFileBrowser.curPage = 0;
             }
-            break;
-        case VK_UP:
-            if (HiFileBrowser.curFile == 0) {
-                HiFileBrowser.curPage = HiFileBrowser.totalPage - 1;
-                HiFileBrowser.curFile = HiFileBrowser.totalFile - 1;
-                changePage(0, HiFileBrowser.curPage);
-                setFileFocus(0, HiFileBrowser.curFile);
-            }
-            else if (HiFileBrowser.curFile == HiFileBrowser.curPage * FILES_PER_PAGE) {
-                HiFileBrowser.curFile--;
-                changePage(HiFileBrowser.curPage, HiFileBrowser.curPage - 1);
-            }
-            else {
-                setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile - 1);
-                HiFileBrowser.curFile--;
-            }
-            break;
-        case VK_DOWN:
-            if (HiFileBrowser.curFile == (HiFileBrowser.totalFile - 1)) {
-                changePage(HiFileBrowser.curPage, 0);
-                setFileFocus(HiFileBrowser.curFile, 0);
-                HiFileBrowser.curFile = 0;
-                HiFileBrowser.curPage = 0;
-            }
-            else if (HiFileBrowser.curFile < HiFileBrowser.totalFile - 1) {
-                if (HiFileBrowser.curFile + 1 == (HiFileBrowser.curPage + 1) * FILES_PER_PAGE) {
-                    HiFileBrowser.curFile++;
-                    changePage(HiFileBrowser.curPage, HiFileBrowser.curPage + 1);
-                }
-                else {
-                    setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile + 1);
-                    HiFileBrowser.curFile++;
-                }
-            }
-
             break;
         case VK_ENTER:
             //Brad change keyevent
