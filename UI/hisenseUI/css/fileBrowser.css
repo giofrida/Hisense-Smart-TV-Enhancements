@@ -196,7 +196,7 @@
 #dropboxContainer #filepath {
     color: #fff;
     float: left;
-    max-width: 500px;
+    max-width: 980px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
