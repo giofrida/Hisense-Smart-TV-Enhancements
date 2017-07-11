@@ -2,7 +2,7 @@
  * Created by Brad on 14-9-12.
  */
 
-var FILES_PER_PAGE = 15;
+var FILES_PER_PAGE = 19;
 var FILES_PER_ROW  = 5;
 
 
@@ -2597,7 +2597,7 @@ function dropboxListKeyDown(event) {
 function dropboxConetentKeyDown(event) {
     debugPrint("dropboxConetentKeyDown begin and keyCode is :" + event.keyCode);
     switch (checkDMPkeycode(event.keyCode)) {
-        case VK_DOWN:
+        case VK_RIGHT:
             if (HiFileBrowser.curFile + FILES_PER_ROW < HiFileBrowser.totalFile) {
 
                 if (HiFileBrowser.curFile + FILES_PER_ROW < (HiFileBrowser.curPage + 1) * FILES_PER_PAGE) {
@@ -2621,7 +2621,7 @@ function dropboxConetentKeyDown(event) {
 
             }
             break;
-        case VK_UP:
+        case VK_LEFT:
             if (HiFileBrowser.curFile - FILES_PER_ROW >= 0) {
                 if (HiFileBrowser.curFile - FILES_PER_ROW >= HiFileBrowser.curPage * FILES_PER_PAGE) {
                     setFileFocus(HiFileBrowser.curFile, HiFileBrowser.curFile - FILES_PER_ROW);
@@ -2633,7 +2633,7 @@ function dropboxConetentKeyDown(event) {
                 }
             }
             break;
-        case VK_LEFT:
+        case VK_UP:
             if (HiFileBrowser.curFile == 0) {
 
 //                pathStack.pop();
@@ -2649,7 +2649,7 @@ function dropboxConetentKeyDown(event) {
                 HiFileBrowser.curFile--;
             }
             break;
-        case VK_RIGHT:
+        case VK_DOWN:
             if (HiFileBrowser.curFile < HiFileBrowser.totalFile - 1) {
                 if (HiFileBrowser.curFile + 1 == (HiFileBrowser.curPage + 1) * FILES_PER_PAGE) {
                     HiFileBrowser.curFile++;
