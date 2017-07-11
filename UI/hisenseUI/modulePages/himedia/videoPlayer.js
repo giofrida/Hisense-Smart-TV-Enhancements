@@ -828,7 +828,9 @@ HiVideoPlayer.keydownhander = function (event) {
             HiVideoPlayer.hidePlayerPanel();
         }, 6000);
     }
-    switch (checkDMPkeycode(event.keyCode)) {
+
+    var key = checkDMPkeycode(event.keyCode);
+    switch (key) {
         case VK_ENTER:
             debugPrint("HiVideoPlayer.videoPlayerFocus" + HiVideoPlayer.videoPlayerFocus);
             if (HiVideoPlayer.isController) {
@@ -1553,9 +1555,20 @@ HiVideoPlayer.keydownhander = function (event) {
             }
             break;
         case VK_0:
+        case VK_1:
+        case VK_2:
+        case VK_3:
+        case VK_4:
+        case VK_5:
+        case VK_6:
+        case VK_7:
+        case VK_8:
+        case VK_9:
+        	var keyNumber = key - '0'.charCodeAt(0);
+
             debugE(HiVideoPlayer.dialogShowStatus);
             if (HiVideoPlayer.dialogShowStatus == 1) {
-                HiVideoPlayer.timeStr[HiVideoPlayer.timeIndex] = 0;
+                HiVideoPlayer.timeStr[HiVideoPlayer.timeIndex] = keyNumber;
                 HiVideoPlayer.refreshTimeInfo();
                 HiVideoPlayer.timeIndex++;
                 if (HiVideoPlayer.timeIndex > 1) {
@@ -1563,125 +1576,10 @@ HiVideoPlayer.keydownhander = function (event) {
                 }
             }
             else if (HiVideoPlayer.dialogShowStatus == 5) {
-                pvr_inputNum(0);
+                pvr_inputNum(keyNumber);
             }
-
-            break;
-        case VK_1:
-            if (HiVideoPlayer.dialogShowStatus == 1) {
-                HiVideoPlayer.timeStr[HiVideoPlayer.timeIndex] = 1;
-                HiVideoPlayer.refreshTimeInfo();
-                HiVideoPlayer.timeIndex++;
-                if (HiVideoPlayer.timeIndex > 1) {
-                    HiVideoPlayer.timeIndex = 0;
-                }
-            }
-            else if (HiVideoPlayer.dialogShowStatus == 5) {
-                pvr_inputNum(1);
-            }
-            break;
-        case VK_2:
-            if (HiVideoPlayer.dialogShowStatus == 1) {
-                HiVideoPlayer.timeStr[HiVideoPlayer.timeIndex] = 2;
-                HiVideoPlayer.refreshTimeInfo();
-                HiVideoPlayer.timeIndex++;
-                if (HiVideoPlayer.timeIndex > 1) {
-                    HiVideoPlayer.timeIndex = 0;
-                }
-            }
-            else if (HiVideoPlayer.dialogShowStatus == 5) {
-                pvr_inputNum(2);
-            }
-            break;
-        case VK_3:
-            if (HiVideoPlayer.dialogShowStatus == 1) {
-                HiVideoPlayer.timeStr[HiVideoPlayer.timeIndex] = 3;
-                HiVideoPlayer.refreshTimeInfo();
-                HiVideoPlayer.timeIndex++;
-                if (HiVideoPlayer.timeIndex > 1) {
-                    HiVideoPlayer.timeIndex = 0;
-                }
-            }
-            else if (HiVideoPlayer.dialogShowStatus == 5) {
-                pvr_inputNum(3);
-            }
-            break;
-        case VK_4:
-            if (HiVideoPlayer.dialogShowStatus == 1) {
-                HiVideoPlayer.timeStr[HiVideoPlayer.timeIndex] = 4;
-                HiVideoPlayer.refreshTimeInfo();
-                HiVideoPlayer.timeIndex++;
-                if (HiVideoPlayer.timeIndex > 1) {
-                    HiVideoPlayer.timeIndex = 0;
-                }
-            }
-            else if (HiVideoPlayer.dialogShowStatus == 5) {
-                pvr_inputNum(4);
-            }
-            break;
-        case VK_5:
-            if (HiVideoPlayer.dialogShowStatus == 1) {
-                HiVideoPlayer.timeStr[HiVideoPlayer.timeIndex] = 5;
-                HiVideoPlayer.refreshTimeInfo();
-                HiVideoPlayer.timeIndex++;
-                if (HiVideoPlayer.timeIndex > 1) {
-                    HiVideoPlayer.timeIndex = 0;
-                }
-            }
-            else if (HiVideoPlayer.dialogShowStatus == 5) {
-                pvr_inputNum(5);
-            }
-            break;
-        case VK_6:
-            if (HiVideoPlayer.dialogShowStatus == 1) {
-                HiVideoPlayer.timeStr[HiVideoPlayer.timeIndex] = 6;
-                HiVideoPlayer.refreshTimeInfo();
-                HiVideoPlayer.timeIndex++;
-                if (HiVideoPlayer.timeIndex > 1) {
-                    HiVideoPlayer.timeIndex = 0;
-                }
-            }
-            else if (HiVideoPlayer.dialogShowStatus == 5) {
-                pvr_inputNum(6);
-            }
-            break;
-        case VK_7:
-            if (HiVideoPlayer.dialogShowStatus == 1) {
-                HiVideoPlayer.timeStr[HiVideoPlayer.timeIndex] = 7;
-                HiVideoPlayer.refreshTimeInfo();
-                HiVideoPlayer.timeIndex++;
-                if (HiVideoPlayer.timeIndex > 1) {
-                    HiVideoPlayer.timeIndex = 0;
-                }
-            }
-            else if (HiVideoPlayer.dialogShowStatus == 5) {
-                pvr_inputNum(7);
-            }
-            break;
-        case VK_8:
-            if (HiVideoPlayer.dialogShowStatus == 1) {
-                HiVideoPlayer.timeStr[HiVideoPlayer.timeIndex] = 8;
-                HiVideoPlayer.refreshTimeInfo();
-                HiVideoPlayer.timeIndex++;
-                if (HiVideoPlayer.timeIndex > 1) {
-                    HiVideoPlayer.timeIndex = 0;
-                }
-            }
-            else if (HiVideoPlayer.dialogShowStatus == 5) {
-                pvr_inputNum(8);
-            }
-            break;
-        case VK_9:
-            if (HiVideoPlayer.dialogShowStatus == 1) {
-                HiVideoPlayer.timeStr[HiVideoPlayer.timeIndex] = 9;
-                HiVideoPlayer.refreshTimeInfo();
-                HiVideoPlayer.timeIndex++;
-                if (HiVideoPlayer.timeIndex > 1) {
-                    HiVideoPlayer.timeIndex = 0;
-                }
-            }
-            else if (HiVideoPlayer.dialogShowStatus == 5) {
-                pvr_inputNum(9);
+            else if (HiVideoPlayer.dialogShowStatus == 0) {
+            	model.mpctrl.setMpCtrlPlaytimeCurrent(keyNumber * HiVideoPlayer.videoTotaltime / 10);
             }
             break;
         case VK_PLAY:
