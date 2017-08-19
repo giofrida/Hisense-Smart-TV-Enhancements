@@ -31,6 +31,7 @@ Before...
 * supports long names (both path and file name)
 * 19 files per page instead of 15
 * supports over-scrolling
+* file randomizer (select a random file by pressing blue button ![](https://placehold.it/15/1589F0/000000?text=+))
 * *text scrolling disabled*
 
 ### Video player ###

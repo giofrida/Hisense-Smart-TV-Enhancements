@@ -2705,6 +2705,14 @@ function dropboxConetentKeyDown(event) {
                 deletePVR();
             }
             break;
+        case VK_BLUE:
+            //Go to a random file
+            var newFile = Math.floor(Math.random() * (HiFileBrowser.totalFile - 1) + 1); // select a random file, but do not consider the parent directory 
+            var newPage = Math.floor(newFile / 19);
+            changePage(HiFileBrowser.curPage, newPage);
+            setFileFocus(HiFileBrowser.curFile, newFile);
+            HiFileBrowser.curFile = newFile;
+            HiFileBrowser.curPage = newPage;
         default:
             break;
     }
