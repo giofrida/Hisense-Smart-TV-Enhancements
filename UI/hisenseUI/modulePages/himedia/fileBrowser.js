@@ -1170,7 +1170,6 @@ function showPanel() {
 function clearPanel() {
 
     $("#folderpath").html("");
-    $("#filepath").html("");
     setScroll(0, 0);
     //$("#dropboxmiddle").html("");
     setHTML(null);
@@ -2031,19 +2030,16 @@ function changePage(curind, nxtind) {
 function setFilePath(file) {
     if (!file) {
         $("#folderpath").html("");
-        $("#filepath").html("");
 
     }
     else if (file.is_dir) {
         debugPrint(HiFileBrowser.currentDevice);
         if (HiFileBrowser.currentDevice == 1) {
             $("#folderpath").html(file.usbFileName);
-            $("#filepath").html("");
         }
         else {
 
             $("#folderpath").html(file.path);
-            $("#filepath").html("");
         }
     }
 
@@ -2055,11 +2051,9 @@ function setFilePath(file) {
             var PVRSTARTTIME = file.icon;
             var PVRENDTIME = file.album;
             $("#folderpath").html(PVRDATE + "  " + PVRSTARTTIME + " - " + PVRENDTIME);
-            $("#filepath").html("");
         }
         else {
             $("#folderpath").html(getFolderName(file));
-            $("#filepath").html(getFileName(file));
         }
 
     }

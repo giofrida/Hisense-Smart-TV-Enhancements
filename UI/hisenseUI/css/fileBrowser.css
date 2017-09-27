@@ -191,16 +191,7 @@
     margin-left: 66px;
     color: #b2b2b2;
     float: left;
-    max-width: 500px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-#dropboxContainer #filepath {
-    color: #fff;
-    float: left;
-    max-width: 980px;
+    max-width: 1480px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
