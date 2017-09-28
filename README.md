@@ -49,8 +49,8 @@ Clone my repository. Then, connect to your Hisense TV via FTP and go to <code>/3
 If you want the modded file browser replace these files:
 * <code>css/fileBrowser.css</code>
 * <code>modulePages/himedia/fileBrowser.js</code>
+* <code>tempString/hiMediaString.js</code>
 
 If you want the modded video player replace these files:
 * <code>css/videoPlayer.css</code>
 * <code>modulePages/himedia/videoPlayer.js</code>
-* <code>tempString/hiMediaString.js</code>
