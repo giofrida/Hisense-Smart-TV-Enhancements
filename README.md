@@ -53,3 +53,4 @@ If you want the modded file browser replace these files:
 If you want the modded video player replace these files:
 * <code>css/videoPlayer.css</code>
 * <code>modulePages/himedia/videoPlayer.js</code>
+* <code>tempString/hiMediaString.js</code>
