@@ -197,6 +197,7 @@ HiVideoPlayer.playVideoByUrl = function (videoUrl, videoName) {
         HiVideoPlayer.screenIndex = 0;
         HiVideoPlayer.subtitleIndex = 0;
         HiVideoPlayer.subtitleLanIndex = 0;
+        HiVideoPlayer.audioTrackIndex = 0;
         $("#VsettingTableTd1").html(HiVideoPlayer.screenMode[HiVideoPlayer.screenIndex]);
         $("#VsettingTableTd3").html(HiVideoPlayer.subtitleLan[HiVideoPlayer.subtitleLanIndex]);
 

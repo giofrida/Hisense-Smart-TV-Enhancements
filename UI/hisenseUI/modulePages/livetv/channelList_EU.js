@@ -101,6 +101,8 @@ function getChListPageData(opts) {
         downTo: "livetv_chlist_functions",
         enterTo : "livetv_chlist_channels"
     }
+    opts.CaE[ulIdx + 2].onFocusFun = livetvchlist.onFocusListFunc;
+    opts.CaE[ulIdx + 2].onBlurFun = livetvchlist.onBlurListFunc;
     opts.CaE[ulIdx + 3].onFocusFun = livetvchlist.onFocusListName;
     opts.CaE[ulIdx + 3].onBlurFun = livetvchlist.onBlurListName
     return livetvchlist.pageData;
@@ -137,6 +139,7 @@ function liveTVChannelList() {
     var recentWatch, hotelOnChannel, listIndex, channelFlag, chgErrorTiemr, chgChnlTimer, rptInterval;
     var channelChanging, pubPreChangeChannel, indexReseted, lastChannel, rptChgChannel;
     var numChange, inputedNum, inputTimer, reachMax, numChangeList, repeatStep;
+    var expectedChannel;
 
     var firstInited = false;
     var filterList = {
@@ -161,7 +164,7 @@ function liveTVChannelList() {
         txtList.info = getCurrentContentLanguage("Information");
         txtList.detail = getCurrentContentLanguage("Program details");
         currentTime = getDVBLongTime();
-        lockOn = !!livetvmain.getLockSwitch();
+        lockOn = !!livetvmain.getLockSwitch() && getIsInlockTime();
         resetSelectedIndexByChannel(true);
         listIndex = LISTINDEX.CHANNEL;
         if (null != currentList && null != currentList.name) {
@@ -532,7 +535,7 @@ function liveTVChannelList() {
                     channel_number: {Data: chnl.number},
                     channel_name: {Data: chnl.name + " "},
                     program_name: {Data: (chnl.program && !chnl.program.noProgram) ? chnl.program.title : ""},
-                    channel_lock: {Data: chnl.isLock ? imgList.lock : imgList.noImg},
+                    channel_lock: {Data: (lockOn && chnl.isLock) ? imgList.lock : imgList.noImg},
                     channel_encrypt: {Data: chnl.isEncrypt ? imgList.encrypt : imgList.noImg},
                     channel_fav: {Data: chnl.favType ? imgList.favorite : imgList.noImg}
                 };
@@ -559,7 +562,7 @@ function liveTVChannelList() {
         if(selChannel){
             pageData.current_channel_number.Data = selChannel.number;
             pageData.current_channel_name.Data = selChannel.name + " ";
-            pageData.current_channel_lock.Data = selChannel.isLock ? imgList.lock : imgList.noImg;
+            pageData.current_channel_lock.Data = (lockOn && selChannel.isLock) ? imgList.lock : imgList.noImg;
             pageData.current_channel_encrypt.Data = selChannel.isEncrypt ? imgList.encrypt : imgList.noImg;
             pageData.current_channel_fav.Data = selChannel.favType ? imgList.favorite: imgList.noImg;
         }
@@ -613,6 +616,8 @@ function liveTVChannelList() {
     }
 
     self.initChannelList = function() {
+        DBG_INFO("initChannelList");
+        networkIds = [];
         if (initList) {
             DBG_ALWAYS("channel list is initing, will init again after inited.");
             initAgain = true;
@@ -685,6 +690,7 @@ function liveTVChannelList() {
                         removeCurrentFocusMarquee(_this.SelectedIndex);
                         resetStyleWhenFlipChInfo(LISTINDEX.FUNCTION);
                         //_this.setDataSelectedIndex(_this.SelectedIndex);
+                        setLiveTvChListFuncWidth();
                         hiWebOsFrame[self.id].hiFocus("livetv_chlist_functions");
                     } else if (KeyDir.RIGHT == dir) {
                         // resetStyleWhenFlipChInfo(LISTINDEX.INFO);
@@ -737,6 +743,34 @@ function liveTVChannelList() {
         closeLiveTVModule();
         openEPGDetailPage(prgrm, hiWebOsFrame[LiveTVModule.MAIN]);
     }
+
+    self.switchToFavList = function() {
+        var tempList = copyObj(objectFindByKey(oprtData.channelList, "name", "FAV1"));
+
+        if (tempList.uid == currentList.uid && tempList.satId == currentList.satId) {
+            //current list
+            clearChannelProgram();
+            resetStyleWhenFlipChInfo(LISTINDEX.CHANNEL);
+            //hiWebOsFrame[self.id].getCaE("livetv_chlist_channels").setDataSelectedIndex(-1);
+            return;
+        }
+        currentList = tempList;
+        currentListForChannelEdit = tempList ;
+        if (tempList.uid != oprtData.curChannel.listUid ||
+            tempList.satId != oprtData.curChannel.satId) {//not current played list
+            oprtData.channelIndex = 0;
+        }
+        else {//current played list
+            oprtData.channelIndex = getCurrentChannelIndex(currentList, null);
+        }
+        //hiWebOsFrame[self.id].getCaE("livetv_chlist_channels").setDataSelectedIndex(-1);
+        oprtData.beginIndex = getBeginIndex(oprtData.channelIndex);
+        clearChannelProgram();
+        hiWebOsFrame[self.id].rewriteDataOnly();
+        setScrollbarPostion(0, KeyDir.NONE, oprtData.channels[currentList.name]);
+        resetStyleWhenFlipChInfo(LISTINDEX.CHANNEL);
+        clearFilterList();
+    };
 
     self.keyEnterOnChannelList = function() {
         switch (listIndex) {
@@ -793,8 +827,18 @@ function liveTVChannelList() {
                     });
                 }
                 else{
-                    hiWebOsFrame[self.id].close();
-                    openChannelManager(hiWebOsFrame[LiveTVModule.MAIN]);
+                    var hotelMode = tv ? model.hotel.getHotelMode() : 1;
+                    debugG('model.hotel.getHotelMode(): ' + hotelMode);
+
+                    var sumMenuLock = tv ? model.hotel.getSubmenuLock() : 1;
+                    debugG('model.hotel.getSubmenuLock(): ' + sumMenuLock);
+
+                    if (1 == hotelMode && (1 == sumMenuLock))  {
+                        showMsg("", "This feature is currently unavailable!");
+                    }else{
+                        hiWebOsFrame[self.id].close();
+                        openChannelManager(hiWebOsFrame[LiveTVModule.MAIN]);
+                    }
                 }
                 break;
             case LISTINDEX.CHANNEL:
@@ -870,6 +914,17 @@ function liveTVChannelList() {
     }
     self.onBlurListName = function(){
         restoreMarqueeCommon("#livetv_chlist_list span", this.SelectedIndex, -1, 150);
+    }
+
+    self.onFocusListFunc = function(){
+        var targer = $("#livetv_chlist_functions span").eq(this.SelectedIndex);
+        targer.removeAttr("style");
+        restoreMarqueeCommon("#livetv_chlist_functions span", -1, this.SelectedIndex, 160);
+        targer.css("width", "160px");
+        targer.css("height", "84px");
+    }
+    self.onBlurListFunc = function(){
+        restoreMarqueeCommon("#livetv_chlist_functions span", this.SelectedIndex, -1, 160);
     }
 
     /**
@@ -970,13 +1025,16 @@ function liveTVChannelList() {
         chgErrorTiemr = setTimeout(function() {
             DBG_ERROR("change channel failed. reset flag.");
             setFlagAfterChange();
-        }, 5000);
+        }, 8000);
        livetvmain.clearautoOadupdateflag();
     }
 
     function setFlagAfterChange(clear) {
         clearTimeout(chgErrorTiemr);
-        if (channelChanging || 1 == clear)pubPreChangeChannel = null;
+        if (channelChanging || 1 == clear) {
+            pubPreChangeChannel = null;
+            expectedChannel = null;
+        }
         channelChanging = false;
         indexReseted = false;
     }
@@ -994,6 +1052,11 @@ function liveTVChannelList() {
         return channelChanging;
     }
 
+    self.getExpectedChannel = function() {
+        return expectedChannel;
+    }
+
+
     self.setKeyUp = function(keyCode) {
         if(livetvmain.getCurrentSourceInnerId() != SourceList.TV ||
             channelChanging || null == pubPreChangeChannel) return;
@@ -1003,6 +1066,10 @@ function liveTVChannelList() {
         }, 500);
     }
     self.waitForChangeChannel = function(chFlag) {
+        if (initList) {
+            DBG_ALWAYS("init list......");
+            return;
+        }
         if(channelChanging) {
             DBG_ALWAYS("channel changing......");
             return;
@@ -1021,7 +1088,9 @@ function liveTVChannelList() {
             pubPreChangeChannel = getPreChangedChannel(chFlag);
             if(null != pubPreChangeChannel) {
                 livetvmain.setDisableChannelNFY(true);
-                livetvinfobar.showSimpleInfoByCh(pubPreChangeChannel, true, 6000);
+                if(tv && (!isMainArchiveRecording() && !isTimeShiftStatus())) {
+                    livetvinfobar.showSimpleInfoByCh(pubPreChangeChannel, true, 6000);
+                }
             }
         }
     }
@@ -1045,6 +1114,7 @@ function liveTVChannelList() {
                 DBG_ALWAYS("change channel to " + objToString(preChannel));
                 livetvmain.clearLiveTVUI();
                 setFlagVarBeforeChange(preChannel);
+                expectedChannel = copyObj(preChannel);
                 playChannel(preChannel.playId, preChannel.uid, preChannel.listUid, 0);
             }
             else if(chParam) {
@@ -1060,6 +1130,7 @@ function liveTVChannelList() {
                 else {
                     livetvmain.clearLiveTVUI();
                     setFlagVarBeforeChange(chParam);
+                    expectedChannel = copyObj(chParam);
                     playChannel(chParam.playId, chParam.uid, chParam.listUid, 0);
                 }
             }
@@ -1107,6 +1178,11 @@ function liveTVChannelList() {
 
     self.getNumChangeFlag = function() {
         return numChange;
+    }
+
+    self.channelListInitFlag = function() {
+        DBG_ERROR("freeview channelList_EU");
+        return initList;
     }
 
 
@@ -1490,7 +1566,7 @@ function liveTVChannelList() {
             "settingChSetATVManuSetPageId"];
 
         var tempList = objectFindByKey(oprtData.channelList, "uid", listUid);
-        DBG_INFO("receive channel list update[" + listUid + "].");
+        DBG_ERROR("receive channel list update[" + listUid + "].");
         oprtData.curChannel = livetvmain.getCurrentChannelInfo();
         if(initList) {
             DBG_ALWAYS("channel list is reading, do not receive update.");
@@ -1506,6 +1582,10 @@ function liveTVChannelList() {
             if(hiWebOsFrame.getCurrentPageId() == LiveTVModule.CHANNEL_LIST) {
                 DBG_ALWAYS("channel list is on focus, close channel list first");
                 self.backToLiveTV();
+            }
+            if(hiWebOsFrame.getCurrentPageId() == LiveTVModule.SEARCH_DIALOG && (1 == model.tvservice.getChannelListSaved())){
+                DBG_ERROR("search dialog is on focus, close search dialog first");
+                srchDialog.backToLiveTV();
             }
             initList = true;
             listIterator = createListIterator(onUpdateChannelList.bind(this, listUid));
@@ -1714,6 +1794,10 @@ function liveTVChannelList() {
         recentWatch = [];
         deleteNativeFile("hisenseUI/recentWatch", 1);
     }
+
+    self.getNetworkIds = function() {
+        return networkIds;
+    };
 
     function getBeginIndex(channelIndex) {
         if(pageFlip){
@@ -2003,6 +2087,7 @@ function liveTVChannelList() {
     }
 
     function onGetChannelList(m_event) {
+        DBG_INFO("onGetChannelList");
         if (m_event.type == TableIterator.EVENT_TYPE_ROWS_READ) {
             oprtData.curChannel = livetvmain.recheckCurrentChannelInfo();
             oprtData.channelList = eventRowsToChannelList(m_event.rows);
@@ -2019,6 +2104,7 @@ function liveTVChannelList() {
 
 
     function readChannelOneByOne(idx) {
+        DBG_INFO("readChannelOneByOne idx=" + idx);
         var lst = oprtData.channelList[idx];
         channelIterator[lst.name] = createChannelIterator(lst, onGetChannels,0);
         channelIterator[lst.name].fetchTotalCount();
@@ -2084,18 +2170,6 @@ function liveTVChannelList() {
         return lists;
     }
 
-    function getDefinitionFlag(flag) {
-        if((flag == 17) || (flag >= 25 && flag <= 30)){
-            return 1;//HD
-        }
-        else if(flag == 31){
-            return 3;//UHD
-        }
-        else{
-            return 2;//SD
-        }
-    }
-
     function eventRowsToChannels(rows, list) {
         var chnls = [];
         maxNumLenMaps[list.name] = 0;
@@ -2115,6 +2189,14 @@ function liveTVChannelList() {
             chnl.serviceType = row[SPChannel.SERVICETYPE];
             chnl.Definition = getDefinitionFlag(parseInt(row[SPChannel.HDSDFLAG]));
             chnl.SvlRecID =  row[SPChannel.SVLRECID];
+            chnl.serviceId = row[SPChannel.SERVICEID];
+            chnl.networkId =  row[SPChannel.NETWORKID];
+            chnl.originalLcn =  row[SPChannel.ORIGINALLCN];
+
+            if (!!chnl.networkId && chnl.networkId != "0" && networkIds.indexOf(chnl.networkId) < 0 && (!!chnl.originalLcn && chnl.originalLcn >= 1 && chnl.originalLcn <=799)) {
+                networkIds.push(chnl.networkId);
+            }
+
             chnl.program = {
                 title: "",
                 startTime: 0,
@@ -2186,6 +2268,18 @@ function liveTVChannelList() {
         chnl.isEncrypt = getMaskValue(Mask.ENCRYPT, attr);
     }
 
+    function setLiveTvChListFuncWidth() {
+        try {
+            var target = $("#livetv_chlist_functions span");
+            target.forEach(function (v) {
+                //v.css("width", "160px");
+                v.style.width = "160px";
+            })
+        }
+        catch (ex) {
+            DBG_ERROR("setLiveTvChListFuncWidth: " + ex.message);
+        }
+    }
 
     function setRecentWatch(reset, chnl) {
         if ("SA" != InitArea && "COL" != InitArea) return;
@@ -2278,8 +2372,8 @@ function liveTVChannelList() {
 
     var txtList = {
         info: "Information",
-        chListSel: "Ch. List",
-        chList: "Ch. List",
+        chListSel: "Channel List",
+        chList: "Channel List",
         detail: "Program details"
     }
 

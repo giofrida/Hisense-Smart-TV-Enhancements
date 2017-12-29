@@ -35,6 +35,7 @@ function liveTVMain() {
     var camEcryTimer = null; //延时1s显示ci encrypt消息
     var firstInitUI = true;
     var disableChannelNotify = false;
+    var enableTeletextKey = true;
     self.pageData.operateData = oprtData;
 
     function resetOpenFlag() {
@@ -49,7 +50,15 @@ function liveTVMain() {
     }
 
     self.onOpenLiveTVMain = function () {
+        enableTeletextKey = true;
+    }
 
+    self.getEnableTeletextKey = function() {
+        return enableTeletextKey;
+    }
+
+    self.setEnableTeletextKey = function(val) {
+        enableTeletextKey = val;
     }
 
     self.onFocusLiveTVMain = function () {
@@ -66,9 +75,11 @@ function liveTVMain() {
                 if (enableHbbTVControl() && ("stopped" == deviceKeySet.HBBTVSTATE || "none" == deviceKeySet.HBBTVSTATE)  && !isMainArchiveRecording() && !isTimeShiftStatus()) {
                     startHBBTV();
                 }
-                if (deviceKeySet.HBBTVPAUSED && currentSource == SourceList.TV && !isMainArchiveRecording() && !isTimeShiftStatus()) {
-                    resumeHBBTV();
-                    deviceKeySet.HBBTVPAUSED = false;
+                if (currentSource == SourceList.TV && !isMainArchiveRecording() && !isTimeShiftStatus()) {
+                    if(!!deviceKeySet.HBBTVNEEDRESUME && !appStarting) {
+                        resumeHBBTV();
+                    }
+                    deviceKeySet.HBBTVNEEDRESUME = true;
                 }
                 if (!firstInitUI) {
                     deviceKeySet.HBBTV = tv ? parseHBBTVKeyCodes(model.tvservice.getHbbTvKeySet(), true) : [];
@@ -162,7 +173,7 @@ function liveTVMain() {
     }
 
     self.initLiveTVMain = function (afterInit) {
-
+        DBG_INFO("initLiveTVMain");
         // notify function
         resetOpenFlag();
         if (tv) {
@@ -388,6 +399,10 @@ function liveTVMain() {
         }
         //DBG_ERROR(lastPlayedChannel);
     }
+    function compareChannel(a, b) {
+        if (null == a || null == b) return false;
+        return (a.uid == b.uid && a.playId == b.playId);
+    }
     function mainPlayChanged(val) {
         if(disableChannelNotify) return;
         DBG_ALWAYS("current channel info is --" + objToString(val) + "--");
@@ -432,6 +447,12 @@ function liveTVMain() {
             }
         }
         var chgChannel = false;
+        if (livetvchlist.getChannelChangeFlag() &&
+            null != livetvchlist.getExpectedChannel() &&
+            !compareChannel(crntChannel, livetvchlist.getExpectedChannel())) {
+            DBG_ERROR("channel info is diffrent with expectedChannel");
+            return;
+        }
         if (crntChannel.eCode != ECode.VIDEO_FMT_UPDATE && crntChannel.eCode != ECode.LOCKED &&
             crntChannel.eCode != ECode.STOPPED) {
             try {
@@ -608,6 +629,11 @@ function liveTVMain() {
         var obj = objectFindByKey(sourceList, "uid", uid);
         DBG_ALWAYS("current source changed: " + objToString(obj));
         currentSource = (null == obj) ? SourceList.TV : obj.innerId;
+        if(ENABLE_FVP && currentSource == SourceList.TV) {
+            DBG_ERROR("freeview_manager.onEnvChanged() - parseCurrentSource");
+            freeview_manager.onEnvChanged();
+        }
+
         MHLDevice.AVAILABLE = model.source.getInputMhlAvailable();
         if (currentSource != SourceList.TV) {
             pauseHBBTV();
@@ -818,20 +844,35 @@ function liveTVMain() {
     //}
 
     function parseSourceList(arr) {
-        var srcKey = (InitArea == "EU" && "5655_EU_MARKET" != currentPlatform_config) ?
-            [
+        var srcKey, itemCount = 6, items = [];
+
+        if (InitArea == "EU" && "5655_EU_MARKET" != currentPlatform_config) {
+            srcKey = [
                 SourceList.TV, SourceList.AV,
-                SourceList.COMPONENT, SourceList.SCART,
+                SourceList.COMPONENT,
                 SourceList.HDMI1, SourceList.HDMI2,
                 SourceList.HDMI3, SourceList.HDMI4
-            ] :
-            [
+            ];
+            for (var i = 0; i < arr.length/6; i++) {
+                if (null != (arr[i*6 + 1] + "").toLowerCase().match("scart")) {
+                    srcKey = [
+                        SourceList.TV, SourceList.AV,
+                        SourceList.COMPONENT, SourceList.SCART,
+                        SourceList.HDMI1, SourceList.HDMI2,
+                        SourceList.HDMI3, SourceList.HDMI4
+                    ];
+                    break;
+                }
+            }
+        }
+        else {
+            srcKey = [
                 SourceList.TV, SourceList.AV,
                 SourceList.COMPONENT, SourceList.HDMI1,
                 SourceList.HDMI2, SourceList.HDMI3,
                 SourceList.HDMI4, SourceList.SCART
-            ], itemCount = 6, items = [];
-
+            ];
+        }
         oriSourceList = arr;
         DBG_ALWAYS("source list: [" + objToString(arr) + "]");
         for (var i = 0; i < arr.length / itemCount; i++) {
@@ -919,7 +960,7 @@ function liveTVMain() {
     }
 
     function showNoSignalIcon(notSupport) {
-        if (checkHBBTVKeySet() && !deviceKeySet.HBBTVPAUSED && currentSource == SourceList.TV) {
+        if (checkHBBTVKeySet() && currentSource == SourceList.TV) {
             DBG_INFO("hbbtv is on, do not show nosignal.");
             hideNoSignalIcon();
             return;
@@ -964,7 +1005,7 @@ function liveTVMain() {
                 $(".noSignalTip").css("display", "none");
                 return;
             }
-            else if (checkHBBTVKeySet() && !deviceKeySet.HBBTVPAUSED && currentSource == SourceList.TV) {
+            else if (checkHBBTVKeySet() && currentSource == SourceList.TV) {
                 //DBG_INFO("hbbtv is on, do not show nosignal.");
                 powerOffCount = 1;
                 $(".noSignalTip").css("display", "none");
@@ -1018,7 +1059,7 @@ function liveTVMain() {
                 DBG_ERROR("current page is not livetv, do not show icon");
                 return;
             }
-            else if (checkHBBTVKeySet() && !deviceKeySet.HBBTVPAUSED && currentSource == SourceList.TV) {
+            else if (checkHBBTVKeySet() && currentSource == SourceList.TV) {
                 hideAudioIcon();
                 DBG_INFO("hbbtv is on, do not show Audio Channel.");
                 return;
@@ -1115,7 +1156,7 @@ function liveTVMain() {
             DBG_ALWAYS("do not show msg[" + Msg.ARRAY[name] + "]");
             return flag;
         }
-        if (!deviceKeySet.HBBTVPAUSED && checkHBBTVKeySet() && name != Msg.INFO) {
+        if (checkHBBTVKeySet() && name != Msg.INFO) {
             DBG_ALWAYS("hbbtv is on, do not show msg.");
             return;
         }
@@ -1179,6 +1220,10 @@ function liveTVMain() {
     }
 
     function getVideoNotSupportFlag(vInfo) {
+        var crntSourceObj = livetvmain.getCurrentSource();
+        if (!!crntSourceObj && !!crntSourceObj.name &&crntSourceObj.name.match("UHD")) {
+            return false;
+        }
         if (SourceList.HDMI1 != currentSource && SourceList.HDMI2 != currentSource) {
             if(SourceList.TV != currentSource || TVTYPE.ATV == crntChannel.type) return false;
             if(tv && "undefined" == typeof(vInfo)) vInfo = model.tvservice.getMainPlayVideoFormatInfo();

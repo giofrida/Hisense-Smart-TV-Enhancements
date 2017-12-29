@@ -377,7 +377,8 @@ var modulesConfig = [
         "pageData": {},
         "handler": {
             befEscHandler: "livetvchlist.backToLiveTV",
-            keyChListHandler: "livetvchlist.backToLiveTV"
+            keyChListHandler: "livetvchlist.backToLiveTV",
+            keyFavCHHandler: "livetvchlist.backToLiveTV"
         },
         "AutoClose": false,
         "AutoCloseTimeLength": 30
@@ -487,10 +488,11 @@ var modulesConfig = [
     {
         "id": "epg",
         "module": "epg",
-        "jsPath": "modulePages/epg/epg.js",
+        "jsPath": "",
         "htmlPath": "UI/hisenseUI/modulePages/epg/epg.html",
-        "cssPath": "css/epg/epg.css",
+        "cssPath": "",
         "pageMode": "module",
+        "firstFocusId": 'epg_channel_list',
         "CaE": [],
         "initData": "get_epg_pageData",
         "handler": {"befEscHandler": "epgBackToOri"},
@@ -499,16 +501,7 @@ var modulesConfig = [
         "onClose": "epg.onClose",
         "onDestroy": "",
         "onFocus": "epg.onFocus",
-        "pageData": {},
-        "singleKeyMode": true,
-        "keyEventSet": {
-            "keyDown": "epg.KeyDownEventProcess",
-            "keyUp": "epg.KeyUpEventProcess",
-            "keyPress": "epg.keyPressEventProcess"
-        },
-        "keys": {
-            "enable": []
-        }
+        "pageData": {}
     },
     {
         "id": "epg_list_page",
@@ -556,13 +549,17 @@ var modulesConfig = [
         'firstFocusId': "epg_fvp_detail_image",
         "CaE": [],
         "initData": "get_epg_fvp_detail_page_pageData",
-        "handler": {"befEscHandler": "epgBackToOri"},
         "onCreate": "",
         "onOpen": "epgFVPDetail.onOpen",
         "onClose": "epgFVPDetail.onClose",
         "onDestroy": "",
         "onFocus": "epgFVPDetail.onFocus",
-        "pageData": {}
+        "pageData": {},
+        "handler": {
+            befDownHandler: "epgFVPDetail.keyDownOnDetailBtn",
+            befUpHandler: "epgFVPDetail.keyUpOnDetailBtn",
+            befEscHandler: "epgBackToOri"
+        }
     },
     {
         "id": "epg_book_add_page",
@@ -7605,6 +7602,30 @@ var modulesConfig = [
         "pageData": {}
     },
     {
+        "id": "settingChSetScanModePageId",
+        "module": "setting",
+        "jsPath": "modulePages/setting/EU/settingChSetScanModePage.js",
+        "htmlPath": "UI/hisenseUI/modulePages/setting/EU/settingChSetScanModePage.html",
+        "cssPath": "css/settingChannelStyle.css",
+        "description": "wizard channel set scan mode page ",
+        "pageMode": "module",
+        "firstFocusId": "settingChSetSMList",
+        "horizontalEdgesJump": false,
+        "verticalEdgesJump": true,
+        "CaE": [],
+        "AutoClose": true,
+        //"AutoCloseTimeLength":30,
+        "handler": {
+            "aftEscHandler": "settingChSetScanModeEscHandle"
+        },
+        "initData": "getSettingChSetScanModePageData",
+        "onCreate": "",
+        "onOpen": "settingChSetScanModeOnOpen",
+        "onClose": "",
+        "onDestroy": "settingChSetScanModeOnDestroy",
+        "pageData": {}
+    },
+    {
         "id": "settingChSetSatelliteModePageId",
         "module": "setting",
         "jsPath": "modulePages/setting/EU/settingChSetSatelliteModePage.js",
@@ -7672,7 +7693,7 @@ var modulesConfig = [
         "initData": "getSettingChSetSelSatellitePageData",
         "onCreate": "",
         "onOpen": "settingChSetSelSatelliteOnOpen",
-        "onClose": "",
+        "onClose": "settingChSetSelSatelliteOnClose",
         "onDestroy": "settingChSetSelSatelliteOnDestroy",
         "pageData": {}
     },
@@ -7722,6 +7743,30 @@ var modulesConfig = [
         "onOpen": "settingChSetAutoSatelliteListDialogOnOpen",
         "onClose": "",
         "onDestroy": "settingChSetAutoSatelliteListDialogOnDestroy",
+        "pageData": {}
+    },
+    {
+        "id": "settingChSetFransatOpListDialogId",
+        "module": "setting",
+        "jsPath": "modulePages/setting/EU/settingChSetFransatOpListDialog.js",
+        "htmlPath": "UI/hisenseUI/modulePages/setting/EU/settingChSetFransatOpListDialog.html",
+        "cssPath": "css/settingChannelStyle.css",
+        "description": "FransatOp select dialog ",
+        "pageMode": "module",
+        "firstFocusId": "settingChSetFransatOpListUl",
+        "horizontalEdgesJump": false,
+        "verticalEdgesJump": true,
+        "CaE": [],
+        "AutoClose": false,
+        //"AutoCloseTimeLength":30,
+        "handler": {
+            "aftEscHandler": "settingChSetFransatOpListDialogEscHandle"
+        },
+        "initData": "getSettingChSetFransatOpListDialogData",
+        "onCreate": "",
+        "onOpen": "settingChSetFransatOpListDialogOnOpen",
+        "onClose": "",
+        "onDestroy": "settingChSetFransatOpListDialogOnDestroy",
         "pageData": {}
     },
     {
@@ -8840,7 +8885,7 @@ var modulesConfig = [
         "initData": "getPvrHardDiskcheckPageData",
         "onCreate": "",
         "onOpen": "pvrHardDiskcheckOnOpen",
-        "onClose": "",
+        "onClose": "pvrHardDiskcheckOnClose",
         "onDestroy": "pvrHardDiskcheckOnDestroy",
         "pageData": {},
         "keys": {

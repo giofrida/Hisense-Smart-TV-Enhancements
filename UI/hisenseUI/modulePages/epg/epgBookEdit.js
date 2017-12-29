@@ -308,22 +308,24 @@ function epgBookEdit() {
 
 	function adjustWeeklyTime(prgrm){
 		try {
-			if(prgrm.repeatMode < BookRepeatMode.SUNDAY || prgrm.repeatMode > BookRepeatMode.SATURDAY) return;
+			if((prgrm.repeatMode < BookRepeatMode.SUNDAY || prgrm.repeatMode > BookRepeatMode.SATURDAY) && prgrm.repeatMode!=BookRepeatMode.DAILY) return;
 			recheckDSTSeconds();
-			var rd = prgrm.repeatMode, td = 0, crntTime = getDVBLongTime();
+			var rd = (prgrm.repeatMode == BookRepeatMode.DAILY) ? -1 : prgrm.repeatMode, td = 0, crntTime = getDVBLongTime();
+			var dstSeconds = getDSTSeconds();
 			if(oprtData.isContain){
-				td = (new Date((oprtData.userTime.startTime + hisenseUITZSeconds + hisenseUIDSTSeconds) * milliBase)).getUTCDay();
+				td = (new Date((oprtData.userTime.startTime + hisenseUITZSeconds + dstSeconds) * milliBase)).getUTCDay();
 			}
 			else{
-				td = (new Date((crntTime + hisenseUITZSeconds + hisenseUIDSTSeconds) * milliBase)).getUTCDay();
+				td = (new Date((crntTime + hisenseUITZSeconds + dstSeconds) * milliBase)).getUTCDay();
 			}
 			var offset = rd - td - 7;
 			//DBG_INFO("weekly offset[" + offset + "].");
 			oprtData.userTime.startTime += offset * 24 * 3600;
 			oprtData.userTime.endTime += offset * 24 * 3600;
+			var time_off = (prgrm.repeatMode == BookRepeatMode.DAILY) ? 24 * 3600 : 7 * 24 * 3600;
 			while(oprtData.userTime.startTime < crntTime) {
-				oprtData.userTime.startTime += 7 * 24 * 3600;
-				oprtData.userTime.endTime += 7 * 24 * 3600;
+				oprtData.userTime.startTime += time_off;
+				oprtData.userTime.endTime += time_off;
 			}
 		}
 		catch (ex){
@@ -380,7 +382,7 @@ function epgBookEdit() {
 		pageData.book_edit_time_tip.Data = getCurrentContentLanguage("Time") + ": ";
 		if (hiWebOsFrame.getHTMLDir() == HTMLDIR.LTR) {
 			if (0 == oprtData.timeIndex && BookType.RECORD == oprtData.program.bookType) {
-				pageData.book_edit_time_tip.Data += getCurrentContentLanguage("Manual Stop");
+				pageData.book_edit_time_tip.Data += getCurrentContentLanguage("Manual stop");
 			}
 			else {
 				pageData.book_edit_time_tip.Data += getProgramLocalTime(oprtData.userTime.startTime, oprtData.userTime.endTime, 1, 1);
@@ -389,7 +391,7 @@ function epgBookEdit() {
 		else{
 			if (0 == oprtData.timeIndex && BookType.RECORD == oprtData.program.bookType) {
 				pageData.book_edit_time_tip.Data = " :" + getCurrentContentLanguage("Time");
-				pageData.book_edit_time_tip.Data = getCurrentContentLanguage("Manual Stop") + pageData.book_edit_time_tip.Data;
+				pageData.book_edit_time_tip.Data = getCurrentContentLanguage("Manual stop") + pageData.book_edit_time_tip.Data;
 			}
 			else {
 				// pageData.book_edit_time_tip.Data = getCurrentContentLanguage("Time") + ": ";

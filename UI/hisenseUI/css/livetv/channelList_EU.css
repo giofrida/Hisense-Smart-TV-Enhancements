@@ -440,7 +440,7 @@
 }
 
 #livetv_chlist_functions span{
-    width: 160px;
+    /*width: 160px;*/
     font-size: 34px;
 }
 #livetv_chlist_functions li.focus{

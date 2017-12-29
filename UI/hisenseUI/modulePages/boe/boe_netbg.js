@@ -48,12 +48,12 @@ var boeNetbgPageData = {
                 {
                     "netTypeCode":0,
                     "netTypeName":"Switch to Wireless",
-                    "netTypeIcon":"img/ethernet_focus.png"
+                    "netTypeIcon":"img/wireless_focus.png"
                 },
                 {
                     "netTypeCode":1,
                     "netTypeName":"Switch to Ethernet",
-                    "netTypeIcon":"img/wireless_focus.png"
+                    "netTypeIcon":"img/ethernet_focus.png"
                 }
             ],
         "currNetType":0,

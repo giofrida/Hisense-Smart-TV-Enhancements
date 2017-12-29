@@ -65,14 +65,15 @@ function epgThemeColorPage(){
 	var self = this;
 	self.id = "epg_theme_color_page";
 	var themeName = [
-		'Movie', 'News', 'Shows',
+		'Off','Movie', 'News/Factual', 'Shows',
 		'Sport', 'Kids', 'Music',
-		'Arts', 'Social', 'Education',
-		'Hobby', 'Series', 'Others'
+		'Factual', 'Entertainment','Education',
+		'Lifestyle', 'Drama', 'Others'
+
 	];
 	var oprtData = {
-		selectedItems: [0, 1, 2],
-        disabledItem:[[1,2],[0,2],[0,1]]//omg 2016-1-26
+		selectedItems: [1, 2, 3],
+        disabledItem:[[2,3],[1,3],[1,2]]//omg 2016-1-26
 	};
     self.EpgTheme_UpHandler=function(){
         if (this.SelectedIndex != this.DataSelectedIndex) {
@@ -103,16 +104,16 @@ function epgThemeColorPage(){
 		var row = this.id.charAt(this.id.length - 1);
 		var col = this.SelectedIndex;
 		var containRow = oprtData.selectedItems.indexOf(col);
-		if( containRow > -1 && containRow != row) return;
+		if( containRow > -1 && containRow != row && col != 0) return;
 		this.setDataSelectedIndex(col);
 		oprtData.selectedItems[row] = col;
        for (var i= 0;i<3;i++)//omg 2016-1-26 add disabledItems' style
        {   var temp_arrary = [];
            for(var j= 0;j<3;j++) {
                if (i == j) continue;
-               temp_arrary.push(oprtData.selectedItems[j]);
+			   if(oprtData.selectedItems[j] != 0) temp_arrary.push(oprtData.selectedItems[j]);
            }
-            oprtData.disabledItem[i] = temp_arrary;
+		   oprtData.disabledItem[i] = temp_arrary;
        }
 
 		if(tv) model.epg.setThemsColor(oprtData.selectedItems);
@@ -121,9 +122,17 @@ function epgThemeColorPage(){
 	}
 
 	self.rewriteThemePage = function(){
-		oprtData.selectedItems = tv ? model.epg.getThemsColor() : [0, 1, 2];
-		if(oprtData.selectedItems[0] + oprtData.selectedItems[1] + oprtData.selectedItems[2] == 0){
-			oprtData.selectedItems = [0, 1, 2];
+		oprtData.selectedItems = tv ? model.epg.getThemsColor() : [1, 2, 3];
+		for (var i= 0;i<3;i++)//omg 2016-1-26 add disabledItems' style
+		{   var temp_arrary = [];
+			for(var j= 0;j<3;j++) {
+				if (i == j) continue;
+				if(oprtData.selectedItems[j] != 0) temp_arrary.push(oprtData.selectedItems[j]);
+			}
+			oprtData.disabledItem[i] = temp_arrary;
+		}
+		if(oprtData.selectedItems[0] + oprtData.selectedItems[1] + oprtData.selectedItems[2] == 0){  //增加规则Off后取消
+			//oprtData.selectedItems = [1, 2, 3];
 		}
 		hiWebOsFrame[self.id].rewrite();
 	}
@@ -146,6 +155,7 @@ function epgThemeColorPage(){
 
 
 	function rewritePageData(pageData) {
+		//oprtData.selectedItems = tv ? model.epg.getThemsColor() : [1, 2, 3];
 		for (var i = 0; i < 3; i++) {
 			pageData["epg_theme_item_" + i].Data = [];
 			for (var j = 0; j < themeName.length; j++) {
@@ -176,18 +186,18 @@ function epgThemeColorPage(){
 		epg_theme_item_2: {Data:[], PageSize: 4},
 	    langData: {
 	        "EPG Mark": ["EPG Mark"],
+			"Off":"Off",
 	        "Movie": ["Movie"],
 	        "News": ["News"],
 	        "Shows": ["Shows"],
 	        "Sport": ["Sport"],
 	        "Kids": [],
-	        "Child": [],
 	        "Music": ["Music"],
-	        "Arts": ["Arts"],
-	        "Social": ["Social"],
+	        "Factual": "Factual",
+	        "Entertainment": "Entertainment",
 	        "Education": ["Education"],
-	        "Hobby": ["Hobby"],
-	        "Series": ["Series"],
+	        "Lifestyle": "Lifestyle",
+	        "Drama": "Drama",
 	        "Others": ["Others"]
 	    },
 		rewrite: rewritePageData

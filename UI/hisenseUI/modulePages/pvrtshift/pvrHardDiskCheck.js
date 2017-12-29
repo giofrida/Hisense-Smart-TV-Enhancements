@@ -76,7 +76,7 @@ function pvrHardDiskCheckEsc() {
             return;
         }
 
-        // add by ghl ·µ»ØÊ²Ã´Ò³Ãæ;
+        // add by ghl ï¿½ï¿½ï¿½ï¿½Ê²Ã´Ò³ï¿½ï¿½;
         if (!!hiWebOsFrame.ptDialog) {
             hiWebOsFrame.ptDialog.open();
             hiWebOsFrame.ptDialog.hiFocus();
@@ -90,7 +90,7 @@ function pvrHardDiskCheckEsc() {
 
 function pvrHardDiskcheckOnOpen() {
     try {
-        if ('APP_5890_SA' == currentPlatform_config) {
+        if ('APP_5890_SA' == currentPlatform_config || "opera4x" == currOperaVersion) {
 
             $("#pvrtshift_diskcheck_img1").css("display", "none")
             $("#opera_4_5_pvrtshift_diskcheck_img1").css("display", "block")
@@ -100,11 +100,15 @@ function pvrHardDiskcheckOnOpen() {
             $("#opera_4_5_pvrtshift_diskcheck_img1").css("display", "none")
 
         }
-
+        hiWebOsFrame.lockAllKeys("pvrHardDiskCheck");
 
     } catch (ex) {
         DBG_ERROR(ex.message);
     }
+}
+
+function pvrHardDiskcheckOnClose() {
+    hiWebOsFrame.unLockAllKeys("pvrHardDiskCheck");
 }
 
 function pvrHardDiskcheckOnDestroy() {

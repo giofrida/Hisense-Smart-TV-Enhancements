@@ -63,7 +63,7 @@ function epgBookAdd(){
 	self.onClose = function(){
 
 	}
-	self.initOperateData = function(chnl, prgrm){
+	self.initOperateData = function(chnl, prgrm, frmEPG){
 		if(null == prgrm){
 			DBG_ERROR("program info error");
 			return false;
@@ -81,7 +81,14 @@ function epgBookAdd(){
 			oprtData.channel = chnl;
 		}
 		oprtData.program = prgrm;
+        //oprtData.enableFVP = FREEVIEWTEST && ENABLE_FVP && !!frmEPG;
+        oprtData.enableFVP = FREEVIEWTEST && ENABLE_FVP && !!frmEPG && AVLFlag.AVAILABLE == prgrm.available;
 		hiWebOsFrame[self.id].rewriteDataOnly();
+        if(oprtData.enableFVP) {
+            $("#epgBookAdd_Nav >li").css("width","260px");
+        } else {
+            $("#epgBookAdd_Nav >li").css("width","426px");
+        }
 		return true;
 	}
 
@@ -101,7 +108,7 @@ function epgBookAdd(){
 					hiWebOsFrame.createPage("pvrHardDiskCheck", null, hiWebOsFrame[self.id].origin, null, function (pvrHardDiskCheck) {
 						currentSelected = "pvr";
 
-						//tmpProgrameInfoReminder ÔÝ½ö¹© reminderÊ¹ÓÃ
+						//tmpProgrameInfoReminder ï¿½Ý½ï¿½ï¿½ï¿½ reminderÊ¹ï¿½ï¿½
 						pvrHardDiskCheckPageData.operateData.tmpEpgVal = {
 							tmpProgrameInfoReminder: funcopyobj(oprtData.program),
 							starter: 'epg_or_livetv',
@@ -123,19 +130,25 @@ function epgBookAdd(){
 			}
 			openBookEditPage(oprtData.channel, oprtData.program, false, false, BookType.RECORD, hiWebOsFrame[self.id].origin);
 		}
-		else{
-			openBookEditPage(oprtData.channel, oprtData.program, false, false, BookType.REMINDER, hiWebOsFrame[self.id].origin);
+        else if(1 == this.SelectedIndex){
+            openBookEditPage(oprtData.channel, oprtData.program, false, false, BookType.REMINDER, hiWebOsFrame[self.id].origin);
+        }
+        else{
+            epgBackToOri(null, null, hiWebOsFrame[self.id]);
+            epg.startFetchMediaURL(oprtData.program.mediaURL);
 		}
 	}
 
 	function rewritePageData(pageData){
 		if(null == oprtData.program) return;
         pageData.epgBookAdd_Nav.DataSelectedIndex =
-        pageData.epgBookAdd_Nav.SelectedIndex = FREEVIEWTEST ? 1 : 0;
+        pageData.epgBookAdd_Nav.SelectedIndex = !getPVRFlag() ? 1 : 0;
 		pageData.book_add_channel.Data = oprtData.channel.number + getHTMLSpace(4) + oprtData.channel.name;
 		pageData.book_add_program.Data = oprtData.program.title;
 		pageData.book_add_time.Data = getProgramLocalTime(oprtData.program.startTime, oprtData.program.endTime, 1, 1);
-		pageData.epgBookAdd_Nav.disableItem = FREEVIEWTEST ? [0] : [];
+        pageData.epgBookAdd_Nav.disableItem = [];
+        if(!getPVRFlag()) pageData.epgBookAdd_Nav.disableItem.push(0);
+        if(!oprtData.enableFVP)  pageData.epgBookAdd_Nav.disableItem.push(2);
 	}
 
 	self.pageData = {
@@ -143,11 +156,19 @@ function epgBookAdd(){
 		book_add_program: {Data: ""},
 		book_add_time: {Data: ""},
 		book_add_type: {Data: "Type:"},
-        epgBookAdd_Nav:{Data:[{//omg add navgiationbar
-            item_name: { Data: "PVR" }
+        epgBookAdd_Nav: {
+            Data: [
+                {//omg add navgiationbar
+                    item_name: {Data: "PVR"}
+                },
+                {
+                    item_name: {Data: "Reminder"}
+                },
+                {
+                    item_name: {Data: "Watch"}
+                }
+            ]
         },
-            {  item_name: {Data: "Reminder"}
-        }]},
         langData: {
             'Jan.': [],
             'Feb.': [],
@@ -163,6 +184,7 @@ function epgBookAdd(){
             'Dec.': [],
             'Type:': [],
             'PVR': [],
+            'Watch': [],
             'Reminder': []
         },
 		rewrite: rewritePageData

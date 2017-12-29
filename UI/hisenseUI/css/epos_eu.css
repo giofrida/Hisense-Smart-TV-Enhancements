@@ -188,3 +188,122 @@
     -ms-perspective: 1000;
     perspective: 1000;
 }
+#left_epos_banner {
+    float: left;
+    margin-top: 0px;
+    margin-left: 0px;
+    background: url(../img/epos/EU_NEW/epos_left_bg.png) no-repeat;
+    background-size: 100%;
+    overflow: hidden;
+    height: 836px;
+    width:180px ;
+}
+#left_tvname {
+    float: left;
+    margin-left: 0px;
+    height: 136px;
+    width:178px ;
+}
+#left_tvname img {
+    margin-top: 95px;
+    margin-left: 25px;
+    height: 30px
+}
+#left_banner_container{
+    float: left;
+    margin-left: 0px;
+
+    height: 560px;
+    width:178px ;
+
+}
+.left_banner{
+    height: 146px;
+    width: 185px;
+    margin-top: -22px;
+    margin-left: -32px;
+}
+.left_banner span{
+    display: none;
+}
+
+
+#bottom_epos_banner {
+
+    width:1607px;
+    height: 204px;
+
+    overflow: hidden;
+    margin-left: 0px;
+    position: absolute;
+    bottom: 0px;
+    background-position: bottom;
+}
+#w_epos_banner {
+    width: 1607px;
+
+    height: 173px;
+
+    margin-left: 0px;
+    position: absolute;
+    bottom: 0px;
+    background: url(../img/epos/EU_NEW/epos_bottom_bg.png) no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+}
+#bottom_tvname{
+    float: left;
+    margin-top: -17px;
+    height:204px ;
+    width:380px ;
+
+}
+#bottom_tvname img{
+    margin-left: 250px;
+    margin-top: 100px;
+    width: 134px;
+}
+#bottom_banner_container{
+    float: left;
+
+    margin-top: -8px;
+    height:204px ;
+    width:1200px ;
+}
+
+.bottom_banner{
+    float: left;
+    height: 204px;
+    width:256px ;
+    margin-left: 5px;
+    margin-top: 3px;
+
+}
+
+#left_logo {
+/*    left: 180px;
+    top: 0px;
+    position: absolute;
+    background-size: 100%;
+    overflow: hidden;
+    height: 0px;
+    width: 537px ;*/
+
+    float: left;
+    margin-top: 0px;
+    margin-left: 0px;
+    background-size: 100%;
+    overflow: hidden;
+    height: 836px;
+    width:305px ;
+
+}
+
+#bottom_logo {
+    float: left;
+    position: absolute;
+    height: 204px;
+    width:256px ;
+    left: 0px;
+    bottom: 103px;
+}

@@ -417,6 +417,9 @@ function SettingChnlInputBtnEnterHandler() {
                 model.ci.ActionEnquiryAnswer(OSDSlAndSessId[0], OSDSlAndSessId[1], 1, inputVal);
             }
         }
+        hiWebOsFrame.SettingChnlCIPage.close();
+        hiWebOsFrame.SettingChnlCIPage.origin.open();
+        hiWebOsFrame.SettingChnlCIPage.origin.hiFocus();
     } catch (ex) {
         debugE(ex.message);
     }
@@ -526,6 +529,9 @@ function SettingChnlCIEnquiryEscHandler() {
     } catch (ex) {
         debugE(ex.message);
     }
+    hiWebOsFrame.SettingChnlCIPage.close();
+    hiWebOsFrame.SettingChnlCIPage.origin.open();
+    hiWebOsFrame.SettingChnlCIPage.origin.hiFocus();
 }
 function SettingChnlUpHandler() {
     try {

@@ -129,7 +129,10 @@ function epgListPage(){
 				item_name: {Data: list.name}
 			});
 			if(list.uid == oprtData.currentList.uid){
-				oprtData.SelectedIndex = totalItem;
+				/vl2.0 oprtData.SelectedIndex = totalItem;
+				oprtData.SelectedIndex = i;
+				pageData.epg_list_item.SelectedIndex = i;
+				pageData.epg_list_item.DataSelectedIndex = i;
 			}
 			totalItem++;
 		}

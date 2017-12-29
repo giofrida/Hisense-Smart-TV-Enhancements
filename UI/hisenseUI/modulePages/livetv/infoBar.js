@@ -112,6 +112,8 @@ function liveTVInfoBar() {
     var dolbySpace = ".", videoInfo = null;
     var pfCallback = null, firstSowInfobar = true;
     var lockOn = false;
+    var infoTimer = 0;
+    var infoTimerCount = 0;
 
     var firstCreate = true;
 
@@ -145,6 +147,7 @@ function liveTVInfoBar() {
         },300);
         DBG_INFO("onCloseInfoBar")
         autoCloseInterval = 3000;
+        clearTimeout(infoTimer);
         clearTimeout(infoBarDetailTimer);
         clearTimeout(infoBarCloseTimer);
         livetvmain.recoverCurrentSubPage(self.id);
@@ -175,7 +178,7 @@ function liveTVInfoBar() {
         crntTunerMode = tv ? model.channelSearch.getSource() : 1;
         // init data
         self.showSimpleInfoByCh(null, false);
-        if(livetvmain.getIsSameChannel()) return;
+        //if(livetvmain.getIsSameChannel()) return;
         if(livetvmain.getCurrentChannelInfo().isHidden) {
             oprtData.crntName = "Hidden Channel";
             pfInd = 2;
@@ -208,7 +211,7 @@ function liveTVInfoBar() {
                         var sapIdx = tv ? parseInt(model.system.getATVAudioTrackSelect()) : 0;
                         DBG_INFO('parseInt(model.system.getATVAudioTrackSelect()): '+sapIdx);
                         sapLen == 1 && (sapIdx = 0) && DBG_INFO('sapLen.length == 1, set sapIdx = 0');
-                        oprtData.modeGroup[GroupT.SAP] = sapArr[sapIdx];
+                        oprtData.modeGroup[GroupT.SAP] = getCurrentContentLanguage(sapArr[sapIdx]);
                     }
 
                 }
@@ -216,13 +219,13 @@ function liveTVInfoBar() {
         }
         //get pf
         if(tv) {
-            isDTV && model.tvservice.getChannelNowPfInfo();
-            isDTV && model.tvservice.getChannelNextPfInfo();
+            model.tvservice.getChannelNowPfInfo();
+            model.tvservice.getChannelNextPfInfo();
         }
         else {
             var dvbtime = getDVBLongTime();
-            onGetNowPfResult(0, [dvbtime - 1000, dvbtime + 2000, "CC", "program name", "program detail", "TV-None"]);
-            onGetNowPfResult(0, [dvbtime + 2000, dvbtime + 4000, "CC", "program name", "program detail", "TV-None"]);
+            onGetNowPfResult(0, [dvbtime - 1000, dvbtime + 2000, "CC", "program name", "program detail", "TV-None","","1"]);
+            onGetNowPfResult(0, [dvbtime + 2000, dvbtime + 4000, "CC", "program name", "program detail", "TV-None","","1"]);
             return;
         }
         //timeout show right
@@ -238,9 +241,10 @@ function liveTVInfoBar() {
             }
             else {
                 pfInd = 2;
+                oprtData.modeGroup[GroupT.HBBTV] = deviceKeySet.HBBTV.length > 0 ? "HbbTV" : "";
                 showRightPanel();
             }
-        }, (nosignal || isDTV) ? 3000 : 10);
+        }, 3000);
         //}
     }
 
@@ -263,7 +267,7 @@ function liveTVInfoBar() {
     }
 
     function openOtherInfo(crntSource) {
-        lockOn = !!livetvmain.getLockSwitch();
+        lockOn = !!livetvmain.getLockSwitch() && getIsInlockTime();
         if(tv && !model.tvservice.onCurrentSourceVideoFormatChanged) {
             model.tvservice.onCurrentSourceVideoFormatChanged = onCurrentSourceVideoFormatChanged;
             model.tvservice.onMainPlayVideoFormatInfoChanged = onMainPlayVideoFormatInfoChanged;
@@ -339,7 +343,7 @@ function liveTVInfoBar() {
 
     self.showSimpleInfoByCh = function(chInfo, flipInfo, dynamicTimer) {
         try {
-            lockOn = !!livetvmain.getLockSwitch();
+            lockOn = !!livetvmain.getLockSwitch() && getIsInlockTime();
             $("#info_bar_not_tv").css("display", "none");
             livetvchlist.clearNumDialog();
         }
@@ -423,6 +427,10 @@ function liveTVInfoBar() {
         }
     }
 
+    self.getInfoBarOpened = function() {
+        return hiWebOsFrame[self.id].visible;
+    }
+
     self.keyHandler = function(keyCode) {
         DBG_ALWAYS("key[" + keyCode + "] on info bar");
 
@@ -487,6 +495,13 @@ function liveTVInfoBar() {
             return programInfo;
         }
     }
+
+    self.rewriteForHbbtv = function() {
+        oprtData.modeGroup[GroupT.HBBTV] = deviceKeySet.HBBTV.length > 0 ? "HbbTV" : "";
+        if (hiWebOsFrame.isCurrentModule("livetv")) {
+            hiWebOsFrame[self.id].rewriteDataOnly();
+        }
+    };
 
     function hideRightPanel() {
         $(".infoBarRight").css("display", "none");
@@ -691,6 +706,16 @@ function liveTVInfoBar() {
         //var sap = tv ? model.sound.getSap() : "1";
         DBG_INFO("video info[" + objToString(videoInfo) + "]");
         DBG_INFO("audio info[" + objToString(audioInfo) + "]");
+        clearTimeout(infoTimer);
+        if ((!videoInfo || !audioInfo || videoInfo.split(',')[0] == "0i" || audioInfo.split("|")[1] == "unknow") && infoTimerCount < 3) {
+            infoTimerCount++;
+            infoTimer = setTimeout(function() {
+                setVideoAudioInfo();
+            }, 1000);
+        }
+        else {
+            infoTimerCount = 0;
+        }
 
 
         if(!!videoInfo) {
@@ -720,6 +745,10 @@ function liveTVInfoBar() {
         }
         oprtData.modeGroup[GroupT.SAP] = SAPTEXT[0];
         livetvmain.checkToShowNotSupported(videoInfo);
+
+        if (hiWebOsFrame.isCurrentModule("livetv")) {
+            hiWebOsFrame[self.id].rewriteDataOnly();
+        }
     }
 
     function onGetNowPfResult(actionId, result) {
@@ -740,6 +769,7 @@ function liveTVInfoBar() {
             return;
         }
 
+        oprtData.modeGroup[GroupT.HBBTV] = deviceKeySet.HBBTV.length > 0 ? "HbbTV" : "";
 
         DBG_ALWAYS("pf info " + objToString(result));
         if(crntDVBTime >= parseInt(result[Pf.START_TIME]) || !!pfCallback) {
@@ -748,8 +778,14 @@ function liveTVInfoBar() {
             oprtData.crntName = filterUnicaode(!!result[Pf.TITLE] ? result[Pf.TITLE] : "No program");
             oprtData.detailInfo = filterUnicaode(!!result[Pf.DETAIL] ? result[Pf.DETAIL] : "No program information");
             oprtData.modeGroup[GroupT.RATING] = result[Pf.RATING];
-            oprtData.modeGroup[GroupT.HBBTV] = deviceKeySet.HBBTV.length > 0 ? "HbbTV" : "";
             oprtData.guidance = !!result[Pf.GUIDANCE] ? result[Pf.GUIDANCE] : "";
+            oprtData.ttx = "";
+            if(result.length > Pf.TTX) {
+                oprtData.ttx = !!result[Pf.TTX] ? result[Pf.TTX] : "";
+                oprtData.modeGroup[GroupT.TTX] = (1 == oprtData.ttx) ? "TTX" : "";
+            }
+
+
             if("NA" == hiWebOsFrame.getCurrentArea() || "SA" == hiWebOsFrame.getCurrentArea()) {
                 oprtData.modeGroup[GroupT.CC] = (1 == result[Pf.CC]) ? "CC" : "";
             }
@@ -868,6 +904,7 @@ function liveTVInfoBar() {
     Pf.DETAIL = enumIndex++;
     Pf.RATING = enumIndex++;
     Pf.GUIDANCE = enumIndex++;
+    Pf.TTX = enumIndex++;
 
     function GroupT() {
         enumIndex = 0;
@@ -887,6 +924,7 @@ function liveTVInfoBar() {
     GroupT.TTX = enumIndex++;
     GroupT.SAP = enumIndex++;
     GroupT.DOLBY = enumIndex++;
+
 
     if(tv && !model.tvservice.getChannelNowPfInfoCallBack) {
         model.tvservice.getChannelNowPfInfoCallBack = onGetNowPfResult;

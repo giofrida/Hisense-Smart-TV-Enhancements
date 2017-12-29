@@ -300,6 +300,7 @@ var PageDateSettingSysDisfir={
     "langData":{
         "Click to read the legal statement": [],
         "Accept EULA":[],
+        "Improve your Smart TV":[],
        // "Read the Hisense Legal Disclaimer.":[],
         "Help to improve the user experience of products":[],
         "Automatically send usage informaiton, statistics and crash report to us.":[],
@@ -569,8 +570,8 @@ function SettingSysDisFirEnHandler()
             PageDateSettingSysDisfir.operateData.btn2 = 0;
             PageDateSettingSysDisfir.operateData.btn4 = 0;
         }
-        model.basicSetting.setDisclaimer(PageDateSettingSysDisfir.operateData.btn1);
-        model.basicSetting.setImproveHis(PageDateSettingSysDisfir.operateData.btn1);
+//        model.basicSetting.setDisclaimer(PageDateSettingSysDisfir.operateData.btn1);
+//        model.basicSetting.setImproveHis(PageDateSettingSysDisfir.operateData.btn4);
     }
     if (this.id=="setting_sys_dis_fir_btn2")
     {
@@ -582,9 +583,9 @@ function SettingSysDisFirEnHandler()
         else
         {
             PageDateSettingSysDisfir.operateData.btn2 = 0;
-            PageDateSettingSysDisfir.operateData.btn1 = 0;
+//            PageDateSettingSysDisfir.operateData.btn1 = 0;
         }
-        model.basicSetting.setDisclaimer(PageDateSettingSysDisfir.operateData.btn2);
+//        model.basicSetting.setDisclaimer(PageDateSettingSysDisfir.operateData.btn2);
     }
     /*else if(this.id=="setting_sys_dis_fir_btn2")
     {
@@ -631,13 +632,23 @@ function SettingSysDisFirEnHandler()
         else
         {
             PageDateSettingSysDisfir.operateData.btn4 = 0;
-            PageDateSettingSysDisfir.operateData.btn1 = 0;
+//            PageDateSettingSysDisfir.operateData.btn1 = 0;
         }
-        model.basicSetting.setImproveHis(PageDateSettingSysDisfir.operateData.btn4);
+//        model.basicSetting.setImproveHis(PageDateSettingSysDisfir.operateData.btn4);
     }
-    if (1==PageDateSettingSysDisfir.operateData.btn2 && 1==PageDateSettingSysDisfir.operateData.btn4)
-    {
+    if (1==PageDateSettingSysDisfir.operateData.btn2 && 1==PageDateSettingSysDisfir.operateData.btn4){
         PageDateSettingSysDisfir.operateData.btn1 = 1;
+    } else {
+        PageDateSettingSysDisfir.operateData.btn1 = 0;
+    }
+    if (tv) {
+        model.basicSetting.setDisclaimer(PageDateSettingSysDisfir.operateData.btn2);
+//        if(FREEVIEWTEST){
+//           model.appsetting.setFreeviewPlayCtrl(PageDateSettingSysDisfir.operateData.btn2);
+        var isUK = hiWebOsFrame.getCurrentCountry() == "UK";
+        ENABLE_FVP = (1 == parseInt(PageDateSettingSysDisfir.operateData.btn2) && isUK);
+//        }
+        model.basicSetting.setImproveHis(PageDateSettingSysDisfir.operateData.btn4);
     }
     this.page.rewriteDataOnly();
     SetRecentUse("EULA",5,1);
@@ -664,7 +675,7 @@ function settingSysDisclaimerinit()
         debugE("getCurBrand error " + e);
     }
     if (!!curbrand  && curbrand != "his" && curbrand !=  "hisense" && curbrand !=  "Hisense") {
-        PageDateSettingSysDisfir.setting_sys_dis_fir_btn4.Data.setting_sys_dis_fir_btn4_text.Data = "Improve your smart TV's";
+        PageDateSettingSysDisfir.setting_sys_dis_fir_btn4.Data.setting_sys_dis_fir_btn4_text.Data = "Improve your Smart TV";
     }
 
     try
@@ -699,6 +710,16 @@ function settingSysDisclaimerinit()
         else{
             PageDateSettingSysDisfir.operateData.btn2=0;
         }
+//	 if(FREEVIEWTEST){
+//        temp= model.appsetting.getFreeviewPlayCtrl();
+//        debugPrint("getFreeviewPlayCtrl  "+temp);
+//        if(temp!=PageDateSettingSysDisfir.operateData.btn2)
+//        {
+//            model.appsetting.setFreeviewPlayCtrl(PageDateSettingSysDisfir.operateData.btn2)
+//
+//        }
+//	}
+
 
         if (1==PageDateSettingSysDisfir.operateData.btn2 && 1==PageDateSettingSysDisfir.operateData.btn4)
         {

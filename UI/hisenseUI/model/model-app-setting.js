@@ -13,6 +13,7 @@
  	App_settingModelDefines.SL2_TVAPI_STR_APP_SETTING_ESN= "tvapi.str.app.setting.esn";
 	App_settingModelDefines.SL2_TVAPI_I32_APP_SETTING_NETFLIX_STATE= "tvapi.i32.app.setting.netflix.state";
 	App_settingModelDefines.SL2_TVAPI_I32_APP_SETTING_VUDU_STATE= "tvapi.i32.app.setting.vudu.state";
+    //App_settingModelDefines.SL2_TVAPI_I32_APP_SETTING_FREEVIEW_PLAY_CTRL= "tvapi.i32.app.setting.freeview.play.ctrl";
 	App_settingModelDefines.SL2_TVAPI_ACTION_APP_SETTING_NETFLIX_DEACTIVE= "tvapi.action.app.setting.netflix.deactive";
 	App_settingModelDefines.SL2_TVAPI_ACTION_APP_SETTING_VUDU_DEACTIVE= "tvapi.action.app.setting.vudu.deactive";
 
@@ -72,7 +73,12 @@ function App_settingModel( parentModel ) {
             ],"null"
 			);
 
-
+    // Freeview Play Ctrl
+   /* this.registerIntegerObject(
+     App_settingModelDefines.SL2_TVAPI_I32_APP_SETTING_FREEVIEW_PLAY_CTRL,
+     "getFreeviewPlayCtrl", "setFreeviewPlayCtrl", "onFreeviewPlayCtrlChaged",
+     null, null
+     );*/
 }
 App_settingModel.prototype = new SubModel();
 App_settingModel.prototype.constructor = App_settingModel;

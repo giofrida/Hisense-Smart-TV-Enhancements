@@ -350,6 +350,7 @@ var settingChSetAutoScanPageData={
         "needRefreshChannelListFlag": 0,//0:不需要刷新列表，1：需要刷新列表
         "currScanMode":0, //0:DTV,1:ATV,2:DTV+ATV
         "currScanModeNum":0,
+        "ScanModeFlag":0, //0:normal Scan 1:update scan
         "currTunerModeIdx":0,
         "tunerModeMapList":[
             {
@@ -421,7 +422,8 @@ var settingChSetAutoScanPageData={
                 "map":1,
                 "name":"Network Scan"
             }
-        ]
+        ],
+        "OrigFransatOpList":[]
     },
     "langData":{
         "Auto Scan":["Auto Scan"],
@@ -705,8 +707,12 @@ function settingRewriteChSetChScanPage(data){
                 }
                 data.settingChSetAutoScanSatelliteList.Data.push(item);
             }
-        }else{
-            data.settingChSetScanModeValue.Data = data.operateData.scanModeMapList[data.operateData.currScanModeIdx].name;
+        }else {
+            if (data.operateData.ScanModeFlag == 1) {
+                data.settingChSetScanModeValue.Data = data.operateData.scanModeMapList[1].name;
+            } else {
+                data.settingChSetScanModeValue.Data = data.operateData.scanModeMapList[data.operateData.currScanModeIdx].name;
+            }
         }
         data.settingChSetATVValue.Data = data.operateData.analogChannelNum;
         data.settingChSetDTVValue.Data = data.operateData.digitChannelNum;
@@ -737,19 +743,23 @@ function settingChSetStartChScan(){
     try{
 
         var data = settingChSetAutoScanPageData;
-
+        IsExitSatePlayChnl = false;
         if(tv == false){
             data.operateData.searchTimer = setInterval(testProgressBar,100);
         }
         else{
             data.operateData.needRefreshChannelListFlag = 1;
             debugPrint("settingChSetStartChScan:start scan!currScanMode="+data.operateData.currScanMode,DebugLevel.ALWAYS);
-            if(data.operateData.currScanMode == 1 || data.operateData.currScanMode == 2){ //DTV或者ATV+DTV
-                model.channelSearch.Start(0);//dtv
+            if(data.operateData.ScanModeFlag == 1 && data.operateData.currTunerModeIdx == 0){
+                model.channelSearch.Start(2); //update scan
             }else{
-                model.channelSearch.Start(1);//atv
+                if(data.operateData.currScanMode == 1 || data.operateData.currScanMode == 2){ //DTV或者ATV+DTV
+                    model.channelSearch.Start(0);//dtv
+                }else{
+                    model.channelSearch.Start(1);//atv
+                }
+                data.operateData.currScanModeNum = data.operateData.currScanModeNum + 1;
             }
-            data.operateData.currScanModeNum = data.operateData.currScanModeNum + 1;
             debugPrint("settingChSetStartChScan:currScanMode="+data.operateData.currScanMode+",currScanModeNum="+data.operateData.currScanModeNum,DebugLevel.ERROR);
         }
     }catch (ex){
@@ -861,26 +871,30 @@ function settingChSetStopChScan(){
                 model.channelSearch.Stop();
                 data.operateData.chScanState = 1;
                 hiWebOsFrame.ChSetChannelScanPage.rewriteDataOnly();
-                var currCountry = model.basicSetting.getTvsetLocation();
-                DBG_INFO("settingChSetStopChScan:"+data.operateData.currTunerMode+","+currCountry);
-                if(data.operateData.currTunerMode == 0 && data.operateData.digitChannelNum > 0){
-                    var currListInfo = [];
-                    if(currCountry == "GBR"){
-                        currListInfo = model.channelSearch.getUkArea();
-                        DBG_ALWAYS("settingChSetStopChScan:"+currListInfo);
-                    }else if(currCountry == "ITA"){
-                        currListInfo = model.channelSearch.getLcnConflict();
-                        DBG_ALWAYS("settingChSetStopChScan:"+currListInfo);
-                    }
 
-                    if(currListInfo.length > 0){
+                if(data.operateData.ScanModeFlag == 0 && data.operateData.currTunerModeIdx == 0) { //normal scan
+                    var currCountry = model.basicSetting.getTvsetLocation();
+                    DBG_INFO("settingChSetStopChScan:"+data.operateData.currTunerMode+","+currCountry);
+                    if(data.operateData.currTunerMode == 0 && data.operateData.digitChannelNum > 0){
+                        var currListInfo = [];
                         if(currCountry == "GBR"){
-                            settingChSetAutoCreateDVBTAreaList();
-                        }else{
-                            settingChSetAutoCreateDVBTLCNList();
+                            currListInfo = model.channelSearch.getUkArea();
+                            DBG_ALWAYS("settingChSetStopChScan:"+currListInfo);
+                        }else if(currCountry == "ITA"){
+                            currListInfo = model.channelSearch.getLcnConflict();
+                            DBG_ALWAYS("settingChSetStopChScan:"+currListInfo);
+                        }
+
+                        if(currListInfo.length > 0){
+                            if(currCountry == "GBR"){
+                                settingChSetAutoCreateDVBTAreaList();
+                            }else{
+                                settingChSetAutoCreateDVBTLCNList();
+                            }
                         }
                     }
                 }
+
             }else{
                 if(model.channelSearch.getRunning() == 1){
                     debugPrint("settingChSetStopChScan:not stoped,error!",DebugLevel.ERROR);
@@ -1027,7 +1041,7 @@ function settingChScanStateChangeCallBack(value){
                     DBG_ALWAYS("settingChScanStateChangeCallBack:"+data.operateData.currTunerMode+","+currCountry);
                     var currListInfo = [];
 
-                    if(data.operateData.currTunerMode == 0 && data.operateData.digitChannelNum > 0){
+                    if(data.operateData.currTunerMode == 0 && data.operateData.digitChannelNum > 0 &&data.operateData.ScanModeFlag ==0){
                         if(currCountry == "GBR"){
                             currListInfo = model.channelSearch.getUkArea();
                             DBG_ALWAYS("settingChScanStateChangeCallBack:"+currListInfo);
@@ -1062,6 +1076,32 @@ function settingChScanStateChangeCallBack(value){
         }
     }catch(ex){
         debugPrint("settingChScanStateChangeCallBack:"+ex.message,DebugLevel.ERROR);
+    }
+}
+function settingChScanFransetOpChangeCallBack(value){
+    try{
+        DBG_INFO("settingChScanFransetOpChangeCallBack:="+objToString(value));
+        if(!tv){
+            value = ["1","afaf","2","kkk","3","llll","4","hhhhh","9","gggg","8","fhfhhf"]
+        }
+        settingChSetAutoScanPageData.operateData.OrigFransatOpList = value;
+        hiWebOsFrame.createPage("settingChSetFransatOpListDialogId",null,hiWebOsFrame.ChSetChannelScanPage,null,function(a){
+            hiWebOsFrame.ChSetFransatOpListDialog = a;
+            a.open();
+            a.hiFocus();
+        })
+    }catch(ex){
+        DBG_INFO("settingChScanAnalogServicesChangeCallBack:"+ex.message,DebugLevel.ERROR);
+    }
+}
+function getOrigFransatOpList(){
+    return settingChSetAutoScanPageData.operateData.OrigFransatOpList;
+}
+function settingChScanSetFransetOp(){
+    try{
+        settingChSetStartChScan();
+    }catch (ex){
+        DBG_INFO("settingChScanSetFransetOp"+ex.message,DebugLevel.ERROR);
     }
 }
 function settingChSetAutoCreateDVBTAreaList(){
@@ -1115,6 +1155,11 @@ function settingChSetAutoScanPageOnOpen(){
             $("#settingChSetAutoScanSatelliteList").css("display","none");
             $("#settingChSetAutoScanNetwork").css("display","none");
             $("#settingChSetSearchMode").css("display","none");
+            DBG_ALWAYS("data.operateData.ScanModeFlag="+data.operateData.ScanModeFlag);
+            if(data.operateData.ScanModeFlag == 1&& data.operateData.currTunerModeIdx == 0){
+                $("#settingChSetEUAutoScanLcnCon").css("display","none");
+                data.operateData.currScanMode = 1; //DTV
+            }
         }else if(data.operateData.currTunerMode == 1){ //DVBC
             $("#settingChSetAutoScanSatelliteList").css("display","none");
         }else if(data.operateData.currTunerMode == 2)  //DVBS
@@ -1157,6 +1202,11 @@ function settingChSetAutoScanPageOnOpen(){
             model.channelSearch.onFoundDigitServicesChaged = settingChScanDigitServicesChangeCallBack;
             model.channelSearch.onFoundAnalogServicesChaged = settingChScanAnalogServicesChangeCallBack;
             model.channelSearch.onStateChaged = settingChScanStateChangeCallBack;
+            try{
+                model.channelSearch.onFransetOpChaged = settingChScanFransetOpChangeCallBack;
+            }catch (ex){
+                debugPrint("onFransetOpChaged:"+ex.message,DebugLevel.ERROR);
+            }
         }
         hiWebOsFrame.ChSetChannelScanPage.rewriteDataOnly();
         settingChSetStartChScan();
@@ -1181,6 +1231,14 @@ function settingChSetAutoScanPageOnDestroy(){
         hiWebOsFrame.ChSetChannelScanPage = null;
     }catch (ex){
         debugPrint("settingChSetAutoScanPageOnDestroy:"+ex.message,DebugLevel.ERROR);
+    }
+
+    //add this to notify timerlist restore the schedule list
+    try {
+        debugPrint("model.timerlist.setTimerList in eu scan page", DebugLevel.ERROR);
+        model.timerlist.setTimerList(1);
+    } catch (e){
+        debugPrint("model.timerlist.setTimerList ex = "+e.message, DebugLevel.ERROR);
     }
 
 }

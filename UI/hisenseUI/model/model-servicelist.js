@@ -83,6 +83,7 @@ function ServicelistModelDefines() {
     ServicelistModelDefines.SL2_TVAPI_TABLE_SERVICELIST_FIELD_ORIGINAL_LCN                  = 32;          
     ServicelistModelDefines.SL2_TVAPI_TABLE_SERVICELIST_FIELD_TRIPLET                       = 33;               
     ServicelistModelDefines.SL2_TVAPI_TABLE_SERVICELIST_FIELD_FREQUENCY                     = 34;
+    ServicelistModelDefines.SL2_TVAPI_TABLE_SERVICELIST_FIELD_NETWORK_ID = 36;
 
     ServicelistModelDefines.SL2_TVAPI_TABLE_ACTION_SERVICELIST_PLAY ="tvapi.action.servicelist.play";
     ServicelistModelDefines.SL2_TVAPI_TABLE_ACTION_SERVICELIST_REMOVE= "tvapi.action.servicelist.remove";

@@ -598,8 +598,15 @@ function settingChSetSelSatelliteOnOpen(){
     if(tv){
         model.satellite.satelliteLockFrequencyCallBack = settingChSetSelSateLockFrequencyCallBack;
 }
+    IsExitSatePlayChnl = true;
     setChSetSelSateSignalDisplay();
     settingChSetSelLockSatelliteFre();
+}
+function settingChSetSelSatelliteOnClose(){
+    var opData = settingChSetSelSatelliteData.operateData;
+    DBG_ALWAYS("settingChSetSelSatelliteOnClose::::");
+    clearTimeout(opData.lockTimer);
+
 }
 function settingChSetSelSatelliteOnDestroy(){
     var opData = settingChSetSelSatelliteData.operateData;

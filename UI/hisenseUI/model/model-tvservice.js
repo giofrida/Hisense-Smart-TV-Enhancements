@@ -40,6 +40,7 @@ function TvserviceModelDefines() {
 
     TvserviceModelDefines.SL2_TVAPI_HBBTV_I32_KEYSET = "tvapi.hbbtv.i32.keyset";
     TvserviceModelDefines.SL2_TVAPI_HBBTV_I32_STATE = "tvapi.hbbtv.i32.state";
+    TvserviceModelDefines.SL2_TVAPI_HBBTV_I32_HBBTVSTATUS = "tvapi.hbbtv.i32.hbbtvstatus";
 	TvserviceModelDefines.SL2_TVAPI_STR_TVSERVICE_SOURCE_VIDEO_FORMAT_INFO = "tvapi.str.tvservice.source.video.format.info";
     TvserviceModelDefines.SL2_TVAPI_I32_TVSERVICE_PLAYED_SUCCESS_LIVETV    = "tvapi.i32.tvservice.played.success.livetv";
 	TvserviceModelDefines.SL2_TVAPI_I32_TVSERVICE_MESSAGE_CAM_INDEX= "tvapi.i32.tvservice.message.cam.index";
@@ -50,6 +51,7 @@ function TvserviceModelDefines() {
 
 	TvserviceModelDefines.SL2_TVAPI_I32_TVSERVICE_LOCK_STATUS    = "tvapi.i32.tvservice.lock.status";
     TvserviceModelDefines.SL2_TVAPI_I32_TVSERVICE_BANNER_ENABLE    = "tvapi.i32.tvservice.banner.enable";
+    TvserviceModelDefines.SL2_TVAPI_STR_TVSERVICE_AUTHURL = "tvapi.str.tvservice.authurl";
 }
 
 /**
@@ -148,7 +150,10 @@ function TvserviceModel( parentModel ) {
         TvserviceModelDefines.SL2_TVAPI_HBBTV_I32_STATE,
         "getI32Switch", "setI32Switch", "onI32SwitchChaged",
         null, null );
-
+    this.registerIntegerObject(
+        TvserviceModelDefines.SL2_TVAPI_HBBTV_I32_HBBTVSTATUS,
+        "getHbbTvStatus", "setHbbTvStatus", "onHbbTvStatusChanged",
+        null, null );
 
 	this.registerStringObject(
         TvserviceModelDefines.SL2_TVAPI_STR_TVSERVICE_SOURCE_VIDEO_FORMAT_INFO,
@@ -191,7 +196,7 @@ function TvserviceModel( parentModel ) {
             "getBannerEnable", "setBannerEnable", "onBannerEnableChanged",
             null, null);
     }
-
+    this.registerStringObject(TvserviceModelDefines.SL2_TVAPI_STR_TVSERVICE_AUTHURL, "getAuthUrl", null, null, null, null);
 
 
 }

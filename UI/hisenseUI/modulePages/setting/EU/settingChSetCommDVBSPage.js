@@ -429,7 +429,7 @@ function settingInitChSetCommDVBSPageData(){
             }
             if(currUseBand == opData.bandList.length){
                 debugPrint("settingInitChSetCommDVBSPageData:currUseBand="+currUseBand,DebugLevel.ERROR);
-                model.satellite.setUnicableBand(data.operateData.bandList[0]);
+                model.satellite.setUnicableBand(opData.bandList[0]);
                 opData.currUseBandIdx = 0;
             }
             opData.currBandFreq = model.satellite.getUnicableBandFrequency();
@@ -685,6 +685,16 @@ function settingChSetCommDVBSSetBandFre(){
         this.page.rewriteDataOnly();
     }
 
+}
+function frequencyInputAddSuffix(){
+    var opData = settingChSetCommDVBSPageData.operateData;
+    var inputValue = $("#ChannelCommUserBandFreInput").val();
+     if(parseInt(inputValue) != opData.currBandFreq){
+        if(tv){
+            model.satellite.setUnicableBandFrequency(parseInt(inputValue));
+        }
+        opData.currBandFreq = parseInt(inputValue);
+    }
 }
 function ChannelCommDVBSLCNflipSwitchOKHandler(operateData){
     var page = this.page;

@@ -65,7 +65,7 @@ function dialogNetwork() {
 
     self.pageData = {
         dialog_np_img:{Data: "img/networkbroken.png"},
-        dialog_np_tip1:{Data: "Network not found."},
+        dialog_np_tip1:{Data: "Network not found,"},
         dialog_np_tip2:{Data: "some applications will be unavailable."},
         dialog_np_btn_setup:{Data: "Setup now"},
         dialog_np_btn_always:{Data: "I got it"},
@@ -74,7 +74,7 @@ function dialogNetwork() {
             "Setup now": [],
             "I got it":[],
             "Never ask": [],
-	        "Network not found.": [],
+	        "Network not found,": [],
 	        "some applications will be unavailable.": []
 
         },

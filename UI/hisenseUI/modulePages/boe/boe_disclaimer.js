@@ -230,6 +230,9 @@ function boeInitNetSetDisclaimerPage(){
     if(tv)
     {
         data.operateData.acceptDisclaimerStateFlag = model.basicSetting.getDisclaimer();
+        //model.appsetting.setFreeviewPlayCtrl(data.operateData.acceptDisclaimerStateFlag);
+        var isUK = hiWebOsFrame.getCurrentCountry() == "UK";
+        ENABLE_FVP = (1 == data.operateData.acceptDisclaimerStateFlag && isUK);
         data.operateData.disLogReportStateFlag = model.basicSetting.getImproveHis();
         data.operateData.acceptAllStateFlag = data.operateData.disLogReportStateFlag && data.operateData.acceptDisclaimerStateFlag;
         data.operateData.isEthernetConnected = model.network.getEthernetConnectedState();
@@ -310,6 +313,10 @@ function boeSetAceeptAllFlag(){
     if(tv)
     {
         model.basicSetting.setDisclaimer(data.operateData.acceptDisclaimerStateFlag);
+        //model.appsetting.setFreeviewPlayCtrl(data.operateData.acceptDisclaimerStateFlag);
+        var isUK = hiWebOsFrame.getCurrentCountry() == "UK";
+        ENABLE_FVP = (1 == data.operateData.acceptDisclaimerStateFlag && isUK);
+
         model.basicSetting.setImproveHis(data.operateData.disLogReportStateFlag);
     }
     hiWebOsFrame.boe_disclaimer_page_id.rewriteDataOnly();
@@ -331,6 +338,9 @@ function boeSetDisclaimerFlag(){
     if(tv)
     {
         model.basicSetting.setDisclaimer(data.operateData.acceptDisclaimerStateFlag);
+        //model.appsetting.setFreeviewPlayCtrl(data.operateData.acceptDisclaimerStateFlag);
+        var isUK = hiWebOsFrame.getCurrentCountry() == "UK";
+        ENABLE_FVP = (1 == data.operateData.acceptDisclaimerStateFlag && isUK);
         model.basicSetting.setImproveHis(data.operateData.disLogReportStateFlag);
     }
     hiWebOsFrame.boe_disclaimer_page_id.rewriteDataOnly();
@@ -477,6 +487,11 @@ function boeNetSetDisclaimerPageOnOpen(){
         data.operateData.isDropDownFrame=0;
         $("#EULADropDownFrame").css("visibility", "hidden");
     }
+
+    data.operateData.isDropDownFrame = 1;
+    $("#disAcceptAllItemFrame").css("margin-top","0px");
+    $("#disAcceptAllDropDownFrame").css("visibility","hidden");
+    $("#EULADropDownFrame").css("visibility","visible");
 }
 function boeNetSetDisclaimerPageOnDestroy(){
     boeSetFromDialogFlag(0);

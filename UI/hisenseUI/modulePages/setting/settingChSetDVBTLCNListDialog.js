@@ -175,16 +175,16 @@ function settingRewriteChSetDVBTLCNListDialog(data){
  *******************************************************************/
 function settingChSetDVBTLCNListEnterHandler(){
     try{
-	var setLcnArray = [];
-    var opData = settingChSetDVBTLCNListData.operateData;
-    debugPrint('settingInitChSetDVBTLCNListDialog:'+opData.LCNMap.length);
-    for(var i = 0; i < opData.LCNMap.length; i++){
-	  setLcnArray.push(opData.LCNMap[i].SelectedIndex);
-    }
-    debugPrint('settingInitChSetDVBTLCNListDialog:'+setLcnArray);
-    if(tv){
-        model.channelSearch.SetLcnConflict(setLcnArray);
-    }
+    //var setLcnArray = [];
+    //var opData = settingChSetDVBTLCNListData.operateData;
+    //debugPrint('settingInitChSetDVBTLCNListDialog:'+opData.LCNMap.length);
+    //for(var i = 0; i < opData.LCNMap.length; i++){
+	 // setLcnArray.push(opData.LCNMap[i].SelectedIndex);
+    //}
+    //debugPrint('settingInitChSetDVBTLCNListDialog:'+setLcnArray);
+    //if(tv){
+    //    model.channelSearch.SetLcnConflict(setLcnArray);
+    //}
     this.page.close();
     this.page.destroy();
     hiWebOsFrame.ChSetChannelScanPage.hiFocus();
@@ -246,14 +246,14 @@ function settingChSetDVBTLCNListRightHandler(){
  return
  *******************************************************************/
 function settingChSetDVBTLCNListEscHandle(){
-    var setLcnArray = [];
-    var opData = settingChSetDVBTLCNListData.operateData;
-    $.each(opData.LCNMap,function(idx,item){
-        setLcnArray.push(item.SelectedIndex);
-    });
-    if(tv){
-        model.channelSearch.SetLcnConflict(setLcnArray);
-    }
+    //var setLcnArray = [];
+    //var opData = settingChSetDVBTLCNListData.operateData;
+    //$.each(opData.LCNMap,function(idx,item){
+    //    setLcnArray.push(item.SelectedIndex);
+    //});
+    //if(tv){
+    //    model.channelSearch.SetLcnConflict(setLcnArray);
+    //}
     this.page.close();
     this.page.destroy();
 
@@ -267,5 +267,15 @@ function settingChSetDVBTLCNListOnOpen()
 }
 
 function settingChSetDVBTLCNListOnDestroy(){
+    var setLcnArray = [];
+    var opData = settingChSetDVBTLCNListData.operateData;
+    debugPrint('settingChSetDVBTLCNListOnDestroy:'+opData.LCNMap.length);
+    for(var i = 0; i < opData.LCNMap.length; i++){
+        setLcnArray.push(opData.LCNMap[i].SelectedIndex);
+    }
+    debugPrint('settingChSetDVBTLCNListOnDestroy:'+setLcnArray);
+    if(tv){
+        model.channelSearch.SetLcnConflict(setLcnArray);
+    }
     hiWebOsFrame.ChSetDVBTLCNListDialog = null;
 }

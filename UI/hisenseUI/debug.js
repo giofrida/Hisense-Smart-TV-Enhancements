@@ -19,7 +19,7 @@ var VIDAALiteLauncherBaseDir = '../../VIDAALiteLauncher/';
 
 
 
-var verNum = '18154_EU([5655])', verDate = '2016-04-07';
+var verNum = '18154_EU([27753])', verDate = '2017-1-4';
 var isLogOn = !tv;
 
 /**

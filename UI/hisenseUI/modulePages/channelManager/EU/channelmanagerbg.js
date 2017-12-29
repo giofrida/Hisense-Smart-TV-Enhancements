@@ -286,6 +286,7 @@ function ChannelManagerBg() {
             "Channel Management": [],
             "List of deleted channels":[],
             "Delete/Undo": [],
+            "Delete":[],
             "Move": [],
             "Rename": [],
             "Filter": [],
@@ -385,8 +386,7 @@ function ChannelManagerBg() {
                 uid: rows[i][2],
                 type: rows[i][3],
                 attr: parseInt(rows[i][4]),
-//                skip: !(rows[i][4] & (1 << 9)),   //PC 调试
-                skip: !(rows[i][4] & (1 << 3)),
+                skip:tv ? (!(rows[i][4] & (1 << 3))) : (!(rows[i][4] & (1 << 9))),
                 uuid: rows[i][5],
                 HdSd: getDefinitionFlag(parseInt(rows[i][6])),
                 tvType: rows[i][7],
@@ -403,17 +403,7 @@ function ChannelManagerBg() {
         }
         return ret;
     }
-    function getDefinitionFlag(flag) {
-        if((flag == 17) || (flag >= 25 && flag <= 30)){
-            return 1;//HD
-        }
-        else if(flag == 31){
-            return 3;//UHD
-        }
-        else{
-            return 2;//SD
-        }
-    }
+
     function refreshCurrentPage(list, event) {
         try {
             if (event.type == TableIterator.EVENT_TYPE_ROWS_READ) {
@@ -646,15 +636,19 @@ function ChannelManagerBg() {
         repeatMum = 0;
         UnselectedType1Img = true;
         UnselectedDeleteImg = true;
-        debugPrint('________oprData.list.uid::::::::::::::::::::::' + oprData.list.uid);
-        var ret = eventToChannel(livetvchlist.getChannelListById(oprData.list));
-        oprData.channels = ret.all;
-        oprData.visChannels = ret.vis;
-        oprData.hidChannels = ret.hid;
-        channelsBakup = $.extend([], oprData.channels);
-        setIndexAndRewrite(REWRITETYPE.CURRENT);
-        hiWebOsFrame.endLoading();
-        //getChannelsByListId(oprData.list, refreshCurrentPage);
+        if(!!tv){
+            debugPrint('________oprData.list.uid::::::::::::::::::::::' + oprData.list.uid);
+            var ret = eventToChannel(livetvchlist.getChannelListById(oprData.list));
+            oprData.channels = ret.all;
+            oprData.visChannels = ret.vis;
+            oprData.hidChannels = ret.hid;
+            channelsBakup = $.extend([], oprData.channels);
+            setIndexAndRewrite(REWRITETYPE.CURRENT);
+            hiWebOsFrame.endLoading();
+        }else{
+            getChannelsByListId(oprData.list, refreshCurrentPage);
+        }
+
     }
     self.keyDownOnTypePage = function () {
         var currId = $("#"+this.id+" li").eq(this.SelectedIndex).children()[2].id;
@@ -1205,7 +1199,9 @@ function ChannelManagerBg() {
         items.forEach(function (v) {
 
             v.img = false;
-//            v.attr |= (1 << 9);     //PC调试
+            if(!tv){
+                v.attr |= (1 << 9);     //PC调试
+            }
             restoreUid.push(v.uid);
             restoreAttr.push(v.attr);
 

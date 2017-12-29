@@ -328,6 +328,8 @@ var hiWebOsFrame = new $.hiWebOs({
 hiWebOsFrame.SDKFunction_test('调用SDK函数');
 var curArea = null;
 var hiMediaReadyTimer = null;
+var pvrflag = true;
+var curBrand = "his";
 $(document).ready(function () {
     /**   file://……/UI/hisenseUI/mediaIndex.html?module=fileBrowser&type=0&area=EU
      * file://……/UI/ hisenseUI/mediaIndex.html?module=videoPlayer&parameter =...
@@ -340,8 +342,12 @@ $(document).ready(function () {
     var str = window.location.href;
     var module = getUrlParam("module");
     var type = getUrlParam("type");
+    pvrflag = getUrlParam("pvrflag");
+    if (pvrflag != null) {
+        pvrflag = eval(pvrflag.toLowerCase());
+    }
     curArea = getUrlParam("area");
-    debugPrint(type + "___" + module);
+    debugPrint("type=" + type + "   module =" + module + "   pvrflag = " + pvrflag);
     var pvrPath = getUrlParam("path") + "pvr/";
     //注册给浏览器当前打开的是DMP
     try {
@@ -1172,7 +1178,11 @@ function onMpCtrlStatchanged(value) {
                     }
 
                     setTimeout(function () {
-                        HiVideoPlayer.playNextWhenStop();
+                        if (hiWebOsFrame.getCurrentPage().id == "himedia_videoPlayer") {
+                            HiVideoPlayer.playNextWhenStop();
+                        } else {
+                            DBG_ERROR("current page is not videoPlayer!It is " + hiWebOsFrame.getCurrentPage().id);
+                        }
                     }, 500);
 
                     break;
@@ -1185,7 +1195,11 @@ function onMpCtrlStatchanged(value) {
                         debugE(ex.message);
                     }
                     setTimeout(function () {
-                        HiAudioPlayer.playNext();
+                        if (hiWebOsFrame.getCurrentPage().id == "himedia_musicPlayer") {
+                            HiAudioPlayer.playNext();
+                        } else {
+                            DBG_ERROR("current page is not musicPlayer!It is " + hiWebOsFrame.getCurrentPage().id);
+                        }
                     }, 500);
 
                     break;
@@ -1705,6 +1719,9 @@ function checkDMPkeycode(keyCode) {
     try {
         if (keyCode != VK_LEFT && keyCode != VK_RIGHT) return keyCode;
         if (hiWebOsFrame.getHTMLDir() == HTMLDIR.LTR) return keyCode;
+        //特殊处理数字输入不需要翻转的情况
+        if (hiWebOsFrame.getCurrentPage().id == "himedia_videoPlayer" && HiVideoPlayer.dialogShowStatus == 1)
+            return keyCode;
         return (VK_LEFT + VK_RIGHT - keyCode);
     }
     catch (ex) {

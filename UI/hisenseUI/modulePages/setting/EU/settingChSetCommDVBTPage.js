@@ -432,6 +432,7 @@ function ChannelCommDVBTLCNflipSwitchOKHandler(operateData){
 function settingChSetCommDVBTToNextPage(){
     hiWebOsFrame.createPage("settingChSetEUAutoScanPageId", null, null, null, function (a) {
         hiWebOsFrame.ChSetChannelScanPage = a;
+        a.operateData.ScanModeFlag = 0;//normal scan
         settingChSetCommDVBTClosePrePage();
         a.open();
         a.hiFocus();

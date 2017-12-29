@@ -357,7 +357,7 @@ function SettingSndHeadPhoneVolRightHandler() {
 
         SliderEasyChange.call(this, Cmp, headPhoneVolVal);
         model.sound.setHeadphoneVolume(headPhoneVolVal);
-        SetRecentUse("Headphone Volume", 1, FirPageSndIdx.SndHeadphoneVolume);
+        // SetRecentUse("Headphone Volume", 1, FirPageSndIdx.SndHeadphoneVolume);
 //        if (typeof  PageDataFirstCls != UNDEFINED_DEFSTR) {
 //            PageDataFirstCls.operateData.sndData.setting_first_ul2.Data[FirPageSndIdx.HeadphoneVolume].setting_first_content_text2.Data = headPhoneVolVal;
 //        }
@@ -389,7 +389,7 @@ function SettingSndHeadPhoneVolLeftHandler() {
 //        if (typeof  PageDataFirstCls != UNDEFINED_DEFSTR) {
 //            PageDataFirstCls.operateData.sndData.setting_first_ul2.Data[FirPageSndIdx.HeadphoneVolume].setting_first_content_text2.Data = headPhoneVolVal;
 //        }
-        SetRecentUse("Headphone Volume", 1, FirPageSndIdx.SndHeadphoneVolume);
+//         SetRecentUse("Headphone Volume", 1, FirPageSndIdx.SndHeadphoneVolume);
 
     } catch (ex) {
         debugE(ex.message);

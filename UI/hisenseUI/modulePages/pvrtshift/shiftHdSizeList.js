@@ -66,7 +66,7 @@ var ShiftHdSizeListData = {
         "Data":"Select space size"
     },
     "shiftHdSizeList_text":{
-        "Data":"Maximum support 32G disk"
+        "Data":"Maximum supported disk size is 32GB"
     },
     "shiftHdSizeList_text2":{
         "Data":"Press Left/Right button to adjust the available size."
@@ -81,7 +81,7 @@ var ShiftHdSizeListData = {
     "operateData": {
         "langIndex":0,
         "shiftHdSizeList_dialog_text":["Select space size"],
-        "shiftHdSizeList_text":["Maximum support 32G disk"],
+        "shiftHdSizeList_text":["Maximum supported disk size is 32GB"],
         "shiftHdSizeList_text2":["Press Left/Right button to adjust the available size."],
         maxSize:32,
         curSize:0,
@@ -89,7 +89,7 @@ var ShiftHdSizeListData = {
     },
     "langData":{
         "Select space size":["Select space size"],
-        "Maximum support 32G disk":["Maximum support 32G disk"],
+        "Maximum supported disk size is 32GB":["Maximum supported disk size is 32GB"],
         "Press Left/Right button to adjust the available size.":["Press Left/Right button to adjust the available size."]
 
     },

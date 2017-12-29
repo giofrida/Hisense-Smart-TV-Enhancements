@@ -35,10 +35,10 @@
 .beginRecordChannelInfo
 {
     position: relative;
-    height: 32px;
+    height: 38px;
     font-size: 32px;
     color: #f0f0f0;
-    margin-top: 60px;
+    margin-top: 54px;
     margin-left: 65px;
     margin-right: 65px;
 
@@ -54,10 +54,10 @@
 {
     position: relative;
     display: inline-block;
-    height: 36px;
+    height: 42px;
     font-size: 36px;
     color: #f0f0f0;
-    margin-top: 20px;
+    margin-top: 14px;
     margin-left: 65px;
     margin-right: 65px;
     width: 800px;
@@ -85,10 +85,10 @@
 .beginRecordScheduleTime
 {
     position: relative;
-    height: 36px;
+    height: 42px;
     font-size: 36px;
     color: #f0f0f0;
-    margin-top: 30px;
+    margin-top: 24px;
     margin-left: 65px;
     margin-right: 65px;
     width: 890px;

@@ -92,11 +92,17 @@ var dialogReminder = function() {
             asyncStopApp(rmdrOrigin.id, hiWebOsFrame[LiveTVModule.MAIN]);
         }
         else {
+            if (!!deviceKeySet.HBBTVAPPON) {
+                pauseHBBTV();
+                resumeHBBTV();
+            }
             if(livetvchlist.changeChannelFromReminder.call(this, oprtData.program)) {
                 openLiveTVModule([Msg.INFO, 0]);
             }
             else {
                 DBG_INFO("change channel from reminder failed, process other operation.");
+                rmdrOrigin.open();
+                rmdrOrigin.hiFocus();
             }
         }
     }
@@ -106,6 +112,7 @@ var dialogReminder = function() {
             DBG_ALWAYS("setReturnlocalappFlag[" + FlagShareInBrowser.HIMEDIA_RESUME_FROM_SETTING + "]");
             tv && model.system.setReturnlocalappFlag(FlagShareInBrowser.HIMEDIA_RESUME_FROM_SETTING);
         }
+        DBG_ALWAYS("cancelReminder origin[" + hiWebOsFrame[self.id].origin.id + "]");
         hiWebOsFrame[self.id].origin.open();
         hiWebOsFrame[self.id].origin.hiFocus();
         hiWebOsFrame[self.id].destroy();

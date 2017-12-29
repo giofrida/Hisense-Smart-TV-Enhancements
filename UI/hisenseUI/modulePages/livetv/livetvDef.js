@@ -82,17 +82,27 @@ function liveTVHandlerProcess(keyCode, keytype) {
     var srcInnerId = livetvmain.getCurrentSourceInnerId();
     // change the prd, the teletext key will send to the am anyway.
     if(keyCode == VK_TELETEXT) {
-        keyboard.SendKeyResult(false);
-		if(1 != keytype) {
-			try {
-				debugPrint("logReport__________begin", DebugLevel.WARNING);
-				logReport('GTRemoteControl', 'TXT');
-				debugPrint("logReport__________end", DebugLevel.WARNING);
-			}
-			catch(ex) {
-				DBG_ERROR(ex.message);
-			}
-		}
+        if (livetvmain.getEnableTeletextKey()) {
+            keyboard.SendKeyResult(false);
+            livetvmain.setEnableTeletextKey(false);
+            setTimeout(function() {
+                livetvmain.setEnableTeletextKey(true);
+            }, 2000);
+
+            if(1 != keytype) {
+                try {
+                    debugPrint("logReport__________begin", DebugLevel.WARNING);
+                    logReport('GTRemoteControl', 'TXT');
+                    debugPrint("logReport__________end", DebugLevel.WARNING);
+                }
+                catch(ex) {
+                    DBG_ERROR(ex.message);
+                }
+            }
+        }
+        else {
+            DBG_ERROR("teletext key repeat too fast")
+        }
         return;
     }
     else if(deviceKeySet.HBBTV.indexOf(keyCode) > -1) {//temp add hbbtv
@@ -170,7 +180,12 @@ function liveTVHandlerProcess(keyCode, keytype) {
             case VK_FAST_BKW:
             case VK_FAST_FWD:
             {
-                if(FREEVIEWTEST) return;
+                if (0 && deviceKeySet.HBBTVKEYSET > 0x1f && (VK_PVR == keyCode || VK_T_SHIFT == keyCode)) {
+                    DBG_ERROR("hbbtv disable the key");
+                    return;
+                }
+
+                if(!getPVRFlag()) return;
                 //使用之前先清空上次的节目信息
                 prgrmInfoOfPvrTshift = null;
                 var crntChannel = livetvmain.getCurrentChannelInfo();
@@ -227,7 +242,13 @@ function liveTVHandlerProcess(keyCode, keytype) {
             }
             case VK_ENTER:
             case VK_CH_LIST:
+            case VK_FAV_CH:
             {
+                if (0 && deviceKeySet.HBBTVKEYSET > 0x1f) {
+                    DBG_ERROR("hbbtv disable the key");
+                    return;
+                }
+
                 if(typeof (livetvchlist) == "undefined" || livetvchlist.getChannelListInitState()) {
                     showMsg("", "Reading the channel list. Please try again later");
                 }
@@ -252,6 +273,9 @@ function liveTVHandlerProcess(keyCode, keytype) {
                         else {
                             closeLiveTVModule(LiveTVModule.MAIN);
                             openLiveTVSubPage(LiveTVModule.CHANNEL_LIST);
+                            if (keyCode == VK_FAV_CH) {
+                                livetvchlist.switchToFavList();
+                            }
                         }
 
                     }
@@ -272,6 +296,11 @@ function liveTVHandlerProcess(keyCode, keytype) {
             }
             case VK_CHANNEL_UP:
             {
+                if (0 && deviceKeySet.HBBTVKEYSET > 0x1f) {
+                    DBG_ERROR("hbbtv disable the key");
+                    return;
+                }
+
                 if(hiWebOsFrame.getKeyRepeatMode()) {
                     livetvchlist.changeInfoBar(1);
                 }
@@ -287,6 +316,11 @@ function liveTVHandlerProcess(keyCode, keytype) {
             }
             case VK_CHANNEL_DOWN:
             {
+                if (0 && deviceKeySet.HBBTVKEYSET > 0x1f) {
+                    DBG_ERROR("hbbtv disable the key");
+                    return;
+                }
+
                 if(hiWebOsFrame.getKeyRepeatMode()) {
                     livetvchlist.changeInfoBar(-1);
                 }
@@ -315,6 +349,13 @@ function liveTVHandlerProcess(keyCode, keytype) {
                 }
                 break;
             }
+            case VK_PRE_CH:{
+                if(srcInnerId == SourceList.TV) {
+                    DBG_ALWAYS("return to the last channel.");
+                    closeLiveTVModule(LiveTVModule.INFO_BAR);
+                    livetvchlist.waitForChangeChannel(0);
+                }
+            }
             case VK_BLUE:
             {
                 if(!!hiWebOsFrame[LiveTVModule.INFO_BAR] && hiWebOsFrame[LiveTVModule.INFO_BAR].visible) {
@@ -337,6 +378,10 @@ function liveTVHandlerProcess(keyCode, keytype) {
             case VK_9:
             case VK_SHORT_LINE:
             {
+                if (0 && deviceKeySet.HBBTVKEYSET > 0x1f) {
+                    DBG_ERROR("hbbtv disable the key");
+                    return;
+                }
 
                 if(typeof (livetvchlist) == "undefined" || livetvchlist.getChannelListInitState()) {
                     showMsg("", "Reading the channel list. Please try again later");
@@ -365,7 +410,12 @@ function liveTVHandlerProcess(keyCode, keytype) {
                 break;
             case VK_SUBTITLE:
             {
-                if(checkHBBTVKeySet()) return;
+                if (0 && deviceKeySet.HBBTVKEYSET > 0x1f) {
+                    DBG_ERROR("hbbtv disable the key");
+                    return;
+                }
+
+                
                 if(!livetvmain.getNoSignalFlag()
                     && SourceList.TV == srcInnerId
                     &&livetvmain.getCurrentChannelInfo().type != TVTYPE.ATV)
@@ -476,6 +526,22 @@ function getMaskValue(name, val) {
     return !!flag;
 }
 
+function getDefinitionFlag(flag) {
+    if((flag == 17) || (flag >= 25 && flag <= 30)){
+        return 1;//HD
+    }
+    else if(flag == 31){
+        if(null != currentPlatform_config.match("5655") || null != currentPlatform_config.match("5882")){
+            return 1;//HD     5655不支持uhd，uhd的频道归类为hd
+        }else{
+            return 3;//UHD
+        }
+    }
+    else{
+        return 2;//SD
+    }
+}
+
 var liveTVHandler = {
     befRightHandler: liveTVHandlerProcess.bind(this, VK_RIGHT),
     befLeftHandler: liveTVHandlerProcess.bind(this, VK_LEFT),
@@ -510,7 +576,9 @@ var liveTVHandler = {
     keyFastFWDHandler: liveTVHandlerProcess.bind(this, VK_FAST_FWD),
     keyFastBKWHandler: liveTVHandlerProcess.bind(this, VK_FAST_BKW),
     keyCCHandler: liveTVHandlerProcess.bind(this, VK_CC),
-    keyShortLineHandler: liveTVHandlerProcess.bind(this, VK_SHORT_LINE)
+    keyShortLineHandler: liveTVHandlerProcess.bind(this, VK_SHORT_LINE),
+    keyPreCHHandler: liveTVHandlerProcess.bind(this, VK_PRE_CH),
+    keyFavCHHandler: liveTVHandlerProcess.bind(this, VK_FAV_CH)
 
 }
 
@@ -564,6 +632,7 @@ function parseHBBTVKeyCodes(value, active) {
 
     if(value & 0x80) {
         arrDivKeyCode[j++] = VK_INFO;
+        arrDivKeyCode[j++] = VK_SUBTITLE;
     }
 
     if(value & 0x100) {
@@ -638,6 +707,11 @@ function parseHBBTVKeyCodes(value, active) {
     }
     deviceKeySet.HBBTV = arrDivKeyCode;
     deviceKeySet.HBBTVKEYSET = value;
+
+    if (deviceKeySet.HBBTV.length > 0 && !!livetvinfobar && livetvinfobar.getInfoBarOpened()) {
+        livetvinfobar.rewriteForHbbtv();
+    }
+
     if(checkHBBTVKeySet()){
         try {
             livetvmain.hideCIEncryptedMsg();
@@ -661,9 +735,19 @@ function parseHBBTVKeyCodes(value, active) {
                 livetvmain.showCIEncryptedMsg();
             }
             livetvmain.checkShowAudioIcon();
+            if(deviceKeySet.HBBTVKEYSET==0){
+            try {
+                if("SA" != InitArea && !model.mheg5.getI32Enable())
+                model.mheg5.setI32Enable(1);
+            }
+            catch(ex){
+                DBG_ERROR(ex.message);
+            }
+            }
     	    if(deviceKeySet.HBBTVAPPON) {
                 resumeDTV();
                 deviceKeySet.HBBTVAPPON = false;
+                deviceKeySet.HBBTVNEEDRESUME = true;
                 if(!active && hiWebOsFrame[LiveTVModule.MAIN].visible){
                     if(null == deviceKeySet.HBBTVORIGIN){
                         openLiveTVModule();
@@ -691,6 +775,10 @@ function parseHBBTVKeyCodes(value, active) {
                 }
                 deviceKeySet.HBBTVORIGIN = null;
                 DBG_INFO("hbbtv app stopped.");
+            }
+            if(needStartWuaki&&value==0){
+                needStartWuaki = false;
+                sendCommndToTV(CmdURLType.START_HBBTV_APP, HSAPPURL.WUAKI, true);
             }
         } catch (ex) {
             DBG_ERROR(ex.message);
@@ -828,8 +916,8 @@ var deviceKeySet = {
     HBBTVSTATE: "none",
     HBBTVCOEXIST:["app_netflix"],
     HBBTV: [],
-    HBBTVPAUSED: false,
     HBBTVAPPON: false,
+    HBBTVNEEDRESUME:true,
     HBBTVORIGIN: null,
     HBBTVKEYSET: 0,
     MHL: [
@@ -867,16 +955,20 @@ function SPChannel() {
 }
 
 SPChannel();
-SPChannel.NUMBER = ENUM_INDEX++;
-SPChannel.NAME = ENUM_INDEX++;
-SPChannel.UID = ENUM_INDEX++;
-SPChannel.TYPE = ENUM_INDEX++;
-SPChannel.ATTRIBUTE = ENUM_INDEX++;
-SPChannel.PLAYID = ENUM_INDEX++;
+SPChannel.NUMBER = ENUM_INDEX++; //0
+SPChannel.NAME = ENUM_INDEX++; //1
+SPChannel.UID = ENUM_INDEX++;  //2
+SPChannel.TYPE = ENUM_INDEX++; //3
+SPChannel.ATTRIBUTE = ENUM_INDEX++; //4
+SPChannel.PLAYID = ENUM_INDEX++; //5
 SPChannel.HDSDFLAG = ENUM_INDEX++;
 SPChannel.SERVICETYPE = ENUM_INDEX++;
 SPChannel.SVLRECID = ENUM_INDEX++;
-SPChannel.ARRAY = ["number", "name", "uid", "type", "attr", "listUid",  "HDSDFLAG","serviceType","SVLRECID"];
+SPChannel.SERVICEID = ENUM_INDEX++; //9
+SPChannel.NETWORKID = ENUM_INDEX++; //10
+SPChannel.ORIGINALLCN = ENUM_INDEX++; //11
+
+SPChannel.ARRAY = ["number", "name", "uid", "type", "attr", "listUid",  "HDSDFLAG","serviceType","SVLRECID", "serviceId"];
 
 function SPProgram() {
     ENUM_INDEX = 0;
@@ -924,7 +1016,19 @@ FVPField.END_TIME_UTC = ENUM_INDEX++;
 FVPField.MEDIA_URL = ENUM_INDEX++;
 FVPField.PROGRAM_AVAILABLE_FLAG = ENUM_INDEX++;
 FVPField.PROGRAM_ID = ENUM_INDEX++;
+FVPField.PROGRAM_GUIDANCE = ENUM_INDEX++;
+FVPField.PROGRAM_THEME = ENUM_INDEX++;
+FVPField.PROGRAM_HDSD = ENUM_INDEX++;
+FVPField.PROGRAM_SUBT = ENUM_INDEX++;
+FVPField.PROGRAM_AD = ENUM_INDEX++;
 
 
+function AVLFlag() {
+    ENUM_INDEX = 0
+}
 
+AVLFlag();
+AVLFlag.NOT_AVAILABLE = ENUM_INDEX++;
+AVLFlag.COMMING_SOON = ENUM_INDEX++;
+AVLFlag.AVAILABLE = ENUM_INDEX++;
 

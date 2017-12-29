@@ -509,7 +509,7 @@ function ChannelManagerPage() {
         return convertList;
     }
     self.openChannelManager = function(){
-        //getAllChannelList(refreshCurrentPage);
+
         if(hiWebOsFrame.getCurrentArea() == 'SA'){
             $("[name='contentPanel']").css("float", "left");
         }else{
@@ -520,19 +520,23 @@ function ChannelManagerPage() {
                 $("[name='contentPanel']").css("float", "right");
             }
         }
-        oprData.channelList = eventToChannelList(livetvchlist.getRefLists());
+        if(!!tv){
+            oprData.channelList = eventToChannelList(livetvchlist.getRefLists());
 
-        DBG_INFO(objToString(oprData.channelList));
+            DBG_INFO(objToString(oprData.channelList));
 
-        hiWebOsFrame.channel_manager_page.rewrite();
-        hiWebOsFrame.channel_manager_page.open();
-        hiWebOsFrame.channel_manager_page.hiFocus();
-        channelmanagerpage.setSelectedIndex(hiWebOsFrame.channel_manager_page.getCaE("chl_manager_list_edit"));
-        topItem = 0;
-        if (oprData.channelList.length > 7) {
-            setScrollbarStyle("chl_manager_content","chl_manager_container","chl_manager_scroll", 74);
+            hiWebOsFrame.channel_manager_page.rewrite();
+            hiWebOsFrame.channel_manager_page.open();
+            hiWebOsFrame.channel_manager_page.hiFocus();
+            channelmanagerpage.setSelectedIndex(hiWebOsFrame.channel_manager_page.getCaE("chl_manager_list_edit"));
+            topItem = 0;
+            if (oprData.channelList.length > 7) {
+                setScrollbarStyle("chl_manager_content","chl_manager_container","chl_manager_scroll", 74);
+            }
+            hiWebOsFrame.endLoading();
+        }else{
+            getAllChannelList(refreshCurrentPage);
         }
-        hiWebOsFrame.endLoading();
     }
 }
 

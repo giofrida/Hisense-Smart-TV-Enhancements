@@ -77,6 +77,7 @@ function Timer_functionsModelDefines() {
     Timer_functionsModelDefines.SL2_TVAPI_I32_TIMER_FUNCTIONS_CURRENT_DST= "tvapi.i32.timerfunctions.current.dst";
     Timer_functionsModelDefines.SL2_TVAPI_I64_TIMER_FUNCTIONS_UTC_TO_LOCALTIME= "tvapi.i64.timerfunctions.utc.to.localtime";
     Timer_functionsModelDefines.SL2_TVAPI_I32_TIMER_FUNCTIONS_CURRENT_VERSION_IS_FREEVIEW= "tvapi.i32.timerfunctions.current.version.is.freeview";
+    Timer_functionsModelDefines.SL2_TVAPI_I32_TIMER_FUNCTIONS_RECEIVE_DST_FROM_NETWORK = "tvapi.i32.timerfunctions.receive.dst.from.network";
 }
 /**
  * Timer_functionsModel class derived from SubModel.
@@ -227,6 +228,10 @@ function Timer_functionsModel(parentModel) {
     this.registerIntegerObject(
         Timer_functionsModelDefines.SL2_TVAPI_I32_TIMER_FUNCTIONS_CURRENT_TIMEZONE_SYNC_WITH_TS,
         "getTimeZoneSyncFlag", "setTimeZoneSyncFlag", "onTimeZoneSyncFlagChaged",
+        null, null);
+    this.registerIntegerObject(
+        Timer_functionsModelDefines.SL2_TVAPI_I32_TIMER_FUNCTIONS_RECEIVE_DST_FROM_NETWORK,
+        null, "setDSTFromNetwork", null,
         null, null);
 
 }

@@ -963,9 +963,6 @@
     border-bottom: 5px;
     font-size: 36px;
     color: #f0f0f0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .settingChManuSetTabPageNormal .settingChManuSetTab2TitleNormal {
@@ -1010,9 +1007,6 @@
     border-bottom: 5px #135A8E solid;
     font-size: 36px;
     color: #f0f0f0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .settingChManuSetTabPageSelected .settingChManuSetTab2TitleNormal {
@@ -1037,9 +1031,6 @@
     color: #f0f0f0;
     background-color: rgba(17,74,111,0.8);
     box-shadow: 0px 0px 0px 4px #84ecff inset;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .settingChManuSetTabPageSelected .settingChManuSetTab2TitleFocus {
@@ -1064,9 +1055,6 @@
     border-bottom: 5px #135A8E solid;
     font-size: 36px;
     color: #f0f0f0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .settingChManuSetTabPageSelected .settingChManuSetTab2TitleSelected {

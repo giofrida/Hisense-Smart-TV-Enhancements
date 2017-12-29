@@ -503,17 +503,6 @@ function ChannelManagerFAV() {
         return channels;
     }
 
-    function getDefinitionFlag(flag) {
-        if((flag == 17) || (flag >= 25 && flag <= 30)){
-            return 1;//HD
-        }
-        else if(flag == 31){
-            return 3;//UHD
-        }
-        else{
-            return 2;//SD
-        }
-    }
 
     function refreshWhenSwitchType(list, event) {
         if (event.type == TableIterator.EVENT_TYPE_ROWS_READ) {

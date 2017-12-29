@@ -148,7 +148,7 @@ function settingNetSetTestStateChangeCallBack(state){
 }
 function wizardNetSetTesDialogOnOpen(){
     try{
-        if ('APP_5890_SA' == currentPlatform_config) {
+        if ('APP_5890_SA' == currentPlatform_config || "opera4x" == currOperaVersion) {
             $('.wizardDialogLoadingImg').css("display", "none");
             $('.wizardDialogLoadingDiv').css("display", "block");
         }

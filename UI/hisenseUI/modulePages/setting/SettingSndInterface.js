@@ -2569,7 +2569,7 @@ var PageDataChnlCIData = {
     "setting_chnl_CI_input_foot_text": {Data: ''},
     "setting_chnl_CI_input_btn": {Data: 'OK'},
     "setting_chnl_CI_upgrade_result_btn_ok": {Data: 'OK'},
-    "setting_chnl_CI_input_placeholder": {Data: 'invoke virtual keyboard with OK button'},
+    "setting_chnl_CI_input_placeholder": {Data: 'Show the virtual keyboard by pressing OK button'},
     "setting_chnl_CI_ul": {
         SelectedIndex: 0,
         Data: [
@@ -2636,7 +2636,7 @@ var PageDataChnlCIData = {
         "CA module 1": ["CA module 1"],
         "CA module 2": ["CA module 2"],
         "CA module": ["CA module"],
-        "invoke virtual keyboard with OK button": []
+        "Show the virtual keyboard by pressing OK button": []
     },
     rewrite: "SettingChnlCIInfoRewrite"
 };

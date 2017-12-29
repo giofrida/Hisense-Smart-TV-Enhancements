@@ -103,6 +103,8 @@ function ChannelManagerPage() {
             "Edit": [],
             "Antenna:":[],
             "Cable:":[],
+            "Antenna ATV": [],
+            "Antenna DTV": [],
             "No channel information, please scan channels":[]
         },
         rewrite: rewritePageData
@@ -123,7 +125,7 @@ function ChannelManagerPage() {
             var item = oprData.channelList[i];
             pageData.chl_manager_list_type.Data.push({
                 chl_manager_list_type_item: {
-                    Data: item.name+":"
+                    Data: item.name
                 }
             });
             pageData.chl_manager_list_display.Data.push({
@@ -337,6 +339,18 @@ function ChannelManagerPage() {
 //        catch (ex){
 //            DBG_ERROR(ex.message);
 //        }
+        if(hiWebOsFrame.getCurrentCountry() == "Taiwan"){
+            if(oprData.channelList[this.SelectedIndex].uid == 1)
+            {
+                debugPrint("DTV channel can't be deleted"+oprData.channelList[this.SelectedIndex].uid);
+                showMsg("", "DTV channel can't be deleted");
+                return; //台湾 DTV、ATV 列表不允许操作
+            }else if(oprData.channelList[this.SelectedIndex].uid == 2){
+                debugPrint("ATV channel can't be deleted"+oprData.channelList[this.SelectedIndex].uid);
+                showMsg("", "ATV channel can't be deleted");
+                return; //台湾 DTV、ATV 列表不允许操作
+            }
+        }
         oprData.channelList[this.SelectedIndex].display = !oprData.channelList[this.SelectedIndex].display;
         debugPrint('____this.SelectedIndex__display: ' +this.SelectedIndex+ oprData.channelList[this.SelectedIndex].display);
         var displayFlag=(oprData.channelList[this.SelectedIndex].display==true?1:0);

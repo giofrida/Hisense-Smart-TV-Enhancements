@@ -180,7 +180,7 @@ function SettingUpdateFirPageonDestroy()
 
 function SettingUpdateFirPageonOpen()
 {
-    if ('APP_5890_SA' == currentPlatform_config)
+    if ('APP_5890_SA' == currentPlatform_config || "opera4x" == currOperaVersion)
     {
 
         $("#setting_update_fir_detect_common").css("display","none")

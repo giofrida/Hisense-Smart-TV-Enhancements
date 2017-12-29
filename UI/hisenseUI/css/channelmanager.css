@@ -96,12 +96,15 @@
     width: 306px;
 }
 
-.chl_manager_list_type li span {
-    width: 306px;
+.chl_manager_list_type li span:first-child {
+    /*width: 306px;*/
     text-indent: 40px;
     color:#9ba2ad;
 }
 
+.chl_manager_list_type li span:nth-child(2){
+    color:#9ba2ad;
+}
 .chl_manager_list_display {
 
     width: 445px;

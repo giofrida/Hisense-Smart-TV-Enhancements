@@ -3357,8 +3357,9 @@ function RefreshSomeFirPageDisableItem() {
         var isAppOn = tv ? checkIsAppOn() : 0;
         DBG_INFO("checkIsAppOn(): " + isAppOn);
 
+//        DBG_INFO("checkHBBTVKeySet(): "+checkHBBTVKeySet());
 
-        if (isAppOn || 1 == hotelMode && 1 == sumMenuLock || isMenuStartOnMedia == true || true == source4K || 0 != cur3DMode) {
+        if (isAppOn || checkHBBTVKeySet() || 1 == hotelMode && 1 == sumMenuLock || isMenuStartOnMedia == true || true == source4K || 0 != cur3DMode) {
             debugG("typeof(PageDataFirstCls) != UNDEFINED_DEFSTR");
             debugG('disable aspect ratio');
             PageDataFirstCls.operateData.settingdisablelist[0].push(FirPageSndIdx.PicAspectRatio)

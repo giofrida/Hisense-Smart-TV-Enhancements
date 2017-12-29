@@ -6,12 +6,12 @@ function getboeNetSetSearEtherentDialogData(opt){
     opt.CaE = [
         {
             "id":"boeSearEthernetDialogText",
-            "description":"ËÑË÷ÎÞÏßÍøÂçÌáÊ¾ÐÅÏ¢",
+            "description":"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢",
             "CaEType":"div"
         },
         {
             "id":"boeSearEthernetDialogImg",
-            "description":"ËÑË÷ÎÞÏßÍøÂçÌáÊ¾Í¼Æ¬",
+            "description":"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Í¼Æ¬",
             "CaEType":"img"
         }
 
@@ -40,7 +40,7 @@ var boeNetSetSearEthernetDialogData={
 }
 /*******************************************************************
  name:boeInitNetSetSearWifiDialog
- description:³õÊ¼»¯ÍøÂçËÑË÷Êý¾Ý
+ description:ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  input:
  output:
  return
@@ -53,7 +53,7 @@ function boeInitNetSetSearEthernetDialog(){
 }
 /*******************************************************************
  name:boeRewriteNetSetSearEthernetDialog
- description:Ë¢ÐÂÍøÂçËÑË÷ÉèÖÃÒ³
+ description:Ë¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³
  input:
  output:
  return
@@ -64,7 +64,7 @@ function boeRewriteNetSetSearEthernetDialog(){
 
 /*******************************************************************
  name:wizardStartSearWifi
- description:Æô¶¯ËÑË÷ÎÞÏßÍøÂç
+ description:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  input:
  output:
  return
@@ -79,9 +79,9 @@ function boeRewriteNetSetSearEthernetDialog(){
 //            var searchState = model.network.getEnumAccess_pointsSearch();/* 0:off,1:please wait,2:access points found,3:no access points found*/
 //
 //            if(searchState != 1){
-//                //ÖØÐÂ¿ªÊ¼ËÑË÷
+//                //ï¿½ï¿½ï¿½Â¿ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
 //                model.network.onEnumAccess_pointsSearchChaged = boeNetSetSearWifiStateCallBack;
-//                model.network.setEnumAccess_pointsSearch(1);//1:¿ªÊ¼, 0:Í£Ö¹
+//                model.network.setEnumAccess_pointsSearch(1);//1:ï¿½ï¿½Ê¼, 0:Í£Ö¹
 //            }
 //            data.operateData.wifiSearState = 1;
 //        }
@@ -92,7 +92,7 @@ function boeRewriteNetSetSearEthernetDialog(){
 
 /*******************************************************************
  name:boeNetSetSearWifiStateCallBack
- description:µ±ËÑË÷×´Ì¬¸Ä±äÊ±²é¿´ËÑË÷½á¹û
+ description:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½Ä±ï¿½Ê±ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  input:
  output:
  return
@@ -133,7 +133,7 @@ function boeRewriteNetSetSearEthernetDialog(){
 //}
 /*******************************************************************
  name:boeNetworkSetCreateWifiSetPage
- description:ËÑË÷Íê³Éºó´´½¨ÎÞÏßÍøÂçÉèÖÃÒ³
+ description:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éºó´´½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³
  input:
  output:
  return
@@ -225,7 +225,7 @@ function boeNetSetStartSearchEthernet(){
             var ethSearState = model.network.getEnumNetworkAvailable();
             debugPrint("[xuehongfeng] ethSearState is"+ethSearState,DebugLevel.ERROR);
             if(ethSearState != 1){
-                //ÖØÐÂ¿ªÊ¼ËÑË÷
+                //ï¿½ï¿½ï¿½Â¿ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
                 data.operateData.Interval = setInterval("getEthernetResult()",1000);
             }else{
                 boeNetworkSetCreateEtherentResultPage();
@@ -260,7 +260,7 @@ function boeNetSetSearEthernetDialogOnOpen(){
 
         var data = boeNetSetSearEthernetDialogData;
         if(tv == true) {
-            if ('APP_5890_SA' == currentPlatform_config) {
+            if ('APP_5890_SA' == currentPlatform_config || "opera4x" == currOperaVersion) {
                 $('.boeDialogLoadingImg').css("display", "none");
                 $('.boeDialogLoadingDiv').css("display", "block");
             }

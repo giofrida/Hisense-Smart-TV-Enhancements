@@ -62,6 +62,7 @@ var PageDataSetttingUpdateSpaceCheck={
         "Upgrade":[],
         "Download successful. Do you want to restart and upgrade?":[],
         "Later":[],
+        "OK":[],
         "Cancel":["Cancel","Abbrechen","Annulla","Cancelar","Cancelar","Annuler","Avbryt","Avbryt","Annuller","Peruuta","取消"]
     },
     rewrite:function(pageData)
@@ -93,7 +94,8 @@ function SettingUpdateSpaceCheckescHandler()
  if(!!hiWebOsFrame.settingsupdatedownload
       &&hiWebOsFrame.settingupdatediskcheck.origin==hiWebOsFrame.settingsupdatedownload)
    {
-       debugPrint("the oad upgrade ")
+       debugPrint("the oad upgrade ");
+       model.softupdate.CancelOADUpgrade();
        if(PageDateSettingUpdateverifying.operateData.manual)
        {
            hiWebOsFrame.settingsupdatedownload.close();

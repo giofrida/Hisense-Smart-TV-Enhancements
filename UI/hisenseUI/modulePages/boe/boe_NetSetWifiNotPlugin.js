@@ -16,12 +16,12 @@ function getboeNetSetWifiNotPluginDialogData(opt){
     return boeNetSetWifiNotPluginDialog;
 }
 var boeNetSetWifiNotPluginDialog={
-    "boeNetSetWifiNotPluginInfo":{"Data":"WIFI not plugin, please plugin wifi!"},
+    "boeNetSetWifiNotPluginInfo":{"Data":"Checking for a Wifi Connection"},
     "operateData":{
         "wifiNotPluginTimer":0
     },
     "langData":{
-        "WIFI not plugin, please plugin wifi!":["WIFI not plugin, please plugin wifi!"]
+        "Checking for a Wifi Connection":["Checking for a Wifi Connection"]
     },
     rewrite:"boeRewriteNetSetWifiNotPluginDialog"
 }

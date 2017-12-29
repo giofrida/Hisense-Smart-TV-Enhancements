@@ -94,67 +94,67 @@ function audioLanguageListAndSubtitleListInit()
 		//底层传入异常判断，这里仅考虑了传入的字符串数组为空时的情况
         debugPrint("currentPlatform_config"+currentPlatform_config);
         debugPrint("FREEVIEWTEST"+FREEVIEWTEST);
-        if(hiWebOsFrame.getCurrentArea()=="EU"
-            &&FREEVIEWTEST)
-        {
-            if(0 == tmpAudioLanguageList.length)
-            {
-                PageDataSettingQsList1.operateData.lengthSign     = true;
-                PageDataSettingQsList1.operateData.curdatalist    = tmpAudioLanguageList;
-                PageDataSettingQsList1.operateData.curselectindex = 0;
-            }
-            else
-            {
-                PageDataSettingQsList1.operateData.lengthSign     = false;
-                var tmpAudioLanguageIndex = parseInt( tmpAudioLanguageList.pop() );
-
-                var tmpList = [], flag = 0;
-                for(var i = 0; i < tmpAudioLanguageList.length; ++i)
-                {
-                    flag = 0;
-                    for(var j = 0; j < PageDataSettingQsList1.operateData.audiolist.length; ++j)
-                    {
-                        if( PageDataSettingQsList1.operateData.audiolist[j].code == tmpAudioLanguageList[i].toLowerCase().substring(0,3) )
-                        {
-                            var tmpVar = "";
-                            try{
-                                if(!!langPackages[PageDataSettingQsList1.operateData.audiolist[j].name])
-                                {
-                                    tmpVar = langPackages[PageDataSettingQsList1.operateData.audiolist[j].name][hiWebOsFrame.getCurrentLanguageIndex()];
-                                }
-                                else
-                                {
-                                    tmpVar=PageDataSettingQsList1.operateData.audiolist[j].name;
-                                }
-                            }catch (e) {
-                                debugE(e.message);
-                                tmpVar=PageDataSettingQsList1.operateData.audiolist[j].name;
-
-                            }
-
-                            if( (tmpAudioLanguageList[i].indexOf("AD") > 0) )
-                            {
-                                tmpVar += "(AD)";
-                            }
-                            tmpList.push(tmpVar);
-                            flag = 1;
-                            break;
-                        }
-                    }
-                    if(!flag)
-                    {
-                        var tempVar = tmpAudioLanguageList[i];
-                        tmpList.push(tempVar);
-                    }
-                }
-
-                PageDataSettingQsList1.operateData.curdatalist    = tmpList;
-                debugRM("audioLanguageInitList:"+tmpList);
-                debugRM("audioLanguageInitSelect:"+tmpAudioLanguageIndex);
-                PageDataSettingQsList1.operateData.curselectindex = tmpAudioLanguageIndex;
-            }
-        }
-        else
+//        if(hiWebOsFrame.getCurrentArea()=="EU"
+//            &&FREEVIEWTEST)
+//        {
+//            if(0 == tmpAudioLanguageList.length)
+//            {
+//                PageDataSettingQsList1.operateData.lengthSign     = true;
+//                PageDataSettingQsList1.operateData.curdatalist    = tmpAudioLanguageList;
+//                PageDataSettingQsList1.operateData.curselectindex = 0;
+//            }
+//            else
+//            {
+//                PageDataSettingQsList1.operateData.lengthSign     = false;
+//                var tmpAudioLanguageIndex = parseInt( tmpAudioLanguageList.pop() );
+//
+//                var tmpList = [], flag = 0;
+//                for(var i = 0; i < tmpAudioLanguageList.length; ++i)
+//                {
+//                    flag = 0;
+//                    for(var j = 0; j < PageDataSettingQsList1.operateData.audiolist.length; ++j)
+//                    {
+//                        if( PageDataSettingQsList1.operateData.audiolist[j].code == tmpAudioLanguageList[i].toLowerCase().substring(0,3) )
+//                        {
+//                            var tmpVar = "";
+//                            try{
+//                                if(!!langPackages[PageDataSettingQsList1.operateData.audiolist[j].name])
+//                                {
+//                                    tmpVar = langPackages[PageDataSettingQsList1.operateData.audiolist[j].name][hiWebOsFrame.getCurrentLanguageIndex()];
+//                                }
+//                                else
+//                                {
+//                                    tmpVar=PageDataSettingQsList1.operateData.audiolist[j].name;
+//                                }
+//                            }catch (e) {
+//                                debugE(e.message);
+//                                tmpVar=PageDataSettingQsList1.operateData.audiolist[j].name;
+//
+//                            }
+//
+//                            if( (tmpAudioLanguageList[i].indexOf("AD") > 0) )
+//                            {
+//                                tmpVar += "(AD)";
+//                            }
+//                            tmpList.push(tmpVar);
+//                            flag = 1;
+//                            break;
+//                        }
+//                    }
+//                    if(!flag)
+//                    {
+//                        var tempVar = tmpAudioLanguageList[i];
+//                        tmpList.push(tempVar);
+//                    }
+//                }
+//
+//                PageDataSettingQsList1.operateData.curdatalist    = tmpList;
+//                debugRM("audioLanguageInitList:"+tmpList);
+//                debugRM("audioLanguageInitSelect:"+tmpAudioLanguageIndex);
+//                PageDataSettingQsList1.operateData.curselectindex = tmpAudioLanguageIndex;
+//            }
+//        }
+//        else
         {
             if(0 == tmpAudioLanguageList.length)
             {
@@ -183,11 +183,16 @@ function audioLanguageListAndSubtitleListInit()
                                 tmpVar=PageDataSettingQsList1.operateData.audiolist[j].name;
 
                             }
-
+                            if(tmpAudioLanguageList[i].indexOf("AD") > 0)
+                            {
+                                tmpVar += "(AD)";
+                            }
                             if( !(tmpAudioLanguageList[i].indexOf("#nultext") > 0) )
                             {
-                                tmpVar = tmpAudioLanguageList[i].substring(4,tmpAudioLanguageList[i].length);
-                            }
+                                if(tmpAudioLanguageList[i].length>4){
+                                    tmpVar = tmpAudioLanguageList[i].substring(4,tmpAudioLanguageList[i].length);
+                                }
+                             }
                             tmpList.push(tmpVar);
                             flag = 1;
                             break;
@@ -198,7 +203,11 @@ function audioLanguageListAndSubtitleListInit()
                         var man_tmpVar = '';
                         if( !(tmpAudioLanguageList[i].indexOf("#nultext") > 0) )
                         {
-                            man_tmpVar = tmpAudioLanguageList[i].substring(4,tmpAudioLanguageList[i].length);
+                            if(tmpAudioLanguageList[i].length>4){
+                              man_tmpVar = tmpAudioLanguageList[i].substring(4,tmpAudioLanguageList[i].length);
+                            }else {
+                                man_tmpVar = tmpAudioLanguageList[i].substring(0,3);
+                            }
                         }
                         else
                         {

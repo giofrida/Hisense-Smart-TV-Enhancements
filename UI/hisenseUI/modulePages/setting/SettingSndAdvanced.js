@@ -144,6 +144,22 @@ function getSettingSndAdvancedData(opts) {
                 "downTo": "setting_snd_head_phone_volume",
                 "rightTo": ""
             },
+            "onFocusFun":function(){
+                var txtId = "setting_snd_head_phone_mode_cmp_setting_snd_head_phone_mode_cmp_item_text_sys"+this.SelectedIndex,
+                    length = 15;
+                var txt = $("#" + txtId).html();
+                if (txt.length > length) {
+                    $("#" + txtId).html('<marquee>' + txt + '</marquee>')
+                }
+            },
+            "onBlurFun":function(){
+                var txtId = "setting_snd_head_phone_mode_cmp_setting_snd_head_phone_mode_cmp_item_text_sys" + this.SelectedIndex,
+                    marqueenTxt = $("#" + txtId + " marquee").html();
+                if (!!marqueenTxt) {
+                    $("#" + txtId).html(marqueenTxt);
+                }
+            },
+
             disable: false,
 
             "oriCaE": [

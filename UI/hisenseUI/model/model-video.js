@@ -88,6 +88,7 @@ function VideoModelDefines() {
 
     VideoModelDefines.SL2_TVAPI_I32_VIDEO_HDR_SUPPORT= "tvapi.i32.video.hdr.support";
     VideoModelDefines.SL2_TVAPI_I32_VIDEO_HDR_MODE= "tvapi.i32.video.hdr.mode";
+    VideoModelDefines.SL2_TVAPI_I32_VIDEO_SET_FREEZE ="tvapi.i32.video.freeze";
     // enum or defined is here
 
 
@@ -746,6 +747,11 @@ function VideoModel(parentModel) {
     this.registerIntegerObject(
         VideoModelDefines.SL2_TVAPI_I32_VIDEO_HDR_MODE,
         "getHDRMode", "setHDRMode", "onHDRModeChaged",
+        null, null);
+
+    this.registerIntegerObject(
+        VideoModelDefines.SL2_TVAPI_I32_VIDEO_SET_FREEZE,
+        "getFreeze", "setFreeze", "onFreezeChaged",
         null, null);
 }
 VideoModel.prototype = new SubModel();

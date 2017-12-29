@@ -3089,7 +3089,7 @@ function iqqiDataRewrite(data) {
 
     var status = opeData.InputManager && opeData.InputManager.dump();
     //data.iqqiInputContainer.Data.iqqiPosition.Data.iqqiInput.Data = (opeData.InputManager && opeData.InputManager.isPassword()) ? (opeData.InputManager.invoke("mask", status && (status.dynamicValue != undefined ? status.dynamicValue : status.oldValue)) || "") : (status && (status.dynamicValue != undefined ? status.dynamicValue : status.oldValue));
-    data.iqqiInputContainer.Data.iqqiPosition.Data.iqqiInput.Data = opeData.InputManager && (opeData.InputManager.invoke("shouldMask") ? (opeData.InputManager.invoke("mask", opeData.InputManager.getValue(opeData.InputManager.inputId), "")) : opeData.InputManager.getValue(opeData.InputManager.inputId));
+    data.iqqiInputContainer.Data.iqqiPosition.Data.iqqiInput.Data = opeData.InputManager && (opeData.InputManager.invoke("shouldMask") ? (opeData.InputManager.invoke("mask", opeData.InputManager.getValue(opeData.InputManager.inputId), "")) : opeData.InputManager.getValue(opeData.InputManager.inputId).replace(/&/g, "&amp;").replace(/</g, "&lt;"));
     opeData.dynamicPosition = status && (status.dynamicPosition != undefined ? status.dynamicPosition : status.oldPosition);
 
     try {
@@ -5613,7 +5613,7 @@ function InputManager(sourceId, inputAttr, inputMethod, maxLength, min, max, dis
             }
             else {
                 var cValue = this.getValue(this.inputId);
-                input.innerHTML = cValue.slice(0, caretPosition) + "<span id=\"" + this.imagineAreaId + "\" class=\"" + this.imagineAreaCss + "_Normal\">" + value + "</span>" + cValue.slice(caretPosition);
+                input.innerHTML = cValue.slice(0, caretPosition).replace(/&/g, "&amp;").replace(/</g, "&lt;") + "<span id=\"" + this.imagineAreaId + "\" class=\"" + this.imagineAreaCss + "_Normal\">" + value + "</span>" + cValue.slice(caretPosition).replace(/&/g, "&amp;").replace(/</g, "&lt;");
 
                 this.dynamicValue = input.innerHTML;
 
@@ -5736,11 +5736,11 @@ function InputManager(sourceId, inputAttr, inputMethod, maxLength, min, max, dis
                             input.innerHTML = mask.call(this, value.replace("&nbsp;", " "), "");
                         }
                         else {
-                            input.innerHTML = value.replace(" ", "&nbsp;");
+                            input.innerHTML = value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(" ", "&nbsp;");
                         }
                     }
                     else {
-                        input.innerHTML = value.replace(" ", "&nbsp;");
+                        input.innerHTML = value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(" ", "&nbsp;");
                     }
                 }
                 this.dynamicValue = input.innerHTML;

@@ -110,6 +110,67 @@ function createListIterator(onGetAllChannelListEvent) {
     return listIterator;
 }
 
+function createEPGChannelIterator(list, onGetChannelsEvent,epgFlag)
+{
+    var channelIterator = null, allChannels=null;
+    if(!tv) {
+        var allChannels = livetvchlist.pageData.operateData.channels;
+
+        var rows =tempChannelsEvent[list.uid].rows.slice(0, 5);
+        var rows2 = allChannels[list.name];
+        var dd = rows2;
+
+        channelIterator = {
+            index: 0,
+            readNextRows: function(idx) {
+                var start = channelIterator.index;
+                var end = start + idx;
+                onGetChannelsEvent(list, {
+                    type: TableIterator.EVENT_TYPE_ROWS_READ,
+                   // rows: tempChannelsEvent[list.uid].rows.slice(start, end),
+                    rows:!!allChannels[list.name] ? allChannels[list.name] : []
+                });
+            },
+            fetchTotalCount: function(){
+                onGetChannelsEvent(list, {
+                    type: TableIterator.EVENT_TYPE_TOTAL_COUNT,
+                    totalCount: tempChannelsEvent[list.uid].rows.length
+                });
+            },
+            seekToRow: function(idx){
+                channelIterator.index = idx;
+            }
+        }
+        return channelIterator;
+    }
+    var channelIterator = null;
+    if (!!epgFlag) {
+        //var allChannels = liveTV.getEPGAllChannels();
+        var allChannels = livetvchlist.pageData.operateData.channels;
+        channelIterator = {
+            index: 0,
+            readNextRows: function (idx) {
+                onGetChannelsEvent(list, {
+                    type:TableIterator.EVENT_TYPE_ROWS_READ,
+                    rows:!!allChannels[list.name] ? allChannels[list.name] : []});
+            },
+            fetchTotalCount: function () {
+                onGetChannelsEvent(list, {
+                    type: TableIterator.EVENT_TYPE_TOTAL_COUNT,
+                    totalCount: !!allChannels[list.name] ? (!!allChannels[list.name].rows? allChannels[list.name].rows.length:allChannels[list.name].length):0
+                });
+            },
+            seekToRow: function (idx) {
+                channelIterator.index = idx;
+            }
+        }
+        return channelIterator;
+    }
+    if (list == null) return null;
+
+}
+
+
 function createChannelIterator(list, onGetChannelsEvent,epgFlag)
 {
     var channelIterator = null;
@@ -166,15 +227,18 @@ function createChannelIterator(list, onGetChannelsEvent,epgFlag)
                 }
             ],
             [
-                ServicelistModel.SERVICELIST_FIELD_NO,
-                ServicelistModel.SERVICELIST_FIELD_NAME,
-                ServicelistModel.SERVICELIST_FIELD_ID,
-                ServicelistModel.SERVICELIST_FIELD_TYPE,
-                ServicelistModel.SERVICELIST_FIELD_ATTR,
-                ServicelistModel.SERVICELIST_FIELD_FRONTEND,
-                ServicelistModel.SERVICELIST_FIELD_SUBTYPE,
-                ServicelistModel.SERVICELIST_FIELD_CNI,
-                ServicelistModel.SERVICELIST_FIELD_SERVICE_ID   // svl_rec_id
+                ServicelistModel.SERVICELIST_FIELD_NO, //0
+                ServicelistModel.SERVICELIST_FIELD_NAME, //1
+                ServicelistModel.SERVICELIST_FIELD_ID, //2
+                ServicelistModel.SERVICELIST_FIELD_TYPE, //3
+                ServicelistModel.SERVICELIST_FIELD_ATTR, //4
+                ServicelistModel.SERVICELIST_FIELD_FRONTEND, //5 playId
+                ServicelistModel.SERVICELIST_FIELD_SUBTYPE, //6
+                ServicelistModel.SERVICELIST_FIELD_CNI,  //7
+                ServicelistModel.SERVICELIST_FIELD_SERVICE_ID,   //8  svl_rec_id 
+		        ServicelistModel.SERVICELIST_FIELD_ORIGINAL_UUID, //9   serviceId
+                ServicelistModel.SERVICELIST_FIELD_NETWORK_ID,   // NETWORK_ID 10
+                ServicelistModel.SERVICELIST_FIELD_ORIGINAL_LCN  //11
 
             ],
             [
@@ -255,8 +319,8 @@ function createProgramIterator(chnl, startLine, endLine, onGetProgramsEvent) {
     return programIterator;
 }
 
-
-function createFreeviewIterator(chnl, startLine, endLine, onGetProgramsEvent) {
+function createFreeviewIterator(chnl, startLine, endLine, onGetProgramsEvent,preload,pageToken) {
+    //DBG_ERROR("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY -tvservice  chnl.serviceId="+ chnl.serviceId+", startLine = "+startLine+", endLine="+endLine+",preload="+preload+",pageToken="+pageToken);
     var programIterator = null;
     if(!tv) {
         programIterator = {
@@ -274,22 +338,34 @@ function createFreeviewIterator(chnl, startLine, endLine, onGetProgramsEvent) {
             {
                 field: FVPEpgModel.FIELD_FVP_EPG_SERVICE_ID,
                 condition: Model.FIELD_COND_EQUAL,
-                value: chnl.uid
+                value: chnl.serviceId
             },
             {
                 field: FVPEpgModel.FIELD_FVP_EPG_TRANSPORT_STREAM_ID,
                 condition: Model.FIELD_COND_EQUAL,
-                value: chnl.playId
+                value:  chnl.playId
             },
             {
                 field: FVPEpgModel.FIELD_FVP_EPG_START_TIME_UTC,
                 condition: Model.FIELD_COND_GREATEREQUAL,
-                value: startLine
+                value:  startLine
             },
             {
                 field: FVPEpgModel.FIELD_FVP_EPG_END_TIME_UTC,
                 condition: Model.FIELD_COND_LESSEQUAL,
-                value: endLine
+                value:  endLine
+            },
+
+
+            {
+                field: FVPEpgModel.FIELD_FVP_EPG_PRELOAD,
+                condition: Model.FIELD_COND_EQUAL,
+                value:  preload
+            },
+            {
+                field: FVPEpgModel.FIELD_FVP_EPG_PAGETOKEN,
+                condition: Model.FIELD_COND_EQUAL,
+                value:  pageToken
             }
         ],
         [
@@ -302,9 +378,14 @@ function createFreeviewIterator(chnl, startLine, endLine, onGetProgramsEvent) {
             // FVPEpgModel.FIELD_FVP_EPG_PROGRAM_TYPE,
             FVPEpgModel.FIELD_FVP_EPG_START_TIME_UTC,
             FVPEpgModel.FIELD_FVP_EPG_END_TIME_UTC,
-            FVPEpgModel.FIELD_FVP_EPG_MEDIA_URL,
+            FVPEpgModel.FIELD_FVP_EPG_BASE_URL,
             FVPEpgModel.FIELD_FVP_EPG_PROGRAM_AVAILABLE_FLAG,
-            FVPEpgModel.FIELD_FVP_EPG_PROGRAM_ID
+            FVPEpgModel.FIELD_FVP_EPG_PROGRAM_ID,
+            FVPEpgModel.FIELD_FVP_EPG_PROGRAM_PARENT_GUIDANCE,
+            FVPEpgModel.FIELD_FVP_EPG_PROGRAM_THEMES,
+            FVPEpgModel.FIELD_FVP_EPG_PROGRAM_HDSD,
+            FVPEpgModel.FIELD_FVP_EPG_PROGRAM_SUBT,
+            FVPEpgModel.FIELD_FVP_EPG_PROGRAM_AD
         ],
         [
             {
@@ -316,9 +397,21 @@ function createFreeviewIterator(chnl, startLine, endLine, onGetProgramsEvent) {
     }
     catch (ex) {
         DBG_ERROR(ex.message);
+    } finally {
+        if(null == programIterator) {
+            programIterator = {
+                readNextRows: function(count){
+                    var m_event = {type: TableIterator.EVENT_TYPE_ROWS_READ};
+                    m_event.rows = [];
+                    onGetProgramsEvent(chnl, m_event);
+                }
+            };
+
+            DBG_ERROR("create iterator error.");
+        }
+        return programIterator;
     }
-    if(null == programIterator) DBG_ERROR("create iterator error.");
-    return programIterator;
+
 }
 
 function createOneActiveWinProgram(channelIds, serviceIds, startLine, endLine, onGetOneActiveProgramsEvent) {
@@ -366,7 +459,8 @@ function createOneActiveWinProgram(channelIds, serviceIds, startLine, endLine, o
             EpgModel.FIELD_EPG_END_TIME_UTC,
             EpgModel.FIELD_EPG_SERVICE_ATTRIBUTES,
             EpgModel.FIELD_EPG_DESCRIPTION,
-            EpgModel.FIELD_EPG_CRIDS
+            EpgModel.FIELD_EPG_CRIDS,
+            EpgModel.FIELD_EPG_RATING  //9
         ], [{
             field: EpgModel.FIELD_EPG_START_TIME_UTC,
             direction: 1
@@ -380,17 +474,20 @@ function createFakeFreeview(chnl, startTime, endTime, count) {
     for (i = 0; i < count; i++) {
         var row = [];
 
-        row[FVPField.CHANNEL_LOGO] = "img/epg/disturb.png";
-        row[FVPField.CONTENT_IMAGE] = "img/epg/disturb.png";
+        row[FVPField.CHANNEL_LOGO] = "img/epg/logo_freevirw_epg.png";
+        row[FVPField.CONTENT_IMAGE] = "img/epg/photo_epg_normal.png";
         row[FVPField.MAIN_TITLE] = chnl.number + " fake freeview " + i;
         row[FVPField.SECONDARY_TITLE] = chnl.number + " fake freeview " + i + " second title";
         // row[FVPField.RUNNING_TIME] = ;
         row[FVPField.DESCRIPTION] = chnl.number + " fake freeview " + i + " detail infomation";
-        row[FVPField.PROGRAM_TYPE] = 0;
+        row[FVPField.PROGRAM_THEME] = 0;
         row[FVPField.START_TIME_UTC] = leftEndTime;
         row[FVPField.END_TIME_UTC] = leftEndTime + Math.ceil(Math.random() * 60) * 60;
         row[FVPField.MEDIA_URL] = "url";
-        row[FVPField.PROGRAM_AVAILABLE_FLAG] = 1;
+        row[FVPField.PROGRAM_AVAILABLE_FLAG] = i > 3 ? 0 : 2;
+        row[FVPField.PROGRAM_HDSD] = i > 3 ? 0 : 1;
+        row[FVPField.PROGRAM_SUBT] = i > 3 ? 0 : 1;
+        row[FVPField.PROGRAM_AD] = i > 3 ? 0 : 1;
         leftEndTime = row[FVPField.END_TIME_UTC];
         rows.push(row);
         if (leftEndTime >= endTime) return rows;
@@ -536,7 +633,10 @@ function getChannelsByListId(list, onGetChannelsEvent) {
                 ServicelistModel.SERVICELIST_FIELD_FRONTEND,      //UUID
                 ServicelistModel.SERVICELIST_FIELD_SUBTYPE,      //用来判定HD or SD
                 ServicelistModel.SERVICELIST_FIELD_CNI,         //用来判定TV or Radio
-                ServicelistModel.SERVICELIST_FIELD_SERVICE_ID   // svl_rec_id
+                ServicelistModel.SERVICELIST_FIELD_SERVICE_ID,   // svl_rec_id
+                ServicelistModel.SERVICELIST_FIELD_ORIGINAL_UUID, //9   serviceId
+                ServicelistModel.SERVICELIST_FIELD_NETWORK_ID,   // NETWORK_ID 10
+                ServicelistModel.SERVICELIST_FIELD_ORIGINAL_LCN  //11
 
             ],
             [

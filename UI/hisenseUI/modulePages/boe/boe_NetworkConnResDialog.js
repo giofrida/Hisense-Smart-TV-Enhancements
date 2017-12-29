@@ -23,10 +23,10 @@ var boeNetworkWifiConnResultDialog={
     "operateData":{
         "resultImgList":["img/network/failure.png","img/network/success.png","img/network/failure.png"],
         "connectResult":0,//0:fail,1:sucess
-        "connectInfo":["Failed to connect. Please try again","Connected Succesfully","The password is incorrect, please try again"]
+        "connectInfo":["Failed to connect. Please try again","Connected successfully","The password is incorrect, please try again"]
     },
     "langData":{
-        "Connected Succesfully":["Connected Succesfully"],
+        "Connected successfully":["Connected successfully"],
         "Failed to connect. Please try again":["Failed to connect. Please try again"],
         "The password is incorrect, please try again":["The password is incorrect, please try again"]
     },

@@ -482,12 +482,12 @@ function boeWifiAutoListUpHandler(opedata,data){
         var data = boeNetSetWifiSetPageData;
         var txt = data.operateData.autoSearchWifiNetResult[this.SelectedIndex].wifiName;
         debugPrint("wizardWifiAutoListUpHandler:this.SelectedIdx="+data.operateData.autoSearchWifiNetResult[this.SelectedIndex].wifiName,DebugLevel.ALWAYS);
-        if(txt.length > 12){
-            var currId = $("#"+this.id+" li").eq(this.SelectedIndex);
-
+        var currId = $("#"+this.id+" li").eq(this.SelectedIndex);
+        currId[0].children[0].style.width = "auto";
+        if (!!currId && !!currId[0] && !!currId[0].children && currId[0].children[0].clientWidth >= 239) {
             $(currId).children(".navNetworkWifiName").html('<marquee>'+txt +'</marquee>');
         }
-
+        currId[0].children[0].style.width = "";
         //debugPrint("boeWifiAutoListUpHandler:this.SelectedIdx="+this.SelectedIndex,DebugLevel.ALWAYS);
         //var currentFocusIdx =(this.BeginIdx == 0 &&  this.SelectedIndex < this.PageSize)?this.SelectedIndex:(this.SelectedIndex - this.BeginIdx) ;
         data.operateData.currIdx = this.SelectedIndex;
@@ -515,11 +515,12 @@ function boeWifiAutoListDownHandler(opedata,data){
         var data = boeNetSetWifiSetPageData;
         var txt = data.operateData.autoSearchWifiNetResult[this.SelectedIndex].wifiName;
         debugPrint("wizardWifiAutoListUpHandler:this.SelectedIdx="+data.operateData.autoSearchWifiNetResult[this.SelectedIndex].wifiName,DebugLevel.ALWAYS);
-
-        if(txt.length > 12){
-            var currId = $("#"+this.id+" li").eq(this.SelectedIndex);
+        var currId = $("#"+this.id+" li").eq(this.SelectedIndex);
+        currId[0].children[0].style.width = "auto";
+        if (!!currId && !!currId[0] && !!currId[0].children && currId[0].children[0].clientWidth >= 239) {
             $(currId).children(".navNetworkWifiName").html('<marquee>'+txt +'</marquee>');
         }
+        currId[0].children[0].style.width = "";
         //debugPrint("boeWifiAutoListDownHandler:this.SelectedIdx="+this.SelectedIndex,DebugLevel.ALWAYS);
         //var currentFocusIdx =  this.SelectedIndex < this.PageSize?this.SelectedIndex:(this.SelectedIndex - this.BeginIdx) ;
         data.operateData.currIdx = this.SelectedIndex;

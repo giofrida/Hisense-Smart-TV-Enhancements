@@ -3999,6 +3999,7 @@
 /* zjm add */
 
 .head_phone_mode_cmp_li_normal {
+    vertical-align: top;
     margin-left: 0px;
     margin-top: 1px;
     height: 58px;
@@ -4093,6 +4094,7 @@
 }
 
 .head_phone_mode_cmp_li_selected_no_focus {
+    vertical-align: top;
     margin-left: 0px;
     margin-top: 1px;
     height: 58px;

@@ -155,8 +155,8 @@ var ScheduleList = function () {
                 self.bookingList.push(prgrm);
                 afterOperationCallBack(null);
                 if (!!hiWebOsFrame.epg && hiWebOsFrame.epg.visible) {
-                    //hiWebOsFrame.epg.rewriteDataOnly();
-                    epg.rewriteEPGUI();
+                    hiWebOsFrame.epg.rewriteDataOnly();
+                    // epg.rewriteEPGUI();
                 }
             }
         }
@@ -189,8 +189,8 @@ var ScheduleList = function () {
                 }
                 afterOperationCallBack(null);
                 if (!!hiWebOsFrame.epg && hiWebOsFrame.epg.visible) {
-                    //hiWebOsFrame.epg.rewriteDataOnly();
-                    epg.rewriteEPGUI();
+                    hiWebOsFrame.epg.rewriteDataOnly();
+                    //epg.rewriteEPGUI();
                 }
             }
 
@@ -221,8 +221,8 @@ var ScheduleList = function () {
                 }
                 afterOperationCallBack(null);
                 if (!!hiWebOsFrame.epg && hiWebOsFrame.epg.visible) {
-                    //hiWebOsFrame.epg.rewriteDataOnly();
-                    epg.rewriteEPGUI();
+                    hiWebOsFrame.epg.rewriteDataOnly();
+                    //epg.rewriteEPGUI();
                 }
             }
         }
@@ -272,8 +272,8 @@ var ScheduleList = function () {
                 afterOperationCallBack();
             }
             if (!!hiWebOsFrame.epg && hiWebOsFrame.epg.visible) {
-                //hiWebOsFrame.epg.rewriteDataOnly();
-                epg.rewriteEPGUI();
+                hiWebOsFrame.epg.rewriteDataOnly();
+                //epg.rewriteEPGUI();
             }
         }
         catch (ex) {

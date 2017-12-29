@@ -14,6 +14,7 @@ function tshiftDialogEnterBtn(opeData,data){
 
 function forceToExitTshiftMedia(){
     try{
+        hiWebOsFrame.unLockAllKeys("tshiftMedia");
         if(!!hiWebOsFrame.tshiftmedia.timer){
             clearTimeout(hiWebOsFrame.tshiftmedia.timer);
             hiWebOsFrame.tshiftmedia.timer = null;
@@ -27,7 +28,7 @@ function forceToExitTshiftMedia(){
 
 function tshiftMediaDialogOnOpen(){
     try {
-        if ('APP_5890_SA' == currentPlatform_config)
+        if ('APP_5890_SA' == currentPlatform_config || "opera4x" == currOperaVersion)
         {
 
             $("#tshift_diskcheck_img").css("display","none")
@@ -39,6 +40,7 @@ function tshiftMediaDialogOnOpen(){
             $("#opera_4_5_tshift_diskcheck_img").css("display","none")
 
         }
+        hiWebOsFrame.lockAllKeys("tshiftMedia");
     } catch (ex) {
         debugE(ex.message);
     }

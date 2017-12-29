@@ -233,7 +233,7 @@ var boeNetSetEtherSetPageData={
     "langData":{
         "Done":["Done"],
         "Network Setup":["Network Setup"],
-        "IP navNetwork:":["IP Setting:"],
+        "IP navNetwork:":["IP Settings:"],
         "Save":[],
         "Cancel":[],
         "IP Address":["IP Address"],

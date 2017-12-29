@@ -428,7 +428,7 @@
 #info_bar_dtl_crnt_description.normal{
     white-space: normal;
     word-wrap: break-word;
-    word-break: break-all;
+    /*word-break: break-all;*/
     width: 1220px;
 }
 

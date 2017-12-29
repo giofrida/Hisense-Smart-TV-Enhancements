@@ -331,7 +331,7 @@ var PageDataFirstCls = {
         "curmachineno":"HE55M7000UWTSG",
         "powIndflag":0,
         "ColPowerIndMachinelist":[],
-        "EUPowerIndMachinelist":["HE75K700UXWTS3D","HE65M7000UWTSG","HE55M7000UWTSG","HE65K5500UWTS","HE50K5502UWTS","HE55M5600UCWTS","HE55K5502UWTS","HE75K700UXWTS3D(1)","LTDN65XT910XWTSEU3D"],
+        "EUPowerIndMachinelist":["HE75K700UXWTS3D","HE65M7000UWTSG","HE55M7000UWTSG","HE65K5500UWTS","HE65K5500UWTS(0001)","HE50K5502UWTS","HE55M5600UCWTS","HE55K5502UWTS","HE75K700UXWTS3D(1)","LTDN65XT910XWTSEU3D"],
         "EULightSetMachinelist":["HE65M7000UWTSG","HE55M7000UWTSG","HE50K5502UWTS","HE55M5600UCWTS","HE55K5502UWTS"],
         "curoadsitch":0,
         "helptitle":"",
@@ -423,7 +423,7 @@ var PageDataFirstCls = {
             },
             //{
             //    "title":"EPG Mark",
-            //    "content":"Highlight your favorite programs with exclusive color."
+            //    "content":"Highlight your favorite programs with exclusive colour."
             //},
             {
                 "title":"Parental Controls",
@@ -484,7 +484,7 @@ var PageDataFirstCls = {
             ,
             {
                 "title":"Advanced Settings",
-                "content":"Review the Advanced Settings menu -Menu Timeout -Auto Sleep -PVR & T.Shift -Power Indicator -Input Labels -Setup Wizard -Store Mode"
+                "content":"Access the Advanced Settings menu."
             }
         ],
         "abouthelplist":[
@@ -800,7 +800,7 @@ var PageDataFirstCls = {
         "Allows your TV to auto-update the channel list from the content provider.":["Allows your TV to auto-update the channel list from the content provider."],
         "Highlight your favourite programs with exclusive colour.":["Highlight your favourite programs with exclusive colour."],
         "Review the Advanced Settings menu -Common interface -CI card and PIN -CAM Profile search":["Review the Advanced Settings menu -Common interface -CI card and PIN -CAM Profile search"],
-
+        "Click to read the Disclaimer details":[],
         "Audio Enhancements":["Audio Enhancements"],
         "Advanced Audio Settings":["Advanced Audio Settings"],
         "Restore Default Audio Settings":["Restore Default Audio Settings"],
@@ -972,6 +972,9 @@ var PageDataFirstCls = {
 
 function PageDataFirstClsInit() {
     try {
+        if (!!initBrand  && initBrand != "his" && initBrand !=  "hisense") {
+            PageDataFirstCls.operateData.abouthelplist[1].content = "Click to read the Disclaimer details";
+        }
         debugG('PageDataFirstClsInit()');
         PageDataFirstClsPicItemInit();//Init Picture相关
         PageDataFirstClsSndItemInit();//Init Sound相关
@@ -2160,7 +2163,7 @@ function settingChSetCreateChannelEditPage(){
     try{
         hiWebOsFrame.settingsFirst.close();
         SetRecentUse("Channel Edit", 2, 3); //增加最近使用的设置
-        openChannelManager();
+        openChannelManager(hiWebOsFrame.settingsFirst);
     }catch (ex){
         debugPrint("settingChSetCreateChannelEditPage:"+ex.message,DebugLevel.ERROR);
     }
@@ -2704,18 +2707,14 @@ function GetAppStatus()
        PageDataFirstCls.operateData.settingdisablelist[4]=[];
    }
 
-    if(FREEVIEWTEST){
-        PageDataFirstCls.operateData.syshelplist[6].content = " "
-    }
-    else if(PageDataFirstCls.operateData.powIndflag>0)
-    {
-        PageDataFirstCls.operateData.syshelplist[6].content=""
-
-    }else
-    {
-        PageDataFirstCls.operateData.syshelplist[6].content=""
-
-    }
+//    if(FREEVIEWTEST){
+//        PageDataFirstCls.operateData.syshelplist[6].content = "Access the Advanced Settings menu.";
+//    }
+//   else
+//    {
+//        PageDataFirstCls.operateData.syshelplist[6].content="Access the Advanced Settings menu.";
+//
+//    }
 
     }catch (e)
     {

@@ -618,6 +618,7 @@ function settingChSetDVBAutoToChScanPage(){
         hiWebOsFrame.createPage('settingChSetEUAutoScanPageId',null, hiWebOsFrame.settingsFirst, null,function(a){
             hiWebOsFrame.ChSetChannelScanPage = a;
             hiWebOsFrame.ChSetDVBAutoPage.close();
+            a.operateData.ScanModeFlag = 0;//normal scan
             a.open();
             a.hiFocus();
             hiWebOsFrame.ChSetDVBAutoPage.destroy();

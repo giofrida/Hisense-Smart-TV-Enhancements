@@ -405,15 +405,15 @@ var PageDataSettingSysAd={
                 "content": "Select store mode to effect EPOS and other demo functions."
             },
 	        {
-                "title":"",
+                "title":"nouse",
+                "content":" "
+            },
+	        {
+                "title":"subtitle",
                 "content":" "
             },
             {
-                "title":"",
-                "content":" "
-            },
-            {
-                "title":"Fast Boot",
+                "title":"hbbtv",
                 "content":"Enable/disable HbbTV function for current channel"
 
             }
@@ -456,7 +456,7 @@ var PageDataSettingSysAd={
         "curArea":"EU",
         "curmachineno":"",
         "ColPowerIndMachinelist":[],
-        "EUPowerIndMachinelist":["HE75K700UXWTS3D","HE65M7000UWTSG","HE55M7000UWTSG","HE65K5500UWTS","HE50K5502UWTS","HE55M5600UCWTS","HE55K5502UWTS"],
+        "EUPowerIndMachinelist":["HE75K700UXWTS3D","HE65M7000UWTSG","HE55M7000UWTSG","HE65K5500UWTS","HE65K5500UWTS(0001)","HE50K5502UWTS","HE55M5600UCWTS","HE55K5502UWTS","HE75K700UXWTS3D(1)","LTDN65XT910XWTSEU3D"],
         "EULightSetMachinelist":["HE65M7000UWTSG","HE55M7000UWTSG","HE50K5502UWTS","HE55M5600UCWTS","HE55K5502UWTS"],
         "EMPowerIndMachinelist":[],
         "powIndflag":0
@@ -478,6 +478,7 @@ var PageDataSettingSysAd={
         "Subtitle Mode:":[],
         "Store Mode":[],
         "Indicator Light Setting":[],
+        "Enable/disable HbbTV function for current channel":[],
         "Initialize the external USB disk to support PVR and Time-Shift.":[],
         "10s":[],
         "20s":[],
@@ -582,17 +583,23 @@ var PageDataSettingSysAd={
         }
         if(data.operateData.ciflag)
         {
-            $("#setting_sys_ad_pvr").css("display","none");
-            data.setting_sys_ad_btn3.disable=true;
+
             $("#setting_sys_ad_submode").css("display","block");
             data.setting_sys_ad_btn6.disable=false;
         }
         else
         {
-            $("#setting_sys_ad_pvr").css("display","block");
-            data.setting_sys_ad_btn3.disable=false;
+
             $("#setting_sys_ad_submode").css("display","none");
             data.setting_sys_ad_btn6.disable=true;
+        }
+        if (getPVRFlag()) {
+            $("#setting_sys_ad_pvr").css("display","block");
+            data.setting_sys_ad_btn3.disable=false;
+        }
+        else {
+            $("#setting_sys_ad_pvr").css("display","none");
+            data.setting_sys_ad_btn3.disable=true;
         }
 
     }
@@ -687,18 +694,21 @@ function SettingAdPageonOpen()
         $("#setting_sys_ad_btn1_str2").css("max-width","700px");
     }
 
-    if(PageDataSettingSysAd.operateData.ciflag)
-    {
-        $("#setting_sys_ad_pvr").css("display","none");
-        $("#setting_sys_ad_submode").css("display","block");
+    if (PageDataSettingSysAd.operateData.ciflag) {
+
+        $("#setting_sys_ad_submode").css("display", "block");
 
     }
-    else
-    {
-        $("#setting_sys_ad_pvr").css("display","block");
-        $("#setting_sys_ad_submode").css("display","none");
-
+    else {
+        $("#setting_sys_ad_submode").css("display", "none");
     }
+    if (getPVRFlag()) {
+        $("#setting_sys_ad_pvr").css("display", "block");
+    }
+    else {
+        $("#setting_sys_ad_pvr").css("display", "none");
+    }
+
     if(PageDataSettingSysAd.operateData.powIndflag==0)
     {
         $("#setting_sys_ad_powerindicator").css("display","none");
@@ -1009,7 +1019,7 @@ function SettingadInit()
 
         }
     }
-    PageDataSettingSysAd.operateData.ciflag=FREEVIEWTEST;
+    PageDataSettingSysAd.operateData.ciflag=false;
     debugPrint("ci flagg is "+PageDataSettingSysAd.operateData.ciflag)
     var mode=model.system.getUserMode();
     debugPrint("getUserMode"+mode);

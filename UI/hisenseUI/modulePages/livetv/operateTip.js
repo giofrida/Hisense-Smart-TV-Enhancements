@@ -51,11 +51,24 @@ function operateTip() {
         tv && model.tvservice.setPlaySuccessLiveTV(1);
         var dom = $("#livetv_operate_tip > div"), idx = 0;
         dom.eq(idx).css("display", "block");
-        var tipLen = livetvmain.isDisableKeyBack() ? dom.length - 1 : dom.length;
+        var tipNumMap = [0, 1, 2, 3];
+        tipNumMap.removeByValue = function(val) {
+            var index = tipNumMap.indexOf(val);
+            if (index > -1) {
+                tipNumMap.splice(index, 1);
+            }
+        };
+        if (!getPVRFlag()) {
+            tipNumMap.removeByValue(2);
+        }
+        if (livetvmain.isDisableKeyBack()) {
+            tipNumMap.removeByValue(3)
+        }
+
         tipTimer = setInterval(function() {
             //dom.eq(idx).css("display", "none");
-            dom.eq(++idx).css("display", "block");
-            if(idx >= tipLen - 1) {
+            dom.eq(tipNumMap[++idx]).css("display", "block");
+            if(idx >= tipNumMap.length - 1) {
                 clearInterval(tipTimer);
                 tipTimer = setTimeout(function() {
                     try {

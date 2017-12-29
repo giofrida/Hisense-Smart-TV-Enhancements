@@ -201,6 +201,11 @@ function beginRecordHandler() {
                 checkAndCloseIfAppOn(hiWebOsFrame.blankPage);
                 return;
             }
+            else if (!!deviceKeySet.HBBTVAPPON) {
+                pauseHBBTV();
+                setTimeout(beginRecordcallback, 1000);
+                return;
+            }
             else if (hiWebOsFrame.PvrstartDialog.origin.id == "pvrtshift_pvr_page") {
                 hiWebOsFrame.pvrPage.close();
             }

@@ -68,6 +68,8 @@ function SystemModelDefines() {
     SystemModelDefines.SL2_TVAPI_STR_SYSTEM_TV_PLATFORM = "tvapi.str.system.TV.platform";
     SystemModelDefines.SL2_TVAPI_STR_SYSTEM_TV_RESOLUTION = "tvapi.str.system.TV.resolution";
     SystemModelDefines.SL2_TVAPI_I32_SYSTEM_CUR_CHANNEL_TELETEXT_AVAILABLE = "tvapi.i32.system.cur.channel.teletext.available";
+    SystemModelDefines.SL2_TVAPI_I32_SYSTEM_BGM_STATUS ="tvapi.i32.system.bgm.status";
+    SystemModelDefines.SL2_TVAPI_I32_SYSTEM_BGM_RECEIVE_POWER_KEY ="tvapi.i32.system.bgm.receive.power.key";
     // enum or defined is here
 
 
@@ -859,6 +861,9 @@ function SystemModel(parentModel) {
         SystemModelDefines.SL2_TVAPI_I32_SYSTEM_CUR_CHANNEL_TELETEXT_AVAILABLE,
         "getPauseMheg5", "setPauseMheg5", "onPauseMheg5Changed",
         null, null);
+
+    this.registerIntegerObject(SystemModelDefines.SL2_TVAPI_I32_SYSTEM_BGM_STATUS, "getBgmStatus", "setBgmStatus", "onBgmStatusChanged", null, null);
+    this.registerIntegerObject(SystemModelDefines.SL2_TVAPI_I32_SYSTEM_BGM_RECEIVE_POWER_KEY, "getBgmReceivePowerKey", "setBgmReceivePowerKey", "onBgmReceivePowerKeyChanged", null, null);
 
     this.registerActionObject(
         SystemModelDefines.SL2_TVAPI_ACTION_SYSTEM_HALF_AN_HOUR_IDLE,

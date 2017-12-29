@@ -5,154 +5,144 @@
 	white-space: nowrap;
 }
 
-.epgTop{
-    height: 79px;
-    line-height: 79px;
-    padding: 0 20px 0 20px;
-    border-bottom: #3d4041 1px solid;
-    white-space: nowrap;
-    background-color: #080c13;
-	overflow: hidden;
-}
-
-#epg_title {
-    color: #9ba2ad;
-    font-size: 40px;
-    float: left;
-    text-indent: 20px;
-}
-
-.html_rtl #epg_title {
-	float: right;
-}
-
-#epg_time {
-    font-size: 24px;
-    color: #7a7d83;
-    float: right;
-    direction: ltr;
-}
-
-.html_rtl #epg_time {
-	float: left;
-}
-
-
 .epgDesc{
-    height: 332px;
+    height: 472px;
     width: 1920px;
     font-size: 0;
-	white-space: nowrap;
 }
 .epgDesc > div{
 	display: inline-block;
 	vertical-align:top;
 }
 .epgPIP{
-    background-color: transparent;
-    width: 520px;
-    height: 292px;
-    border: #080c13 solid;
-    border-width: 35px 40px 6px 40px;
+    /*position: relative;*/
+    width: 570px;
+    height: 472px;
     display: inline-block;
 }
 
-#epg_pip_channel{
-	width: 520px;
-    height: 45px;
-    background-color: rgba(0,0,0,0.2);
-    text-align: center;
+.epgFVPLogo{
+    background-color: #10243b;
+    height: 64px;
+    width: 474px;
+    padding: 36px 48px 24px 48px;
+}
+
+#epg_title {
+    color: #9ba2ad;
+    font-size: 40px;
+    float: left;
+    height: 79px;
+    line-height: 79px;
+}
+
+.epgTVWindow{
+    width: 474px;
+    height: 267px;
+    border: solid #10243b;
+    border-width: 0 48px 23px 48px;
+}
+
+.epgTunerName{
+    height: 58px;
+    line-height: 58px;
+    width: 474px;
+    padding: 0 48px;
+    background-color: #163150;
+
     font-size: 30px;
-    color: #85c5f9;
-    line-height: 45px;
-    margin-top: 247px;
+    color: rgba(255,255,255,0.87);
+    font-weight: bold;
+}
+
+#epg_pip_channel{
+    width: 474px;
+    height: 60px;
+    background-color: rgba(0,0,0,0.6);
+    text-indent: 24px;
+    font-size: 30px;
+    color: rgba(255,255,255,0.87);
+    line-height: 60px;
+    margin-top: 207px;
+}
+.epgInfoTimeAxis{
+    height: 472px;
+    width: 1350px;
+    font-size: 0;
 }
 .epgInfo{
-    height: 332px;
-    width: 1280px;
-    padding-right: 40px;
-    background-color: #080c13;
+    height: 372px;
+    width: 1254px;
+    padding: 0 48px;
+    background-color: #091523;
 }
-.html_rtl .epgInfo{
-    padding-left: 40px;
-    padding-right: 0;
+
+
+#epg_time {
+    font-size: 28px;
+    width: 1254px;
+    height: 120px;
+    line-height: 120px;
+    color: rgba(255,255,255,0.54);
+    text-align: right;
+    direction: ltr;
 }
+
+.html_rtl #epg_time {
+    text-align: left;
+}
+
 
 .epgInfoTop{
 	height: 48px;
-	width: 1280px;
-	font-size: 28px;
-	padding-top: 45px;
-}
-
-#epg_channel_number{
-	color: #e8e8e8;
-	margin-right: 20px;
-	max-width: 120px;
+	width: 1254px;
 }
 
 #epg_channel_name{
-	color: #e8e8e8;
-	margin-right: 20px;
-	max-width: 560px;
+    line-height: 48px;
+    font-size: 36px;
+	color: rgba(255,255,255,0.87);
+	max-width: 652px;
+    margin: 0 14px 0 0;
 }
-
-.epgInfoTop > img{
-	margin-right: 2px;
-	height: 30px;
-	width: 30px;
-}
-
-.html_rtl #epg_channel_number{
-	margin-left: 20px;
-	margin-right: 0;
-}
-
 
 .html_rtl #epg_channel_name{
-	margin-left: 20px;
-	margin-right: 0;
+    margin: 0 0 0 14px;
 }
-
-.html_rtl .epgInfoTop > img{
-	margin-left: 2px;
-	margin-right: 0;
-}
-
 
 .epgProgramType{
-	max-width: 430px;
-	color: #a1a5ac;
+	max-width: 660px;
+    height: 48px;
 	display: inline-block;
 	float: right;
 }
-.epgProgramType span{
-	max-width: 110px;
-	float: right;
+
+.html_rtl .epgProgramType {
+    float: left;
 }
 
 
-.html_rtl .epgProgramType {
-	float: left;
+.epgProgramType span{
+    max-width: 182px;
+	margin: 0 0 0 48px;
+    font-size: 28px;
+    height: 43px;
+    line-height: 48px;
+    color: rgba(255,255,255,0.54);
 }
 
 .html_rtl .epgProgramType span{
-	float: left;
+    margin: 0 48px 0 0;
 }
-
-
-
 
 #epg_type_color_purple{
 	border-bottom: 5px #c225b2 solid;
 }
 #epg_type_color_green{
 	border-bottom: 5px #02d9b8 solid;
-	margin-left: 50px;
 }
 #epg_type_color_pink{
 	border-bottom: 5px #d07364 solid;
-	margin-left: 50px;
 }
 
 #epg_type_color_purple.disable{
@@ -165,122 +155,111 @@
 #epg_type_color_pink.disable{
     display: none;
 }
-.html_rtl #epg_type_color_green{
-	margin-right: 50px;
-	margin-left: 0;
-}
-
-.html_rtl #epg_type_color_pink{
-	margin-right: 50px;
-	margin-left: 0;
-}
-
 
 .epgInfoMid{
-	height: 70px;
-	width: 1280px;
-	font-size: 40px;
-	color: #a1a5ac;
-}
-#epg_progrm_name{
-	max-width: 1100px;
-	margin-right: 30px;
-}
-.epgInfoMid img{
-	margin-right: 10px;
+	height: 96px;
+    width: 1254px;
 }
 
-.html_rtl #epg_progrm_name{
-	margin-left: 30px;
-	margin-right: 0;
+.epgInfoMid div{
+    width: 1254px;
+    height: 42px;
+    font-size: 30px;
+    color: rgba(255,255,255,0.87);
+
 }
-
-.html_rtl .epgInfoMid img{
-	margin-left: 10px;
-	margin-right: 0;
-}
-
-
-
 
 #epg_program_time{
-	max-width: 1100px;
-	height: 40px;
-	font-size: 28px;
-	color: #e8e8e8;
 	direction: ltr;
 }
 
-#epg_program_detail{
-	max-height: 110px;
-	line-height: 35px;
-	font-size: 26px;
-	color: #a1a5ac;
-	overflow: hidden;
-	white-space: normal;
-    word-wrap: break-word;
-    word-break: break-all;
+.epgShortDetail{
+    width: 1254px;
+	height: 108px;
+    font-size: 30px;
+    color: rgba(255,255,255,0.54);
 }
-
+#epg_program_detail{
+    max-height: 90px;
+    line-height: 42px;
+    overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-word;
+}
 #epg_detail_ellipsis{
-    height: 15px;
-    font-size: 28px;
-    color: #a1a5ac;
+    height: 18px;
     line-height: 1px;
     visibility: hidden;
 }
 
-.epgEventList{
-    width: 1840px;
-    height: 565px;
-    padding: 30px 40px 0px 40px;
-    background-color: #080c13;
-}
 
 
 .epgTimeAxis{
-    width: 1840px;
-	height: 54px;
-	border-bottom: #3d4041 1px solid;
-	background-color: #1e1e1e;
+    width: 1350px;
+    height: 100px;
+    background-color: #10243b;
+    overflow: hidden;
+    /*white-space: nowrap;*/
     font-size: 0;
 }
-.epgTimeAxis > span{
-	font-size: 24px;
-	color: #767d88;
-	text-indent: 10px;
-	background-image: url(../../img/epg/npg_img_tli_lst_col_bk.png);
-	width: 450px;
-	height: 54px;
-	line-height: 54px;
-	background-repeat: no-repeat;
+
+.epgTimeAxis > img{
+    width: 48px;
+    height: 48px;
+    position: relative;
+    top: -48px;
 }
 
-.epgTimeAxis > div{
-	width: 490px;
-	height: 54px;
-	line-height: 54px;
-	display: inline-block;
+.epgTimeAxis > img.disable{
+    visibility: hidden;
 }
 
-.epgTimeAxis > div span{
-	font-size: 24px;
-	color: #767d88;
-	text-indent: 20px;
+#epg_time_right_tip{
+    left: 1250px;
+}
+
+
+#epg_time_axis_panel{
+    width: 1350px;
+    height: 100px;
+    display: inline-block;
+}
+
+#epg_time_axis_panel li{
+    display: inline-block;
+    height: 100px;
+    width: 448px;
+    border-left: 2px solid rgba(255,255,255,0.1);
+    /*box-shadow: 0 0 0 2px rgba(255,255,255,0.1);*/
+}
+#epg_time_axis_panel li span{
+    width: 448px;
+    font-size: 28px;
+    height: 50px;
+    line-height: 50px;
+    text-indent: 10px;
+    color: rgba(255,255,255,0.54);
+}
+
+.epgAxisTitle{
+    font-weight: bold;
+}
+
+.epgEventList{
+    width: 1920px;
+    height: 536px;
+    background-color: #10243b;
 }
 
 #epg_channel_list{
-	height: 510px;
-    width: 1840px;
+	height: 536px;
+    width: 1920px;
     font-size: 0;
 }
 
 #epg_channel_list > li{
-	height: 84px;
-	/*line-height: 85px;*/ /*for vertical-align*/
-    border: #3d4041 solid;
-    border-width: 0 1px 1px 1px;
-	width: 1838px;
+	height: 107px;
+	width: 1920px;
 	font-size: 0;
 	white-space: nowrap;
 }
@@ -289,146 +268,178 @@
 	display: none;
 }
 .epgChannels{
-	width: 490px;
+	width: 474px;
+    padding: 0 48px;
 	display: inline-block;
-	height: 84px;
+	height: 105px;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
     vertical-align: top;
+    overflow: hidden;
 }
 
 
 .epgListChannelNum{
 	font-size: 30px;
-	color: #a1a5ac;
+	color: rgba(255,255,255,0.54);
+    height: 105px;
+    line-height: 105px;
 	width: 90px;
-	text-indent: 10px;
-    height: 84px;
-    line-height: 84px;
 }
 
 .epgListChannelName{
-	font-size: 30px;
-	color: #e8e8e8;
-	width: 280px;
-	text-indent: 10px;
-	margin-right: 10px;
-    height: 84px;
-    line-height: 84px;
+    font-size: 30px;
+    color: rgba(255,255,255,0.54);
+    height: 105px;
+    line-height: 105px;
+    text-indent: 10px;
+	width: 230px;
 }
 
-.html_rtl .epgListChannelName{
-	margin-left: 10px;
-	margin-right: 0;
+.epgListChannelLogoImg{
+    width: 128px;
+    height: 80px;
+    margin: 13px 0 12px 18px;
+    border-radius: 6px;
+}
+
+.html_rtl .epgListChannelLogoImg{
+    margin: 13px 18 12px 0;
 }
 
 .epgListChannelImg{
-	width: 30px;
-	height: 30px;
-	margin: 27px 10px 27px 0;
+	width: 48px;
+	height: 48px;
+    margin: 28px 5px 29px 5px;
 }
 
 .html_rtl .epgListChannelImg{
-	margin: 27px 0 27px 10px;
+    margin: 13px 18 12px 0;
 }
 
+.epgListChannelImgDisable{
+    display: none;
+}
+
+
+
+
 #epg_channel_list > li.focus > div span{
-    color: #85c5f9;
+    color: #00b1cd;
+    font-weight: bold;
 }
 #epg_channel_list > li.selected > div span{
-	color: #85c5f9;
+	color: #00b1cd;
+    font-weight: bold;
+}
+#epg_channel_list > li.focus > div.epgChannels{
+    background-color: #163150;
+}
+#epg_channel_list > li.selected > div.epgChannels{
+    background-color: #163150;
 }
 
 
 #epg_channel_list ul{
 	width: 1348px;
-	height: 84px;
+	height: 101px;
+    padding: 3px 6px;
 	display: inline-block;
-    background-color: #0c1526;
-    overflow: hidden;
+    background-color: #091523;
+    /*overflow: hidden;*/
 }
 
 #epg_channel_list ul li{
-	height: 84px;
+	height: 101px;
+    margin: 0 6px;
 	display: inline-block;
+    border-radius: 6px;
 	/*transition: width 0.3s ease-in-out;*/
 }
 
-#epg_channel_list ul li > span{
-	height: 80px;
+.epgEventItem{
+    height: 89px;
+    width: inherit;
+}
+
+.epgEventTheme{
+    height: 12px;
+    width: inherit;
+}
+
+.epgEventItem span{
+	height: 89px;
 	width: inherit;
-	font-size: 28px;
-	line-height: 84px;
+	font-size: 30px;
+	line-height: 101px;
 	text-indent: 20px;
+    vertical-align: top;
 }
-#epg_channel_list ul li > img{
-	height: 4px;
+.epgEventItem img{
+    width: 48px;
+    height: 48px;
+    vertical-align: top;
+    margin-top: 26px;
+}
+.epgEventTheme img{
+	height: 12px;
 	width: inherit;
-    display: block;
+    border-radius: 0 0 6px 6px;
 }
 
-#epg_channel_list ul li > div{
-    position: relative;
-    top: -80px;
-    height: 30px;
-    text-align: right;
-}
-
-.html_rtl #epg_channel_list ul li > div{
-    text-align: left;
-}
-
-
-#epg_channel_list ul li > div img{
-	width: 30px;
-	height: 30px;
-    margin-right: 10px;
-}
-
-.html_rtl #epg_channel_list ul li > div img{
-    margin-left: 10px;
-	margin-right: 0;
-}
 
 .epgEventListNormal{
-	color: #a1a5ac;
-	width: 0;
+	color: rgba(255,255,255,0.54);
 	/*background-image: url(../../img/epg/normal_event.png);*/
-    background: -o-linear-gradient(top, #263643, #2a3e4e);
-    background: -webkit-linear-gradient(top, #263643, #2a3e4e);
-	border-left: 1px #3d4041 solid;
+    /*background: -o-linear-gradient(top, #263643, #2a3e4e);*/
+    /*background: -webkit-linear-gradient(top, #263643, #2a3e4e);*/
+	/*border-left: 1px #3d4041 solid;*/
+    background-color: rgba(38,69,104,0.26);
+
+}
+
+.epgEventNotAvailable{
+    color: rgba(255,255,255,0.26);
+    background-color: rgba(38,69,104,0.26);
+}
+.epgEventNotAvailableFocus{
+    color: rgba(255,255,255,0.26);
+    background-color: rgba(38,69,104,0.26);
+    box-shadow: 0 0 0 2px #091523, 0 0 0 6px #00b1cd;
+    position: relative;
 }
 .epgEventListDisable{
 }
 .epgEventListFocus{
-	color: #e8e8e8;
-	box-shadow: 0 0 0 4px #84ecff inset;
+    color: rgba(255,255,255,0.87);
+	box-shadow: 0 0 0 2px #091523, 0 0 0 6px #00b1cd;
 	/*background-image: url(../../img/epg/normal_event.png);*/
-    background: -o-linear-gradient(top, #263643, #2a3e4e);
-    background: -webkit-linear-gradient(top, #263643, #2a3e4e);
-	border-left: 1px #3d4041 solid;
+    /*background: -o-linear-gradient(top, #263643, #2a3e4e);*/
+    /*background: -webkit-linear-gradient(top, #263643, #2a3e4e);*/
+	/*border-left: 1px #3d4041 solid;*/
+    background-color: rgba(38,69,104,0.26);
+    position: relative;
+    /*border-radius: 12px;*/
 }
 .epgEventListSelected{
-	color: #e8e8e8;
+	color: rgba(255,255,255,0.87);
 	/*background-image: url(../../img/epg/current_event.png);*/
-    background: -o-linear-gradient(top, #164775, #1263a2);
-    background: -webkit-linear-gradient(top, #164775, #1263a2);
-	border-left: 1px #3d4041 solid;
+    /*background: -o-linear-gradient(top, #164775, #1263a2);*/
+    /*background: -webkit-linear-gradient(top, #164775, #1263a2);*/
+	/*border-left: 1px #3d4041 solid;*/
+    background-color: #264568;
+    position: relative;
 }
-
-.epgEventListFocus > img{
-	visibility: hidden;
-}
-
 
 #epg_time_line_current.normal{
-    background-image: url(../../img/epg/time_line.png);
-    width: 85px;
-    height: 565px;
+    background-image: url(../../img/epg/bar_epg_program_time.png);
+    width: 102px;
+    height: 590px;
     position: relative;
-    top: -565px;
-    line-height: 50px;
+    top: -590px;
+    line-height: 58px;
     font-weight: bold;
-    font-size: 16px;
-    color: #293036;
+    font-size: 20px;
+    color: rgba(255,255,255, 1);
     text-align: center;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -439,13 +450,14 @@
 }
 
 .epgBottom{
-	height: 80px;
+	height: 72px;
     width: 1920px;
-    background-color: #080c13;
+    background-color: #142d49;
+    box-shadow: 0 0 0 1px #243d58 inset;
 }
 
 #epg_opertion_btn{
-	height: 80px;
+	height: 72px;
     width: 1840px;
     padding: 0 40px 0 40px;
 }
@@ -455,33 +467,33 @@
 	display: inline-block;
 	margin-left: 40px;
 	text-indent: 20px;
-	font-size: 22px;
-	color: #6b6f79;
+	font-size: 28px;
+	color: rgba(255,255,255,0.54);
 	height: 80px;
 	float: right;
 }
 
 .html_rtl #epg_opertion_btn li {
 	float: left;
-	margin-right: 40px;
+	margin-right: 80px;
 	margin-left: 0;
 }
 
 
 #epg_opertion_btn li img{
-    margin: 20px 0 20px 0;
+    margin: 12px 0 12px 0;
 }
 #epg_opertion_btn li span{
-	height: 80px;
-	line-height: 80px;
+	height: 72px;
+	line-height: 72px;
 }
 
-.freeviewLogo{
-	display: none;
-	position: relative;
-	top: -70px;
-	left: 12px;
-	background-image: url(../../img/epg/Freeview.png);
-	height: 64px;
-	width: 282px;
+.epgPanelShadow{
+    position: relative;
+    height: 1008px;
+    width: 20px;
+    top: -1080px;
+    left: 550px;
+    box-shadow: 20px -10px 24px 5px rgba(0,0,0,0.3);
+    /*background-image: url(../../img/epg/epg_shadow.png);*/
 }

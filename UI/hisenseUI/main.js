@@ -3,7 +3,9 @@
  */
 //调用软键盘公用方法
 var appStopping = false, speechRec = false;
+var appStarting = false;
 var appLoading = false;
+var FABaseUrl = "";
 //var originMute = 0;
 var g_SystemFallbackPwd = "0532";//系统万能密码
 
@@ -36,6 +38,7 @@ function recheckDSTSeconds(){
 }
 
 function getLocalTimeByUTC(utc){
+    if(utc == null || !utc) return;
     if(!tv) return (utc + hisenseUITZSeconds);
     if(!FREEVIEWTEST) return (utc + hisenseUITZSeconds + hisenseUIDSTSeconds);
     model.timerfunc.setUTCToLocalTime(utc);
@@ -164,6 +167,17 @@ function getDVBLongTime() {
     return utcTime;
 }
 
+function getSYSLongTime(){
+    var utcTime = 0;
+    if (tv) {
+        utcTime = parseInt(model.timerfunc.getCurTime());
+        DBG_INFO("system utcTime[" + utcTime + "]");
+    }
+    else {
+        utcTime = Math.ceil(Date.now() / milliBase);
+    }
+    return utcTime;
+}
 
 function timeArrToSeconds(timeArr) {
     var arr = [];
@@ -188,30 +202,46 @@ function timeArrToSeconds(timeArr) {
 
 function timeAttrToUTCTime(utc, arr) {
     recheckDSTSeconds();
-    var d = new Date((utc + hisenseUITZSeconds + hisenseUIDSTSeconds) * milliBase);
+    var dstSeconds = getDSTSeconds();
+    var d = new Date((utc + hisenseUITZSeconds + dstSeconds) * milliBase);
     d.setUTCHours(0);
     d.setUTCMinutes(0);
     d.setUTCSeconds(0);
     d.setUTCMilliseconds(0);
 
-    return (d.getTime() / milliBase - hisenseUITZSeconds - hisenseUIDSTSeconds + timeArrToSeconds(arr));
+    return (d.getTime() / milliBase - hisenseUITZSeconds - dstSeconds + timeArrToSeconds(arr));
 }
 
 function getDateByUTC(utc){
     recheckDSTSeconds();
-    var d = new Date((utc + hisenseUITZSeconds + hisenseUIDSTSeconds) * milliBase);
+    var dstSeconds = getDSTSeconds();
+    var d = new Date((utc + hisenseUITZSeconds + dstSeconds) * milliBase);
     return d.getUTCDate();
 }
 
 function UTCTimeToArr(utc){
     var arr=[];
     recheckDSTSeconds();
-    var d = new Date((utc + hisenseUITZSeconds + hisenseUIDSTSeconds) * milliBase);
+    var dstSeconds = getDSTSeconds();
+    var d = new Date((utc + hisenseUITZSeconds + dstSeconds) * milliBase);
     var str = ('0' + d.getUTCHours()).slice(-2) + ":" + ('0' + d.getUTCMinutes()).slice(-2);
     for (var i = 0; i < str.length; i++) {
         arr[i] = str[i];
     }
     return arr;
+}
+
+function getDSTSeconds() {
+    recheckDSTSeconds();
+    var dst = hisenseUIDSTSeconds;
+    try {
+        if(!tv || FREEVIEWTEST) {
+            dst = (parseInt(model.timerfunc.getDST()) * 3600);
+        }
+    } catch (e){
+        debugPrint("getDSTSeconds model.timerfunc.getDST() ex = "+e.message, DebugLevel.ERROR);
+    }
+    return dst;
 }
 
 function getDayByUTC(utc) {
@@ -270,7 +300,7 @@ RmdDef.RMD_WATCH = globalEnumIndex++;
 
 RmdDef.RMD_ADD = globalEnumIndex++;
 RmdDef.RMD_EDIT = globalEnumIndex++;
-
+var msgTimer = null;
 function suolve(height, str) {
     var sub_length = height;
     var temp1 = str.replace(/[^\x00-\xff]/g, "**");
@@ -326,24 +356,34 @@ function getCurrentContentLanguage(content) {
         return content;
     }
 }
-function showMsg(title, content, timeOut, callBack) {
+function showMsg(title, content, timeOut, callBack, unlock) {
 
     title = !title ? 'Information' : title;
 
     timeOut = !timeOut ? 3 : timeOut;
-
     $('#msg_title').html(getCurrentContentLanguage(title));
     $('#msg_content').html(getCurrentContentLanguage(content));
     $('#mymsgbox').css('display', 'block');
-
-    hiWebOsFrame.lockAllKeys("msg");
-    setTimeout(function () {
+    if(unlock) {
+        if(!!msgTimer) {
+            clearTimeout(msgTimer);
+            msgTimer = null;
+        }
+    } else {
+        hiWebOsFrame.lockAllKeys("msg");
+    }
+    msgTimer = setTimeout(function () {
         $('#mymsgbox').css('display', 'none');
         $('#msg_title').html('');
         $('#msg_content').html('');
-        hiWebOsFrame.unLockAllKeys("msg");
+        if(!unlock) {
+            hiWebOsFrame.unLockAllKeys("msg");
+        }
         if(!!callBack){
             callBack();
+        }
+        if(unlock) {
+            msgTimer = null;
         }
     }, timeOut * 1000);
 
@@ -936,11 +976,20 @@ function isPicasa(command) {
  */
 function sendCommndToTV(cmdType, command, setRunTimes, storeType) {
 
-    DBG_INFO('command = ' + command + '; command type = ' + cmdType + ';command storeType = ' + storeType);
+    DBG_ERROR('command = ' + command + '; command type = ' + cmdType + ';command storeType = ' + storeType);
+    // if(storeType == 97){
+    // open Wuaki (Rakuten TV) with HbbTV to avoid UHD/DASH/PlayReady issues
+    if(storeType == 97 || command == HSAPPURL.WUAKI){
+        cmdType = CmdURLType.START_HBBTV_APP;
+    }
     switch (cmdType) {
 
         case CmdURLType.START_BROWSER:
-            asyncStartApp("app_lau_browser", command, false, false, false, false, storeType);
+            if(command && command.indexOf("mediaIndex.html")>-1){
+                asyncStartApp("app_lau_browser", assembleMediaURL(command), false, false, false, false, storeType);
+            }else{
+                asyncStartApp("app_lau_browser", command, false, false, false, false, storeType);
+            }
 
 
             break;
@@ -1124,15 +1173,19 @@ function sendCommndToTV(cmdType, command, setRunTimes, storeType) {
             break;
         case CmdURLType.START_HBBTV_APP:
             //asyncStartApp("app_tv_store", command, false);
+            DBG_ERROR('start a hbbtv app!!!!!!!!!!!!!!!!!'  +command);
+            var tmpCmd = command;
             deviceKeySet.HBBTVORIGIN = hiWebOsFrame.getCurrentPage();
             setWindowSize(0, 0, 1920, 1080);
             pauseDTV();
             closeDOthersModule();
             startHBBTVAppLoading();
+            deviceKeySet.HBBTVNEEDRESUME = false;
             openLiveTVModule([Msg.INFO, 0, Msg.PASSWORD, 0, Msg.SEARCH, 0, Msg.AUDIO, 0, Msg.SIGNAL, 0]);
             setTimeout(function() {
                 deviceKeySet.HBBTVAPPON = true;
-                sendAM(":am,hbbtv,:open=" + command);
+                // sendAM(":am,hbbtv,:open=" + command);
+                sendAM(":am,opera4x,hbbtv:open=" + tmpCmd);
             },1000);
             break;
         case CmdURLType.YOUTUBE:
@@ -1142,6 +1195,12 @@ function sendCommndToTV(cmdType, command, setRunTimes, storeType) {
 		        return;
 	        }
             asyncStartApp("app_youtube", command, false);
+            break;
+        case CmdURLType.FREEVIEW_APP:
+            //startHBBTVAppLoading(command);
+            //sendCommndToTV(CmdURLType.START_HBBTV_APP, command, true);
+            //return false;
+            //model.fvpepg.setFEPGAppURL([command, getFileName(command)]);
             break;
         default :
             setRunTimes = false;
@@ -1157,6 +1216,13 @@ function sendCommndToTV(cmdType, command, setRunTimes, storeType) {
 	    if(g_launcherBrand == "SA_OEM") {
 		    setAppInfoForSettingRecentUse(command,cmdType);
 	    }
+    }
+}
+
+function onFEPGAppURLChanged(url){
+    DBG_INFO(url);
+    if (url && FABaseUrl == url[0]) {
+        sendCommndToTV(CmdURLType.START_HBBTV_APP, url[1], true);
     }
 }
 
@@ -1196,6 +1262,7 @@ CmdURLType.START_FROM_STANDBY = 800;
 CmdURLType.STOP_FROM_DIALSERVER = 900;
 
 CmdURLType.START_HBBTV_APP = 60;
+CmdURLType.FREEVIEW_APP = 360;
 function HSAPPURL() {
 }
 HSAPPURL.CATAL = "http://www.test.bbc.co.uk/catal/?config=precert";
@@ -1549,6 +1616,10 @@ function refreshChListAftSearchChannel() {
         //chl_updateChannelList();
         //livetvchlist.updateChannelList();
         livetvchlist.initChannelList();
+        if(ENABLE_FVP) {
+            freeview_manager.changeByScan();
+        }
+        sendAM(":am,opera4x,hbbtv:retune=" + true); //add by hhx for send message to opera4x
 
     }
     catch (ex) {
@@ -1678,7 +1749,11 @@ function resumeDTV() {
     clearTimeout(globalDTVTimer);
     globalDTVTimer = setTimeout(function () {
         clearTimeout(globalDTVTimer);
+        sendAM(":am,opera4x,hbbtv:needresumetv=" + 1);
         sendAM(":am,dtv_app_mtk,:resume=dtv");
+        if(ENABLE_FVP) {
+            freeview_manager.onEnvChanged();
+        }
     }, 400);
 
 }
@@ -1686,8 +1761,11 @@ function resumeDTV() {
 function pauseDTV() {
 
     clearTimeout(globalDTVTimer);
+    sendAM(":am,opera4x,hbbtv:needresumetv=" + 0);
     sendAM(":am,dtv_app_mtk,:pause=dtv");
-
+    if(ENABLE_FVP) {
+        freeview_manager.onEnvChanged();
+    }
 }
 
 
@@ -1782,6 +1860,10 @@ function showLoadingOrLockKey(pageId, isStart) {
         var st = (isStart ? "started" : "stopped");
         DBG_INFO(pageId + " " + st + " time out, set to default state.");
         onAppStateChanged(pageId.split("app_")[1] + " timeout " + st);
+        //MT5657VL2EU-4024
+        if(st == "stopped"){
+            recoverMuteWhenAppStopped();
+        }
     }, tmpTimeOut);
 }
 
@@ -1802,15 +1884,18 @@ function endLoadingOrUnlockKey() {
     //hiWebOsFrame.setIsLoading(false);
 
 }
-function startHBBTVAppLoading(){
+function startHBBTVAppLoading(baseUrl){
     openBlackScreen();
     hiWebOsFrame.lockAllKeys("app");
     //$('#sdkLoading').css('display', 'block');
     hiWebOsFrame.showDynamicLoading(-1, 0);
     appLoading = true;
+    FABaseUrl = baseUrl;
     clearTimeout(appStateTimeout);
     appStateTimeout = setTimeout(function () {
         DBG_ERROR("hbbtv keyset timeout.");
+        FABaseUrl = "";
+        deviceKeySet.HBBTVNEEDRESUME = true;
         endLoadingOrUnlockKey();
     }, 15000);
 }
@@ -1842,8 +1927,12 @@ function asyncStartApp(pageId, command, isRemoteKey, isDialserver, isStandby, se
                 var crtPage = hiWebOsFrame.getCurrentPage();
 
                 debugE('Trying to open VIDAALiteLauncherEULADialog page:' + pageId);
+                if (!!isStandby) {
+                    sendAM(":dtv_app_mtk,am,:hotkey=0x8f000");
+                    sendAM(":am,dtv_app_mtk,:resume=dtv");
+                }
 
-                hiWebOsFrame.createPage("VIDAALiteLauncherEULADialog", null, crtPage, null, function (page) {
+                hiWebOsFrame.createPage("VIDAALiteLauncherEULADialog", null, crtPage, crtPage.priority+3, function (page) {
                     hiWebOsFrame.VIDAALiteLauncherEULADialogPage = page;
                     VIDAALiteLauncherEULADialogData.operateData.argList = tmpArg;
                     VIDAALiteLauncherEULADialogData.operateData.crtPage = crtPage;
@@ -2039,6 +2128,8 @@ function asyncStartApp(pageId, command, isRemoteKey, isDialserver, isStandby, se
         if (!!setRunTimes) {
             setAppRunTimesByUrl(command);
         }
+
+        appStarting = true;
     }
     catch (ex) {
         DBG_INFO(ex.message, DebugLevel.ERROR);
@@ -2105,7 +2196,6 @@ function onAppStateChanged(val) {
         }
     }
     if ("hbbtv" == strvec[0]) {
-        deviceKeySet.HBBTVPAUSED = ("paused" == strvec[2]);
         deviceKeySet.HBBTVSTATE = strvec[2];
     }
     if ("app_factory_lite" == pageId) {
@@ -2118,14 +2208,20 @@ function onAppStateChanged(val) {
         return;
     }
     if (!hiWebOsFrame[pageId] && "app_netflix" != pageId) {
-        if ("start_dail" != strvec[2]) {
+        if ("start_dail" != strvec[2] && !("dail" == strvec[2] && "app_BBC_iPlayer" == pageId)) {
             DBG_INFO("do not receive this state");
             return;
         }
         else {
-            DBG_INFO("start from dail");
+            DBG_INFO("start/stop from dail");
         }
     }
+    
+    if("stopped"==strvec[2] && "app_netflix" == pageId&& (!opera4xStarted)){
+        DBG_ALWAYS("[startOpera4x] after NETFLIX stopped");
+        startOpera4x();
+    }
+
     switch (strvec[2]) {
         case "started":
         case "resumed":
@@ -2169,6 +2265,7 @@ function onAppStateChanged(val) {
                         hiWebOsFrame[pageId].operateData.appStarted = true;
                         hiWebOsFrame[pageId].open();
                         hiWebOsFrame[pageId].hiFocus();
+                        appStarting = false;
                     });
                 }
                 catch (ex) {
@@ -2177,6 +2274,7 @@ function onAppStateChanged(val) {
             }
             else {
                 hiWebOsFrame[pageId].hiFocus();
+                appStarting = false;
                 if ("app_lau_browser" == pageId && hiWebOsFrame[pageId].operateData.commandType == CmdURLType.LAU_BROWSER_HIMEDIA) {
                     DBG_ALWAYS("HiMedia started");
                     //解决刚进入HiMedia时就退出的问题
@@ -2433,24 +2531,58 @@ function onAppStateChanged(val) {
             }
             break;
         case "start_dail":
-            if(!canCurrentPageProcEvent()) return;
-            if (isMainArchiveRecording()) {
-                model.pvr.StopRecord();
+            if("app_BBC_iPlayer" == pageId){
+                BBCDialStart();
             }
-            else if (isTimeShiftStatus()) {
-                model.timeshift.Stop();
+            else{
+                asyncStartApp(pageId, strvec[0], false, true, false);
             }
-            asyncStartApp(pageId, strvec[0], false, true, false);
             break;
         case "hotkey":
             asyncStartApp(pageId, strvec[0], false, false, true);
             break;
         case "dail":
-            asyncStopApp(pageId, null, CmdURLType.STOP_FROM_DIALSERVER);
+            if("app_BBC_iPlayer" == pageId){
+                BBCDialStop();
+            }
+            else{
+                asyncStopApp(pageId, null, CmdURLType.STOP_FROM_DIALSERVER);
+            }
             break;
         default :
             DBG_INFO("can not parse this am state:" + val);
             break;
+    }
+}
+
+function startAppByBBCDial(){
+    hiWebOsFrame[LiveTVModule.MAIN].operateData.callBackFunc = null;
+    deviceKeySet.HBBTVORIGIN = hiWebOsFrame.getCurrentPage();
+    setWindowSize(0, 0, 1920, 1080);
+    pauseDTV();
+    closeDOthersModule();
+    startHBBTVAppLoading();
+    openLiveTVModule([Msg.INFO, 0, Msg.PASSWORD, 0, Msg.SEARCH, 0, Msg.AUDIO, 0, Msg.SIGNAL, 0]);
+    setTimeout(function() {
+        deviceKeySet.HBBTVAPPON = true;
+        var bbc_url = readFileFromNative("hbbtv/BBC_iPlayer", 0);
+        sendAM(":am,opera4x,hbbtv:open=" + bbc_url);
+    }, 1000);
+}
+
+function BBCDialStart() {
+    if(checkIsAppOn()){
+        hiWebOsFrame[LiveTVModule.MAIN].operateData.callBackFunc = startAppByBBCDial;
+        checkAndCloseIfAppOn(hiWebOsFrame[LiveTVModule.MAIN]);
+    }
+    else{
+        startAppByBBCDial();
+    }
+}
+
+function BBCDialStop() {
+    if (deviceKeySet.HBBTVAPPON && hiWebOsFrame[LiveTVModule.MAIN].visible) {
+        pauseHBBTV();
     }
 }
 function getCommandType(dialsrv, standby) {
@@ -2907,7 +3039,8 @@ var g_pvrrecodstatetimer = 0;
 var g_currentIsRecording = false;
 function pvrRecordStateChanged(value) {
     DBG_ALWAYS("pvrRecordStateChanged: value=" + value);
-    if (value != PvrModelDefines.ENUM_SL2_TVAPI_PVR_STATE_RECORDING && value != PvrModelDefines.ENUM_SL2_TVAPI_PVR_STATE_STOPPED) {
+    if (value != PvrModelDefines.ENUM_SL2_TVAPI_PVR_STATE_RECORDING && value != PvrModelDefines.ENUM_SL2_TVAPI_PVR_STATE_STOPPED
+        && value != PvrModelDefines.ENUM_SL2_TVAPI_PVR_STATE_STOPPED_NOTIFY_3RD) {
         DBG_INFO("pvrRecordStateChanged: " + value + ", no used, return;");
         return;
     }
@@ -2924,6 +3057,9 @@ function pvrRecordStateChanged(value) {
                 closeLiveTVModule();
                 startRecordPage();
                 break;
+            case PvrModelDefines.ENUM_SL2_TVAPI_PVR_STATE_STOPPED_NOTIFY_3RD:
+                sendAM(":dtv_app_mtk,am,:wakeup=hotkey");    //need fall though
+                sendAM(":am,am,:start=opera4x");
             case PvrModelDefines.ENUM_SL2_TVAPI_PVR_STATE_STOPPED://停止
                 g_currentIsRecording = false;
                 hiWebOsFrame.endLoading("ENUM_SL2_TVAPI_PVR_STATE_STOPPED");
@@ -3142,7 +3278,9 @@ function onScheduleItemChaged(value) {
     DBG_INFO("onScheduleItemChaged: " + value);
 
     value.length >= 12 && (scheduleItemChagedBackGroundRecord = value[11]);
-
+    if (typeof pvrHardDiskCheckPageData != UNDEFINED_DEFSTR && !!pvrHardDiskCheckPageData.operateData.tmpEpgVal) {
+        pvrHardDiskCheckPageData.operateData.tmpEpgVal = null;
+    }
     var crntPage = hiWebOsFrame.getCurrentPage();
 
     if (null != crntPage && (hiWebOsFrame.isCurrentPageBeProtected() ||
@@ -3157,6 +3295,10 @@ function onScheduleItemChaged(value) {
         debugPrint("scheduleItemInfo: " + JSON.stringify(scheduleItemInfo));
 
         schedule.getScheduleList(false);
+        //预约时间到达时检测是否存在pvr相关界面，如果存在close掉;
+        if(hiWebOsFrame.getCurrentPageId() == "epg_book_edit_page" || hiWebOsFrame.getCurrentPageId() == "pvrOrtShiftDialogPage_id"){
+            hiWebOsFrame.getCurrentPage().close();
+        }
         if (scheduleItemInfo.bookType == 0) {
             if (crntPage.module == "setting" || crntPage.module == "settingfirst") {
                 DBG_ALWAYS("current page[" + crntPage.id + "] can not popup reminder.");
@@ -3223,7 +3365,7 @@ function onScheduleItemChaged(value) {
             catch (ex) {
                 debugPrint("prgram error: " + ex.message);
             }
-            if (checkIsAppOn()) {
+            if (checkIsAppOn() || !!deviceKeySet.HBBTVAPPON) {
                 hiWebOsFrame.noRecordOfCurChannel = false;
                 debugPrint("start record dialog open!");
                 isExistProgramRecording = false;
@@ -3320,6 +3462,10 @@ function chl_startPVRTShiftDialog(prgrm, keyValue) {
     //如果当前页面不是blankPage，退出
     if (hiWebOsFrame.getCurrentPageId() != "livetv_main") {
         debugPrint("current page id: " + hiWebOsFrame.getCurrentPageId());
+        return;
+    }
+    if (!!deviceKeySet.HBBTVAPPON) {
+        debugPrint("hbbtv app is runing, ignore");
         return;
     }
     //没有用
@@ -3844,6 +3990,19 @@ function speedTestResultForTshift(id, ret) {
     else {
         startTshiftAfterPwd = false;
     }
+}
+
+function getIsInlockTime() {
+    var isInLock = 1;
+    try {
+        isInLock = tv ? model.source.getCurrentTimeInLock() : 1;
+    }
+    catch (ex) {
+        isInLock = 1;
+        DBG_ERROR("getIsInlockTime: " + ex.message);
+    }
+    DBG_INFO("isInLock is " + isInLock);
+    return isInLock
 }
 
 function ifTvLockedForTshift() {
@@ -4704,41 +4863,46 @@ function logReport(category, param, start) {
 
     var testStr = "", deviceID = "", remoteType = "", platform = "", DeviceMsg = "";
     if ('EM' == hiWebOsFrame.getCurrentArea()) {
-        deviceID = "86100300900000b00000070c";
-        remoteType = "EN2B27";
-	    platform = "MT5657";
+            //deviceID = "86100300900000b00000070c";
+            remoteType = "EN2B27";
+            platform = "MT5657";
+
     }
     else if ('EU' == hiWebOsFrame.getCurrentArea()) {
         if("5655_EU_MARKET" == currentPlatform_config) {
-            deviceID = "861003009000008000000711";
+            //deviceID = "861003009000008000000711";
             remoteType = "EN2X27";
             platform = "MT5655";
         }
         else {
-            deviceID = "86100300900000a00000070c";
+            //deviceID = "86100300900000a00000070c";
             remoteType = "EN2X27";
             platform = "MT5657";
         }
     }
     else if ('COL' == hiWebOsFrame.getCurrentArea()) {
-        deviceID = "86100300900000a000000711";
+        //deviceID = "86100300900000a000000711";
         remoteType = "EN2D27";
         platform = "MT5655";
     }
     else {
 	    if("APP_5890_SA" == currentPlatform_config) {
-		    deviceID = "86100300900000400000070c";
+		    //deviceID = "86100300900000400000070c";
 		    remoteType = "EN2H27";
 		    platform = "MT5657";
 	    }
 	    else {
-		    deviceID = "86100300900000b000000711";
+		    //deviceID = "86100300900000b000000711";
 		    remoteType = "EN2H27";
 		    platform = "MT5655";
 	    }
     }
 
     try {
+
+        deviceID=tv?model.network.getSystem_featureCode():"";
+        DBG_INFO('get deviceID is:'+deviceID);
+
         testStr = Hisense.File.read("am_tv_mac_address", 0);
 	    DeviceMsg = Hisense.File.read("am_tv_model_name", 0);
 	    curBrand = Hisense.File.read("am_tv_brand", 0);
@@ -4776,9 +4940,11 @@ function logReport(category, param, start) {
 		                    return;
 	                    }
                         Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + curTime + "|0|" + param + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+
                         writeFileToNative("logReportAppRun", curTime + "|" + param + "|1", 0);
                         currentOperateTime = curTime;
                         currentOperateName = param;
+
                     }
                 }
             }
@@ -4797,6 +4963,16 @@ function logReport(category, param, start) {
             break;
         case 'GTRemoteControl':
             Hisense.RunLog.writeTvRunLog(120, "1.2|120|" + deviceID + "|" + curTime + "|" + param + "|" + curCountry + "|" + curZone + "|" + remoteType + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+            break;
+        case 'HBBTVRun':
+            if(param){
+                if(typeof (param) == "object"){
+                    Hisense.RunLog.writeTvRunLog(122, "1.2|122|" + deviceID + "|" + curTime + "|" + param.categoryName + "|" + param.recommandId + "|" + param.contentName + "|" + param.contentType + "|" + curZone + "|" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                    Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + curTime + "|0|" + param.contentName + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                }else{
+                    Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + curTime + "|0|" + param + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                }
+            }
             break;
 	    case 'GTRemoteControlNetFlix':
 		    if(!!arguments[2]) {
@@ -5316,7 +5492,8 @@ function checkSavingPathOfScheduleRecord() {
         }
         else
         {
-            var tempUuid = usbList[0].split(";")[2];
+            var usb_0 = usbList[0].split(";");
+            var tempUuid = usb_0[usb_0.length - 1];
             DBG_INFO("tempUuid=" + tempUuid);
             model.pvr.setStationUuid(tempUuid);
             sendRecordCommand();
@@ -5380,14 +5557,16 @@ function pvrOrTsIsUsbPathOk(uid) {
         return false;
     }
     var findUsbUuid = false;
+    var usb_temp = [];
     for (var i = 0, temp = 0; i < usbList.length; i++) {
         if (!!usbList[i]) {
-            if (usbList[temp].split(";")[2] == uid) {
-                debugPrint("Current Uuid:" + usbList[temp].split(";")[2]);
+            usb_temp = usbList[temp].split(";");
+            if (usb_temp[usb_temp.length-1] == uid) {
+                debugPrint("Current Uuid:" + usb_temp[usb_temp.length-1]);
                 findUsbUuid = true;
                 break;
             }
-            debugPrint("Current Uuid:" + usbList[temp].split(";")[2]);
+            debugPrint("Current Uuid:" + usb_temp[usb_temp.length-1]);
             ++temp;
         }
     }
@@ -5400,6 +5579,7 @@ function pvrPartitionsInit() {
         clearTimeout(hiWebOsFrame.pvrHardDiskCheck.searchHDTimer);
         var usbList = pvrOrTsGetUsbList();
         debugPrint("Now List is (are) :~" + usbList + "~");
+        var tmp_parinfo = [];
         var tmpParPath = [];
         var tmpParName = [];
         var tmpParUuid = [];
@@ -5407,9 +5587,10 @@ function pvrPartitionsInit() {
             debugPrint("usbLength :" + usbList.length);
             for (var i = 0; i < usbList.length; i++) {
                 if (!!usbList[i]) {
-                    tmpParPath[i] = usbList[i].split(";")[0];
-                    tmpParName[i] = usbList[i].split(";")[1];
-                    tmpParUuid[i] = usbList[i].split(";")[2];
+                    tmp_parinfo = usbList[i].split(";");
+                    tmpParPath[i] = tmp_parinfo[0];
+                    tmpParName[i] = tmp_parinfo[1];
+                    tmpParUuid[i] = tmp_parinfo[tmp_parinfo.length - 1];
                     debugPrint("Current mnt path :" + tmpParPath[i] + "Current par name:" + tmpParName[i] + "Current Uuid:" + tmpParUuid[i]);
                 }
             }
@@ -6270,6 +6451,7 @@ function setHBBTVEnableState(country) {
 function onTvsetLocationChaged(country) {
     try
     {
+        onTvLocationChaged(country);
         if(hiWebOsFrame.getCurrentArea()=="EU")
         {
             if((country=="RUS"
@@ -6299,7 +6481,8 @@ function onTvsetLocationChaged(country) {
 
                 }
             }
-
+            var isUK = hiWebOsFrame.getCurrentCountry() == "UK";
+            ENABLE_FVP = tv ? (1 == parseInt(model.basicSetting.getDisclaimer()) && isUK) : true;
         }
     }catch (e)
     {
@@ -6311,13 +6494,20 @@ function onTvsetLocationChaged(country) {
 }
 function pauseHBBTV() {
     if(enableHbbTVControl() && !deviceKeySet.HBBTVENABLE || "SA" == InitArea) return;
-    deviceKeySet.HBBTVPAUSED = true;
     deviceKeySet.HBBTVORIGIN = null;
-    sendAM(":am,hbbtv,:pause=hbbtv");
+    sendAM(":am,opera4x,hbbtv:pause");
+    try {
+            if("SA" != InitArea && !model.mheg5.getI32Enable())
+            model.mheg5.setI32Enable(1);
+        }
+    catch(ex){
+        DBG_ERROR(ex.message);
+    }
+
 }
 function resumeHBBTV(){
     if(enableHbbTVControl() && !deviceKeySet.HBBTVENABLE || "SA" == InitArea) return;
-    sendAM(":am,hbbtv,:resume=hbbtv");
+    sendAM(":am,opera4x,hbbtv:resume");
 }
 function stopHBBTV(direct){
     if(enableHbbTVControl() && !direct && !deviceKeySet.HBBTVENABLE || "SA" == InitArea) return;
@@ -6351,7 +6541,7 @@ function getMediaURL(type){
 HSAPPURLREVERSE[getMediaURL(0)] = "media";
 
 function startOpera4x(){
-    if("APP_5890_SA" == currentPlatform_config && !opera4xStarted){
+    if(!opera4xStarted){
         sendAM(":am,am,:start=opera4x");
         opera4xStarted = true;
     }
@@ -6442,6 +6632,9 @@ function getProgramLocalTime(startTime, endTime, mode, f){
         case 4:
             str = localStartTime + getHTMLSpace(2) + localStartDay + " - " + localEndTime + getHTMLSpace(2) + localEndDay;
         break;
+        case 5:
+            str = localStartTime + " - " + localEndTime ;
+            break;
         default:
             str = localStartTime + " - " + localEndTime;
             break;
@@ -6449,6 +6642,19 @@ function getProgramLocalTime(startTime, endTime, mode, f){
 
     return str;
 
+}
+
+function getFvpPrograms(chnls, startLine, endLine, FirstDay, notPreLoad, onGetFvpPrograms){
+    var ids = [];
+    for (var i = 0; i < chnls.length; i++) {
+        ids.push(chnls[i].serviceId);
+    }
+
+    if (tv) {
+        freeview_manager.getScheduleData(ids, startLine, endLine, FirstDay, notPreLoad, onGetFvpPrograms);
+    } else {
+        freeview_data_adapter.getProgramList(chnls, startLine, endLine, onGetFvpPrograms);
+    }
 }
 
 function openBookSchedulePage (ori) {
@@ -6463,12 +6669,12 @@ function openBookSchedulePage (ori) {
     });
 }
 
-function openBookAddPage(chnl, prgrm, ori){
+function openBookAddPage(chnl, prgrm, ori, frmEPG){
     var pageId = "epg_book_add_page";
     hiWebOsFrame.lockAllKeys("open book add");
     hiWebOsFrame.createPage(pageId, null, ori, null, function (p) {
         hiWebOsFrame[pageId] = p;
-        if(epgBkAdd.initOperateData(chnl, prgrm)){
+        if(epgBkAdd.initOperateData(chnl, prgrm, frmEPG)){
             hiWebOsFrame[pageId].open();
             hiWebOsFrame[pageId].hiFocus();
         }
@@ -6489,13 +6695,13 @@ function openBookEditPage(chnl, prgrm, isContain, manualStop, bookType, ori){
     });
 }
 
-function openBookAddOrEditPage(chnl, prgrm, ori){
+function openBookAddOrEditPage(chnl, prgrm, ori, frmEPG){
     var bkedPrgrm = schedule.getBookingInfoByProgram(prgrm);
     if (null != bkedPrgrm) {
         openBookEditPage(chnl, bkedPrgrm, true, false, bkedPrgrm.bookType, ori);
     }
     else {
-        openBookAddPage(chnl, prgrm, ori);
+        openBookAddPage(chnl, prgrm, ori, frmEPG);
     }
 }
 
@@ -6585,6 +6791,7 @@ function openEPGPage() {
         hiWebOsFrame.createPage('epg', null, null, null, function(pageEPG) {
             try {
                 DBG_INFO("created epg");
+                epg.initBcakArguments();
                 hiWebOsFrame.epg = pageEPG;
                 if (!epg.openEPG()) {
                     openLiveTVModule([Msg.INFO, 0]);
@@ -6704,15 +6911,21 @@ var appNameChangeForLogReport = {
 }
 
 function getFreeviewVersion(){
-    try{
-        return (1 == parseInt(model.timerfunc.getFreeviewVersion()));
+    DBG_ERROR("hiWebOsFrame.getCurrentCountry():"+hiWebOsFrame.getCurrentCountry());
+    if("UK" == hiWebOsFrame.getCurrentCountry()){
+        debugAlways('init FREEVIEWTEST true');
+        return true;
+    }else{
+        debugAlways('init FREEVIEWTEST false');
+        return false;
     }
-    catch(ex){
-        DBG_ERROR(ex.message);
-    }
-    return false;
 }
 
+function onTvLocationChaged(curLocation){
+    DBG_ALWAYS('curLocation is:'+curLocation);
+    FREEVIEWTEST=(curLocation.toUpperCase()=='GBR')?true:false;
+    DBG_ALWAYS('FREEVIEWTEST:'+FREEVIEWTEST);
+}
 
 function convertLanguage() {
     var keys = Object.keys(langPackages);
@@ -6887,4 +7100,113 @@ var globalfunc = new GlobalFuncClass();
 
 function checkHBBTVKeySet(){
     return (deviceKeySet.HBBTVKEYSET > 15 && deviceKeySet.HBBTVKEYSET != 0x2000);
+}
+function getFileName(crid) {
+    try {
+        var arr = crid.split(/\/|\./g).reverse();
+        var str = arr[3] + arr[2] + arr[1] + arr[0];
+        return str.replace(/[^a-zA-Z0-9]/g, "");
+    } catch (ex) {
+        DBG_ERROR(ex.message);
+        return "";
+    }
+}
+function startFreeviewEPGPlayer(url) {
+    //deviceKeySet.HBBTVORIGIN = hiWebOsFrame.getCurrentPage();
+    pauseDTV();
+    startHBBTVAppLoading();
+    setTimeout(function() {
+        deviceKeySet.HBBTVAPPON = true;
+        sendAM(":am,opera4x,hbbtv:open=" + url);
+    }, 1000);
+    logReport('HBBTVRun', 'Hbbtv', 1);
+}
+
+function isNULLProgram(prgrm){
+    return !prgrm || ("" == prgrm.eventId && "" == prgrm.programId);
+}
+
+function isNAProgram(prgrm){
+    return (!prgrm || "N/A" == prgrm.eventId || "N/A" == prgrm.programId);
+}
+
+function checkFVAvailable(){
+
+}
+
+function assembleMediaURL(mediaURL) {
+    if(!mediaURL){
+        return "";
+    }
+    var returnURL = mediaURL;
+    if(returnURL.indexOf("pvrflag=")>-1){
+        var paramName = "pvrflag";
+        var re=eval('/('+ paramName+'=)([^&]*)/gi');
+        try{
+            if(re){
+                var newURL = returnURL.replace(re,paramName+'='+getPVRFlag());
+                if(newURL){
+                    returnURL = newURL;
+                }
+            }
+        }catch(ex){
+            DBG_ERROR(ex.message);
+        }
+    }else{
+        returnURL +="&pvrflag="+getPVRFlag();
+    }
+    return returnURL;
+}
+function getSourceIdbyKey(keycode){
+    var sourceid="";
+    var name;
+    var searchlist=[];
+    debugPrint("keycode"+keycode);
+    switch (keycode){
+        case VK_AV1:
+            searchlist=["av1","av"];
+            break;
+        case VK_AV2:
+            searchlist=["av2"];
+            break;
+        case VK_AV3:
+            searchlist=["scart","av3"];
+            break;
+        case VK_COMPONENT1:
+            searchlist=["component1","component"];
+            break;
+        case VK_HDMI1:
+            searchlist=["hdmi1","hdmi1_uhd"];
+            break;
+        case VK_HDMI2:
+            searchlist=["hdmi2","hdmi2_uhd"];
+            break;
+        case VK_HDMI3:
+            searchlist=["hdmi3","hdmi3_uhd"];
+            break;
+        case VK_HDMI4:
+            searchlist=["hdmi4","hdmi4_uhd"];
+            break;
+        case VK_HDMI5:
+            searchlist=["hdmi5","hdmi5_uhd"];
+            break;
+        case VK_VGA:
+            searchlist=["vga"];
+            break;
+    }
+    var temp=tv?model.source.getInputName():[0,"TV",0,0,"TV",0,1,"AV",0,0,"AV",0,3,"HDMI1",0,0,"HDMI1",0,4,"HDMI2",0,0,"HDMI2",0];
+    var cout=parseInt(temp.length/6);
+    debugPrint("get sourcelist"+temp);
+    for(var i=0;i<cout;i++)
+    {
+        name=temp[i*6+1];
+        for(var j=0;j<searchlist.length;j++){
+            if(name.toLowerCase()==searchlist[j]){
+                sourceid=temp[i*6];
+                return sourceid;
+            }
+        }
+    }
+    debugPrint("can not find the source in current source list ");
+    return ;
 }

@@ -1,45 +1,73 @@
-<div class="epgTop">
-	<span id="epg_title"></span>
-	<span id="epg_time"></span>
-</div>
-
 <div class="epgDesc">
 	<div class="epgPIP">
-		<span id="epg_pip_channel"></span>
+		<div class="epgFVPLogo">
+            <span id="epg_title"></span>
+			<img id="epg_fvp_logo">
+		</div>
+		<div class="epgTVWindow">
+			<span id="epg_pip_channel"></span>
+		</div>
+		<div class="epgTunerName">
+			<span id="epg_tip_tuner"></span>
+		</div>
 	</div>
-	<div class="epgInfo">
-		<div class="epgInfoTop">
-			<span id="epg_channel_number"></span>
-			<span id="epg_channel_name"></span>
-			<img id="epg_channel_lock" src="img/common/transparent.png">
-			<img id="epg_channel_encrypt" src="img/common/transparent.png">
-			<div class="epgProgramType">
-				<span id="epg_type_color_pink"></span>
-				<span id="epg_type_color_green"></span>
-				<span id="epg_type_color_purple"></span>
+	<div class="epgInfoTimeAxis">
+		<div class="epgInfo">
+			<span id="epg_time"></span>
+			<div class="epgInfoTop">
+				<span id="epg_channel_name"></span>
+				<img id="epg_program_book_flag">
+				<div class="epgProgramType">
+					<span id="epg_type_color_purple"></span>
+					<span id="epg_type_color_green"></span>
+					<span id="epg_type_color_pink"></span>
+				</div>
+			</div>
+			<div class="epgInfoMid">
+				<div id="epg_progrm_name" style="overflow: hidden; white-space: nowrap"></div>
+				<div id="epg_program_time"></div>
+			</div>
+			<div class="epgShortDetail">
+				<div id="epg_program_detail"></div>
+				<div id="epg_detail_ellipsis">...</div>
 			</div>
 		</div>
-		<div class="epgInfoMid">
-			<span id="epg_progrm_name"></span>
-			<img id="epg_program_book" src="img/common/transparent.png">
+		<div class="epgTimeAxis">
+			<ul id="epg_time_axis_panel">
+				<li>
+					<span id="axis_title"></span>
+					<span id="axis_time"></span>
+				</li>
+			</ul>
+			<img id="epg_time_left_tip">
+			<img id="epg_time_right_tip">
 		</div>
-		<span id="epg_program_time"></span>
-		<div id="epg_program_detail"></div>
-		<div id="epg_detail_ellipsis">...</div>
 	</div>
 </div>
 
 <div class="epgEventList">
-	<div class="epgTimeAxis">
-		<div>
-			<span id="epg_tip_date"></span>
-			<span id="epg_tip_tuner"></span>
-		</div>
-		<span id="epg_time_axis_0"></span>
-		<span id="epg_time_axis_1"></span>
-		<span id="epg_time_axis_2"></span>
-	</div>
-	<ul id="epg_channel_list" class="epgCHListPanel">
+	<ul id="epg_channel_list">
+		<li>
+			<div class="epgChannels">
+				<span id="channel_number"></span>
+				<img id="channel_logo" onError="javascript:this.src='img/common/transparent.png';">
+				<span id="channel_name"></span>
+				<img id="channel_fav">
+				<img id="channel_lock">
+				<img id="channel_encrypt">
+			</div>
+			<ul id="epg_program_event">
+				<li>
+					<div class="epgEventItem">
+						<span id="event_name"></span>
+						<img id="event_book">
+					</div>
+					<div class="epgEventTheme">
+						<img id="event_theme">
+					</div>
+				</li>
+			</ul>
+		</li>
 	</ul>
 	<div id="epg_time_line_current"></div>
 </div>
@@ -52,6 +80,4 @@
 		</li>
 	</ul>
 </div>
-<div class="freeviewLogo">
-
-</div>
+<div class="epgPanelShadow"></div>

@@ -61,7 +61,7 @@
 //	NetworkModelDefines.SL2_TVAPI_I32_NETWORK_TV_NAME_INDEX= "tvapi.i32.network.tv.name.index";
 	NetworkModelDefines.SL2_TVAPI_I32_NETWORK_TV_NAME= "tvapi.i32.network.tv.name";
     	NetworkModelDefines.SL2_TVAPI_I32_NETWORK_ETHERNET_CONNECTED= "tvapi.i32.network.ethernet.connected";
-
+    NetworkModelDefines.SL2_TVAPI_STR_SYSTEM_FEATURE_CODE = "tvapi.str.system.feature.code";
 
 	 // enum or defined is here
 
@@ -163,7 +163,10 @@ function NetworkModel( parentModel ) {
             NetworkModelDefines.SL2_TVAPI_I32_NETWORK_ENUM_NETWORK_AVAILABLE,
             "getEnumNetworkAvailable", "setEnumNetworkAvailable", "onEnumNetworkAvailableChaged", 
             null, null );
-
+    // getSystem_featureCode
+            this.registerStringObject(
+        NetworkModelDefines.SL2_TVAPI_STR_SYSTEM_FEATURE_CODE,
+                "getSystem_featureCode", "setSystem_featureCode", "onSystem_featureCodeChaged", null, null);
     // EnumNetworkEtherUnplug
             this.registerIntegerObject(
             NetworkModelDefines.SL2_TVAPI_I32_NETWORK_ENUM_NETWORK_ETHERNET_UNPLUG,

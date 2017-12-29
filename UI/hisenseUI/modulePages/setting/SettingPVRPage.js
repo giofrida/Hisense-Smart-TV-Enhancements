@@ -306,6 +306,7 @@ function PartitionsInit() {
 
 	var usbList = getUsbListPVRTshift();
 	debugRM("Now List is (are) :~" + usbList + "~");
+	var tmp_parinfo = [];
 	var tmpParPath = [];
 	var tmpParName = [];
 	var tmpParUuid = [];
@@ -316,11 +317,12 @@ function PartitionsInit() {
 		{
 			if(!!usbList[i])
 			{
-				tmpParPath[temp] = usbList[temp].split(";")[0];
+				tmp_parinfo = usbList[temp].split(";");
+				tmpParPath[temp] = tmp_parinfo[0];
 				debugRM("Current mnt path :" + tmpParPath[temp]);
-				tmpParName[temp] = usbList[temp].split(";")[1];
+				tmpParName[temp] = tmp_parinfo[1];
 				debugRM("Current mnt name :" + tmpParName[temp]);
-				tmpParUuid[temp] = usbList[temp].split(";")[2];
+				tmpParUuid[temp] = tmp_parinfo[tmp_parinfo.length-1];
 				debugRM("Current mnt uuid :" + tmpParUuid[temp]);
 				++temp;
 			}

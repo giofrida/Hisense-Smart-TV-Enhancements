@@ -491,7 +491,8 @@ function ChlManagerFliterPage() {
             "chl_manager_fliter_current_type1": "All",
             "chl_manager_fliter_current_sort1": "0-9",
             "flag":0,
-            "typeUidLeft":[]
+            "typeUidLeft":[],
+            "deleteHD":false
         },
         langData: {
             "Encryption": [],
@@ -528,11 +529,17 @@ function ChlManagerFliterPage() {
 
     function rewriteFliterPageData(pageData) {
         opeData = pageData.operateData;
-        if(null != currentPlatform_config.match("5655") || null != currentPlatform_config.match("5882")){
+        if(opeData.deleteHD){
             pageData.chl_manager_fliter_HD_list_5657.disable = true;
-        }else{
             pageData.chl_manager_fliter_HD_list.disable = true;
+        }else{
+            if(null != currentPlatform_config.match("5655") || null != currentPlatform_config.match("5882")){
+                pageData.chl_manager_fliter_HD_list_5657.disable = true;
+            }else{
+                pageData.chl_manager_fliter_HD_list.disable = true;
+            }
         }
+
         if(opeData.flag){
             pageData.chl_manager_fliter_src_list.DataSelectedIndex = opeData.SrcDataSelectedIndex1;
             pageData.chl_manager_fliter_HD_list.DataSelectedIndex = opeData.HDDataSelectedIndex1;
@@ -592,6 +599,7 @@ function ChlManagerFliterPage() {
     self.onOpenChlManagerFilter = function () {
         //read data
         var opeData = chlmanagerfliterpage.pageData.operateData;
+        opeData.deleteHD = true;
         tempid=this.page.origin.id;
         typeUid= opeData.typeUidLeft; //channelmanagerpage.getCurrentSelecedList();
         if( tempid=="channel_manager_fav_edit")
@@ -600,41 +608,20 @@ function ChlManagerFliterPage() {
         }
         debugPrint('____typeUid.uid:::::::: ' +typeUid.uid);
         hiWebOsFrame.channel_manager_fliter.rewrite();
-        if(null != currentPlatform_config.match("5655") || null != currentPlatform_config.match("5882")){
-            $("#chl_manager_fliter_HD_contener").css("display","block");
+        if(opeData.deleteHD){
+            $("#chl_manager_fliter_hd_1").css("display","none");
+            $("#chl_manager_fliter_HD_contener").css("display","none");
+            $("#chl_manager_fliter_HD_contener_5657").css("display","none");
         }else{
-            $("#chl_manager_fliter_HD_contener_5657").css("display","block");
+            if(null != currentPlatform_config.match("5655") || null != currentPlatform_config.match("5882")){
+                $("#chl_manager_fliter_HD_contener").css("display","block");
+            }else{
+                $("#chl_manager_fliter_HD_contener_5657").css("display","block");
+            }
         }
         hiWebOsFrame.channel_manager_fliter.hiFocus();
         chlmanagerfliterpage.doFilterChannels(tempid);
         hiWebOsFrame.endLoading();
-    }
-
-    function eventRowsToChannel(rows) {
-        var channels = [];
-//        debugPrint('eventRowsToChannel::::::::::::::::::::::'+JSON.stringify(rows));
-        //[name, listuid, attr, number, svruid, srvid, strmid, ntwkid, uri, frontend, satellite]
-        for (var i = 0; i < rows.length; i++) {
-            if((rows[i][4] & (1 << 3)))     //skip false
-            {
-            var chnl = {
-                number: rows[i][0],
-                name: rows[i][1],
-                uid: rows[i][2],
-//                listuid: rows[i][2],
-                type:rows[i][3],
-                attr: parseInt(rows[i][4]),
-                skip: !(rows[i][4] & (1 << 3)),
-                uuid: rows[i][5],
-                HdSd: getDefinitionFlag(parseInt(rows[i][6])),
-                tvType:rows[i][7],
-                SvlRecID: rows[i][8],
-                img: false
-            };
-            channels.push(chnl);
-        }
-        }
-        return channels;
     }
     function getDefinitionFlag(flag) {
         if((flag == 17) || (flag >= 25 && flag <= 30)){
@@ -647,84 +634,35 @@ function ChlManagerFliterPage() {
             return 2;//SD
         }
     }
-    function refreshCurrentPage(list,event) {
-        if (event.type == TableIterator.EVENT_TYPE_ROWS_READ) {
-            filtedChannels = eventRowsToChannel(event.rows);
-//            debugPrint('________filtedChannels::::::::::::::::::::::'+JSON.stringify(filtedChannels));
-            //scream
-            if (FILETER.SCREAMYES == filterKey.scream) {
-                filtedChannels = filtedChannels.filter(function (v) {
-                    return (v.attr & 1 << 11) !=0;
-                });
-            }
-            else if (FILETER.SCREAMNO == filterKey.scream) {
-                filtedChannels = filtedChannels.filter(function (v) {
-                    return (v.attr & 1 << 11) == 0;
-                });
-            }
+    function compareByName(a, b) {
+        var aLowCase = a.name.toLowerCase();
+        var bLowCase = b.name.toLowerCase();
 
-            //hd                                              //HdSd==25 高清，HdSd==1 标清
-            if (FILETER.HDYES == filterKey.hd) {
-                filtedChannels = filtedChannels.filter(function (v) {
-                    return (v.HdSd == 1);
-                });
-            }
-            else if (FILETER.HDNO == filterKey.hd) {
-                filtedChannels = filtedChannels.filter(function (v) {
-                    return (v.HdSd == 2);
-                });
-            }
-            else if(FILETER.UHD == filterKey.hd){
-                filtedChannels = filtedChannels.filter(function (v) {
-                    return (v.HdSd ==3);
-                });
-            }
-
-            //lock
-            if (FILETER.LOCKYES == filterKey.lock) {
-                filtedChannels = filtedChannels.filter(function (v) {
-                    return (v.attr & 1 << 8) !=0;
-                });
-            }
-            else if (FILETER.LOCKNO == filterKey.lock) {
-                filtedChannels = filtedChannels.filter(function (v) {
-                    return (v.attr & 1 << 8) == 0;
-                });
-            }
-            //type
-            if (FILETER.TYPETV == filterKey.type) {
-                filtedChannels = filtedChannels.filter(function (v) {
-                    return (v.tvType == 1);            //////////////////////////此处不确定6
-                });
-            }
-            else if (FILETER.TYPERADIO == filterKey.type) {
-                filtedChannels = filtedChannels.filter(function (v) {
-                    return (v.tvType == 2);
-                });
-            }
-            else if(FILETER.TYPEDATA == filterKey.type){
-                filtedChannels = filtedChannels.filter(function (v) {
-                    return (v.tvType == 3);
-                });
-            }
-
-            if( tempid=="channel_manager_bg")
-            {
-                channelmanagerbg.setFilterChannels(filtedChannels);
-            }
-            else
-            {
-                channelmanagerfav.setFilterChannels(filtedChannels,opeData.flag);
-            }
+        if (aLowCase > bLowCase) {
+            return 1
         }
-        else if (event.type == TableIterator.EVENT_TYPE_TOTAL_COUNT) {
-            debugPrint("list name: " + list.name + "    event.totalCount:" + event.totalCount);
-//            if (event.totalCount <= 0)
-//            {
-//                return;
-//            }
-            m_getservicelistIterator.readNextRows(event.totalCount);
+        else if (aLowCase == bLowCase) {
+            return 0
         }
+        else {
+            return -1
+        }
+    }
+
+    function isZeroToNineOrAtoZ(chrt) {
+        if (!chrt) return false;
+        return ((chrt >= "0" && chrt <= "9") ||
+        (chrt >= "A" && chrt <= "Z") ||
+        (chrt >= "a" && chrt <= "z"));
+    }
+
+    function sortChannels(chnls) {
+        if (!Array.isArray(chnls) || chnls.length == 0) return chnls;
+        var tmpChannels = copyObj(chnls);
+        tmpChannels = tmpChannels.filter(function(v) {return isZeroToNineOrAtoZ(v.name[0])});
+        tmpChannels.sort(compareByName);
+        tmpChannels = tmpChannels.concat(chnls.filter(function(v) {return !isZeroToNineOrAtoZ(v.name[0])}));
+        return tmpChannels;
     }
     self.doFilterChannels = function (tempid) {
 
@@ -749,26 +687,16 @@ function ChlManagerFliterPage() {
         //(a.name.charCodeAt(0)-b.name.charCodeAt(0));
         if(tv)
         {
-            if (FILETER.SORTA == filterKey.sort) {
-                if( tempid=="channel_manager_bg")
-                {
-                    model.servicelist.SortByName(typeUid.uid,opeData.SortDataSelectedIndex);
-                    getChannelsByListId(typeUid, refreshCurrentPage);
-                }else
-                {
-                    if(opeData.flag){
-                        model.servicelist.SortByName(typeRightUid.uid,opeData.SortDataSelectedIndex1);
-                        getChannelsByListId(typeRightUid, refreshCurrentPage);
-                    }else{
-                        model.servicelist.SortByName(typeUid.uid,opeData.SortDataSelectedIndex);
-                        getChannelsByListId(typeUid, refreshCurrentPage);
-                    }
+                if (FILETER.SORTA == filterKey.sort) {
+
+                    filtedChannels = sortChannels(filtedChannels);
+
                 }
-            }
-            else if (FILETER.SORT0 == filterKey.sort) {
-                filtedChannels = filtedChannels.sort(function (a, b) {
-                    return a.number - b.number;
-                });
+                else if (FILETER.SORT0 == filterKey.sort) {
+                    filtedChannels = filtedChannels.sort(function (a, b) {
+                        return a.number - b.number;
+                    });
+                }
             //    scream
                 if (FILETER.SCREAMYES == filterKey.scream) {
                     filtedChannels = filtedChannels.filter(function (v) {
@@ -780,24 +708,24 @@ function ChlManagerFliterPage() {
                         return (v.attr & 1 << 11) == 0;
                     });
                 }
-
-                //hd                                             //HdSd==25 高清，HdSd==1 标清
-                if (FILETER.HDYES == filterKey.hd) {
-                    filtedChannels = filtedChannels.filter(function (v) {
-                        return ( v.HdSd == 1);
-                    });
+                if(!opeData.deleteHD){
+                    //hd                                             //HdSd==25 高清，HdSd==1 标清
+                    if (FILETER.HDYES == filterKey.hd) {
+                        filtedChannels = filtedChannels.filter(function (v) {
+                            return ( v.HdSd == 1);
+                        });
+                    }
+                    else if (FILETER.HDNO == filterKey.hd) {
+                        filtedChannels = filtedChannels.filter(function (v) {
+                            return (v.HdSd == 2);
+                        });
+                    }
+                    else if(FILETER.UHD == filterKey.hd){
+                        filtedChannels = filtedChannels.filter(function (v) {
+                            return (v.HdSd ==3);
+                        });
+                    }
                 }
-                else if (FILETER.HDNO == filterKey.hd) {
-                    filtedChannels = filtedChannels.filter(function (v) {
-                        return (v.HdSd == 2);
-                    });
-                }
-                else if(FILETER.UHD == filterKey.hd){
-                    filtedChannels = filtedChannels.filter(function (v) {
-                        return (v.HdSd ==3);
-                    });
-                }
-
                 //lock
                 if (FILETER.LOCKYES == filterKey.lock) {
                     filtedChannels = filtedChannels.filter(function (v) {
@@ -841,7 +769,6 @@ function ChlManagerFliterPage() {
                    channelmanagerfav.setFilterChannels(filtedChannels,opeData.flag);
                 }
 //        }
-            }
         }
         else
         {
@@ -867,19 +794,19 @@ function ChlManagerFliterPage() {
                     return (v.attr & 1 << 11) == 0;
                 });
             }
-
-            //hd                                              //不确定1 << 2
-            if (FILETER.HDYES == filterKey.hd) {
-                filtedChannels = filtedChannels.filter(function (v) {
-                    return (v.attr & 1 << 2) != 0;
-                });
+            if(!opeData.deleteHD){
+                //hd                                              //不确定1 << 2
+                if (FILETER.HDYES == filterKey.hd) {
+                    filtedChannels = filtedChannels.filter(function (v) {
+                        return (v.attr & 1 << 2) != 0;
+                    });
+                }
+                else if (FILETER.HDNO == filterKey.hd) {
+                    filtedChannels = filtedChannels.filter(function (v) {
+                        return (v.attr & 1 << 2) == 0;
+                    });
+                }
             }
-            else if (FILETER.HDNO == filterKey.hd) {
-                filtedChannels = filtedChannels.filter(function (v) {
-                    return (v.attr & 1 << 2) == 0;
-                });
-            }
-
             //lock
             if (FILETER.LOCKYES == filterKey.lock) {
                 filtedChannels = filtedChannels.filter(function (v) {

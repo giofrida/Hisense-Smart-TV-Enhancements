@@ -248,7 +248,7 @@ var settingChSetATVManuSetData={
         ],
         "frequency":"",
         "searchTimer":0,
-        "refreshChannelListFlag":0
+        "needRefreshChannelListFlag": 0//0:不需要，1：需要
     },
     "langData":{
         "ATV Manual Scan":["ATV Manual Scan"],
@@ -277,7 +277,7 @@ function settingInitChSetATVManuSetPage(){
         data.operateData.channelNumber = "";
         data.operateData.frequency = 0;
         data.operateData.chScanState = 0;
-        data.operateData.refreshChannelListFlag = 0;
+        data.operateData.needRefreshChannelListFlag = 0;
         if(tv == false){
             data.operateData.currTunerModeIdx = 0;
             data.operateData.colorSysIdx = 0;
@@ -529,6 +529,7 @@ function settingChSetATVManuStartScan(){
                 data.operateData.searchTimer = setTimeout(settingChSetATVManuTestSearch,5000);
             }
             else{
+                data.operateData.needRefreshChannelListFlag = 1;
                 hiWebOsFrame.pushProtectPages(hiWebOsFrame.ChSetATVManuSetPage);
                 var currSource = model.source.getCurrentSource();
                 if(currSource != 0){
@@ -617,7 +618,7 @@ function settingATVManuScanStateChangeCallBack(value){
             case 1://complete
                 hiWebOsFrame.popProtectPages(hiWebOsFrame.ChSetATVManuSetPage);
                 data.operateData.chScanState = 0;
-                data.operateData.refreshChannelListFlag = 1;
+                data.operateData.needRefreshChannelListFlag = 0;
                 refreshChListAftSearchChannel();
 //                model.channelSearch.onFoundServicesFrequencyChaged = null;
                 hiWebOsFrame.ChSetATVManuSetPage.rewriteDataOnly();
@@ -668,7 +669,7 @@ function settingChSetATVManuPageOnDestroy(){
             model.channelSearch.onColorSystemChaged = null;
             model.channelSearch.onSoundSystemChaged = null;
         }
-        if(data.operateData.refreshChannelListFlag == 0){
+        if(data.operateData.needRefreshChannelListFlag == 1){
             refreshChListAftSearchChannel();
         }
         hiWebOsFrame.ChSetATVManuSetPage = null;

@@ -30,15 +30,15 @@
                     "keyEnter": VK_ENTER, "keyEsc": VK_BACK, "keyNum0": VK_0, "keyNum1": VK_1,
                     "keyNum2": VK_2, "keyNum3": VK_3, "keyNum4": VK_4, "keyNum5": VK_5, "keyNum6": VK_6,
                     "keyNum7": VK_7, "keyNum8": VK_8, "keyNum9": VK_9, "keyChannelUp": VK_CHANNEL_UP,
-                    "keyChannelDown": VK_CHANNEL_DOWN, "keyMenu": VK_MENU, "keyGuide": VK_EPG,
+                    "keyChannelDown": VK_CHANNEL_DOWN, "keyMenu": VK_MENU, "keyAudioOnly": VK_AUDIOONLY,"keyGuide": VK_EPG,
                     "keyInfo": VK_INFO, "keyRed": VK_RED, "keyGreen": VK_GREEN, "keyYellow": VK_YELLOW,
                     "keyBlue": VK_BLUE, "keyPip": VK_PIP, "keyHome": VK_HOME, "keyPvr": VK_PVR, "keyStop": VK_STOP,
                     "keyTimeShift": VK_T_SHIFT, "keyPlay": VK_PLAY, "keyPause": VK_PAUSE, "keyFastFWD": VK_FAST_FWD,
-                    "keyFastBKW": VK_FAST_BKW, "keyPreCH": VK_PRE_CH, "keyMedia": VK_MEDIA, "keyLiveTV": VK_LIVETV, "keyF1": VK_F1,
+                    "keyFastBKW": VK_FAST_BKW, "keyFavCH":VK_FAV_CH ,"keyPreCH": VK_PRE_CH, "keyMedia": VK_MEDIA, "keyLiveTV": VK_LIVETV, "keyF1": VK_F1,
                     "keyTool": VK_TOOLS, "keyLast": VK_LAST, "keyNext": VK_NEXT, "keyExit": VK_EXIT, "keyChList": VK_CH_LIST,
                     "keySize": VK_ZOOM, "keyPMode": VK_PICTURE, "keySMode": VK_S_MODE, "keyLanguage": VK_LANGUAGE, "keySUBT": VK_SUBTITLE, "keyTeletext": VK_TELETEXT, "key3D": VK_CUSTOMER_3D,
                     "keyTVVoUp": VK_KEYPAD_VOLUME_UP, "keyTVVoDown": VK_KEYPAD_VOLUME_DOWN, "keyTVChUp": VK_KEYPAD_CHANNEL_UP,
-                    "keyTVChDown": VK_KEYPAD_CHANNEL_DOWN, "keySpace": VK_SPACE, "keySource": VK_SOURCE, "keyPadInput": VK_KEYPAD_INPUT, "keyPadMenu": VK_KEYPAD_MENU, "keyFacM": VK_FAC_M, "keyCC": VK_CC, "keySleep": VK_SLEEP,
+                    "keyTVChDown": VK_KEYPAD_CHANNEL_DOWN, "keySpace": VK_SPACE, "keySource": VK_SOURCE, "keyPadInput": VK_KEYPAD_INPUT, "keyPadMenu": VK_KEYPAD_MENU,"keyPadMenu7": VK_KEYPAD_MENU7, "keyFacM": VK_FAC_M, "keyCC": VK_CC, "keySleep": VK_SLEEP,
                     "keyNetflix": VK_NETFLIX, "keyAmazon": VK_AMAZON, "keyVudu": VK_VUDU, "keyYoutube": VK_YOUTUBE, "keyAllApp": VK_ALLAPP,
                     "keyA": VK_A, "keyB": VK_B, "keyC": VK_C, "keyD": VK_D, "keyE": VK_E, "keyF": VK_F, "keyG": VK_G, "keyH": VK_H, "keyI": VK_I,
                     "keyJ": VK_J, "keyK": VK_K, "keyL": VK_L, "keyM": VK_M, "keyN": VK_N, "keyO": VK_O, "keyP": VK_P, "keyQ": VK_Q,
@@ -89,7 +89,28 @@
                     "keySticker" :VK_STICKER,
                     "keyAudioDescription" : VK_AUDIO_DESCRIPTION,
                     "keyWuaki": VK_WUAKI,
-                    "keyPowerKeyPad": VK_POWER_KEY_PAD
+                    "keyPowerKeyPad": VK_POWER_KEY_PAD,
+                    "keyAV1": VK_AV1,
+                    "keyAV3": VK_AV3,
+                    "keyAV2": VK_AV2,
+                    "keyCOMPONENT1": VK_COMPONENT1,
+                    "keyHDMI1": VK_HDMI1,
+                    "keyHDMI2": VK_HDMI2,
+                    "keyHDMI3": VK_HDMI3,
+                    "keyHDMI4": VK_HDMI4,
+                    "keyHDMI5": VK_HDMI5,
+                    "keyVGA": VK_VGA,
+                    "keyPICMODE_NORMAL": VK_PICMODE_NORMAL,
+                    "keyPICMODE_CINEMA": VK_PICMODE_CINEMA,
+                    "keyPICMODE_PANORAMA": VK_PICMODE_PANORAMA,
+                    "keyPICMODE_ZOOM": VK_PICMODE_ZOOM,
+                    "keyPICMODE_WIDE": VK_PICMODE_WIDE,
+                    "keyASPECT_AUTO": VK_ASPECT_AUTO,
+                    "keyASPECT_DIRECT": VK_ASPECT_DIRECT,
+                    "keyPIC_CINEMA_NIGHT": VK_PIC_CINEMA_NIGHT,
+                    "keyPIC_CINEMA_DAY": VK_PIC_CINEMA_DAY,
+                    "keySND_MOVIE": VK_SND_MOVIE,
+                    "keyFREEZE": VK_FREEZE
 
                 },
                 //                keyValues: {"keyLeft": 37, "keyUp": 38, "keyRight": 39, "keyDown": 40, "keyEnter": 13, "keyEsc": 1,
@@ -1116,6 +1137,62 @@
                 case hiSDKSettings.keyValues.keyPvr:
                     var hasDowith = false;
                     var keyHandler = "keyPvrHandler";
+                    if (this.PCB == 'page') {
+                        if (!!this.handler && !!this.handler[keyHandler]) {
+                            if (typeof this.handler[keyHandler] == 'string') {
+                                hasDowith = true;
+                                eval(this.handler[keyHandler] + '.call(this,this.operateData,this.data)');
+                            } else if (typeof this.handler[keyHandler] == 'function') {
+                                hasDowith = true;
+                                this.handler[keyHandler].call(this, this.operateData, this.data);
+                            }
+                        }
+                    } else if (this.PCB == 'button' || this.PCB == 'component') {
+                        if (!!this.handler && !!this.handler[keyHandler]) {
+                            if (typeof this.handler[keyHandler] == 'string') {
+                                hasDowith = true;
+                                eval(this.handler[keyHandler] + '.call(this,this.page.operateData,this.data)');
+                            } else if (typeof this.handler[keyHandler] == 'function') {
+                                hasDowith = true;
+                                this.handler[keyHandler].call(this, this.page.operateData, this.data);
+                            }
+                        }
+                    }
+                    if (!hasDowith) {
+                        trans = true;
+                    }
+                    break;
+                case hiSDKSettings.keyValues.keyPreCH:
+                    var hasDowith = false;
+                    var keyHandler = "keyPreCHHandler";
+                    if (this.PCB == 'page') {
+                        if (!!this.handler && !!this.handler[keyHandler]) {
+                            if (typeof this.handler[keyHandler] == 'string') {
+                                hasDowith = true;
+                                eval(this.handler[keyHandler] + '.call(this,this.operateData,this.data)');
+                            } else if (typeof this.handler[keyHandler] == 'function') {
+                                hasDowith = true;
+                                this.handler[keyHandler].call(this, this.operateData, this.data);
+                            }
+                        }
+                    } else if (this.PCB == 'button' || this.PCB == 'component') {
+                        if (!!this.handler && !!this.handler[keyHandler]) {
+                            if (typeof this.handler[keyHandler] == 'string') {
+                                hasDowith = true;
+                                eval(this.handler[keyHandler] + '.call(this,this.page.operateData,this.data)');
+                            } else if (typeof this.handler[keyHandler] == 'function') {
+                                hasDowith = true;
+                                this.handler[keyHandler].call(this, this.page.operateData, this.data);
+                            }
+                        }
+                    }
+                    if (!hasDowith) {
+                        trans = true;
+                    }
+                    break;
+                case hiSDKSettings.keyValues.keyFavCH:
+                    var hasDowith = false;
+                    var keyHandler = "keyFavCHHandler";
                     if (this.PCB == 'page') {
                         if (!!this.handler && !!this.handler[keyHandler]) {
                             if (typeof this.handler[keyHandler] == 'string') {
@@ -3333,7 +3410,15 @@
                                 } else {
                                     $('#' + v.id).attr('class', "disable");
                                 }
-                            } else {
+                            }
+                            else if(o.notAvailable == true){
+                                if (!!o.classes && !!o.classes.notAvailable) {
+                                    $('#' + v.id).attr('class', o.classes.notAvailable);
+                                } else {
+                                    $('#' + v.id).attr('class', "notAvailable");
+                                }
+                            }
+                            else {
                                 if (!!o.classes && !!o.classes.normal) {
                                     $('#' + v.id).attr('class', o.classes.normal);
                                 } else {
@@ -3371,11 +3456,24 @@
                     var prefix = o.CaEType == 'GridList' ? ">ul" : "";
                     //console.log(v.id + '  原选择' + v.selOriIdx + '  现选择' + v.selTarIdx);
                     if (!!o.classes && (!!o.classes.selected || !!o.classes.focus)) {
-                        $('#' + o.id + prefix + '>li.' + o.classes.selected).attr('class', o.classes.normal);
-                        $('#' + o.id + prefix + '>li.' + o.classes.focus).attr('class', o.classes.normal);
+                        if(o.notAvailableItem && $.inArray(v.selOriIdx, o.notAvailableItem) != -1){
+                            $('#' + o.id + prefix + '>li.' + o.classes.selected).attr('class', o.classes.notAvailable);
+                            $('#' + o.id + prefix + '>li.' + o.classes.notAvailableFocus).attr('class', o.classes.notAvailable);
+                        }
+                        else{
+                            $('#' + o.id + prefix + '>li.' + o.classes.selected).attr('class', o.classes.normal);
+                            $('#' + o.id + prefix + '>li.' + o.classes.focus).attr('class', o.classes.normal);
+                        }
+
                     } else {
-                        $('#' + o.id + prefix + '>li.selected').attr('class', 'normal');
-                        $('#' + o.id + prefix + '>li.focus').attr('class', 'normal');
+                        if(o.notAvailableItem && $.inArray(v.selOriIdx, o.notAvailableItem) != -1){
+                            $('#' + o.id + prefix + '>li.' + o.classes.selected).attr('class', "notAvailable");
+                            $('#' + o.id + prefix + '>li.' + o.classes.focus).attr('class', "notAvailable");
+                        }
+                        else{
+                            $('#' + o.id + prefix + '>li.selected').attr('class', 'normal');
+                            $('#' + o.id + prefix + '>li.focus').attr('class', 'normal');
+                        }
                     }
                     if (o.SelectedIndex != -1) {
                         if (v.tarCss == STATUS_SELECTED) {
@@ -3391,6 +3489,9 @@
                                 }
                                 else{
                                     $('#' + o.id + prefix + '>li').eq(o.SelectedIndex - o.BeginIdx).attr('class', o.classes.focus);
+                                }
+                                if(o.notAvailableItem && $.inArray(o.SelectedIndex, o.notAvailableItem) != -1){
+                                    $('#' + o.id + prefix + '>li').eq(o.SelectedIndex - o.BeginIdx).attr('class', o.classes.notAvailableFocus);
                                 }
                             } else {
                                 $('#' + o.id + prefix + '>li').eq(o.SelectedIndex - o.BeginIdx).attr('class', 'focus');
@@ -3801,7 +3902,7 @@
                 $("#txtComputeWidth").css("font-size",fontSize+"px");
                 $("#txtComputeWidth").html($('#' + this.id).html());
                 var width = Math.floor(parseFloat($("#txtComputeWidth").css("width")));
-                debugPrint(this.id + "," + this.maxWidth + "," + fontSize + ","+ width, DebugLevel.ALWAYS);
+//                debugPrint(this.id + "," + this.maxWidth + "," + fontSize + ","+ width, DebugLevel.ALWAYS);
                 var str = $('#' + this.id).html();
                 this.oriText = str;
                 if(this.maxWidth < width){
@@ -5761,6 +5862,9 @@
                     if (_this.DataSelectedIndex != undefined && _this.DataSelectedIndex - _this.BeginIdx >= 0 && key == _this.DataSelectedIndex) {
                         if (!!_this.disable || (_this.disableItem && $.inArray(key, _this.disableItem) != -1)) {//加入判断disable条件2014-5-24
                             newListNode = $('<li class="' + _this.classes.disableDataSelected + '">' + sampleListNodeStr + '</li>').clone(true).appendTo($('#' + _this.id));
+                        }
+                        else if(_this.notAvailableItem && $.inArray(key, _this.notAvailableItem) != -1){
+                            newListNode = $('<li class="' + _this.classes.notAvailable + '">' + sampleListNodeStr + '</li>').clone(true).appendTo($('#' + _this.id));
                         } else {
                             newListNode = $('<li class="' + _this.classes.dataSelected + '">' + sampleListNodeStr + '</li>').clone(true).appendTo($('#' + _this.id));
                         }
@@ -5768,6 +5872,9 @@
                     else {
                         if (!!_this.disable || (_this.disableItem && $.inArray(key, _this.disableItem) != -1)) {//加入判断disable条件2014-5-24
                             newListNode = $('<li class="' + _this.classes.disable + '">' + sampleListNodeStr + '</li>').clone(true).appendTo($('#' + _this.id));
+                        }
+                        else if(_this.notAvailableItem && $.inArray(key, _this.notAvailableItem) != -1){
+                            newListNode = $('<li class="' + _this.classes.notAvailable + '">' + sampleListNodeStr + '</li>').clone(true).appendTo($('#' + _this.id));
                         } else {
                             newListNode = $('<li class="' + _this.classes.normal + '">' + sampleListNodeStr + '</li>').clone(true).appendTo($('#' + _this.id));
                         }
@@ -5984,6 +6091,9 @@
                     this.disableItem = tempData.disableItem;
                     temp_isChange = true;
                 }
+                if(tempData.notAvailableItem){
+                    this.notAvailableItem = tempData.notAvailableItem;
+                }
                 //关于selectedindex处理
                 if (tempData.SelectedIndex != undefined && this.SelectedIndex != tempData.SelectedIndex) {
                     this.SelectedIndex = tempData.SelectedIndex;
@@ -6013,6 +6123,9 @@
                     if (this.DataSelectedIndex != undefined && this.DataSelectedIndex - this.BeginIdx >= 0 && key == this.DataSelectedIndex) {
                         if (!!this.disable || (this.disableItem && $.inArray(key, this.disableItem) != -1)) {
                             $('#' + this.id + '>li').eq((key - this.BeginIdx)).attr('class', this.classes.disableDataSelected);
+                        }
+                        else if(this.notAvailableItem && $.inArray(key, this.notAvailableItem) != -1){
+                            $('#' + this.id + '>li').eq((key - this.BeginIdx)).attr('class', this.classes.notAvailable);
                         } else {
                             $('#' + this.id + '>li').eq((key - this.BeginIdx)).attr('class', this.classes.dataSelected);
                         }
@@ -6020,6 +6133,9 @@
                     else {
                         if (!!this.disable || (this.disableItem && $.inArray(key, this.disableItem) != -1)) {
                             $('#' + this.id + '>li').eq((key - this.BeginIdx)).attr('class', this.classes.disable);
+                        }
+                        else if(this.notAvailableItem && $.inArray(key, this.notAvailableItem) != -1){
+                            $('#' + this.id + '>li').eq((key - this.BeginIdx)).attr('class', this.classes.notAvailable);
                         } else {
                             $('#' + this.id + '>li').eq((key - this.BeginIdx)).attr('class', this.classes.normal);
                         }
@@ -6036,7 +6152,12 @@
                                     $('#' + this.id + '>li').eq((key - this.BeginIdx)).attr('class', this.classes.focus + " " + this.classes.dataSelected);
                                 }
                                 else{
+                                    if(this.notAvailableItem && $.inArray(this.SelectedIndex, this.notAvailableItem) != -1){
+                                        $('#' + this.id + '>li').eq(this.SelectedIndex - this.BeginIdx).attr('class', this.classes.notAvailableFocus);
+                                    }
+                                    else{
                                     $('#' + this.id + '>li').eq((key - this.BeginIdx)).attr('class', this.classes.focus);
+                                    }
                                 }
                             } else {
                                 $('#' + this.id + '>li').eq((key - this.BeginIdx)).attr('class', this.classes.selected);
@@ -9051,7 +9172,7 @@
                 VK_TOOLS, VK_LAST, VK_NEXT, VK_EXIT, VK_CH_LIST, VK_ZOOM, VK_PICTURE, VK_S_MODE, VK_CUSTOMER_3D, VK_LANGUAGE, VK_SUBTITLE,
                 VK_KEYPAD_VOLUME_UP, VK_KEYPAD_VOLUME_DOWN, VK_KEYPAD_CHANNEL_UP, VK_FAC_M, VK_CC, VK_SLEEP, VK_TELETEXT,
                 VK_KEYPAD_CHANNEL_DOWN, VK_SPACE, VK_SOURCE, VK_KEYPAD_INPUT, VK_ALLAPP, VK_VUDU, VK_YOUTUBE, VK_AMAZON, VK_NETFLIX, VK_CC, VK_SHORT_LINE,
-                VK_KEYPAD_MENU, VK_BT_CONNECT, VK_VOICE,VK_LOWBATTERY,
+                VK_KEYPAD_MENU,VK_KEYPAD_MENU7, VK_BT_CONNECT, VK_VOICE,VK_LOWBATTERY,VK_AUDIOONLY,
                 VK_A,
                 VK_B,
                 VK_C,
@@ -9146,23 +9267,29 @@
                 VK_KPAD,
                 VK_STICKER,
                 VK_AUDIO_DESCRIPTION,
-                VK_WUAKI
+                VK_WUAKI,
+                VK_AV1,VK_AV3,VK_AV2,VK_COMPONENT1,VK_HDMI1,VK_HDMI2,VK_HDMI3,VK_HDMI4,VK_HDMI5,VK_VGA,VK_PICMODE_NORMAL,
+                VK_PICMODE_CINEMA,VK_PICMODE_PANORAMA, VK_PICMODE_ZOOM,VK_PICMODE_WIDE, VK_ASPECT_AUTO,VK_ASPECT_DIRECT,
+                VK_PIC_CINEMA_NIGHT,VK_PIC_CINEMA_DAY,VK_FAV_CH,VK_PICTURE,VK_S_MODE,VK_PRE_CH,VK_CH_LIST,VK_SND_MOVIE,VK_FREEZE
             ]);
             keyboard.setWantGroup(7);
         }
 
         function registerKeyCodesLobster() {
             keyboard.registerKeyCodes([ VK_EPG, VK_MENU, VK_ZOOM, VK_PICTURE,
-                VK_PIP, VK_HOME, VK_PVR, VK_EXIT, VK_MEDIA, VK_LIVETV, VK_VOLUME_DOWN, VK_VOLUME_UP, VK_KEYPAD_VOLUME_UP, VK_KEYPAD_VOLUME_DOWN, VK_KPAD, VK_BT_CONNECT,VK_LOWBATTERY,VK_KEYPAD_MENU]);
+                VK_PIP, VK_HOME, VK_PVR, VK_EXIT, VK_MEDIA, VK_LIVETV, VK_VOLUME_DOWN, VK_VOLUME_UP, VK_KEYPAD_VOLUME_UP, VK_KEYPAD_VOLUME_DOWN, VK_KPAD, VK_BT_CONNECT,VK_LOWBATTERY,VK_KEYPAD_MENU,VK_KEYPAD_MENU7]);
         }
 
         function registerKeyCodesExcludeKey(key) {
             var baseKey = [
-                VK_HOME, VK_EXIT, VK_LIVETV, VK_MENU, VK_ALLAPP,
+                VK_HOME, VK_EXIT, VK_LIVETV, VK_MENU, VK_ALLAPP,VK_MEDIA,
                 VK_NETFLIX, VK_VUDU, VK_SOURCE, VK_MUTE, VK_YOUTUBE,VK_WUAKI,
-                VK_VOLUME_DOWN, VK_VOLUME_UP, VK_AMAZON, VK_FAC_M,
+                VK_VOLUME_DOWN, VK_VOLUME_UP, VK_AMAZON, VK_FAC_M,VK_AUDIOONLY,
                 VK_KEYPAD_VOLUME_DOWN, VK_KEYPAD_VOLUME_UP, VK_ASPECT,
-                VK_KEYPAD_CHANNEL_DOWN, VK_KEYPAD_CHANNEL_UP, VK_EPG, VK_GUIDE, VK_KPAD, VK_BT_CONNECT,VK_LOWBATTERY,VK_KEYPAD_MENU, VK_POWER_KEY_PAD
+                VK_KEYPAD_CHANNEL_DOWN, VK_KEYPAD_CHANNEL_UP, VK_EPG, VK_GUIDE, VK_KPAD, VK_BT_CONNECT,VK_LOWBATTERY,VK_KEYPAD_MENU,VK_KEYPAD_MENU7, VK_POWER_KEY_PAD,
+                VK_AV1,VK_AV3,VK_AV2,VK_COMPONENT1,VK_HDMI1,VK_HDMI2,VK_HDMI3,VK_HDMI4,VK_HDMI5,VK_VGA,VK_PICMODE_NORMAL,
+                VK_PICMODE_CINEMA,VK_PICMODE_PANORAMA, VK_PICMODE_ZOOM,VK_PICMODE_WIDE, VK_ASPECT_AUTO,VK_ASPECT_DIRECT,
+                VK_PIC_CINEMA_NIGHT,VK_PIC_CINEMA_DAY,VK_FAV_CH,VK_PICTURE,VK_S_MODE,VK_PRE_CH,VK_CH_LIST,VK_SND_MOVIE,VK_FREEZE
             ];
             if (!key || key.length < 1) {
                 key = [];
@@ -9177,11 +9304,14 @@
 
         function registerKeyCodesForAppWithKey(key) {
             var baseKey = [
-                VK_HOME, VK_EXIT, VK_LIVETV, VK_MENU, VK_ALLAPP,
-                VK_NETFLIX, VK_VUDU, VK_SOURCE, VK_MUTE, VK_YOUTUBE,VK_WUAKI,
+                VK_HOME, VK_EXIT, VK_LIVETV, VK_MENU, VK_ALLAPP,VK_MEDIA,
+                VK_NETFLIX, VK_VUDU, VK_SOURCE, VK_MUTE, VK_YOUTUBE,VK_WUAKI,VK_AUDIOONLY,
                 VK_VOLUME_DOWN, VK_VOLUME_UP, VK_AMAZON, VK_FAC_M,
                 VK_KEYPAD_VOLUME_DOWN, VK_KEYPAD_VOLUME_UP, VK_SLEEP, VK_ASPECT,
-                VK_KEYPAD_CHANNEL_DOWN, VK_KEYPAD_CHANNEL_UP, VK_EPG, VK_GUIDE, VK_KPAD, VK_BT_CONNECT,VK_LOWBATTERY,VK_KEYPAD_MENU, VK_POWER_KEY_PAD
+                VK_KEYPAD_CHANNEL_DOWN, VK_KEYPAD_CHANNEL_UP, VK_EPG, VK_GUIDE, VK_KPAD, VK_BT_CONNECT,VK_LOWBATTERY,VK_KEYPAD_MENU7,VK_KEYPAD_MENU, VK_POWER_KEY_PAD,VK_AUDIOONLY,
+                VK_AV1,VK_AV3,VK_AV2,VK_COMPONENT1,VK_HDMI1,VK_HDMI2,VK_HDMI3,VK_HDMI4,VK_HDMI5,VK_VGA,VK_PICMODE_NORMAL,
+                VK_PICMODE_CINEMA,VK_PICMODE_PANORAMA, VK_PICMODE_ZOOM,VK_PICMODE_WIDE, VK_ASPECT_AUTO,VK_ASPECT_DIRECT,
+                VK_PIC_CINEMA_NIGHT,VK_PIC_CINEMA_DAY,VK_FAV_CH,VK_PICTURE,VK_S_MODE,VK_PRE_CH,VK_CH_LIST,VK_SND_MOVIE,VK_FREEZE
             ];
             if (!key || key.length < 1) {
                 key = [];
@@ -9195,15 +9325,18 @@
 
         function registerKeyCodesForSettingOnApp() {
             var baseKey = [
-                VK_EXIT, VK_LIVETV, VK_MENU, VK_LEFT, VK_ASPECT,
+                VK_EXIT, VK_LIVETV, VK_MENU, VK_LEFT, VK_ASPECT,VK_MEDIA,
                 VK_RIGHT, VK_UP, VK_DOWN, VK_ENTER, VK_BACK,
                 VK_0, VK_1, VK_2, VK_3, VK_4, VK_5, VK_6, VK_HOME,
                 VK_7, VK_8, VK_9, VK_RED, VK_BLUE, VK_YELLOW, VK_GREEN,
                 VK_VOLUME_DOWN, VK_VOLUME_UP, VK_MUTE, VK_ALLAPP,
-                VK_NETFLIX, VK_VUDU, VK_YOUTUBE, VK_AMAZON,VK_WUAKI,
+                VK_NETFLIX, VK_VUDU, VK_YOUTUBE, VK_AMAZON,VK_WUAKI,VK_AUDIOONLY,
                 VK_SOURCE,
-                VK_KEYPAD_VOLUME_DOWN, VK_KEYPAD_VOLUME_UP, VK_FAC_M,VK_KEYPAD_MENU,
-                VK_KEYPAD_CHANNEL_DOWN, VK_KEYPAD_CHANNEL_UP, VK_EPG, VK_GUIDE, VK_KPAD, VK_BT_CONNECT,VK_LOWBATTERY, VK_POWER_KEY_PAD
+                VK_KEYPAD_VOLUME_DOWN, VK_KEYPAD_VOLUME_UP, VK_FAC_M,VK_KEYPAD_MENU,VK_KEYPAD_MENU7,
+                VK_KEYPAD_CHANNEL_DOWN, VK_KEYPAD_CHANNEL_UP, VK_EPG, VK_GUIDE, VK_KPAD, VK_BT_CONNECT,VK_LOWBATTERY, VK_POWER_KEY_PAD,
+                VK_AV1,VK_AV3,VK_AV2,VK_COMPONENT1,VK_HDMI1,VK_HDMI2,VK_HDMI3,VK_HDMI4,VK_HDMI5,VK_VGA,VK_PICMODE_NORMAL,
+                VK_PICMODE_CINEMA,VK_PICMODE_PANORAMA, VK_PICMODE_ZOOM,VK_PICMODE_WIDE, VK_ASPECT_AUTO,VK_ASPECT_DIRECT,
+                VK_PIC_CINEMA_NIGHT,VK_PIC_CINEMA_DAY,VK_FAV_CH,VK_PICTURE,VK_S_MODE,VK_PRE_CH,VK_CH_LIST,,VK_SND_MOVIE,VK_FREEZE
             ];
             for (var i = VK_A; i <= VK_Z; i++) {
                 baseKey.push(i);
@@ -9216,24 +9349,34 @@
         }
 
         //加锁后自动解锁函数
-        function autoUnlock() {
+        function autoUnlock(auto_unlock_time) {
             hiSDKSettings.isLocking = true;
             clearTimeout(hiSDKSettings.lockHandler);
-            hiSDKSettings.lockHandler = setTimeout(function () {
-                if (hiSDKSettings.isLocking) {
-                    DBG_ERROR("lock timeout, unlock all.");
-                    hiSDKSettings.isLocking = false;
-                    lockCntr = 0;
-                    keyboard.set_listen(1);
-                    hiSDKSettings.isLoading = false;
-                    hiSDKSettings.keySwitch = true;
-                    clearTimeout(hiSDKSettings.displayLoading);
-                    clearTimeout(hiSDKSettings.lockLoading);
-                    //$('#sdkLoading').css('display', 'none');
-                    hideDynamicLoading();
-                    $("#black_screen").css("display", "none");
+            var delay = 30000;
+            if (!!auto_unlock_time) {
+                if (typeof auto_unlock_time !== "number") {
+                    delay = null;
+                } else {
+                    delay = auto_unlock_time;
                 }
-            }, 30000);
+            }
+            if (!!delay) {
+                hiSDKSettings.lockHandler = setTimeout(function () {
+                    if (hiSDKSettings.isLocking) {
+                        DBG_ERROR("lock timeout, unlock all.");
+                        hiSDKSettings.isLocking = false;
+                        lockCntr = 0;
+                        keyboard.set_listen(1);
+                        hiSDKSettings.isLoading = false;
+                        hiSDKSettings.keySwitch = true;
+                        clearTimeout(hiSDKSettings.displayLoading);
+                        clearTimeout(hiSDKSettings.lockLoading);
+                        //$('#sdkLoading').css('display', 'none');
+                        hideDynamicLoading();
+                        $("#black_screen").css("display", "none");
+                    }
+                }, delay);
+            }
         }
 
         var dynamicLoadingTimer = 0, IMAGE_COUNT = 4, dynamicLoadingFlag = false;
@@ -9361,7 +9504,7 @@
 
         var lockCntr = 0;
         //锁定所有按键,参数：调用函数
-        function lockAllKeys(description) {
+        function lockAllKeys(description, auto_unlock_time) {
             try {
 
                 if(1 == (++lockCntr)){
@@ -9371,7 +9514,7 @@
                 }
                 DBG_ALWAYS("lock lockCntr[" + lockCntr + "], from["+description+"]");
                 //hiSDKSettings.isLocking = true;修改为
-                autoUnlock();
+                autoUnlock(auto_unlock_time);
             }
             catch (ex) {
                 debugPrint(ex.message, DebugLevel.ERROR);

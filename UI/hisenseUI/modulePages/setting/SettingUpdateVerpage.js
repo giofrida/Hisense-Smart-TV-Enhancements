@@ -256,7 +256,7 @@ function SettingUpdateVerInfoOk()
                         model.softupdate.CancelOADUpgrade();
                         onOadDownloadProgressChaged(-100);
                         g_OadDownloadfailtimer=null;
-                    },1000*60*60);
+                    },1000*15*60);
                });
 
             }

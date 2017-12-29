@@ -67,15 +67,15 @@ function getboeEthernetResultPageData(opt){
 }
 var boeEthernetResultPageData = {
     "EthernetResultImg": {"Data":"img/network/success.png"},
-    "result_txt":{"Data":"Connected Failed"},
+    "result_txt":{"Data":"Connection failed!"},
     "result_done_btn":{"Data":"Done"},
     "result_try_btn":{"Data":"Try again"},
-    "result_set_btn":{"Data":"IP Setting"},
+    "result_set_btn":{"Data":"IP Settings"},
     "operateData":{
         "resultImgList":["img/network/failure.png","img/network/success.png"],
         "connectResult":0,//0:fail,1:sucess
         //"ipAddress":"",
-        "resultInfo":["Connected Failed","Connected Succesfully"]
+        "resultInfo":["Connection failed!","Connected successfully"]
     },
     rewrite:"boeRefreshEthernetResultPage"
 };

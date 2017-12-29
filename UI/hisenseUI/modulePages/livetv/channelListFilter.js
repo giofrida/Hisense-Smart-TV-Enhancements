@@ -49,7 +49,11 @@ function get_livetv_channel_list_filter_pageData(opts){
         };
 
         opts.CaE[ulIdx + i].handler = {
-            befEnterHandler: livetvchlistfilter.keyEnterOnFilterList
+            befEnterHandler: livetvchlistfilter.keyEnterOnFilterList,
+            befDownHandler: livetvchlistfilter.keyOnDown,
+            befUpHandler: livetvchlistfilter.keyOnDown,
+            befLeftHandler: livetvchlistfilter.keyOnDown,
+            befRightHandler: livetvchlistfilter.keyOnDown
         };
 
         opts.CaE[ulIdx + i].onFocusFun = livetvchlistfilter.itemOnFocus;
@@ -73,6 +77,7 @@ function liveTVChannelListFilter () {
 	var self = this;
 	self.id = LiveTVModule.CHANNEL_LIST_FILTER
     var closeTimer, filterFlag = [0, 0, 0, 0], filterList;
+    var disableDefinitionFilter = true; //MT5657VL2EU-2410
     var filterArr = [
         ["All", "TV", "Radio", "Data"],
         ["All", "HD", "SD", "UHD"],
@@ -80,6 +85,10 @@ function liveTVChannelListFilter () {
         ["All", "Free", "Scrambled"]
     ];
     self.onOpenChListFilter = function() {
+        if (disableDefinitionFilter) {
+            $("#chlist_filter_row_1").css("display", "none");
+            self.pageData.chlist_filter_row_1.disable = true;
+        }
         autoCloseTimer();
         filterFlag = livetvchlist.getFilterFlag();
         filterList = livetvchlist.getFilterList();
@@ -89,6 +98,10 @@ function liveTVChannelListFilter () {
     self.onCloseChListFilter = function() {
         clearTimeout(closeTimer);
         hiWebOsFrame[self.id].hiBlur();
+    }
+
+    self.keyOnDown = function() {
+        autoCloseTimer();
     }
 
     self.backToChannelList = function() {

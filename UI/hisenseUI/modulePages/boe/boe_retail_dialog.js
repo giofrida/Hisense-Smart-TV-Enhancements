@@ -87,12 +87,7 @@ function boe_retail_dialog_ok_Handler()
         pauseDTV();
         setTimeout(function () {
             var musicPath = "file:///3rd_rw/UI/hisenseUI/wizard_bg.mp3";
-            if(getCurrVeraForWizard() == 'EU') {
-                model.mpctrl.PlayBackgroundMusic(musicPath);
-            }
-            else{
-                model.mpctrl.PlayMusic(musicPath);
-            }
+            model.mpctrl.PlayMusic(musicPath);
         }, 500);
     }
 }

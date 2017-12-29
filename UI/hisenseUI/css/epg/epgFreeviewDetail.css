@@ -1,5 +1,6 @@
 #epg_fvp_detail_page{
-    background-image: url(../../img/epg/epg_detail_back.png);
+    /*background-image: url(../../img/epg/epg_detail_back.png);*/
+    background-color: #091523;
     font-size:0;
 }
 
@@ -7,8 +8,21 @@
 #epg_fvp_detail_page span{
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 1254px;
-    display: inline-block;
+}
+
+/*.epgFVPLogo{*/
+    /*background-color: #10243b;*/
+    /*height: 64px;*/
+    /*width: 474px;*/
+    /*padding: 36px 48px 24px 48px;*/
+/*}*/
+
+#epg_fvp_detail_logo{
+    /*background-image: url(../../img/epg/logo_freevirw_epg.png);*/
+    height: 64px;
+    width: 522px;
+    margin: -28px 0 28px 0px;
+    background-repeat: no-repeat;
 }
 
 .epgPVPImagePanel{
@@ -16,7 +30,7 @@
     height: 294px;
     display: inline-block;
     /*background-color: red;*/
-    margin: 124px 48px 662px 48px;
+    margin: 64px 48px 662px 48px;
     font-size:0;
     vertical-align: top;
 
@@ -26,9 +40,22 @@
     height: 884px;
     display: inline-block;
     /*background-color: green;*/
-    margin: 124px 0 72px 0;
+    margin: 120px 0 72px 0;
     font-size: 0;
     vertical-align: top;
+}
+
+.epgFVPProgramPanel > span{
+    display: inline-block;
+}
+
+.epgFVPDetailTitleInfo{
+    height: 48px;
+    width: 1254px;
+}
+
+.epgFVPDetailTitleInfo span{
+    display: inline-block;
 }
 
 .epgFVPChannel{
@@ -36,6 +63,14 @@
     font-size: 36px;
     color: rgba(255,255,255,0.87);
     height: 48px;
+    line-height: 48px;
+    max-width: 1100px;
+    margin: 0 14px 0 0;
+}
+
+.html_rtl .epgFVPChannel{
+
+    margin: 0 0 0 20px;
 }
 
 .epgFVPProgram{
@@ -43,19 +78,105 @@
     font-size: 30px;
     color: rgba(255,255,255,0.87);
     height: 42px;
+    width: 1254px;
 }
 
+.epgFVPProgramFlag{
+    height: 48px;
+    width: 1254px;
+    margin: 12px 0 12px 0;
+    color: rgba(255,255,255,0.87);
+    white-space: nowrap;
+}
+
+.epgFVPProgramFlag img{
+    margin-right: 12px;
+    width: 60px;
+    height: 48px;
+}
+.epgFVPProgramFlag > span{
+    /*text-indent: 12px;*/
+    display: inline-block;
+    line-height: 48px;
+    height: 48px;
+    font-size: 30px;
+}
+.epgFVPDetalTheme{
+    display: inline-block;
+    width: 100px;
+    height: 48px;
+    margin-right: 12px;
+}
+
+#epg_fvp_flag_theme_text{
+    margin-left: -112px;
+    width: 100px;
+    text-align: center;
+    margin-right: 12px;
+}
+#epg_fvp_flag_theme{
+    border-radius: 5px;
+    height: 44px;
+    width: 100px;
+    margin-bottom: 2px;
+}
+
+.normalFVPFlag{
+    display: inline-block;
+}
+.disableFVPFlag{
+    display: none;
+}
 .epgFVPDetailContentPanel{
     width: 1254px;
     height: 740px;
     padding-top: 12px;
     overflow: hidden;
 }
+.epgFVPAllContent{
+    width: 1254px;
+}
+
+.disableFVPItem{
+    display: none;
+}
+
+.normalFVPItem{
+    font-size: 30px;
+    line-height: 37px;
+    color: rgba(255,255,255,0.54);
+    width: 1254px;
+    margin: 0 0 20px 0;
+    display: inline-block;
+}
+
+#epg_fvp_detail_guidance_title{
+    font-size: 36px;
+    color: #9ba2ad;
+    white-space: nowrap;
+}
+
+#epg_fvp_actors{
+    color: #f0f0f0;
+}
+
+#epg_fvp_crew{
+    color: #f0f0f0;
+}
+
+#epg_fvp_org{
+    color: #f0f0f0;
+}
+
+#epg_fvp_keywords{
+    color: #f0f0f0;
+}
 
 .epgFVPDetail{
     font-size: 30px;
     line-height: 37px;
     color: rgba(255,255,255,0.54);
+    width: 1254px;
 }
 
 #epg_fvp_detail_scroll{
@@ -63,4 +184,22 @@
     top: -740px;
     left: 1254px;
     opacity: 0.5;
+}
+
+
+#epg_fvp_detail_channel{
+    width: 522px;
+    height: 60px;
+    background-color: rgba(0,0,0,0.6);
+    text-indent: 24px;
+    font-size: 30px;
+    color: rgba(255,255,255,0.87);
+    line-height: 60px;
+    margin-top: -60px;
+    display: inline-block;
+}
+
+#epg_fvp_detail_image{
+    width: 522px;
+    height: 294px;
 }

@@ -163,6 +163,7 @@ function liveTVChannelList() {
     var lstNameMap = ["Antenna", "Cable", "Satellite", "Satellite"];
     var repeatStep = 0, maxNumLenMaps = {}, crntArea = "";
     var firstInited = false;
+    var expectedChannel = null;
     var beginIndex = 0,
         topItem = 0,
         listSelIndex = 0,
@@ -407,6 +408,9 @@ function liveTVChannelList() {
     self.getChannelChangeFlag = function() {
         return channelChanging;
     }
+    self.getExpectedChannel = function() {
+        return expectedChannel;
+    }
     self.setKeyUp = function(keyCode) {
         if(livetvmain.getCurrentSourceInnerId() != SourceList.TV ||
             channelChanging || null == pubPreChangeChannel) return;
@@ -555,6 +559,13 @@ function liveTVChannelList() {
     self.clearNumDialog = function() {
         closeNumberInput();
     }
+
+    self.channelListInitFlag = function() {
+        DBG_ERROR("freeview channelList");
+        return initList;
+    }
+
+
     self.changeChannelByNumKey = function(num) {
         if(reachMax || livetvmain.getCurrentSourceInnerId() != SourceList.TV) return;
         numChange = true;
@@ -1254,6 +1265,10 @@ function liveTVChannelList() {
                         hiWebOsFrame[self.id].rewrite();
                         if(!self.hasChannels()) {
                             livetvmain.judgeToShowChannelSearch(true);
+                        }
+                        if(ENABLE_FVP) {
+                            DBG_ERROR("freeview_manager.onEnvChanged() - onGetChannels");
+                            freeview_manager.onEnvChanged();
                         }
                         checkInitAgain();
                     }

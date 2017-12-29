@@ -14,6 +14,7 @@
     <link href="css/boe_index.css" rel="stylesheet" type="text/css">
     <!--<link href="css/channelCommon.css" rel="stylesheet" type="text/css">-->
     <link href="css/livetv/liveTV.css" rel="stylesheet" type="text/css">
+    <link href="css/epg/epg.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="../hiSDK/zepto.min.js"></script>
     <script type="text/javascript" src="../hiSDK/fx.js"></script>
     <script type="text/javascript" src="lang/languages_media.js"></script>
@@ -52,6 +53,24 @@
     <!--<script type="text/javascript" src="tempString/blankPageString.js"></script>-->
     <script type="text/javascript" src="../../OEMLauncher/OEMLauncherLiveTv.js"></script>
 
+    <script src="pub/freeview/jquery-1.8.2.js"></script>
+
+<!--
+    <script>
+        var jqFreeview = jQuery.noConflict(true);
+    </script>
+-->
+
+    <script type="text/javascript" src="pub/freeview/web-storage-cache.js"></script>
+    <!--<script type="text/javascript" src="pub/freeview/DatabaseAdapter.js"></script>-->
+    <script type="text/javascript" src="pub/freeview/HttpAdapter.js"></script>
+    <script type="text/javascript" src="pub/freeview/FreeviewUtil.js"></script>
+    <script type="text/javascript" src="pub/freeview/FreeviewDataManager.js"></script>
+    <script type="text/javascript" src="pub/freeview/FreeviewManager.js"></script>
+    <!--<script type="text/javascript" src="pub/freeview/FreeviewDataAdapter.js"></script> test at pc-->
+    <script type="text/javascript" src="pub/freeview/html5sql.js"></script>
+    <script type="text/javascript" src="pub/freeview/WebSQLAdapter.js"></script>
+    <script type="text/javascript" src="pub/freeview/CacheAdapter.js"></script>
     <!--end the setting -->
 
 
@@ -59,7 +78,7 @@
     <!--tshift code-->
     <link href="css/tshift.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body style="position: fixed;">
 <div id="txtComputeWidth" style="position:absolute;visibility:hidden;white-space:pre;"></div>
 <div id="sdkImgPreLoading" style="width: 1000px;height: 10px;position: absolute;z-index: 2000;opacity: 0.01"></div>
 <div id="mainOEMLauncher" style="position: absolute;left: 0px;top: 0px;height: 1080px;width: 1920px;overflow: hidden;display: none">
@@ -381,9 +400,12 @@
 <div id="settingChSetCommDVBCPageId" class="ChannelCommMainPage" style="display: none"></div>
 <div id="settingChSetAntSetupPageId" class="wizardDialogBlackBg" style="display: none"></div>
 <div id="settingChSetAutoSatelliteListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetFransatOpListDialogId" class="wizardDialogBlackBg" style="display: none"></div>
 <div id="settingChSetEUAutoPageId" class="settingChSetEUPageCls" style="display: none"></div>
 <div id="settingChSetEUAutoScanPageId" class="settingChSetEUPageCls" style="display: none"></div>
 <div id="settingChSetExitSetupDialogId" class="wizardDialogBlackBg" style="display: none"></div>
+<div id="settingChSetScanModePageId" class="settingChSetEUPageCls" style="display: none"></div>
+
 <!--channel set end-->
 
 <!--channel manager begin-->
@@ -581,3 +603,4 @@
 <div id="launcher_default_data_tip">No Update Service</div>
 </body>
 </html>
+<script type="text/javascript" src="modulePages/epg/epg.js"></script>

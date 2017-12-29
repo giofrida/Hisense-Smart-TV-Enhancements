@@ -1064,6 +1064,7 @@ function SettingQsRecentEnHandler() {
                                 debugG("snd Advanced page create");
                                 hiWebOsFrame.SettingSndAdvancedPage = SettingSndAdvancedPage;
                                 SettingSndAdvancedPage.open();
+                                SndAdvancedRefreshScrollContentHeight();
                                 SettingSndAdvancedPage.hiFocus();
                                 hiWebOsFrame.settingsFirst.close();
 								var helpInfo = SettingSndAdvancedPage.operateData.helpInfo[hiWebOsFrame.SettingSndAdvancedPage.firstFocusId];

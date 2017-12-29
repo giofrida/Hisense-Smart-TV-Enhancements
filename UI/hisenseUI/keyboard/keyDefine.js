@@ -321,7 +321,7 @@ var VK_PICMODE_ZOOM = 577;
 var VK_ASPECT = 578;
 
 var VK_KEYPAD_MENU = 579;
-
+var VK_KEYPAD_MENU7 = 583;
 var VK_BT_CONNECT = 580;
 var VK_VOICE = 581;
 var VK_LOWBATTERY = tv ? 582 : 103;
@@ -334,6 +334,14 @@ var VK_WUAKI = 592;
 var VK_POWER_ON = 703
 
 var VK_POWER_KEY_PAD = 704;
+var VK_AUDIOONLY=tv?705:104;
+var VK_PIC_CINEMA_NIGHT=706;
+var VK_PIC_CINEMA_DAY=707;
+var VK_FAV_CH=708;
+var VK_ASPECT_AUTO=709;
+var VK_ASPECT_DIRECT=710;
+var VK_SND_MOVIE=711;
+var VK_FREEZE=712;
 
 var m_retailmodeTimer = null;
 var g_SystemAudioOnlyFlag = 0;//关屏记录标识

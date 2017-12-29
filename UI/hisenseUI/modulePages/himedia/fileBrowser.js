@@ -196,9 +196,9 @@ function initFirstData(type) {
                 tmpDeviceList.push(demoUsbDevice);
             }
         }
-        var dropBoxEntr = new HiFileData(null, null, null, null, null, "/Dropbox", false, null, "img/himedia/fileBrowser/folder_dropbox.png", "11/", null);
+        //var dropBoxEntr = new HiFileData(null, null, null, null, null, "/Dropbox", false, null, "img/himedia/fileBrowser/folder_dropbox.png", "11/", null);
         //需要添加一个网络判断条件,暂时注释掉 下版再进
-        tmpDeviceList.push(dropBoxEntr);
+        //tmpDeviceList.push(dropBoxEntr);
         HiFileBrowser.getDmpDevices(tmpDeviceList);
         // setHTML(HiFileBrowser.InitDeviceDatas);
 
@@ -244,7 +244,14 @@ var onVolumeMainIteratorEvent = function (tmpDeviceList, event) {
         }
         //HiFileBrowser.InitDeviceDatas = tmpDeviceList;
         //setHTML(HiFileBrowser.InitDeviceDatas);
-        getPvrVolume(tmpDeviceList);
+        if (!!pvrflag) {
+            getPvrVolume(tmpDeviceList);
+        }
+        else {
+            DBG_ALWAYS("pvrflag is " + pvrflag + ",no need to show pvr file!!!");
+            HiFileBrowser.InitDeviceDatas = tmpDeviceList;
+            setHTML(HiFileBrowser.InitDeviceDatas);
+        }
     }
     else if (event.type == TableIterator.EVENT_TYPE_TOTAL_COUNT) {
         debugPrint("Volume______event.totalCount" + event.totalCount);
@@ -254,8 +261,14 @@ var onVolumeMainIteratorEvent = function (tmpDeviceList, event) {
         } else {
             //没有设备时也需要初始化整个UI
             debugPrint("NO DLNA DEVICE NOW,GET PVR BEGIN");
-            getPvrVolume(tmpDeviceList);
-
+            if (!!pvrflag) {
+                getPvrVolume(tmpDeviceList);
+            }
+            else {
+                DBG_ALWAYS("pvrflag is " + pvrflag + ",no need to show pvr file!!!");
+                HiFileBrowser.InitDeviceDatas = tmpDeviceList;
+                setHTML(HiFileBrowser.InitDeviceDatas);
+            }
         }
     }
     else {

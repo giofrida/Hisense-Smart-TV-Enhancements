@@ -232,12 +232,32 @@ function settingNetSetTMPageToNextPage(){
             }
             break;
         case 1://Antenna
-            hiWebOsFrame.createPage("settingChSetCommDVBTPageId", null, hiWebOsFrame.ChSetTunerModePage, null, function (a) {
-                hiWebOsFrame.ChSetCommDVBTPage = a;
-                hiWebOsFrame.ChSetTunerModePage.close();
-                a.open();
-                a.hiFocus();
-            });
+            try{
+                var DVBTlist = {
+                    uid: 0,
+                    satId:0
+                };
+                var DVBTHasChannel = livetvchlist.getChannelListById(DVBTlist);
+                DBG_ALWAYS("DVBTHasChannel::::::"+DVBTHasChannel.length);
+            }
+            catch(ex){
+                debugPrint("DVBTHasChannel:"+ex.message,DebugLevel.ERROR);
+            }
+            if(DVBTHasChannel.length > 0 && FREEVIEWTEST){
+                hiWebOsFrame.createPage("settingChSetScanModePageId", null, hiWebOsFrame.ChSetTunerModePage, null, function (a) {
+                    hiWebOsFrame.ChSetScanModePage = a;
+                    hiWebOsFrame.ChSetTunerModePage.close();
+                    a.open();
+                    a.hiFocus();
+                });
+            }else{
+                hiWebOsFrame.createPage("settingChSetCommDVBTPageId", null, hiWebOsFrame.ChSetTunerModePage, null, function (a) {
+                    hiWebOsFrame.ChSetCommDVBTPage = a;
+                    hiWebOsFrame.ChSetTunerModePage.close();
+                    a.open();
+                    a.hiFocus();
+                });
+            }
             break;
         case 2://Cable
             var operatorList = getSettingChSetOperatorList();

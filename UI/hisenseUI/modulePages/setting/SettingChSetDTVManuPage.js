@@ -896,7 +896,7 @@ var settingChSetDTVManuPageData = {
     },
     "operateData": {
         "chScanState": 0, //0:设置,1:搜索
-        "refreshChannelListFlag": 0,
+        "needRefreshChannelListFlag": 0,//0:不需要刷新列表，1：需要刷新列表
         "foundChannelNum":0,
         "currTunerModeIdx": 0,
         "tunerModeTypeMapList": [
@@ -1012,7 +1012,7 @@ function settingInitChSetDTVManuPage() {
     try {
         var data = settingChSetDTVManuPageData;
         data.operateData.chScanState = 0;
-        data.operateData.refreshChannelListFlag = 0;
+        data.operateData.needRefreshChannelListFlag = 0;
         data.operateData.foundChannelNum = 0;
         data.operateData.currTunerModeIdx = getChSetDTVManuTunerModeIdx();
         getChSetDTVManuSingnalInfo();
@@ -1313,7 +1313,7 @@ function settingChSetDTVManuSearBtnBefUpHandle(){
     var data = settingChSetDTVManuPageData;
     if(data.operateData.chScanState == 1){
         //search currBtnFocus
-        hiWebOsFrame.ChSetDTVManuSetPage.hiFocus(this.id);
+        hiWebOsFrame.ChSetDTVManuPage.hiFocus(this.id);
         return false;
     }
 }
@@ -1504,7 +1504,7 @@ function settingChSetDTVManuStartScan() {
         if (data.operateData.chScanState == 0) {
 
             data.operateData.chScanState = 1;
-            debugPrint("settingChSetDTVManuStartScan:model.channelSearch.getFoundServicesFrequency="+model.channelSearch.getFoundServicesFrequency());
+            //debugPrint("settingChSetDTVManuStartScan:model.channelSearch.getFoundServicesFrequency="+model.channelSearch.getFoundServicesFrequency());
             hiWebOsFrame.ChSetDTVManuPage.rewriteDataOnly();
 
             if (tv == false) {
@@ -1512,6 +1512,7 @@ function settingChSetDTVManuStartScan() {
             }
             else {
                 try {
+                    data.operateData.needRefreshChannelListFlag = 1;
                     hiWebOsFrame.pushProtectPages(hiWebOsFrame.ChSetDTVManuPage);
                     switch (data.operateData.currTunerModeIdx){
                         case 0:
@@ -1592,7 +1593,7 @@ function settingChSetDTVManuSearchStateCallBack(value) {
 //                data.operateData.sigLevelValue = model.tvservice.getSignalMainLevels();
                 debugPrint("settingChSetDTVManuSearchStateCallBack:"+data.operateData.sigQualityValue+","+ data.operateData.sigLevelValue,DebugLevel.ALWAYS);
                 hiWebOsFrame.ChSetDTVManuPage.rewriteDataOnly();
-                data.operateData.refreshChannelListFlag = 1;
+                data.operateData.needRefreshChannelListFlag = 0;
                 refreshChListAftSearchChannel();
                 break;
             case 2:
@@ -1795,7 +1796,7 @@ function settingChSetDTVManuOnDestroy() {
         if(tv == true){
             model.channelSearch.onStateChaged = null;
         }
-        if(data.operateData.refreshChannelListFlag == 0){
+        if(data.operateData.needRefreshChannelListFlag == 1){
             refreshChListAftSearchChannel();
         }
     }catch (ex){

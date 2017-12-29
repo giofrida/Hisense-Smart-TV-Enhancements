@@ -237,8 +237,7 @@ function settingNetSetSearWifiOnOpen(){
             $("#settingNetSetSearWifiDialogId").attr("class","settingNetSetWifiSearClass");
         }
         //增加根据平台不同使用不同LOADING圈的机制
-        DBG_ALWAYS(currentPlatform_config);
-        if ('APP_5890_SA' == currentPlatform_config) {
+        if ('APP_5890_SA' == currentPlatform_config || "opera4x" == currOperaVersion) {
             $('.wizardDialogLoadingImg').css("display", "none");
             $('.wizardDialogLoadingDiv').css("display", "block");
         }

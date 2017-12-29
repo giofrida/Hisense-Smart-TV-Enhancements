@@ -360,6 +360,27 @@ function SettingSysInputLabelonOpen()
         $(".setting_select_lang_disable").css("float","left");
         $("#setting_sys_inputlable_page").css("left","328px");
     }
+    for(var i=0;i<PageDataSettingSysInputLabel.operateData.curchllist.length;i++)
+    {
+        $("#setting_sys_inputlable_ul1_setting_sys_inputlable_str1_sys"+i).css("max-width","630px");
+        $("#setting_sys_inputlable_ul1_setting_sys_inputlable_str2_sys"+i).css("max-width","630px");
+        var width1 = Math.ceil(parseFloat($("#setting_sys_inputlable_ul1_setting_sys_inputlable_str1_sys"+i).css("width")));
+        var width2 = Math.ceil(parseFloat($("#setting_sys_inputlable_ul1_setting_sys_inputlable_str2_sys"+i).css("width")));
+        if(width2+width1>630&&width1<630)
+        {
+            var width2=630-width1;
+            $("#setting_sys_inputlable_ul1_setting_sys_inputlable_str2_sys"+i).css("max-width", width2);
+        }
+        else if(width1>630){
+            $("#setting_sys_inputlable_ul1_setting_sys_inputlable_str1_sys"+i).css("max-width", "300px");
+            $("#setting_sys_inputlable_ul1_setting_sys_inputlable_str2_sys"+i).css("max-width", "380px");
+
+        }
+        else
+        {
+            
+        }
+    }
 }
 //function getTVnameinit()
 //{

@@ -10,6 +10,8 @@
     // --------------------------------------------------------------
     // Static constants
     // -------------------------------------------------------------- 
+  	Mheg5ModelDefines.SL2_TVAPI_MHEG5_I32_ENABLE= "tvapi.mheg5.i32.enable";
+  	Mheg5ModelDefines.SL2_TVAPI_MHEG5_STR_URL= "tvapi.mheg5.str.url";
  	Mheg5ModelDefines.SL2_TVAPI_MHEG5_I32_STATUS= "tvapi.mheg5.i32.status";
 	Mheg5ModelDefines.SL2_TVAPI_MHEG5_STR_PFG_INFO= "tvapi.mheg5.str.pfginfo";
 	Mheg5ModelDefines.SL2_TVAPI_MHEG5_I32_INTERNAL_SCRN= "tvapi.mheg5.i32.internal_scrn";
@@ -30,8 +32,19 @@ function Mheg5Model( parentModel ) {
 
     // --------------------------------------------------------------
     // Objects
-    // --------------------------------------------------------------    
+    // -------------------------------------------------------------- 
     // I32Status
+              this.registerIntegerObject(
+              Mheg5ModelDefines.SL2_TVAPI_MHEG5_I32_ENABLE,
+              "getI32Enable", "setI32Enable", "onI32EnableChaged",
+              null, null );
+
+    // StrUrl
+              this.registerStringObject(
+              Mheg5ModelDefines.SL2_TVAPI_MHEG5_STR_URL,
+              "getStrUrl", "setStrUrl", "onStrUrlChaged",
+              null, null );
+	// I32Status
               this.registerIntegerObject(
               Mheg5ModelDefines.SL2_TVAPI_MHEG5_I32_STATUS,
               "getI32Status", "setI32Status", "onI32StatusChaged",

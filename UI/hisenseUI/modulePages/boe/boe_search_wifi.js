@@ -206,7 +206,7 @@ function boeNetSetSearWifiDialogOnOpen(){
 
         var data = boeNetSetSearWifiDialogData;
         if(tv == true) {
-            if ('APP_5890_SA' == currentPlatform_config) {
+            if ('APP_5890_SA' == currentPlatform_config || "opera4x" == currOperaVersion) {
                 $('.boeDialogLoadingImg').css("display", "none");
                 $('.boeDialogLoadingDiv').css("display", "block");
             }

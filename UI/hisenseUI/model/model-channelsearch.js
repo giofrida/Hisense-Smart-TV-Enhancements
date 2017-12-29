@@ -49,7 +49,8 @@
 	Channelsearch_dvbModelDefines.SL2_TVAPI_ACTION_DVB_CHANNEL_SEARCH_SET_UK_AREA= "tvapi.action.dvb.channel.search.set.uk.area";
     Channelsearch_dvbModelDefines.SL2_TVAPI_VSTR_DVB_CHANNEL_SEARCH_LCN_CONFLICT= "tvapi.vstr.dvb.channel.search.lcn.conflict";
     Channelsearch_dvbModelDefines.SL2_TVAPI_ACTION_DVB_CHANNEL_SEARCH_SET_LCN_CONFLICT= "tvapi.action.dvb.channel.search.set.lcn.conflict";
-
+    Channelsearch_dvbModelDefines.SL2_TVAPI_VSTR_DVB_CHANNEL_SEARCH_FRANSAT_OP= "tvapi.vstr.dvb.channel.search.fransat.op";
+    Channelsearch_dvbModelDefines.SL2_TVAPI_ACTION_DVB_CHANNEL_SEARCH_SET_FRANSAT_OP= "tvapi.action.dvb.channel.search.set.fransat.op";
 	 // enum or defined is here
 
 
@@ -379,6 +380,22 @@ function Channelsearch_dvbModel( parentModel ) {
                 return eval('object.invoke('+str+')');
             }}
         ],"null"
+    );
+    // franset Operator
+    this.registerStringVectorObject(
+        Channelsearch_dvbModelDefines.SL2_TVAPI_VSTR_DVB_CHANNEL_SEARCH_FRANSAT_OP,
+        "getFransetOp", "setFransetOp", "onFransetOpChaged",
+        null, null);
+
+    this.registerActionObject(
+        Channelsearch_dvbModelDefines.SL2_TVAPI_ACTION_DVB_CHANNEL_SEARCH_SET_FRANSAT_OP,
+        [
+            {
+                name: "SetFransetOp", method: function (object, FransetOp) {
+                return object.invoke(FransetOp);
+            }
+            }
+        ], "null"
     );
 }
 Channelsearch_dvbModel.prototype = new SubModel();

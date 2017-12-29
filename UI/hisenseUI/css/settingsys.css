@@ -2200,7 +2200,7 @@
     /*margin: 0;*/
     /*left: 471px;*/
     top: 415px;
-    margin: 0 626px 0 626px;
+    margin: 0 665px 0 665px;
 
 }
 
@@ -2209,11 +2209,12 @@
     height: 140px;
     position: relative;
     padding: 0px;
-    margin: 0;
-    left: 471px;
+    /*margin: 0;*/
+    /*left: 471px;*/
     top: 415px;
     background:url('../img/loading_div.png') no-repeat 0 0;
     -webkit-animation:run 1350ms steps(1) infinite 0s;
+    margin: 0 635px 0 635px;
 }
 
 #opera_4_5_pvrtshift_diskcheck_img1{

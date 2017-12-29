@@ -8,7 +8,7 @@
 var langPackages = {};//OneLangPackageXHR
 var applications = [
     {"name": "netflix", "pageId": "app_netflix", "key": VK_NETFLIX, "type": "native"},
-    {"name": "amazon", "pageId": "app_amazon", "key": VK_AMAZON, "type": "native"},
+    {"name": "amazonruby", "pageId": "app_amazonruby", "key": VK_AMAZON, "type": "native"},
     {"name": "vudu", "pageId": "app_vudu", "key": VK_VUDU, "type": "native"},
     {"name": "youtube", "pageId": "app_youtube", "key": VK_YOUTUBE, "type": "native"},
     {"name": "wuaki", "pageId": "app_tv_store", "key": VK_WUAKI, "type": "native"},
@@ -32,6 +32,8 @@ var hotelVolume = {
     switch: 0
 };
 var suspendFlag = false;
+var PVRFlag = true;
+var MixBarserviceNo;
 var waitSuspendPowerOn = false;
 var usbNfyTimer = 0;
 var AudioDevice = {
@@ -42,7 +44,7 @@ var AudioDevice = {
 var MHLDevice = {
     AVAILABLE: 0
 }
-
+var IsExitSatePlayChnl = false; //从搜台卫星设置页面出来需要重新播台，否则由于锁频会出现无信号
 var TeletextDevice = {
     status: 0
 }
@@ -56,7 +58,7 @@ var HTMLDIR = {
     RTL: "rtl"
 }
 var launcherCreateState = 0;
-var FREEVIEWTEST = false;
+var FREEVIEWTEST = true, ENABLE_FVP = true;
 var isStartFromNetfliex, isWizardFlag, powerOffTipFlag = -1;
 var powerOffTipTimer = 0, powerOffSourceTimer = 0;
 var lastClosedPage = "";
@@ -96,6 +98,9 @@ var onTeletextStatusChaged = function (value) {
                 $("#livetv_no_text_txt1").css("display", "none");
                 hiWebOsFrame.unLockAllKeys();
                 hiWebOsFrame.getCurrentPage().resume();
+                if (hiWebOsFrame.getCurrentPage().id == "livetv_main") {
+                    livetvmain.onFocusLiveTVMain();
+                }
             }, 2000);
         }
         else {
@@ -148,7 +153,7 @@ var onAutoSleepSwitchchanged = function (value) {
 /******************************************************
  * platform为5657SA时调用非hotapp页面
  ******************************************************/
-var currentPlatform_config = "", EPOSresolution = "", DeviceMsgSA = "";
+var currentPlatform_config = "", EPOSresolution = "", DeviceMsgSA = "",currOperaVersion = "";
 var firstFocusId_config = "launcher_aah_content";
 var jsPath_config = "../../launcher/js/launcherAllAppsWithHot.js";
 var cssPath_config = "../../launcher/css/launcherAllAppsWithHot.css";
@@ -172,6 +177,10 @@ function initPlatformParam_config() {
         cssPath_config_FreeView = currentPlatform_config == '5655_EU_MARKET' ? "../../VIDAALiteLauncher/css/5655EUcss/VIDAALiteFreeView.css" : "../../VIDAALiteLauncher/css/VIDAALiteFreeView.css";
         cssPath_config_Video = currentPlatform_config == '5655_EU_MARKET' ? "../../VIDAALiteLauncher/css/5655EUcss/VIDAALiteVideo.css" : "../../VIDAALiteLauncher/css/VIDAALiteVideo.css";
         cssPath_config_Input = currentPlatform_config == '5655_EU_MARKET' ? "../../VIDAALiteLauncher/css/5655EUcss/VIDAALiteTvInput.css" : "../../VIDAALiteLauncher/css/VIDAALiteTvInput.css";
+
+        if(!!window.opera_omi){
+            currOperaVersion = "opera4x";
+        }
     }
     catch (ex) {
         DBG_ERROR("Get platform error! ex_message is " + ex.message);
@@ -183,13 +192,14 @@ var hiWebOsFrame = null;
 //调用SDK函数示例
 //hiWebOsFrame.SDKFunction_test('调用SDK函数');
 
-
+//用于记录Wuaki按键启动的全局变量
+var needStartWuaki = false;
 var isSystemInited = false;
 $(document).ready(function () {
 
     initPlatformParam_config();
     //增加根据平台不同使用不同LOADING圈的机制
-    if ('APP_5890_SA' == currentPlatform_config) {
+    if ('APP_5890_SA' == currentPlatform_config || "opera4x" == currOperaVersion) {
         $('#loadingImg').css("display", "none");
         $('#loadingDiv').css("display", "block");
     }
@@ -236,13 +246,15 @@ $(document).ready(function () {
 
             protectPages: ['setting_update_progressing_page', "setting_autoupdate_page", "setting_forceupdate_page",
 
-			"settingChSetAutoScanPageId","settingChSetEUAutoScanPageId","settingChSetDVBTUKAreaListDialogId", "settingChSetDVBTLCNListDialogId","beginRecordDialog", "pvrRecordTip", "setting_update_spacecheck_page", "livetv_operate_tip",
+			"settingChSetAutoScanPageId","settingChSetEUAutoScanPageId","settingChSetDVBTUKAreaListDialogId", "settingChSetDVBTLCNListDialogId","settingChSetFransatOpListDialogId","beginRecordDialog", "pvrRecordTip", "setting_update_spacecheck_page", "livetv_operate_tip",
             "pvrHDList", "pvrHardDiskCheck","pvrHDSpeedCheckResult"],//保护不被关闭的页面
 
 
 		noRepeatKeys: [VK_MENU, VK_HOME, VK_ENTER,VK_BACK, VK_EPG, VK_INFO, VK_RED, VK_GREEN, VK_YELLOW, VK_BLUE,
-			VK_PIP, VK_PVR, VK_STOP, VK_FAC_M, VK_AMAZON, VK_VUDU, VK_ALLAPP, VK_YOUTUBE, VK_NETFLIX,VK_POWER_KEY_PAD],
-		systemKeys: [VK_HOME, VK_EXIT, VK_MEDIA, VK_LIVETV, VK_MENU, VK_FAC_M, VK_AMAZON, VK_VUDU, VK_ALLAPP, VK_YOUTUBE, VK_NETFLIX, VK_SLEEP, VK_SOURCE, VK_KEYPAD_INPUT, VK_F1, VK_KEYPAD_MENU, VK_BT_CONNECT, VK_EPG,VK_KPAD, VK_STICKER,VK_VOICE, VK_AUDIO_DESCRIPTION, VK_WUAKI],
+			VK_PIP, VK_PVR, VK_STOP, VK_FAC_M, VK_AMAZON, VK_VUDU, VK_ALLAPP, VK_YOUTUBE, VK_NETFLIX,VK_POWER_KEY_PAD,VK_AUDIOONLY],
+		systemKeys: [VK_HOME, VK_EXIT, VK_MEDIA, VK_LIVETV, VK_MENU, VK_FAC_M, VK_AMAZON, VK_VUDU, VK_ALLAPP, VK_YOUTUBE, VK_NETFLIX, VK_SLEEP, VK_SOURCE, VK_KEYPAD_INPUT, VK_F1, VK_KEYPAD_MENU,VK_KEYPAD_MENU7, VK_BT_CONNECT, VK_EPG,VK_KPAD, VK_STICKER,VK_VOICE, VK_AUDIO_DESCRIPTION, VK_WUAKI,VK_AUDIOONLY,
+            VK_AV1,VK_AV3,VK_COMPONENT1,VK_HDMI1,VK_HDMI2,VK_HDMI3,VK_HDMI4,VK_HDMI5,VK_VGA,VK_PICTURE,VK_S_MODE,VK_PICMODE_WIDE,VK_PICMODE_NORMAL,VK_PICMODE_CINEMA,
+            VK_PICMODE_PANORAMA,VK_PICMODE_ZOOM,VK_PIC_CINEMA_NIGHT,VK_PIC_CINEMA_DAY,VK_ASPECT_AUTO,VK_ASPECT_DIRECT,VK_SND_MOVIE,VK_FREEZE],
 		keySwitch: true,
 		KeyStackLimit: 5,
 		directoryOn: true,//是否启用目录控制
@@ -508,15 +520,30 @@ $(document).ready(function () {
                         if (event.keyCode == hiWebOsFrame.getKeyValues().keyPadMenu) {
 
                             if (!HOTElKEYBboardLock) {
-                                event.keyCode = hiWebOsFrame.getKeyValues().keyMenu;
+                                if (hiWebOsFrame.isCurrentModule("mixBar")) {
+                                    event.keyCode = hiWebOsFrame.getKeyValues().keyEnter;
+                                }else{
+                                    event.keyCode = hiWebOsFrame.getKeyValues().keyMenu;
+                                }
+                            } else {
+                                event.keyCode = 0;
+                            }
+                        }
+                        if (event.keyCode == hiWebOsFrame.getKeyValues().keyPadMenu7) {
 
+                            if (!HOTElKEYBboardLock) {
+                                if (hiWebOsFrame.isCurrentModule("mixBar")) {
+                                    event.keyCode = hiWebOsFrame.getKeyValues().keyEnter;
+                                }else{
+                                    event.keyCode = hiWebOsFrame.getKeyValues().keyPadMenu7;
+                                }
                             } else {
                                 event.keyCode = 0;
                             }
                         }
                         if (event.keyCode == hiWebOsFrame.getKeyValues().keyTVChDown) {
                             if (!HOTElKEYBboardLock) {
-                                if (hiWebOsFrame.isCurrentModule("setting") || hiWebOsFrame.isCurrentModule("settingfirst")) {
+                                if (hiWebOsFrame.isCurrentModule("setting") || hiWebOsFrame.isCurrentModule("settingfirst") || hiWebOsFrame.isCurrentModule("mixBar")) {
                                     event.keyCode = hiWebOsFrame.getKeyValues().keyDown;
                                 }
                             } else {
@@ -526,7 +553,7 @@ $(document).ready(function () {
                         }
                         if (event.keyCode == hiWebOsFrame.getKeyValues().keyTVChUp) {
                             if (!HOTElKEYBboardLock) {
-                                if (hiWebOsFrame.isCurrentModule("setting") || hiWebOsFrame.isCurrentModule("settingfirst")) {
+                                if (hiWebOsFrame.isCurrentModule("setting") || hiWebOsFrame.isCurrentModule("settingfirst") || hiWebOsFrame.isCurrentModule("mixBar")) {
                                     event.keyCode = hiWebOsFrame.getKeyValues().keyUp;
                                 }
                             } else {
@@ -621,6 +648,17 @@ $(document).ready(function () {
                                 event.keyCode = 0;
                             }
                         }
+                        if (event.keyCode == hiWebOsFrame.getKeyValues().keyPadMenu7) {
+
+                            if (!HOTElKEYBboardLock) {
+                                if (hiWebOsFrame.isCurrentModule("mixBar")) {
+                                    event.keyCode = hiWebOsFrame.getKeyValues().keyEnter;
+                                }
+
+                            } else {
+                                event.keyCode = 0;
+                            }
+                        }
                     }
                 }
                 catch (ex) {
@@ -705,6 +743,7 @@ $(document).ready(function () {
 
 
                 }
+                var picAspectRatioVec = ["Automatic", "16:9", "4:3", "Panoramic", "Movie Zoom", "Direct"];
                 switch (event.keyCode) {
                     case hiWebOsFrame.getKeyValues().keyF1:
                         //debugPrint("[xuehongfeng]F1keydonw",DebugLevel.ALWAYS);
@@ -773,6 +812,9 @@ $(document).ready(function () {
                     case hiWebOsFrame.getKeyValues().keyInfo:
                         if("epg" == hiWebOsFrame.getCurrentPageId()){
                             epg.keyInfoHandler();
+                        }
+                        else if("epg_fvp_detail_page" == hiWebOsFrame.getCurrentPageId()){
+                            epgBackToOri(null, null, hiWebOsFrame.getCurrentPage());
                         }
                         else{
                             liveTVHandlerProcess(VK_INFO);
@@ -854,7 +896,27 @@ $(document).ready(function () {
                                 }
 
                             }
-                            asyncStartApp(app_c.pageId, app_c.name, true, false, false, true);
+
+                            if (event.keyCode == VK_WUAKI){
+                                needStartWuaki = false;
+                                if(deviceKeySet.HBBTVKEYSET!=0){
+                                    pauseHBBTV();
+                                    needStartWuaki = true;
+                                    DBG_ALWAYS("needStartWuaki later");
+                                }else if(checkIsAppOn()){
+                                    hiWebOsFrame[LiveTVModule.MAIN].operateData.callBackFunc = function(){
+                                        hiWebOsFrame[LiveTVModule.MAIN].operateData.callBackFunc = null;
+                                        sendCommndToTV(CmdURLType.START_HBBTV_APP, HSAPPURL.WUAKI, true);
+                                    };
+                                    checkAndCloseIfAppOn(hiWebOsFrame[LiveTVModule.MAIN]);
+
+                                }else{
+                                    sendCommndToTV(CmdURLType.START_HBBTV_APP, HSAPPURL.WUAKI, true);
+                                }
+                            }
+                            else{
+                                asyncStartApp(app_c.pageId, app_c.name, true, false, false, true);
+                            }
 
                             if (event.keyCode == VK_NETFLIX) {
                                 try {
@@ -981,7 +1043,15 @@ $(document).ready(function () {
                             }
                             //tempDebug = false;//正式去掉
                             if (!canCurrentPageProcEvent())return false;
-                            oneKeyOpenVIDAALauncherInput();
+                            if (hiWebOsFrame.isCurrentModule("launcher") && hiWebOsFrame.getCurrentPageId() == "VIDAALiteTvInput") {
+                                VIDAALiteLauncherIfPositionResetFirst = true;
+                                hiWebOsFrame.myLauncher.close();
+                                hiWebOsFrame.blankPage.open();
+                                hiWebOsFrame.blankPage.hiFocus();
+                            }else{
+                                oneKeyOpenVIDAALauncherInput();
+                            }
+
                         }
                         try {
                             var tmp = hiWebOsFrame.getCurrentArea() == 'SA' ? 'SOURCE' : 'INPUT';
@@ -995,6 +1065,25 @@ $(document).ready(function () {
 
                         break;
                     case hiWebOsFrame.getKeyValues().keyPadMenu://add for mixbar 0227
+
+                        if (!canCurrentPageProcEvent())return false;
+
+                        if (hiWebOsFrame.getCurrentPageId() != "mixBar_page") {
+
+                            hiWebOsFrame.createPage('mixBar_page', null, null, null, function (MixBar_page) {
+                                hiWebOsFrame.MixBar_page = MixBar_page;
+                                if (!checkAndCloseIfAppOn(MixBar_page)) {
+                                    closeDOthersModule("mixBar");
+                                    MixBar_page.open();
+                                    MixBar_page.hiFocus();
+                                }
+                                else {
+                                    MixBar_page.origin = hiWebOsFrame.blankPage;
+                                }
+                            });
+                        }
+                        break;
+                    case hiWebOsFrame.getKeyValues().keyPadMenu7://add for mixbar 0227
 
                         if (!canCurrentPageProcEvent())return false;
 
@@ -1162,6 +1251,17 @@ $(document).ready(function () {
                         }
 
                         break;
+                    case hiWebOsFrame.getKeyValues().keyAudioOnly:
+                    {
+                        try{
+                        model.system.setEnumScreenState(0);
+                        debugPrint("Off the screen", DebugLevel.ERROR);
+                        g_SystemAudioOnlyFlag=1;
+                        }catch (e){
+                            debugE(e.message)
+                        }
+                       break;
+                    }
                     case hiWebOsFrame.getKeyValues().keySleep:
                     {
                         debugPrint("[config.js]keysleep pressed!", DebugLevel.ERROR);
@@ -1292,7 +1392,7 @@ $(document).ready(function () {
                             tryToCloseAllApps();
                         }
 
-					if (hiWebOsFrame.getCurrentPageId() == LiveTVModule.MAIN && 2 != TeletextDevice.status && deviceKeySet.HBBTVKEYSET > 15) {
+					if (hiWebOsFrame.getCurrentPageId() == LiveTVModule.MAIN && 2 != TeletextDevice.status && (deviceKeySet.HBBTVKEYSET > 15 || model.tvservice.getHbbTvStatus() == 2)) {
 						pauseHBBTV();
 					}
 					setWindowSizeLater(0, 0, 1920, 1080);
@@ -1405,6 +1505,19 @@ $(document).ready(function () {
                                 tryToCloseAllApps();
                                 if(g_launcherBrand == "VIDAALite") {
                                     VIDAALiteLauncherIfPositionResetFirst = true;
+                                    if(!!hiWebOsFrame[VIDAALiteLauncherPageIdMap["template2000"]]){
+                                        if(VIDAALiteNavPageData.operateData.lastOpenPage!=VIDAALiteLauncherPageIdMap["template2000"]){
+                                            var crtPageId = VIDAALiteNavPageData.operateData.lastOpenPage;
+                                            VIDAALiteNavPageData.operateData.lastOpenPage = VIDAALiteLauncherPageIdMap["template2000"];
+//                                            setTimeout(function(){
+                                                $("#"+hiWebOsFrame[VIDAALiteNavPageData.operateData.lastOpenPage].id).css("transform", 'translateY(-200px)');//lu
+                                                $("#"+hiWebOsFrame[VIDAALiteNavPageData.operateData.lastOpenPage].id).css("opacity", '1');//lu
+                                                setVIDAALiteLauncherNavBarFocusImageForFVP();
+                                                setVIDAALiteLauncherNavBarAnimation(crtPageId, VIDAALiteNavPageData.operateData.lastOpenPage);
+                                                hiWebOsFrame.unLockAllKeys();
+//                                            },10);
+                                        }
+                                    }
                                 }
                                 hiWebOsFrame.myLauncher.open();
                                 hiWebOsFrame.myLauncher.hiFocus();
@@ -1571,32 +1684,224 @@ $(document).ready(function () {
                         }
 
                         break;
-                    case hiWebOsFrame.getKeyValues().keyPMode:
-                        //tempDebug = false;//正式去掉
-                        if (!hiWebOsFrame.isCurrentModule("livetv") && !hiWebOsFrame.isCurrentModule("videoPlayer") && !hiWebOsFrame.isCurrentModule("audioPlayer") && !hiWebOsFrame.isCurrentModule("picPlayer") && hiWebOsFrame.getCurrentPageId() != 'setting_pic_Mode') {
+                    case hiWebOsFrame.getKeyValues().keyAV1:
+                    case hiWebOsFrame.getKeyValues().keyAV3:
+                    case hiWebOsFrame.getKeyValues().keyAV2:
+                    case hiWebOsFrame.getKeyValues().keyCOMPONENT1:
+                    case hiWebOsFrame.getKeyValues().keyHDMI1:
+                    case hiWebOsFrame.getKeyValues().keyHDMI2:
+                    case hiWebOsFrame.getKeyValues().keyHDMI3:
+                    case hiWebOsFrame.getKeyValues().keyHDMI4:
+                    case hiWebOsFrame.getKeyValues().keyHDMI5:
+                    case hiWebOsFrame.getKeyValues().keyVGA:
+                    {
+                        if (!canCurrentPageProcEvent())return false;
+                       // var defaultSource = model.system.getSystemDefaultInput();
+                        var defaultSource=getSourceIdbyKey(event.keyCode);
+                        if(defaultSource==undefined){
                             return false;
                         }
-                        else {
-                            if (hiWebOsFrame.getCurrentPageId() == 'setting_pic_Mode' && hiWebOsFrame.getCurrentPage().origin.module != 'setting') {
-                                hiWebOsFrame.getCurrentPage().close();
-                                hiWebOsFrame.getCurrentPage().origin.open();
-                                hiWebOsFrame.getCurrentPage().origin.hiFocus();
+                        var hotelMode = tv?model.hotel.getHotelMode():0;
+                        if (checkAndCloseIfAppOn(hiWebOsFrame.blankPage)) {
+                            if (defaultSource != livetvmain.getCurrentSource().uid && (hotelMode != 1 || ((hotelMode == 1) && (!livetvmain.getSourceByUid(defaultSource).hotelLock)))) {
+                                changeSourceTo(defaultSource);
                             }
+                            return false;
+                        }
+                        else if (hiWebOsFrame.isCurrentModule("launcher")) {
+                            if (g_launcherBrand == "SA_OEM" || g_launcherBrand == "VIDAALite") {
+                                hiWebOsFrame.myLauncher.close();
+                            } else {
+                                launcherNBar.closeLauncher();
+                            }
+                        }
+                        else if (!!hiWebOsFrame.getCurrentPage()) {
+                            closePagesOrModuleByPage(hiWebOsFrame.getCurrentPage());
+                            tryToCloseLauncher();
+                            tryToCloseAllApps();
+                        }
+                        if (defaultSource != livetvmain.getCurrentSource().uid && (hotelMode != 1 || ((hotelMode == 1) && (!livetvmain.getSourceByUid(defaultSource).hotelLock)))) {
+                            if (tv == true && (isMainArchiveRecording() || isTimeShiftStatus())) {
+                                debugPrint("keyLiveTV is pressed!");
+                                PVROrTShiftDialog(hiWebOsFrame.getCurrentPage(),
+                                    "Sure to exit from PVR or T.Shift?", okCommandLiveTV, pvrTshiftCancelCommand);
+                                return;
+                            }
+                            changeSourceTo(defaultSource);
+                            openLiveTVModule([Msg.WAIT_SOURCE_CHANGE, 1]);
+                        }
+                        else {
+                            openLiveTVModule();
+                            }
+                        setWindowSizeLater(0, 0, 1920, 1080);
+                        break;
+                        }
+                    case hiWebOsFrame.getKeyValues().keyPMode:
+                        try {
+                            var HDRMode = ["Standard", "Dynamic", "HDR", "Cinema", "PC/Game"];
+                            var SDRMode = ["Standard", "Dynamic", "Cinema day", "Cinema night", "PC/Game"];
+                            var isHDRFlag = tv ? model.video.getHDRSupport() : 1;
+                            var picModeTextVec = !!isHDRFlag ?  HDRMode: SDRMode;
+                            var curIdx = tv?model.video.getEnumPictureMode():3;
+                            var GameFlag = (!isCurrentAppHimedia() && (livetvmain.getCurrentSourceInnerId() != SourceList.TV));
+                            if(((curIdx+1)>=picModeTextVec.length) || (curIdx==3 && !GameFlag)){
+                                curIdx = 0
+                            }else{
+                                curIdx = curIdx +1;
+                            }
+                            tv && model.video.setEnumPictureMode(curIdx);
+                            DBG_INFO("model.video.setEnumPictureMode: " + curIdx);
+                            showTVTip(picModeTextVec[curIdx]);
+                        } catch (ex) {
+                            DBG_ERROR(ex.message);
                         }
                         break;
                     case hiWebOsFrame.getKeyValues().keySMode:
-                        //tempDebug = false;//正式去掉
-                        if (!hiWebOsFrame.isCurrentModule("livetv") && !hiWebOsFrame.isCurrentModule("videoPlayer") && !hiWebOsFrame.isCurrentModule("audioPlayer") && hiWebOsFrame.getCurrentPageId() != 'setting_snd_mode') {
-                            return false;
-                        }
-                        else {
-                            if (hiWebOsFrame.getCurrentPageId() == 'setting_snd_mode' && hiWebOsFrame.getCurrentPage().origin.module != 'setting') {
-                                hiWebOsFrame.getCurrentPage().close();
-                                hiWebOsFrame.getCurrentPage().origin.open();
-                                hiWebOsFrame.getCurrentPage().origin.hiFocus();
+                        try {
+                            var ModeEnum = ["Standard", "Theatre", "Music", "Speech", "Late Night"];
+                            var currSndModeIndex = tv ? model.sound.getSoundMode() : 3;
+                            var setSndModeIndex;
+                            if (currSndModeIndex + 1 >= ModeEnum.length) {
+                                setSndModeIndex = 0
+                            }else{
+                                setSndModeIndex = currSndModeIndex + 1;
                             }
+                            DBG_INFO("setSndModeIndex:" + setSndModeIndex);
+                            tv && model.sound.setSoundMode(setSndModeIndex);
+                            showTVTip(ModeEnum[setSndModeIndex]);
+                        }
+                        catch (ex) {
+                            DBG_ERROR(ex.message);
                         }
                         break;
+                    case hiWebOsFrame.getKeyValues().keyASPECT_AUTO:
+                        var curIdx = picAspectRatioVec.indexOf("Automatic");
+                        tv && model.video.setEnumZoom(curIdx);//3
+                        showTVTip("Automatic");
+                        break;
+                    case hiWebOsFrame.getKeyValues().keyPICMODE_WIDE:
+                        var curIdx = picAspectRatioVec.indexOf("16:9");
+                        tv && model.video.setEnumZoom(curIdx);//3
+                        showTVTip("16:9");
+                        break;
+                    case hiWebOsFrame.getKeyValues().keyPICMODE_NORMAL:
+                        var curIdx = picAspectRatioVec.indexOf("4:3");
+                        tv && model.video.setEnumZoom(curIdx);//3
+                        showTVTip("4:3");
+                        break;
+                    case hiWebOsFrame.getKeyValues().keyPICMODE_PANORAMA:
+                        var curIdx = picAspectRatioVec.indexOf("Panoramic");
+                        tv && model.video.setEnumZoom(curIdx);//3
+                        showTVTip("Panoramic");
+                        break;
+                    case hiWebOsFrame.getKeyValues().keyPICMODE_CINEMA:
+                        var curIdx = picAspectRatioVec.indexOf("Movie Zoom");
+                        tv && model.video.setEnumZoom(curIdx);//3
+                        DBG_ERROR("VK_PICMODE_CINEMA");
+                        showTVTip("Movie Zoom");
+                        break;
+                         break;
+                    case hiWebOsFrame.getKeyValues().keyASPECT_DIRECT:
+                        var curIdx = picAspectRatioVec.indexOf("Direct");
+                        tv && model.video.setEnumZoom(curIdx);//3
+                        showTVTip("Direct");
+                        break;
+                        break;
+                    case hiWebOsFrame.getKeyValues().keyPIC_CINEMA_DAY:
+                    {
+                        var cinemaDayStr = ["Cinema day","HDR"];
+                        var isHDRFlag = tv ? model.video.getHDRSupport() : 1;
+                        tv && model.video.setEnumPictureMode(2);
+                        DBG_INFO("model.video.setEnumPictureMode: " + 2);
+                        showTVTip(cinemaDayStr[isHDRFlag]);
+                        break;
+                    }
+                    case hiWebOsFrame.getKeyValues().keyPIC_CINEMA_NIGHT:
+                    {
+                        var cinemaNightStr = ["Cinema night","Cinema"];
+                        var isHDRFlag = 0;
+                        isHDRFlag = tv ? model.video.getHDRSupport() : 1;
+                        tv && model.video.setEnumPictureMode(3);
+                        DBG_INFO("model.video.setEnumPictureMode: " + 3);
+                        showTVTip(cinemaNightStr[isHDRFlag]);
+                        break;
+                    }
+                    case hiWebOsFrame.getKeyValues().keySND_MOVIE:
+                    {
+                        tv && model.sound.setSoundMode(1);
+                        DBG_INFO("model.video.setSoundMode: "+1);
+                        showTVTip("Theatre");
+                        break;
+                    }
+                    case hiWebOsFrame.getKeyValues().keyFREEZE:
+                    {
+                        debugPrint("freez key");
+                        try {
+
+                            if (model.video.getFreeze() > 0) {
+                                model.video.setFreeze(0);
+
+                            } else {
+                                model.video.setFreeze(1);
+                            }
+                        } catch (e) {
+                            DBG_ERROR(e.message);
+                        }
+                        break;
+                    }
+                    case hiWebOsFrame.getKeyValues().keyMedia:
+                    {
+                        if (hiWebOsFrame.getCurrentPageId() == "dlna_picPlayer" ||
+                        hiWebOsFrame.getCurrentPageId() == "dlna_videoPlayer" ||
+                        hiWebOsFrame.getCurrentPageId() == "dlna_musicPlayer") {
+                        DBG_INFO("now page is " + hiWebOsFrame.getCurrentPageId() + "  need change dlnaClosedByAppHotkey!!");
+                        dlnaClosedByAppHotkey = true;
+
+                    }
+                        //进第三方应用，若当前有录制时，UI提示
+                        if (isMainArchiveRecording() || isTimeShiftStatus()) {
+                            debugPrint("keyNetflix/keyAmazon/keyVudu/keyYoutube/keyWuaki is pressed!");
+                            PVROrTShiftDialog(hiWebOsFrame.getCurrentPage(),
+                                "Sure to exit from PVR or T.Shift?", okCommandApp.bind(this, event.keyCode), pvrTshiftCancelCommand);
+                            return;
+                        }
+                        if (!canCurrentPageProcEvent())return false;
+
+
+                        if (isCurrentAppHimedia()) {
+
+                            DBG_INFO("do not process himself: media");
+
+                        }
+                        else {
+                            var crntPage = hiWebOsFrame.getCurrentPage();
+                            if ("setting" == crntPage.module || "settingfirst" == crntPage.module) {
+                                var settingorigin = hiWebOsFrame.settingsFirst.origin;
+                                if (!!settingorigin && settingorigin.visible) {
+                                    if (settingorigin.module == "launcher") {
+                                        closePagesOrModuleByPage(crntPage);
+                                        hiWebOsFrame.myLauncher.hiFocus();
+                                    }
+                                    else if (settingorigin.module == "allapps") {
+                                        closePagesOrModuleByPage(crntPage);
+                                        hiWebOsFrame["launcher_allapps"].open();
+                                        launcherAApps.focusAllApp();
+                                    }
+                                    else if(settingorigin.id == app_c.pageId){
+                                        DBG_INFO("do not process himself: " + app_c.name);
+                                        return;
+                                    }
+                                }
+
+                            }
+
+                            sendCommndToTV(CmdURLType.START_BROWSER, getMediaURL(0), false);
+                            debugPrint("keyMedia ");
+                            return false;
+                        }
+
+                        break;
+                    }
                     case hiWebOsFrame.getKeyValues().key3D:
                         //tempDebug = false;//正式去掉
                         debugPrint("key3D____" + hiWebOsFrame.isCurrentModule("videoPlayer"));
@@ -1665,6 +1970,10 @@ $(document).ready(function () {
                         vol.setBizMute();
                         break;
                     case hiWebOsFrame.getKeyValues().keyGuide:
+                        if (deviceKeySet.HBBTVKEYSET > 0x1f) {
+                            DBG_ERROR("hbbtv disable the key");
+                            return;
+                        }
                         try {
                             openEPGPage();
                             debugPrint("logReport__________begin", DebugLevel.WARNING);
@@ -1793,7 +2102,13 @@ $(document).ready(function () {
                     liveTVHandlerProcess(event.keyCode, 1);
                     if (event.keyCode == VK_CHANNEL_DOWN || event.keyCode == VK_CHANNEL_UP ||
                         event.keyCode == VK_KEYPAD_CHANNEL_DOWN || event.keyCode == VK_KEYPAD_CHANNEL_UP) {
-                        livetvchlist.setKeyUp(event.keyCode);
+
+                        if (0 && deviceKeySet.HBBTVKEYSET > 0x1f) {
+                            DBG_ERROR("hbbtv disable the key");
+                        }
+                        else {
+                            livetvchlist.setKeyUp(event.keyCode);
+                        }
                     }
                     if (event.keyCode == VK_EXIT && 2 == TeletextDevice.status) {
                         // if standard teletext is active, send EXIT to DTV
@@ -1846,15 +2161,15 @@ $(document).ready(function () {
 //            $("body").css("background-color", "rgba(203,232,207,1)");
 //           openChannelManager();
             hiWebOsFrame.setLanguage("eng");
-            initsystemid();
+//            initsystemid();
             //createVIDAALitelauncher();
             //return;
             //$("#hiweb").css("overflow", "visible");
-            //openLiveTVModule(function() {
+//            openLiveTVModule(function() {
                 //closeDOthersModule("");
                 //openPageOnPC("epg");
                 //openLiveTVSubPage(LiveTVModule.CHANNEL_LIST);
-            //});
+//            });
             //snd.test();
             //return;
             startSetting();
@@ -1902,6 +2217,7 @@ $(document).ready(function () {
             }
         }
 
+
     });
 
 });
@@ -1935,6 +2251,10 @@ function doTVInit(){
     isWizardFlag = getWizardSetFlag();
     doTVScale();
     model.system.stopAnimation(0);
+
+    if(!!window.opera_omi) {
+        opera_omi.sendPlatformMessage("showUI");
+    }
     if (((isWizardFlag != 1) && (isWizardFlag != 2)) || (isStartFromNetfliex == true)) {
 
         if (1 != model.hisfactory.getFactoryAging()) {
@@ -1943,6 +2263,21 @@ function doTVInit(){
     }
     FREEVIEWTEST = getFreeviewVersion();
     SystemInit();
+
+    try {
+        var civStr = tv? model.ci.getCIVStrEnquiry(): [];
+        DBG_ERROR("civStr is " + objToString(civStr));
+        if (Array.isArray(civStr) && civStr.length > 0) {
+            onCIVStrEnquiryChaged(civStr);
+        }
+    }
+    catch (ex) {
+        DBG_ERROR("get civStr error: " + ex.message);
+    }
+
+    if(ENABLE_FVP) {
+        freeview_manager.init();
+    }
 }
 
 function openlauncherrecentwatch() {
@@ -2003,7 +2338,7 @@ function openMenuPage() {
     if (typeof ginga != UNDEFINED_DEFSTR) {
         ginga.GingaStop();
     }
-    notifyMheg5State(0);
+    //notifyMheg5State(0);
     if (!!hiWebOsFrame.getCurrentPage()) {
         if (hiWebOsFrame.isCurrentModule("livetv")) {
             closeLiveTVModule();
@@ -2100,6 +2435,7 @@ function SystemInit() {
 
     try {
 //	    SystemInitBrand();
+        initPVRFlag();
         var val = model.hisfactory.getStateOpen();
         if (0 == val && !isFileExist("his_factory_do_ok_over", 0)) {
             hiWebOsFrame.registerKeyCodesNormal();
@@ -2177,6 +2513,7 @@ function initModelOnChangeEvent() {
     model.system.onPVRStatusChanged = onPVRStatusChanged;
     model.timerfunc.onCurTimeChaged = onCurTimeChanged;
     model.system.onEnterSuspendChanged = onEnterSuspendChanged;
+    model.fvpepg.onFEPGAppURLChanged = onFEPGAppURLChanged;
 }
 function openChannelManager(originPage) {
     if(hiWebOsFrame.getCurrentArea() == 'EU'){
@@ -2233,7 +2570,9 @@ function startDialogNetwork(originPage) {
 }
 
 function startLiveTv() {
-
+    DBG_INFO("startLiveTv");
+    var isUK = hiWebOsFrame.getCurrentCountry() == "UK";
+    ENABLE_FVP = tv ? (1 == parseInt(model.basicSetting.getDisclaimer()) && isUK) : true;
     hisenseUITZSeconds = parseInt(model.timerfunc.getNewTimeZone());
     setSATimezoneOffset();
     hisenseUITimeFormat = parseInt(model.timerfunc.getTimeFormat());
@@ -2335,15 +2674,20 @@ function doSomethingInit() {
     }
     //添加获取platform信息的接口
     initPlatformParam();
+    if(1 != model.system.getOpenFromStandby()){
+    DBG_ALWAYS("[startopera4x] in doSomethingInit.");	
     startOpera4x();
+    }
 }
 
 function showLiveTVUI(){
+    DBG_INFO("showLiveTVUI");
     hiWebOsFrame["livetv_volume"].open();
     livetvmain.initLiveTVMain();
     if(!livetvchlist.getChannelListInited()){
         livetvchlist.initChannelList();
     }
+    DBG_INFO("showLiveTVUI isStartFromNetfliex" + isStartFromNetfliex);
     if(isStartFromNetfliex){
         openLiveTVModule([Msg.INFO, 0]);
     }
@@ -2354,7 +2698,9 @@ function showLiveTVUI(){
 }
 
 function startLiveTvFirst() {
-
+    DBG_INFO("startLiveTvFirst");
+    var isUK = hiWebOsFrame.getCurrentCountry() == "UK";
+    ENABLE_FVP = tv ? (1 == parseInt(model.basicSetting.getDisclaimer()) && isUK) : true;
     hisenseUITZSeconds = parseInt(model.timerfunc.getNewTimeZone());
     setSATimezoneOffset();
     hisenseUITimeFormat = parseInt(model.timerfunc.getTimeFormat());
@@ -3286,13 +3632,7 @@ function enterBoeInitPara() {
         pauseDTV();
         setTimeout(function () {
             var musicPath = "file:///3rd_rw/UI/hisenseUI/wizard_bg.mp3";
-            //model.mpctrl.PlayMusic(musicPath);
-            if(getCurrVeraForWizard() == 'EU') {
-                model.mpctrl.PlayBackgroundMusic(musicPath);
-            }
-            else{
-                model.mpctrl.PlayMusic(musicPath);
-            }
+            model.mpctrl.PlayMusic(musicPath);
         }, 500);
         startRetailmodeTimer(false);
         model.network.setEnumNetworkConfig(1);
@@ -3686,7 +4026,7 @@ var onMpCtrlRenderchanged = function (value) {
         ((hiWebOsFrame.getCurrentPageId() == "app_lau_browser") && (CmdURLType.LAU_BROWSER_WIZARD == appBrowser.getCurrentCommandType())) ||
         hiWebOsFrame.getIsLoading() ||
         hiWebOsFrame.getIsLocking() || isMainArchiveRecording() || isTimeShiftStatus() ||
-        (crntPage.module == "wizard")
+        (crntPage.module == "wizard")||(hiWebOsFrame.getCurrentPageId() == "dialog_reminder")
     ) {
         DBG_INFO("Current Page is ProtectPage,can't open DLNA PLAYER PAGE! ");
         //model.picture.setDLNAPictureRunning(0);
@@ -3794,7 +4134,7 @@ var onVstrHTML5PlayChaged_launcher = function (value) {
 
 var onPictureRunningchanged = function (value) {
     debugPrint("___________________DLNA_PIC________" + value);
-    if(dlnapictimer != null){
+    if(dlnapictimer != null && value != 0){
         clearTimeout(dlnapictimer);
         hiWebOsFrame.endLoading("DLNAPICPLAYER");
         dlnapictimer = null;
@@ -3811,7 +4151,7 @@ var onPictureRunningchanged = function (value) {
             ((hiWebOsFrame.getCurrentPageId() == "app_lau_browser") && (CmdURLType.LAU_BROWSER_WIZARD == appBrowser.getCurrentCommandType())) ||
             hiWebOsFrame.getIsLoading() ||
             hiWebOsFrame.getIsLocking() ||
-            (crntPage.module == "wizard") || isMainArchiveRecording() || isTimeShiftStatus()
+            (crntPage.module == "wizard") || isMainArchiveRecording() || isTimeShiftStatus()||(hiWebOsFrame.getCurrentPageId() == "dialog_reminder")
         ) {
             DBG_INFO("Current Page is ProtectPage,can't open DLNA PLAYER PAGE! ");
             model.picture.setDLNAPictureRunning(0);
@@ -4373,6 +4713,39 @@ function isCurrentAppHimedia() {
     return himediaIsOn;
 }
 
+function testFvp(usbStatus) {
+    var testMdsPath = usbStatus[1].replace("/mnt/", "") + "test_mds";
+    var testMdsUrl = Hisense.File.read(testMdsPath, 3);
+    if (isNaN(testMdsUrl)) {
+        debugPrint("testFvp --> override mds url: " + testMdsUrl);
+        Hisense.File.write("test_mds", testMdsUrl, 1);
+    }
+
+    var removeTestMdsPath = usbStatus[1].replace("/mnt/", "") + "remove_test_mds";
+    if (Hisense.File.exists(removeTestMdsPath, 3)) {
+        debugPrint("testFvp --> recover mds url if it was overridden");
+        Hisense.File.delete("test_mds", 1);
+    }
+
+    var testAppPath = usbStatus[1].replace("/mnt/", "") + "test_app";
+    var testAppUrl = Hisense.File.read(testAppPath, 3);
+    if (isNaN(testAppUrl)) {
+        debugPrint("testFvp --> open test app: " + testAppUrl);
+        sendAM(":am,opera4x,hbbtv:open=" + testAppUrl);
+        return true;
+    }
+
+    var testAitPath = usbStatus[1].replace("/mnt/", "") + "test_ait";
+    var testAitUrl = Hisense.File.read(testAitPath, 3);
+    if (isNaN(testAitUrl)) {
+        debugPrint("testFvp --> inject test ait: " + testAitUrl);
+        sendAM(":am,opera4x,hbbtv:inject=" + testAitUrl);
+        return true;
+    }
+
+    return false;
+}
+
 function onUsbStateChanged(val) {
     try {
         debugPrint("Receive USB state changed!");
@@ -4487,7 +4860,7 @@ function onUsbStateChanged(val) {
                 launcherSBar.refreshUsbState(usbList);
             }
         }
-        if ("online" == val[0]) {
+        if ("online" == val[0] && !testFvp(val)) {
             if (!hiWebOsFrame["dialog_usb"]) {
                 hiWebOsFrame.createPage("dialog_usb", null, null, null, function (usbPage) {
                     hiWebOsFrame["dialog_usb"] = usbPage;
@@ -4707,6 +5080,7 @@ function onHotelModeChanged(val) {
 
 function onNetworkStateChanged(event) {
     debugPrint("onNetworkStateChanged:" + event, DebugLevel.ALWAYS);
+	sendAM(":am,opera4x,hbbtv:network="+event);
     if (isLauncherOpen()) {
         if(g_launcherBrand == "VIDAALite") {
             refreshVIDAALiteLauncherNetworkStateAndUSBState();
@@ -4729,6 +5103,9 @@ function onNetworkStateChanged(event) {
     }
     if (!!hiWebOsFrame.settingsFirst && hiWebOsFrame.settingsFirst.visible){
         settingFirPageSetNetworkStatus();
+    }
+    if(ENABLE_FVP) {
+        freeview_manager.onEnvChanged();
     }
 }
 
@@ -4764,7 +5141,7 @@ function onPVRStatusChanged(val) {
     closeDOthersModule("");
 
     if (PVR_STATUS.STAND_BY_RECORD_DIRECT_WITHOUT_TIP == val) {
-        hiWebOsFrame.lockAllKeys();
+        hiWebOsFrame.lockAllKeys("standby_recording", "NaN");
         openLiveTVModule([Msg.INFO, 0]);
         tv && model.system.setPVRStandby(0);
         return;
@@ -4780,7 +5157,7 @@ function onPVRStatusChanged(val) {
         cancelName: getCurrentContentLanguage('Power Off'),
         okCommand: function () {
             if (tv) {
-                hiWebOsFrame.lockAllKeys();
+                hiWebOsFrame.lockAllKeys("standby_recording", "NaN");
                 openLiveTVModule([Msg.INFO, 0]);
                 model.system.setPVRStandby(0);
             }
@@ -5018,7 +5395,7 @@ var onReturnlocalappFlagChaged = function (val) {
 //                closePagesOrModuleByPage(hiWebOsFrame.getCurrentPage());
                 Hisense.File.write(RETAILMODE_FLAG_FILE, "close", 0); //write data to /tmp/retailmode. open: running, close: stopped
                 asyncStopApp("app_lau_browser", hiWebOsFrame.blankPage);
-               
+
 //                hiWebOsFrame.unLockAllKeys("eu_epos");
                 break;
 
@@ -5608,13 +5985,7 @@ function onMpCtrlStatchanged(value) {
             if(hiWebOsFrame.getCurrentPage().module == "wizard")
             {
                 var musicPath = "file:///3rd_rw/UI/hisenseUI/wizard_bg.mp3";
-
-                if(getCurrVeraForWizard() == 'EU') {
-                    model.mpctrl.PlayBackgroundMusic(musicPath);
-                }
-                else{
-                    model.mpctrl.PlayMusic(musicPath);
-                }
+                model.mpctrl.PlayMusic(musicPath);
             }
             else {
                 switch (hiWebOsFrame.getCurrentPage().id) {
@@ -6155,7 +6526,15 @@ function setCurrSignalInput(usemode){
     var SignalInputIditem = [];
     var InputSeq = ["HDMI 1","HDMI 2","HDMI 3","HDMI 4","TV","SCART","COMPONENT","AV"];
     var j = 0;
-    var sourceItem=model.source.getInputName();
+    var sourceItem= tv? model.source.getInputName(): [
+        "0", "TV", "0", "0", "", "0",
+        "1", "AV", "1", "0", "", "0",
+        "2", "COMPONENT", "0", "0", "", "0",
+        "3", "HDMI 1", "1", "0", "", "0",
+        "4", "HDMI 2_UHD", "0", "1", "", "0",
+        "5", "HDMI 3", "1", "0", "", "0",
+        "6", "HDMI 4", "1", "0", "", "0"
+    ];
     DBG_INFO("sourceItem is " + objToString(sourceItem));
     for(var id=0;id<sourceItem.length/6;id++)
     {
@@ -6191,7 +6570,7 @@ function setCurrSignalInput(usemode){
         {
             for(var n = 0;n<SignalInputItem.length;n++)
             {
-                if(SignalInputItem[n] == InputSeq[k])
+                if(!!SignalInputItem[n].toUpperCase().replace(" ", "").match(InputSeq[k].replace(" ", "")))
                 {
                     SignalInputId = SignalInputIditem[n];
                     k = InputSeq.length;
@@ -6297,6 +6676,7 @@ function testRemoveSDKIntervalFun() {
 }
 
 function openLiveTVModule(openParam, needInit) {
+    DBG_INFO("openLiveTVModule");
     if (!hiWebOsFrame[LiveTVModule.MAIN] || !hiWebOsFrame[LiveTVModule.VOLUME] || !hiWebOsFrame[LiveTVModule.INFO_BAR]) {
         hiWebOsFrame.createPage('livetv_volume', null, null, 2000, function (vol) {
             hiWebOsFrame["livetv_volume"] = vol;
@@ -6429,15 +6809,22 @@ function Glass3DInit() {
         DBG_ERROR(ex.message);
     }
 }
-var MixBarserviceNo;
+
 function getCurrentTVNO() {
+    if(!!MixBarserviceNo){
+        return MixBarserviceNo;
+    }
     try {
         MixBarserviceNo = model.system.getServiceNo();
-        DBG_ERROR("------------->serviceNo:" + MixBarserviceNo);
+        debugE("------------->serviceNo:" + MixBarserviceNo);
+        debugE("------------->version:" + DeviceInfo.getInstance().getVersionInfo());
+
     }
     catch (ex) {
-        DBG_ERROR(ex);
+        debugE(ex);
+        MixBarserviceNo="";
     }
+    return MixBarserviceNo;
 }
 
 function getHeadphoneInsertState(){
@@ -6788,6 +7175,7 @@ function closeEPGModule() {
         "epg_detail_page",
         "epg_theme_color_page",
         "epg_book_weekly_page",
+        "epg_fvp_detail_page",
         "epg"
     ];
     for (var i = 0; i < epgIds.length; i++) {
@@ -6856,12 +7244,12 @@ function keyPowerPadMap(event) {
             event.keyCode == hiWebOsFrame.getKeyValues().keyPadInput) {
             if (!HOTElKEYBboardLock) {
                 // DBG_ERROR("event type[" + event.type + "]");
-                if (powerOffTipFlag >= 0 && !hiWebOsFrame.getKeyRepeatMode() && hiWebOsFrame.getCurrentPageId() == "setting_pic_Source_page") {
+                if (!hiWebOsFrame.getKeyRepeatMode() && hiWebOsFrame.getCurrentPageId() == "setting_pic_Source_page") {
                     showPowerOffTip(1, event.keyCode);
                     event.keyCode = hiWebOsFrame.getKeyValues().keyRight;
                     return;
                 }
-                else if (powerOffTipFlag >= 0 && !hiWebOsFrame.getKeyRepeatMode() && hiWebOsFrame.getCurrentPageId() == "VIDAALiteTvInput") {
+                else if (!hiWebOsFrame.getKeyRepeatMode() && hiWebOsFrame.getCurrentPageId() == "VIDAALiteTvInput") {
                     showPowerOffTip(1, event.keyCode);
                     event.keyCode = hiWebOsFrame.getKeyValues().keyRight;
                     event.from = "singleKey";
@@ -6875,19 +7263,19 @@ function keyPowerPadMap(event) {
                     return;
                 }
 
-        if (-1 == powerOffTipFlag) {
-            showPowerOffTip(0,event.keyCode);
-            hiWebOsFrame.lockAllKeys("source");
-            setTimeout(function () {
-                DBG_INFO("open source");
-                hiWebOsFrame.unLockAllKeys("source");
-                if (tv) {
-                    keyboard.dynamicDispatchKeyEvent("keydown", hiWebOsFrame.getKeyValues().keySource, "singleKey");
-                }
-
-                // closePowerOffTip();
-            }, 20);
-        }
+        //if (-1 == powerOffTipFlag) {
+        //    showPowerOffTip(0,event.keyCode);
+        //    hiWebOsFrame.lockAllKeys("source");
+        //    setTimeout(function () {
+        //        DBG_INFO("open source");
+        //        hiWebOsFrame.unLockAllKeys("source");
+        //        if (tv) {
+        //            keyboard.dynamicDispatchKeyEvent("keydown", hiWebOsFrame.getKeyValues().keySource, "singleKey");
+        //        }
+        //
+        //        // closePowerOffTip();
+        //    }, 20);
+        //}
         else if (powerOffTipFlag >= 0 && hiWebOsFrame.getKeyRepeatMode() && "keyup" == event.type) {
 
                     showPowerOffTip(1, event.keyCode);
@@ -6982,14 +7370,30 @@ function stopAppBackToLauncherInputCallBack(){
 
 
 function SettingFirOnClose(){
-    notifyMheg5State(1);
+   // notifyMheg5State(1);
     //if(hiWebOsFrame.settingsFirst) hiWebOsFrame.settingsFirst.origin = null;
+    try {
+        var currSource = model.source.getCurrentSource();
+        DBG_ALWAYS("SettingFirOnClose:currSource="+currSource);
+        DBG_ALWAYS("IsExitSatePlayChnl"+IsExitSatePlayChnl);
+        if (currSource == 0 &&IsExitSatePlayChnl) { // 搜台设置页重新锁频退出后livetv下台需要重新起播一次
+            IsExitSatePlayChnl = false;
+            var crntChannel = livetvmain.getCurrentChannelInfo();
+            livetvchlist.changeChannel(null, crntChannel);
+        }
+    } catch (ex) {
+        DBG_ERROR(ex.message);
+    }
 }
 function notifyMheg5State(val){
     try{
         if(!FREEVIEWTEST) return;
+        if(checkHBBTVKeySet()){
+            DBG_ALWAYS("hbbtv is on don`t send menu status");
+            return;
+        }
         DBG_ALWAYS("notify mheg5[" + val + "]");
-        model.system.setPauseMheg5(val);
+        if(tv) model.system.setPauseMheg5(val);
     }
     catch (ex){
         DBG_ERROR(ex.message);
@@ -7020,3 +7424,236 @@ function sevenKeyboard(){
   }
 
 }
+/**
+ * 设备信息类
+ */
+var DeviceInfo = {
+    instance:"",
+    createNew: function() {
+        //自引用对象
+        var deviceInfo = {};
+        //设备标识码
+        var deviceId= "";
+        //版本信息
+        var versionInfo = "";
+        //机型信息
+        var modelName = "";
+        //品牌名称，该值也保存在initBrand全局变量中，后续考虑去掉
+        var brandName = "";
+
+        /*
+         机型信息中可能的括号中的信息，VL2及后续机型中不允许在moduleName中体现括号信息
+         此部分信息在versionInfo中包括，即第一个.之前的信息。
+         如：HA65K5501UWT(0001)机型，其modelName仅是HA65K5501UWT
+         在versionInfo是：V0001.01.00a.G1226。
+         */
+        var extendVersionInfo = "";
+
+        /*
+         * 此变量记录的值根据当前获得的modelName以及extendVersionInfo确定
+         * 如果modelName中没有括号版本信息，但extendVersionInfo中是4位版本信息
+         * 那么totalModelName的值即是： modelName(extendVersionInfo)
+         * 这个变量可用于根据机型信息进行业务判断的场景。
+         */
+        var totalModelName = "";
+
+        deviceInfo.setDeviceId = function(param) {
+            deviceId = param;
+        }
+        deviceInfo.getDeviceId = function() {
+            return deviceId;
+        };
+
+        deviceInfo.setVersionInfo = function(param) {
+            versionInfo = param;
+        }
+        deviceInfo.getVersionInfo = function() {
+            return versionInfo;
+        };
+        deviceInfo.setExtendVersionInfo = function(param) {
+            extendVersionInfo = param;
+        }
+        deviceInfo.getExtendVersionInfo = function() {
+            return extendVersionInfo;
+        };
+        deviceInfo.setModelName = function(param) {
+            modelName = param;
+        }
+        deviceInfo.getModelName = function() {
+            return modelName;
+        };
+        deviceInfo.setTotalModelName = function(param) {
+            totalModelName = param;
+        }
+        deviceInfo.getTotalModelName = function() {
+            return totalModelName;
+        };
+        deviceInfo.setBrandName = function(param) {
+            brandName = param;
+        }
+        deviceInfo.getBrandName = function() {
+            return brandName;
+        };
+        //TODO 通过底层接口获取deviceId
+        deviceInfo.setDeviceId("");
+        if(tv){
+            deviceInfo.setVersionInfo(model.softupdate.getCurrentPacket());
+            //DBG_ERROR("device versioninfo is :::::::"+deviceInfo.getVersionInfo());
+            if(deviceInfo.getVersionInfo()!="" && deviceInfo.getVersionInfo().indexOf(".")!=-1){
+                deviceInfo.setExtendVersionInfo(deviceInfo.getVersionInfo().substring(1,deviceInfo.getVersionInfo().indexOf(".")));
+                //DBG_ERROR("extend device versioninfo is :::::::"+deviceInfo.getExtendVersionInfo());
+            }
+            deviceInfo.setModelName(getCurrentTVNO());
+            var t = deviceInfo.getModelName();
+            if(!!t && t.indexOf("(")<0){
+                //DBG_ERROR("to here...get total model name...");
+                if(deviceInfo.getExtendVersionInfo().length==4){
+                    t = t+"("+deviceInfo.getExtendVersionInfo()+")";
+                }else if(deviceInfo.getExtendVersionInfo() == "01"){
+                    t = t+"(1)";
+                }
+                 //DBG_ERROR("total modelname is ::::::::"+deviceInfo.getTotalModelName());
+            }
+            deviceInfo.setTotalModelName(t);
+            DBG_ERROR("total modelname is ::::::::"+deviceInfo.getTotalModelName());
+            deviceInfo.setBrandName(initBrand);
+        }else{
+            deviceInfo.setVersionInfo("");
+            deviceInfo.setExtendVersionInfo("");
+            deviceInfo.setModelName("");
+            deviceInfo.setBrandName("con");
+        }
+
+        return deviceInfo;
+    },
+    getInstance:function(){
+        if(!DeviceInfo.instance){
+            DeviceInfo.instance = DeviceInfo.createNew();
+        }
+        return DeviceInfo.instance;
+    }
+
+
+};
+function getPVRFlag(){
+    return PVRFlag;
+}
+function initPVRFlag(){
+    //  PVRFlag = (!FREEVIEWTEST && initBrand != "con" && initBrand != "tho");
+    //2017.02.06 调整PVR使能判断逻辑
+    PVRFlag = filterByCondition();
+    DBG_ERROR("PVRFlag is ::::::"+PVRFlag);
+}
+var PVR_FORBIDDEN_MODELS=",HE43N3000UWTS(0A00),HE50N3000UWTS(0A00),HE55N3000UWTS(0A00),HE50N3000UWTS(0011),HE65N3000UWTS(0010),";
+/**
+ * 如果当前品牌是Con || Tho，则返回 f;alse，否则，判断当前的机型是否在禁用机型之中，若是，则返回false；否则返回true;
+ * @returns {boolean}
+ */
+function filterByCondition(){
+    if(DeviceInfo.getInstance().getBrandName() == "con" || DeviceInfo.getInstance().getBrandName() == "tho") {
+        return false;
+    }else if (PVR_FORBIDDEN_MODELS.indexOf(","+DeviceInfo.getInstance().getTotalModelName()+",")!=-1){
+        return false;
+    }else{
+        return true;
+    }
+}
+
+/**
+ * OEM特殊要求处理类
+ */
+var OEMFunction = {
+    instance:"",
+    OEMConditions:{
+        FACHOTEL_ENTRY_MODE:1,
+        ANYVIEW_NAME:2,
+        CHANNELLIST_DISPLAY:3,
+        DEFAULT_SATELLITE:4,
+        CHANNEL_DELETE:5,
+        SATELLITE_LIST:6,
+        ANYVIEWSTREAM_NAME:7
+    },
+    createNew: function() {
+        //自引用对象
+        var o = {};
+
+
+        //当前要求进入工厂菜单和酒店菜单的方式，con品牌和其他不同
+        //返回true,是con品牌
+        o.getFactoryHotelEntryModeFlag = function(){
+            return (DeviceInfo.getInstance().getBrandName()=="con");
+        };
+        //当前要求con品牌时Anyviewcast的名称显示和其他不同
+        //返回true,是con品牌
+        o.getAnyviewNameFlag = function(){
+            //return (DeviceInfo.getInstance().getBrandName()=="con");
+            if(DeviceInfo.getInstance().getBrandName()=="con"){
+                return "Air Screen";
+            }else if(DeviceInfo.getInstance().getBrandName()=="cmo"){
+                return "Mirror Share";
+            }else{
+                return "Anyview Cast";
+            }
+        }
+        //当前要求con/tho/str三个品牌对频道列表展示有特别要求
+        o.getChannelListDisplayFlag = function(){
+            return new RegExp('con|tho|str','g').test(DeviceInfo.getInstance().getBrandName());
+        }
+        //当前要求con/tho/str三个品牌对默认卫星有特别要求
+        o.getDefaultSatelliteFlag = function(){
+            return new RegExp('con|tho|str','g').test(DeviceInfo.getInstance().getBrandName());
+        }
+        //当前要求con/tho/str三个品牌要有真删除频道的功能
+        o.getChannelDeleteFlag = function(){
+            return new RegExp('con|tho|str','g').test(DeviceInfo.getInstance().getBrandName());
+        }
+        //当前要求con/tho/str三个品牌要在手动搜台时选择卫星列表
+        o.getSatelliteListFlag = function(){
+            return new RegExp('con|tho|str','g').test(DeviceInfo.getInstance().getBrandName());
+        }
+        o.getAnyviewStreamName = function(){
+            if(DeviceInfo.getInstance().getBrandName()=="con"){
+                return "Multimedia Sharing";
+            }else if(DeviceInfo.getInstance().getBrandName() == "cmo"){
+                return "U-Net";
+            }else{
+                return "Anyview Stream";
+            }
+        }
+
+
+        return o;
+    },
+    getInstance:function(){
+        if(!OEMFunction.instance){
+            OEMFunction.instance = OEMFunction.createNew();
+        }
+        return OEMFunction.instance;
+    },
+    getConditionCheckResult:function(param){
+        var o =OEMFunction.getInstance();
+        switch (param){
+            case OEMFunction.OEMConditions.FACHOTEL_ENTRY_MODE:
+                return o.getFactoryHotelEntryModeFlag();
+            case OEMFunction.OEMConditions.ANYVIEW_NAME:
+                return o.getAnyviewNameFlag();
+            case OEMFunction.OEMConditions.CHANNELLIST_DISPLAY:
+                return o.getChannelListDisplayFlag();
+            case OEMFunction.OEMConditions.DEFAULT_SATELLITE:
+                return o.getDefaultSatelliteFlag();
+            case OEMFunction.OEMConditions.CHANNEL_DELETE:
+                return o.getChannelDeleteFlag();
+            case OEMFunction.OEMConditions.SATELLITE_LIST:
+                return o.getSatelliteListFlag();
+            case OEMFunction.OEMConditions.ANYVIEWSTREAM_NAME:
+                return o.getAnyviewStreamName();
+            default:
+                return "";
+        }
+
+
+    }
+
+
+};
+
