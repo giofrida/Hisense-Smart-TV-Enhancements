@@ -14,7 +14,7 @@ These modification *should* work on most 2016/2017 Hisense models:
 * 55/65M7000      *(untested)*
 * 55/65MEC7050    *(untested)*
 
-As of 12 July, I only tested my modifications on the H43M3000 model. If you decide to give them a try on your TV, please let me know if it has worked or not.
+As of 12 July 2017, I only tested my modifications on the H43M3000 model. If you decide to give them a try on your TV, please let me know if it has worked or not.
 
 ## Enhancements ##
 ### File Browser ###
@@ -33,6 +33,7 @@ Before...
 * supports over-scrolling
 * file randomizer (select a random file by pressing blue button ![](https://placehold.it/15/1589F0/000000?text=+))
 * *text scrolling disabled*
+* supports natural order sorting
 
 ### Video player ###
 
@@ -45,12 +46,14 @@ Before...
 ## Installation ##
 First of all, you need access to the FTP interface of your television. It's quite easy to do using a UART to USB interface. I have written a small guide on xda-developers: [click here](https://forum.xda-developers.com/showpost.php?p=68737765&postcount=84)
 
-Clone my repository. Then, connect to your Hisense TV via FTP and go to <code>/3rd_rw/UI/hisenseUI/</code>.
+In order to apply the modification, you can clone the repository and then execute the batches: you will find the needed files in the folder "release" newly created. Alternatively, you can grab the files below. After that, connect to your Hisense TV via FTP and navigate to the folder <code>/3rd_rw/UI/hisenseUI/</code>. Transfer the files and test the modification!
+
 If you want the modded file browser replace these files:
-* <code>css/fileBrowser.css</code>
-* <code>modulePages/himedia/fileBrowser.js</code>
-* <code>tempString/hiMediaString.js</code>
+* <code>[mediaIndex.html](https://raw.githubusercontent.com/giofrida/Hisense-enhancements/master/UI/hisenseUI/mediaIndex.html)</code>
+* <code>css/[fileBrowser.css](https://raw.githubusercontent.com/giofrida/Hisense-enhancements/master/UI/hisenseUI/css/fileBrowser.css)</code>
+* <code>modulePages/himedia/[fileBrowser.js](https://raw.githubusercontent.com/giofrida/Hisense-enhancements/master/UI/hisenseUI/modulePages/himedia/fileBrowser.js)</code>
+* <code>tempString/[hiMediaString.js](https://raw.githubusercontent.com/giofrida/Hisense-enhancements/master/UI/hisenseUI/tempString/hiMediaString.js)</code>
 
 If you want the modded video player replace these files:
-* <code>css/videoPlayer.css</code>
-* <code>modulePages/himedia/videoPlayer.js</code>
+* <code>css/[videoPlayer.css](https://raw.githubusercontent.com/giofrida/Hisense-enhancements/master/UI/hisenseUI/css/videoPlayer.css)</code>
+* <code>modulePages/himedia/[videoPlayer.js](https://raw.githubusercontent.com/giofrida/Hisense-enhancements/master/UI/hisenseUI/modulePages/himedia/videoPlayer.js)</code>
