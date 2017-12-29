@@ -2780,28 +2780,13 @@ HiFileBrowser.getDmpDevices = function (tmpDeviceList) {
 HiFileBrowser.orderHiFileData = function (hiFileDataArray) {
     debugPrint("orderHiFileData function begin! and param length is :" + hiFileDataArray.length);
     if (hiFileDataArray.length > 1) {
-        hiFileDataArray.sort(sortBy("usbFileName", false, String));
+        hiFileDataArray.sort(function(a, b) {
+           return naturalCompare (a.usbFileName, b.usbFileName);
+        });
     }
     return hiFileDataArray;
 };
-var sortBy = function (filed, rev, primer) {
-    rev = (rev) ? -1 : 1;
-    return function (a, b) {
-        a = a[filed];
-        b = b[filed];
-        if (typeof (primer) != 'undefined') {
-            a = primer(a);
-            b = primer(b);
-        }
-        if (a < b) {
-            return rev * -1;
-        }
-        if (a > b) {
-            return rev * 1;
-        }
-        return 1;
-    }
-};
+
 HiFileBrowser.initLanguage = function () {
 
     if (!!getCurrentLan()) {
