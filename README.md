@@ -52,6 +52,7 @@ If you want the modded file browser replace these files:
 * <code>[mediaIndex.html](https://raw.githubusercontent.com/giofrida/Hisense-enhancements/master/UI/hisenseUI/mediaIndex.html)</code>
 * <code>css/[fileBrowser.css](https://raw.githubusercontent.com/giofrida/Hisense-enhancements/master/UI/hisenseUI/css/fileBrowser.css)</code>
 * <code>modulePages/himedia/[fileBrowser.js](https://raw.githubusercontent.com/giofrida/Hisense-enhancements/master/UI/hisenseUI/modulePages/himedia/fileBrowser.js)</code>
+* <code>modulePages/himedia/[natural-compare.js](https://raw.githubusercontent.com/giofrida/Hisense-enhancements/master/UI/hisenseUI/modulePages/himedia/natural-compare.js)</code>
 * <code>tempString/[hiMediaString.js](https://raw.githubusercontent.com/giofrida/Hisense-enhancements/master/UI/hisenseUI/tempString/hiMediaString.js)</code>
 
 If you want the modded video player replace these files:
