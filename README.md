@@ -20,11 +20,11 @@ As of 12 July 2017, I only tested my modifications on the H43M3000 model. If you
 ### File Browser ###
 Before...
 
-<img align="center" width="50%" src="https://s11.postimg.org/u50rtzsub/before.png">
+<img align="center" width="50%" src="https://raw.githubusercontent.com/giofrida/Hisense-enhancements/master/images/before.png">
 
 ...and after! 
 
-<img align="center" width="50%" src="https://s11.postimg.org/3vb3xghj7/after.png">
+<img align="center" width="50%" src="https://raw.githubusercontent.com/giofrida/Hisense-enhancements/master/images/after.png">
 
 #### Features: ####
 * files organised in a vertical list for better browsing
@@ -39,7 +39,7 @@ Before...
 
 #### Features: ####
 * fast seek mode (press a number to navigate fast in the video)
-<img align="center" width="50%" src="https://s24.postimg.org/78da9m051/fast_seek.png">
+<img align="center" width="50%" src="https://raw.githubusercontent.com/giofrida/Hisense-enhancements/master/images/fast_seek.png">
 
 * supports long file names
 
