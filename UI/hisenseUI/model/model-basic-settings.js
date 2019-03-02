@@ -37,6 +37,7 @@ function Basic_settingsModelDefines() {
     Basic_settingsModelDefines.SL2_TVAPI_I32_BASIC_SETTINGS_DISCLAIMER = "tvapi.i32.basic.settings.disclaimer";
     Basic_settingsModelDefines.SL2_TVAPI_I32_BASIC_SETTINGS_IMPROVE_HIS = "tvapi.i32.basic.settings.improve.his";
     Basic_settingsModelDefines.SL2_TVAPI_I32_BASIC_SETTINGS_IS_INSTALLATION = "tvapi.i32.basic.settings.starting.navigation";
+    Basic_settingsModelDefines.SL2_TVAPI_I32_BASIC_SETTINGS_FACTORY_CUSTOMER = "tvapi.i32.basic.settings.factory.customer";
 
 
     // enum or defined is here
@@ -309,6 +310,11 @@ function Basic_settingsModel(parentModel) {
     this.registerIntegerObject(
         Basic_settingsModelDefines.SL2_TVAPI_I32_BASIC_SETTINGS_IMPROVE_HIS,
         "getImproveHis", "setImproveHis", "onImproveHisChaged",
+        null, null);
+
+         this.registerIntegerObject(
+        Basic_settingsModelDefines.SL2_TVAPI_I32_BASIC_SETTINGS_FACTORY_CUSTOMER,
+        "getFactoryCustomer", "setFactoryCustomer", "onFactoryCustomerChaged",
         null, null);
 //
 //    // StartingNavigation

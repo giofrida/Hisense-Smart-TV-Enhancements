@@ -373,6 +373,12 @@
     text-overflow: ellipsis;
 
 }
+.html_ltr .setting_eu_helpinfo{
+    width: 423px; height: 985px;position: absolute; display: block;top: 0px;left: 987px;background-color: #0d1723;
+}
+.html_rtl .setting_eu_helpinfo{
+    width: 423px; height: 985px;position: absolute; display: block;top: 0px;left: -400px;background-color: #0d1723;
+}
 .setting_fir_helpinfo_content{
     font-size: 33px;
     /*color: #bab8bf;*/
@@ -2371,24 +2377,21 @@
 .setting_update_ver_content_normal {
     width: 950px;
     height: 420px;
-    border: solid 1px #183f58;
+    border: solid 2px #183f58;
     margin:30px 35px 0 35px;
     /*margin-top: 30px;*/
     /*margin-left: 35px;*/
 
 }
 
-/*.setting_update_ver_content_focus{*/
-/*width: 950px;*/
-/*height: 420px;*/
-/*border: solid 1px #183f58;*/
-/*margin-top: 30px;*/
-/*margin-left: 35px;*/
-/*-webkit-box-shadow: inset 0px 0px 0px 1px #fc8700,*/
-/*inset 0px 0px 0px 3px #cc9500,*/
-/*inset 0px 0px 0px 4px #fc8700;*/
+.setting_update_ver_content_focus{
+width: 950px;
+height: 420px;
+border: solid 2px #183f58;
+margin-top: 30px;
+margin-left: 35px;  box-shadow: inset 0px 0px 0px 4px #84ecff;
 
-/*}*/
+}
 .setting_update_ver_button_focus {
     font-size: 32px;
     width: 277px;
@@ -2407,7 +2410,24 @@
     /*background-color: #AE6600;*/
     /*-webkit-box-shadow: inset 0px 0px 0px 1px #fc8700, inset 0px 0px 0px 3px #cc9500, inset 0px 0px 0px 4px #fc8700;*/
 }
+.setting_update_ver_button_disable {
+    font-size: 32px;
+    width: 277px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    background-color: #172c4a;
+    /*box-shadow: inset 0px 0px 0px 4px #84ecff;*/
+    display: inline-block;
+    margin: 0 15px 0 15px;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: rgba(178,184,191,0.3);
+    -webkit-box-shadow: inset 0px 0px 0px 4px rgba(67,81,99,0.3);
 
+}
 .setting_update_ver_button {
     font-size: 32px;
     width: 277px;

@@ -405,7 +405,7 @@ var PageDataSettingSysAd={
                 "content": "Select store mode to effect EPOS and other demo functions."
             },
 	        {
-                "title":"nouse",
+                "title":"",
                 "content":" "
             },
 	        {
@@ -456,6 +456,7 @@ var PageDataSettingSysAd={
         "curArea":"EU",
         "curmachineno":"",
         "ColPowerIndMachinelist":[],
+        "EUnoAutoSleepList":["Russia_EU","Uzbekistan_EU","Kirghizstan_EU","Kazakhstan_EU","Tajikistan_EU","Algeria_EU",'Iraq_EU',"Saudi Arabia_EU"],
         "EUPowerIndMachinelist":["HE75K700UXWTS3D","HE65M7000UWTSG","HE55M7000UWTSG","HE65K5500UWTS","HE65K5500UWTS(0001)","HE50K5502UWTS","HE55M5600UCWTS","HE55K5502UWTS","HE75K700UXWTS3D(1)","LTDN65XT910XWTSEU3D"],
         "EULightSetMachinelist":["HE65M7000UWTSG","HE55M7000UWTSG","HE50K5502UWTS","HE55M5600UCWTS","HE55K5502UWTS"],
         "EMPowerIndMachinelist":[],
@@ -568,10 +569,7 @@ var PageDataSettingSysAd={
 
         }
         if(hiWebOsFrame.getCurrentArea()=="COL"
-            ||PageDataFirstCls.operateData.curlocation == "Russia_EU"
-            ||PageDataFirstCls.operateData.curlocation == "Uzbekistan_EU"
-            ||PageDataFirstCls.operateData.curlocation == "Kirghizstan_EU"
-            ||PageDataFirstCls.operateData.curlocation == "Tajikistan_EU")
+            ||_getIndex(data.operateData.EUnoAutoSleepList,PageDataFirstCls.operateData.curlocation )>=0)
         {
             $("#setting_sys_ad_auto_sleep").css("display","none");
             data.setting_sys_ad_btn2.disable=true;
@@ -600,6 +598,35 @@ var PageDataSettingSysAd={
         else {
             $("#setting_sys_ad_pvr").css("display","none");
             data.setting_sys_ad_btn3.disable=true;
+        if(hiWebOsFrame.getHTMLDir() == HTMLDIR.LTR) {
+            data.setting_sys_ad_head_img1.Data="img/head_arrow.png";
+            $(".setting_page_line").css("float","left");
+            $(".setting_page_line").css("background-image",'url("img/setting_manu_bg.png")')
+            // $(".setting_sys_lang1_head_img1").css("margin","29px  0 0 65px");
+            $(".setting_select_langpage2").css("float","left");
+            $(".setting_select_langpage3").css("float","left");
+            $(".setting_select_lang_focus").css("float","right")
+            $(".setting_select_langpage4").css("float","right")
+            $(".setting_select_lang_disable").css("float","right");
+            $(".setting_sys_switch_name").css("float","left")
+            $(".setting_sys_lang1__cls").css("left","510px");
+            // $("#setting_sys_timedata_control1").css("float","right")
+        }
+        else {
+            data.setting_sys_ad_head_img1.Data="img/head_arrow_right.png";
+            $(".setting_page_line").css("float","right")
+            $(".setting_page_line").css("background-image",'url("img/setting_manu_left_bg.png")')
+            //  $(".setting_sys_lang1_head_img1").css("margin","29px  65px 0 0")
+            // $("#setting_sys_list1_srcobar_container").css("float","left");
+            $(".setting_select_langpage2").css("float","right");
+            $(".setting_select_langpage3").css("float","right");
+            $(".setting_select_lang_focus").css("float","left");
+            $(".setting_select_langpage4").css("float","left");
+            $(".setting_select_lang_disable").css("float","left")
+            $(".setting_sys_switch_name").css("float","right")
+            $(".setting_sys_lang1__cls").css("left","358px");
+            // $("#setting_sys_timedata_control1").css("float","left")
+        }
         }
 
     }
@@ -670,10 +697,7 @@ function SettingAdPageonOpen()
 //
 //    }
     if(hiWebOsFrame.getCurrentArea()=="COL"
-        ||PageDataFirstCls.operateData.curlocation == "Russia_EU"
-        ||PageDataFirstCls.operateData.curlocation == "Uzbekistan_EU"
-        ||PageDataFirstCls.operateData.curlocation == "Kirghizstan_EU"
-        ||PageDataFirstCls.operateData.curlocation == "Tajikistan_EU")
+        ||_getIndex(PageDataSettingSysAd.operateData.EUnoAutoSleepList,PageDataFirstCls.operateData.curlocation )>=0)
     {
         $("#setting_sys_ad_auto_sleep").css("display","none");
     }

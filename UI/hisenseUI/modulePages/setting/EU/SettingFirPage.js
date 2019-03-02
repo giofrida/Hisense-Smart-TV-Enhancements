@@ -778,6 +778,7 @@ var PageDataFirstCls = {
         "Network Configuration":["Network Configuration"],
         "Wake Up By Wi-Fi":["Wake Up By Wi-Fi"],
         "Connection Test":["Connection Test"],
+        "Multimedia Sharing":["Multimedia Sharing"],
         "Anyview Stream":["Anyview Stream"],
         "TV Name":["TV Name"],
         "Set up the network to gain full access of Smart TV features.":["Set up the network to gain full access of Smart TV features."],
@@ -909,6 +910,16 @@ var PageDataFirstCls = {
 
             /*       Pic Data End------------------------------*/
             pageData.settings_first_ul.Data[4].setting_first_ul2.Data[0].setting_first_content_text2.Data = pageData.operateData.curlocation;
+
+            var country=pageData.operateData.curlocation
+            var index= country.indexOf("_EU");
+            if(index>0)
+            {
+
+                country= country.replace("_EU","");
+                pageData.settings_first_ul.Data[4].setting_first_ul2.Data[0].setting_first_content_text2.Data = country;
+
+            }
 //            if(pageData.operateData.curupdateswitch==0)
 //            {
 //                pageData.settings_first_ul.Data[5].setting_first_ul2.Data[2].setting_first_content_text2.Data = "Off";
@@ -946,6 +957,7 @@ var PageDataFirstCls = {
 //            }else{
 //                PageDataFirstCls.settings_first_ul.Data[3].setting_first_ul2.Data[2].setting_first_content_text2.Data = "Off";
 //            }
+            PageDataFirstCls.settings_first_ul.Data[3].setting_first_ul2.Data[3].setting_first_content_text1.Data = OEMFunction.getConditionCheckResult(OEMFunction.OEMConditions.ANYVIEWSTREAM_NAME);
             if(opData.currDMRFlag == 1){
                 PageDataFirstCls.settings_first_ul.Data[3].setting_first_ul2.Data[3].setting_first_content_text2.Data = "On";
             }else{

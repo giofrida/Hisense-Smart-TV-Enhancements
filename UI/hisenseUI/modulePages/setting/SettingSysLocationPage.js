@@ -221,6 +221,12 @@ var PageDataSettingSysList2={
                 {
                     element.setting_sys_list2_img1.Data="img/unselectedBall.png";
                 }
+
+                var index= v.indexOf("_EU");
+                if(index>0)
+                {
+                    v= v.replace("_EU","");
+                }
                 element.setting_sys_list2_txt1.Data= v;
                 pageData.setting_sys_list2_ul1.Data.push(_cloneObj(element));
             })

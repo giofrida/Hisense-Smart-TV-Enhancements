@@ -277,17 +277,17 @@
     width:256px ;
     margin-left: 5px;
     margin-top: 3px;
-
+    margin-left: -15px;/**/
 }
 
 #left_logo {
-/*    left: 180px;
-    top: 0px;
-    position: absolute;
-    background-size: 100%;
-    overflow: hidden;
-    height: 0px;
-    width: 537px ;*/
+    /*    left: 180px;
+        top: 0px;
+        position: absolute;
+        background-size: 100%;
+        overflow: hidden;
+        height: 0px;
+        width: 537px ;*/
 
     float: left;
     margin-top: 0px;
@@ -305,5 +305,5 @@
     height: 204px;
     width:256px ;
     left: 0px;
-    bottom: 103px;
+    bottom: 102px;
 }

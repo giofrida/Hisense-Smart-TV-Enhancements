@@ -22,7 +22,7 @@ function invokeSKB() {
     debugPrint('invoke skb zindex:' + zindex);
 
     if (tv && !!_this.page)debugPrint('origin zindex:' + _this.page.priority + ' id:' + _this.page.id);
-    this.event.preventDefault();
+    !!this.event && this.event.preventDefault();
 
     var inputMethod = this.inputMethod;
     var callback = this.callback;
@@ -45,7 +45,7 @@ function invokeSKB() {
      });
      */
 
-    if(invokeSKB.initialized == undefined) {
+    if(typeof invokeInfoLog != "function" || invokeSKB.initialized == undefined) {
         function invokeInfoLog(msg) {
             if(tv) {
                 debugPrint("main.js, invokeSKB, " + msg);

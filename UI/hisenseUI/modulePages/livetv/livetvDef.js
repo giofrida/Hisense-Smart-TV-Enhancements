@@ -184,13 +184,13 @@ function liveTVHandlerProcess(keyCode, keytype) {
                     DBG_ERROR("hbbtv disable the key");
                     return;
                 }
-
+                //do not support pvr
                 if(!getPVRFlag()) return;
                 //使用之前先清空上次的节目信息
                 prgrmInfoOfPvrTshift = null;
                 var crntChannel = livetvmain.getCurrentChannelInfo();
                 DBG_ALWAYS("crntChannel: " + JSON.stringify(crntChannel));
-                if(!livetvmain.getNoSignalFlag() && !!crntChannel && crntChannel.type != TVTYPE.ATV && crntChannel.eCode != ECode.AUDIO) {
+                if(!livetvmain.getNoSignalFlag() && !livetvmain.getIsDataChannelFlag() && !!crntChannel && crntChannel.type != TVTYPE.ATV && crntChannel.eCode != ECode.AUDIO) {
                     try {
                         // 补丁 add by ghl
                         if (typeof pvrHardDiskCheckPageData != UNDEFINED_DEFSTR && !!pvrHardDiskCheckPageData.operateData.tmpEpgVal) {

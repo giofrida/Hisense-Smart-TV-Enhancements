@@ -472,7 +472,7 @@ function closeMixBar() {
 
 function mixBarPowerOffOkHandler() {
     if (!!tv) {
-        model.system.SwitchOffTv();
+        model.system.SwitchOffTv(1); //follow 5659
     }
     closeMixBar();
 }

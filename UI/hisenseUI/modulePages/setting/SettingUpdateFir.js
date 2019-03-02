@@ -441,11 +441,20 @@ var onSearchStateChaged=function(value)
             {
                 hiWebOsFrame.createPage('setting_update_ver_page',null, hiWebOsFrame.settingsupdatefir, null,function(verinfo){
                     hiWebOsFrame.settingsupdateverinfo=verinfo;
-                    PageDateSettingUpdateverinfo.operateData.curver= model.softupdate.getCurrentPacket();
-                    var temp=model.softupdate.getHisenseCurrentVersion();
+                    var flag = tv?model.softupdate.getEulaFlag():1;
+                    if (flag > 0) {
+                        PageDateSettingUpdateverinfo.operateData.isHasDisChange = true;
+                    } else {
+                        PageDateSettingUpdateverinfo.operateData.isHasDisChange = false;
+                    }
+                    if (PageDateSettingUpdateverinfo.operateData.isHasDisChange) {
+                        PageDateSettingUpdateverinfo.operateData.acceptDisclaimerFlag = 0;
+                    }
+                    PageDateSettingUpdateverinfo.operateData.curver=tv? model.softupdate.getCurrentPacket():"0.00.01";
+                    var temp=tv?model.softupdate.getHisenseCurrentVersion():"0.00.01";
                     debugPrint("get the internet software "+temp);
                     PageDateSettingUpdateverinfo.operateData.newver=temp;//
-                    var temp=model.softupdate.getHisenseVersionDescription();
+                    var temp=tv?model.softupdate.getHisenseVersionDescription():"0.00.01";
                     temp=temp.replace(/&/g, "&amp;");
                     temp=temp.replace(/"/g, "&quot;");
                     temp=temp.replace(/'/g, "&apos;");

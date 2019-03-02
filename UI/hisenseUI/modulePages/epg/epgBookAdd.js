@@ -142,12 +142,12 @@ function epgBookAdd(){
 	function rewritePageData(pageData){
 		if(null == oprtData.program) return;
         pageData.epgBookAdd_Nav.DataSelectedIndex =
-        pageData.epgBookAdd_Nav.SelectedIndex = !getPVRFlag() ? 1 : 0;
+        pageData.epgBookAdd_Nav.SelectedIndex = (!getPVRFlag() || livetvmain.getIsDataChannelFlag()) ? 1 : 0;
 		pageData.book_add_channel.Data = oprtData.channel.number + getHTMLSpace(4) + oprtData.channel.name;
 		pageData.book_add_program.Data = oprtData.program.title;
 		pageData.book_add_time.Data = getProgramLocalTime(oprtData.program.startTime, oprtData.program.endTime, 1, 1);
         pageData.epgBookAdd_Nav.disableItem = [];
-        if(!getPVRFlag()) pageData.epgBookAdd_Nav.disableItem.push(0);
+        if((!getPVRFlag() || livetvmain.getIsDataChannelFlag())) pageData.epgBookAdd_Nav.disableItem.push(0);
         if(!oprtData.enableFVP)  pageData.epgBookAdd_Nav.disableItem.push(2);
 	}
 

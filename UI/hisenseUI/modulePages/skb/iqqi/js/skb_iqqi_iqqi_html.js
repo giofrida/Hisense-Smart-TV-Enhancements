@@ -3216,6 +3216,95 @@ var iqqiUzbHome =
     "        </div>" +
     "    </div>";
 
+var iqqiGreHome =
+    "    <div id=\"iqqiGreHome\" class=\"iqqiEnHome\">" +
+    "        <div id=\"iqqiFirstLine\" class=\"iqqiFirstLineCenterNormal\">" +
+    "            <div id=\"FirstLineKey_0\" class=\"Line5Col11KeyNormal\">1</div>" +
+    "            <div id=\"FirstLineKey_1\" class=\"Line5Col11KeyNormal\">2</div>" +
+    "            <div id=\"FirstLineKey_2\" class=\"Line5Col11KeyNormal\">3</div>" +
+    "            <div id=\"FirstLineKey_3\" class=\"Line5Col11KeyNormal\">4</div>" +
+    "            <div id=\"FirstLineKey_4\" class=\"Line5Col11NarrowKey4567Normal\">5</div>" +
+    "            <div id=\"FirstLineKey_5\" class=\"Line5Col11NarrowKey4567Normal\">6</div>" +
+    "            <div id=\"FirstLineKey_6\" class=\"Line5Col11NarrowKey4567Normal\">7</div>" +
+    "            <div id=\"FirstLineKey_7\" class=\"Line5Col11NarrowKey4567Normal\">8</div>" +
+    "            <div id=\"FirstLineKey_8\" class=\"Line5Col11KeyNormal\">9</div>" +
+    "            <div id=\"FirstLineKey_9\" class=\"Line5Col11KeyNormal\">0</div>" +
+    "            <div id=\"FirstLineKey_10\" class=\"Line5Col11KeyNormal\">^</div>" +
+    "            <div id=\"FirstLineKey_11\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"FirstLineKey_12\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"FirstLineKey_13\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"FirstLineKey_14\" class=\"iqqiLineKeyHidden\"></div>" +
+    "        </div>" +
+    "        <div id=\"iqqiSecondLine\" class=\"centerNormalLine\">" +
+    "            <div id=\"SecondLineKey_0\" class=\"Line5Col11KeyNormal\">q</div>" +
+    "            <div id=\"SecondLineKey_1\" class=\"Line5Col11KeyNormal\">w</div>" +
+    "            <div id=\"SecondLineKey_2\" class=\"Line5Col11KeyNormal\">e</div>" +
+    "            <div id=\"SecondLineKey_3\" class=\"Line5Col11KeyNormal\">r</div>" +
+    "            <div id=\"SecondLineKey_4\" class=\"Line5Col11NarrowKey4567Normal\">t</div>" +
+    "            <div id=\"SecondLineKey_5\" class=\"Line5Col11NarrowKey4567Normal\">y</div>" +
+    "            <div id=\"SecondLineKey_6\" class=\"Line5Col11NarrowKey4567Normal\">u</div>" +
+    "            <div id=\"SecondLineKey_7\" class=\"Line5Col11NarrowKey4567Normal\">i</div>" +
+    "            <div id=\"SecondLineKey_8\" class=\"Line5Col11KeyNormal\">o</div>" +
+    "            <div id=\"SecondLineKey_9\" class=\"Line5Col11KeyNormal\">p</div>" +
+    "            <div id=\"SecondLineKey_10\" class=\"Line5Col11KeyNormal\">&#714;</div>" +
+    "            <div id=\"SecondLineKey_11\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"SecondLineKey_12\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"SecondLineKey_13\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"SecondLineKey_14\" class=\"iqqiLineKeyHidden\"></div>" +
+    "        </div>" +
+    "        <div id=\"iqqiThirdLine\" class=\"centerNormalLine\">" +
+    "            <div id=\"ThirdLineKey_0\" class=\"Line5Col11KeyNormal\">a</div>" +
+    "            <div id=\"ThirdLineKey_1\" class=\"Line5Col11KeyNormal\">s</div>" +
+    "            <div id=\"ThirdLineKey_2\" class=\"Line5Col11KeyNormal\">d</div>" +
+    "            <div id=\"ThirdLineKey_3\" class=\"Line5Col11KeyNormal\">f</div>" +
+    "            <div id=\"ThirdLineKey_4\" class=\"Line5Col11NarrowKey4567Normal\">g</div>" +
+    "            <div id=\"ThirdLineKey_5\" class=\"Line5Col11NarrowKey4567Normal\">h</div>" +
+    "            <div id=\"ThirdLineKey_6\" class=\"Line5Col11NarrowKey4567Normal\">j</div>" +
+    "            <div id=\"ThirdLineKey_7\" class=\"Line5Col11NarrowKey4567Normal\">k</div>" +
+    "            <div id=\"ThirdLineKey_8\" class=\"Line5Col11KeyNormal\">l</div>" +
+    "            <div id=\"ThirdLineKey_9\" class=\"Line5Col11KeyNormal\">&ccedil;</div>" +
+    "            <div id=\"ThirdLineKey_10\" class=\"Line5Col11KeyNormal\">&#715;</div>" +
+    "            <div id=\"ThirdLineKey_11\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"ThirdLineKey_12\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"ThirdLineKey_13\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"ThirdLineKey_14\" class=\"iqqiLineKeyHidden\"></div>" +
+    "        </div>" +
+    "        <div id=\"iqqiFourthLine\" class=\"centerNormalLine\">" +
+    "            <div id=\"FourthLineKey_0\" class=\"spaShiftKey_NormalNormal\"></div>" +
+    "            <div id=\"FourthLineKey_1\" class=\"Line5Col11KeyNormal\">z</div>" +
+    "            <div id=\"FourthLineKey_2\" class=\"Line5Col11KeyNormal\">x</div>" +
+    "            <div id=\"FourthLineKey_3\" class=\"Line5Col11KeyNormal\">c</div>" +
+    "            <div id=\"FourthLineKey_4\" class=\"Line5Col11NarrowKey4567Normal\">v</div>" +
+    "            <div id=\"FourthLineKey_5\" class=\"Line5Col11NarrowKey4567Normal\">b</div>" +
+    "            <div id=\"FourthLineKey_6\" class=\"Line5Col11NarrowKey4567Normal\">n</div>" +
+    "            <div id=\"FourthLineKey_7\" class=\"Line5Col11NarrowKey4567Normal\">m</div>" +
+    "            <div id=\"FourthLineKey_8\" class=\"Line5Col11KeyNormal\">,</div>" +
+    "            <div id=\"FourthLineKey_9\" class=\"Line5Col11KeyNormal\">.</div>" +
+    "            <div id=\"FourthLineKey_10\" class=\"Line5Col11KeyNormal\">~</div>" +
+    "            <div id=\"FourthLineKey_11\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"FourthLineKey_12\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"FourthLineKey_13\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"FourthLineKey_14\" class=\"iqqiLineKeyHidden\"></div>" +
+    "        </div>" +
+    "        <div id=\"iqqiControlLine\" class=\"centerNormalLine\">" +
+    "            <div id=\"ControlLineKey_0\" class=\"spaEscKeyNormal\"></div>" +
+    "            <div id=\"ControlLineKey_1\" class=\"spaLanSwitchKeyNormal\"></div>" +
+    "            <div id=\"ControlLineKey_2\" class=\"spaNumControlNormal\">123</div>" +
+    "            <div id=\"ControlLineKey_3\" class=\"porWhiteSpaceNormal\"></div>" +
+    "            <div id=\"ControlLineKey_4\" class=\"porBackSpaceNormal\"></div>" +
+    "            <div id=\"ControlLineKey_5\" class=\"porEnterNormal\"></div>" +
+    "            <div id=\"ControlLineKey_6\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"ControlLineKey_7\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"ControlLineKey_8\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"ControlLineKey_9\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"ControlLineKey_10\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"ControlLineKey_11\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"ControlLineKey_12\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"ControlLineKey_13\" class=\"iqqiLineKeyHidden\"></div>" +
+    "            <div id=\"ControlLineKey_14\" class=\"iqqiLineKeyHidden\"></div>" +
+    "        </div>" +
+    "    </div>";
+
 var strings = {
     "lan_switch_title": {
         "CHI": "语言选择",
@@ -3247,7 +3336,8 @@ var strings = {
         "BUL": "Език",
         "FAS": "زبان",
         "IND": "Bahasa",
-        "ZHO": "語言選擇"
+        "ZHO": "語言選擇",
+        "GRE": "Γλώσσα"
     },
     "iqqi_control_enter": {
         "CHI": "确认",
@@ -3279,7 +3369,8 @@ var strings = {
         "BUL": "Въвеждане",
         "FAS": "ورود",
         "IND": "Masuk",
-        "ZHO": "確認"
+        "ZHO": "確認",
+        "GRE": "Εισαγωγή"
     },
     "iqqi_control_delete": {
         "CHI": "删除所有",
@@ -3311,7 +3402,8 @@ var strings = {
         "BUL": "Изтриване на всичко",
         "FAS": "حذف همه",
         "IND": "Hapus Semua",
-        "ZHO": "刪除所有"
+        "ZHO": "刪除所有",
+        "GRE": "Διαγραφή Όλων"
     },
     "iqqi_control_right": {
         "CHI": "向右",
@@ -3343,7 +3435,8 @@ var strings = {
         "BUL": "Дясно",
         "FAS": "راست",
         "IND": "Kanan",
-        "ZHO": "向右"
+        "ZHO": "向右",
+        "GRE": "Δεξιά"
     },
     "iqqi_control_left": {
         "CHI": "向左",
@@ -3375,6 +3468,7 @@ var strings = {
         "BUL": "Ляво",
         "FAS": "چپ",
         "IND": "Kiri",
-        "ZHO": "向左"
+        "ZHO": "向左",
+        "GRE": "Αριστερά"
     }
 };

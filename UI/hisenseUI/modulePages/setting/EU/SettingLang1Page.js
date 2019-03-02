@@ -1553,8 +1553,33 @@ var PageDataSettingSysLang = {
             $("#setting_sys_lang_dec_page1").css('color',"#f0f0f0");
             $("#setting_sys_lang_dec_page2").css('color',"#b2b8bf");
 
+        }
 
-
+        if(hiWebOsFrame.getHTMLDir() == HTMLDIR.LTR) {
+            pageData.setting_sys_lang1_head_img1.Data="img/head_arrow.png";
+            $(".setting_page_line").css("float","left");
+            $(".setting_page_line").css("background-image",'url("img/setting_manu_bg.png")')
+            //$(".setting_sys_lang1_head_img1").css("margin","29px  0 0 65px");
+            $(".setting_select_langpage2").css("float","left");
+            $(".setting_select_langpage3").css("float","left");
+            $(".setting_select_lang_focus").css("float","right");
+            $(".setting_select_langpage4").css("float","right");
+            $(".setting_select_lang_disable").css("float","right");
+            $(".setting_sys_lang1__cls").css("left","510px");
+        }
+        else
+        {
+            pageData.setting_sys_lang1_head_img1.Data="img/head_arrow_right.png";
+            $(".setting_page_line").css("float","right")
+            $(".setting_page_line").css("background-image",'url("img/setting_manu_left_bg.png")')
+            // $(".setting_sys_lang1_head_img1").css("margin","29px  65px 0 0")
+            $("#setting_sys_list1_srcobar_container").css("float","left");
+            $(".setting_select_langpage2").css("float","right");
+            $(".setting_select_langpage3").css("float","right");
+            $(".setting_select_lang_focus").css("float","left");
+            $(".setting_select_langpage4").css("float","left");
+            $(".setting_select_lang_disable").css("float","left")
+            $(".setting_sys_lang1__cls").css("left","358px");
         }
 
     }

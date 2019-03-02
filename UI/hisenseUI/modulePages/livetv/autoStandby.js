@@ -119,20 +119,35 @@ function liveTVAutoStandby() {
                 clearInterval(powerTimer);
                 DBG_INFO("time is over, power off. from[" + oprtData.powerOffReason + "]");
                 hiWebOsFrame.lockAllKeys("standby");
+                var type = 0;
+                switch (oprtData.powerOffReason) {
+                    case 1: //StandbyFlag.NO_SIGNAL:
+                        type=3;
+                        break;
+                    case -2: //StandbyFlag.AUTO_SLEEP:
+                        type=1;
+                        break;
+                    case -1: //StandbyFlag.HOTELMODE_SLEEP:
+                    case -3: //StandbyFlag.STANDBY_TIME:
+                        type=2;
+                        break;
+                    default :
+                        break;
+                }
                 try {
                     hiWebOsFrame[self.id].close();
                     openLiveTVModule();
                     onEnterSuspendChanged(model.system.getFastBoot());
                     if(oprtData.powerOffReason == 1 || oprtData.powerOffReason == -3) {
                         clearInterval(powerTimer);
-                        model.system.SwitchOffTv();
+                        model.system.SwitchOffTv(type);
                     }
                 }
                 catch(ex) {
                     DBG_ERROR(ex.message);
                     clearInterval(powerTimer);
                     onEnterSuspendChanged(model.system.getFastBoot());
-                    model.system.SwitchOffTv();
+                    model.system.SwitchOffTv(type);
                 }
                 hiWebOsFrame.unLockAllKeys("standby");
             }

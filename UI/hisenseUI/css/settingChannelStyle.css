@@ -160,6 +160,9 @@
     line-height: 116px;
     color: rgba(255,255,255,0.26);
 }
+.settingChSelectLiDisable{
+    display: none;
+}
 .settingChSetLeftNoTitleLiNameCls{
     width: 470px;
     padding-left: 60px;

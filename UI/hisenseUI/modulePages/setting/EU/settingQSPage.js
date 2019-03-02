@@ -258,6 +258,10 @@ function qsPageDataInit()
 				    }
 				    PageDateQuickSet.operateData.daItem = audioLanguage_subtitle_Disable;
 				    PageDateQuickSet.operateData.selectedFlag = 0;
+					if(deviceKeySet.HBBTVAPPON) {
+						debugRM("HBBTVAPPON");
+						PageDateQuickSet.operateData.daItem.push(3);
+					}
 			    }
 			    else
 			    {   //当前为DTV
@@ -272,10 +276,22 @@ function qsPageDataInit()
 				    }
 				    PageDateQuickSet.operateData.daItem = audioTrack_Disable;
 					PageDateQuickSet.operateData.selectedFlag = 1;
+					try {
 					var tmpAudioLanguageList = model.system.getCurChannelAudioLanguageList();
 					if (tmpAudioLanguageList.length <= 2) {
+							PageDateQuickSet.operateData.daItem.push(1);
+							PageDateQuickSet.operateData.selectedFlag = 2;
+						}
+					}catch(e){
+						debugPrint(e.message);
 						PageDateQuickSet.operateData.daItem.push(1);
 						PageDateQuickSet.operateData.selectedFlag = 2;
+					}
+					if(deviceKeySet.HBBTVAPPON) {
+						debugRM("HBBTVAPPON");
+						PageDateQuickSet.operateData.daItem.push(2);
+						PageDateQuickSet.operateData.daItem.push(3);
+						PageDateQuickSet.operateData.selectedFlag = 4;
 					}
 	              }
 	        }
@@ -445,30 +461,54 @@ function QuickSetupOpenHandler() {
 
 			this.page.rewriteDataOnly();
 			//if(1 == model.video.get3dSupported() && 0 != model.video.getEnum3dMode()) {
-			if (PageDateQuickSet.operateData.Support3d) {
-				if (PageDateQuickSet.operateData.nav.length > 4 && (PageDateQuickSet.operateData.selectedFlag == 4)) {
+			if (PageDateQuickSet.operateData.nav.length > 4) {
+			var temp=[0,1,2,3,4].filter(checkItemleft)
+			if(temp.length>0){
 					this.page.getCaE('setting_qsp_Modes').setSelectedIndex(0);
-				}
-				else if (PageDateQuickSet.operateData.nav.length == 1) {
-					this.page.getCaE('setting_qsp_Modes').setSelectedIndex(0);
+				this.page.getCaE('setting_qsp_ul').setSelectedIndex(temp[0]);
 				}
 				else {
 					this.page.getCaE('setting_qsp_Modes').setSelectedIndex(0);
-					this.page.getCaE('setting_qsp_ul').setSelectedIndex(PageDateQuickSet.operateData.selectedFlag);
+				//this.page.getCaE('setting_qsp_ul').setSelectedIndex(PageDateQuickSet.operateData.selectedFlag);
 				}
-
 			}
 			else {
-				this.page.getCaE('setting_qsp_Modes').setSelectedIndex(0);
-				this.page.getCaE('setting_qsp_ul').setSelectedIndex(PageDateQuickSet.operateData.selectedFlag);
-			}
+				var temp = [0].filter(checkItemleft)
+				if (temp.length > 0) {
+					this.page.getCaE('setting_qsp_Modes').setSelectedIndex(0);
+					this.page.getCaE('setting_qsp_ul').setSelectedIndex(temp[0]);
+				}
+				else {
+					this.page.getCaE('setting_qsp_Modes').setSelectedIndex(0);
+				}
+				}
+
+			//if (PageDateQuickSet.operateData.Support3d) {
+			//	if (PageDateQuickSet.operateData.nav.length > 4 && (PageDateQuickSet.operateData.selectedFlag == 4)) {
+			//		this.page.getCaE('setting_qsp_Modes').setSelectedIndex(0);
+			//	}
+			//	else if (PageDateQuickSet.operateData.nav.length == 1) {
+			//		this.page.getCaE('setting_qsp_Modes').setSelectedIndex(0);
+			//	}
+			//	else {
+			//		this.page.getCaE('setting_qsp_Modes').setSelectedIndex(0);
+			//		this.page.getCaE('setting_qsp_ul').setSelectedIndex(PageDateQuickSet.operateData.selectedFlag);
+			//	}
+            //
+			//}
+			//else {
+			//	this.page.getCaE('setting_qsp_Modes').setSelectedIndex(0);
+			//	this.page.getCaE('setting_qsp_ul').setSelectedIndex(PageDateQuickSet.operateData.selectedFlag);
+			//}
 		} catch (e) {
 			debugE(e.message)
 		}
 	}
 //    this.page.rewriteDataOnly();
 }
-
+function checkItemleft(item){
+	return (PageDateQuickSet.operateData.daItem.indexOf(item)<0)
+}
 var PageDateQuickSet = {
 	setting_qsp_title: {Data: ''},
 	setting_qsp_ul:{Data: [],SelectedIndex: 0,disableItem: []},

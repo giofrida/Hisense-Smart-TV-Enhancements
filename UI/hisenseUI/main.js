@@ -129,7 +129,7 @@ function parseLocalTime() {
     DBG_INFO(objToString(localTime) + "; " + hisenseUITimeFormat);
 
     if("EU" == InitArea || 'SA' == InitArea){
-        t.date = ('0' + localTime[2]).slice(-2) + ", " + getCurrentContentLanguage(month[localTime[1] - 1]) + " " + localTime[0];
+        t.date = ('0' + localTime[2]).slice(-2) + " " + getCurrentContentLanguage(month[localTime[1] - 1]) + " " + localTime[0];
     }
     else{
         t.date = getCurrentContentLanguage(month[localTime[1] - 1]) + " " + ('0' + localTime[2]).slice(-2) + ", " + localTime[0];
@@ -981,6 +981,9 @@ function sendCommndToTV(cmdType, command, setRunTimes, storeType) {
     // open Wuaki (Rakuten TV) with HbbTV to avoid UHD/DASH/PlayReady issues
     if(storeType == 97 || command == HSAPPURL.WUAKI){
         cmdType = CmdURLType.START_HBBTV_APP;
+    }
+    if(command == "http://opera-app.megogo.net/" || command == "http://hisense-app.megogo.net"){
+        cmdType = CmdURLType.START_BROWSER;
     }
     switch (cmdType) {
 
@@ -3091,7 +3094,7 @@ function pvrRecordStateChanged(value) {
                 }
                 if (1 == model.system.getPVRStandby()) {
                     DBG_INFO("standby record completed.");
-                    model.system.SwitchOffTv();
+                    model.system.SwitchOffTv(0); //follow 5659 pvr
                 }
                 break;
             default:
@@ -3749,7 +3752,9 @@ function mainTshiftIsRegistered(uid, id, value) {
     } else {
         debugPrint("mainTshiftIsRegistered: switch to test speed!");
         //hiWebOsFrame.pvrHDList.close();
-        var memSize = value / 1024;
+        var memIndex = Math.floor( value / 512);
+        DBG_ERROR("mainTshiftIsRegistered value[" + value + "], memSize[" + memIndex + "]");
+        /*
         var memIndex = 2;
         if (memSize == 1) {
             memIndex = 2;
@@ -3766,6 +3771,7 @@ function mainTshiftIsRegistered(uid, id, value) {
         } else if (memSize == 4) {
             memIndex = 8;
         }
+        */
         openLiveTVModule([Msg.INFO, 0]);
         //startTshiftMediaDialog();
         model.timeshift.setUuid(uid);
@@ -4747,7 +4753,7 @@ function setAppInfoForSettingRecentUse(url,cmdType) {
 }
 
 function onTvSwitchTriggerCauseChanged(value) {
-    DBG_ALWAYS("notify standby value[" + value + "]");
+    DBG_ERROR("notify standby value[" + value + "]");
     if (value == -1 || value == -2 || value == -3) {
         if (1 == model.hotel.getHotelMode() && 0 == model.hotel.getAutoSleep()) {
             DBG_ALWAYS("hotel model sleep off.");
@@ -4819,6 +4825,80 @@ var batteryFlag = 0;
 function logReport(category, param, start) {
 //	debugE("return!!!!!");
 //	return;
+
+    var logType={
+        GTAPPRun:200101,
+        GTRemoteControl:200120,
+        HBBTVRun:200122,
+        GTLauncherCategoryBrowser:200123,
+        GTRCNetFlix:200141,
+        GTAllAppClick:200142,
+        GTLauncherRun:200147,
+        GTLTitleAction:200148,
+        GTLPanel:200149,
+        GTLToastReport:200150,
+        GTLDialogReport:200151,
+        GTSETItem:200152,
+        GTFTE:200153
+    };
+    var reverseLogType={
+        200101:'GTAPPRun',
+        200120:'GTRemoteControl',
+        200122:'HBBTVRun',
+        200123:'GTLauncherCategoryBrowser',
+        200141:'GTRCNetFlix',
+        200142:'GTAllAppClick',
+        200147:'GTLauncherRun',
+        200148:'GTLTitleAction',
+        200149:'GTLPanel',
+        200150:'GTLToastReport',
+        200151:'GTLDialogReport'
+    };
+    var reportParaObj = {
+        actionType: "ActionType",
+        addOrRemoveTileType: "AddOrRemoveTitleType",
+        addOrRemoveTileName: "AddOrRemoveTitleName",
+        appVersion: "APPVersion",
+        appPackage: "APPPackage",
+        backGroundPack: "BackgroundAPPPackage",
+        brand: "Brand",
+        closeReason: "CloseReason",
+        changeSource: "ChangeSource",
+        countyCode: "CountryCode",
+        devID: "DeviceId",
+        dismissCase: "DismissCause",
+        devMsg: "DeviceMsg",
+        endTime: "EndTime",
+        func: "Function",
+        interaction: "Interaction",
+        launcherSource : "LaunchSource",
+        msgType : "MsgType",
+        msgId : "MsgId",
+        netWorkType: "NetworkType",
+        platForm: "ChipPlatform",
+        panelName: "PanelName",
+        ver: "Version",
+        result: "Result",
+        remoteType: "RemoteControlType",
+        startTime: "StartTime",
+        setItem: "SetItem",
+        type: "EventCode",
+        time: "Time",
+        titleNum: "TitlesNum",
+        tiles: "Titles",
+        keyName: "KeyName",
+        where: "Where",
+        zone: "Zone",
+        param:"param",
+        categoryName:"categoryName",
+        recommandId:"recommandId",
+        contentName:"contentName",
+        contentType:"contentType",
+        currentTagType:"currentTagType",
+        currentContentTime:"currentContentTime",
+        currentContentName:"currentContentName",
+        currentLauncherTime:"currentLauncherTime",
+    };
 
 	var local_var = g_launcherBrand;
 
@@ -4926,10 +5006,18 @@ function logReport(category, param, start) {
             if (start) {
                 if (param != "") {
                     if (typeof (param) == "object") {
-                        Hisense.RunLog.writeTvRunLog(122, "1.2|122|" + deviceID + "|" + curTime + "|" + param.categoryName + "|" + param.recommandId + "|" + param.contentName + "|" + param.contentType + "|" + curZone + "|" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
-                        Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + curTime + "|0|" + param.contentName + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
-                        currentOperateTime = curTime;
-                        currentOperateName = param.contentName;
+                        var msg={
+                        };
+                        msg[reportParaObj.ver]= '2.0';
+                        msg[reportParaObj.type] = logType.GTAPPRun.toString();
+                        msg[reportParaObj.devID] = deviceID;
+                        msg[reportParaObj.startTime] = currentOperateTime;
+                        msg[reportParaObj.endTime] = '0';
+                        msg[reportParaObj.appPackage] = currentOperateName;
+                        msg[reportParaObj.zone] = curZone;
+                        msg[reportParaObj.appVersion] = '';
+                        UnionInfo(msg);
+                        writeTvRunLogFunC(logType.GTAPPRun, msg);
                         writeFileToNative("logReportAppRun", curTime + "|" + param.contentName + "|1", 0);
                     }
                     else {
@@ -4939,8 +5027,18 @@ function logReport(category, param, start) {
 		                    currentOperateName = param;
 		                    return;
 	                    }
-                        Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + curTime + "|0|" + param + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
-
+                        var msg={
+                        };
+                        msg[reportParaObj.ver]= '2.0';
+                        msg[reportParaObj.type] = logType.GTAPPRun.toString();
+                        msg[reportParaObj.devID] = deviceID;
+                        msg[reportParaObj.startTime] = currentOperateTime;
+                        msg[reportParaObj.endTime] = '0';
+                        msg[reportParaObj.appPackage] = currentOperateName;
+                        msg[reportParaObj.zone] = curZone;
+                        msg[reportParaObj.appVersion] = '';
+                        UnionInfo(msg);
+                        writeTvRunLogFunC(logType.GTAPPRun, msg);
                         writeFileToNative("logReportAppRun", curTime + "|" + param + "|1", 0);
                         currentOperateTime = curTime;
                         currentOperateName = param;
@@ -4950,27 +5048,123 @@ function logReport(category, param, start) {
             }
             else {
 	            if(!!currentNetflixHotKeyTime) {
-		            Hisense.RunLog.writeTvRunLog(141, "1.1|141|" + deviceID + "|" + currentNetflixHotKeyTime + "|" + currentOperateName + "|0|" + curZone + "|" + remoteType + "|" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
-		            Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + currentOperateTime + "|0|" + currentOperateName + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
-		            Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + currentOperateTime + "|" + curTime + "|" + currentOperateName + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
-		            deleteNativeFile("logReportAppRun", 0);
+		            //Hisense.RunLog.writeTvRunLog(141, "1.1|141|" + deviceID + "|" + currentNetflixHotKeyTime + "|" + currentOperateName + "|0|" + curZone + "|" + remoteType + "|" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                    msg={};
+                    msg[reportParaObj.ver]= '2.0';
+                    msg[reportParaObj.type] = logType.GTRCNetFlix.toString();
+                    msg[reportParaObj.devID] = deviceID;
+                    msg[reportParaObj.time] = currentNetflixHotKeyTime;
+                    msg[reportParaObj.keyName] = currentOperateName.toUpperCase();
+                    msg[reportParaObj.func] = '0';
+                    msg[reportParaObj.zone] = curZone;
+                    msg[reportParaObj.remoteType] = remoteType;
+                    UnionInfo(msg);
+                    writeTvRunLogFunC(logType.GTRCNetFlix, msg);
+
+                    //Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + currentOperateTime + "|0|" + currentOperateName + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                    //Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + currentOperateTime + "|" + curTime + "|" + currentOperateName + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                    msg={};
+                    msg[reportParaObj.ver]= '2.0';
+                    msg[reportParaObj.type] = logType.GTAPPRun.toString();
+                    msg[reportParaObj.devID] = deviceID;
+                    msg[reportParaObj.startTime] = currentOperateTime;
+                    msg[reportParaObj.endTime] = '0';
+                    msg[reportParaObj.appPackage] = currentOperateName;
+                    msg[reportParaObj.zone] = curZone;
+                    msg[reportParaObj.appVersion] = '';
+                    UnionInfo(msg);
+                    msg[reportParaObj.launcherSource] = LaunchSource;
+                    writeTvRunLogFunC(logType.GTAPPRun, msg);
+                    msg={};
+                    msg[reportParaObj.ver]= '2.0';
+                    msg[reportParaObj.type] = logType.GTAPPRun.toString();
+                    msg[reportParaObj.devID] = deviceID;
+                    msg[reportParaObj.startTime] = currentOperateTime;
+                    msg[reportParaObj.endTime] = curTime;
+                    msg[reportParaObj.appPackage] = currentOperateName;
+                    msg[reportParaObj.zone] = curZone;
+                    msg[reportParaObj.appVersion] = '';
+                    UnionInfo(msg);
+                    writeTvRunLogFunC(logType.GTAPPRun,msg);
+
+                    deleteNativeFile("logReportAppRun", 0);
 		            currentNetflixHotKeyTime = 0;
 		            return;
 	            }
-                Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + currentOperateTime + "|" + curTime + "|" + currentOperateName + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                msg={};
+                msg[reportParaObj.ver]= '2.0';
+                msg[reportParaObj.type] = logType.GTAPPRun.toString();
+                msg[reportParaObj.devID] = deviceID;
+                msg[reportParaObj.startTime] = currentOperateTime;
+                msg[reportParaObj.endTime] = curTime;
+                msg[reportParaObj.appPackage] = currentOperateName;
+                msg[reportParaObj.zone] = curZone;
+                msg[reportParaObj.appVersion] = '';
+                UnionInfo(msg);
+                writeTvRunLogFunC(logType.GTAPPRun,msg);
                 deleteNativeFile("logReportAppRun", 0);
             }
             break;
         case 'GTRemoteControl':
-            Hisense.RunLog.writeTvRunLog(120, "1.2|120|" + deviceID + "|" + curTime + "|" + param + "|" + curCountry + "|" + curZone + "|" + remoteType + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+            //Hisense.RunLog.writeTvRunLog(120, "1.2|120|" + deviceID + "|" + curTime + "|" + param + "|" + curCountry + "|" + curZone + "|" + remoteType + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+            msg={};
+            msg[reportParaObj.ver]= '2.0';
+            msg[reportParaObj.type] = logType.GTRemoteControl.toString();
+            msg[reportParaObj.devID] = deviceID;
+            msg[reportParaObj.time] = curTime;
+            msg[reportParaObj.countyCode] = curCountry;
+            msg[reportParaObj.zone] = curZone;
+            msg[reportParaObj.remoteType] = remoteType;
+            msg[reportParaObj.platForm] = platform;
+            msg[reportParaObj.brand] = curBrand;
+            msg[reportParaObj.devMsg] = DeviceMsg;
+            writeTvRunLogFunC(logType.GTRemoteControl, msg);
             break;
         case 'HBBTVRun':
             if(param){
                 if(typeof (param) == "object"){
-                    Hisense.RunLog.writeTvRunLog(122, "1.2|122|" + deviceID + "|" + curTime + "|" + param.categoryName + "|" + param.recommandId + "|" + param.contentName + "|" + param.contentType + "|" + curZone + "|" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
-                    Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + curTime + "|0|" + param.contentName + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                    //Hisense.RunLog.writeTvRunLog(122, "1.2|122|" + deviceID + "|" + curTime + "|" + param.categoryName + "|" + param.recommandId + "|" + param.contentName + "|" + param.contentType + "|" + curZone + "|" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                    msg={};
+                    msg[reportParaObj.ver]= '2.0';
+                    msg[reportParaObj.type] = logType.HBBTVRun.toString();
+                    msg[reportParaObj.devID] = deviceID;
+                    msg[reportParaObj.time] = curTime;
+                    msg[reportParaObj.categoryName] = param.categoryName;
+                    msg[reportParaObj.recommandId] = param.recommandId;
+                    msg[reportParaObj.contentName] = param.contentName;
+                    msg[reportParaObj.contentType] = param.contentType;
+                    msg[reportParaObj.zone] = curZone;
+                    msg[reportParaObj.platForm] = platform;
+                    msg[reportParaObj.brand] = curBrand;
+                    msg[reportParaObj.devMsg] = DeviceMsg;
+                    writeTvRunLogFunC(logType.HBBTVRun, msg);
+                    //Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + curTime + "|0|" + param.contentName + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                    msg={};
+                    msg[reportParaObj.ver]= '2.0';
+                    msg[reportParaObj.type] = logType.GTAPPRun.toString();
+                    msg[reportParaObj.devID] = deviceID;
+                    msg[reportParaObj.time] = curTime;
+                    msg[reportParaObj.contentName] = param.contentName;
+                    msg[reportParaObj.zone] = curZone;
+                    msg[reportParaObj.countyCode] = curCountry;
+                    msg[reportParaObj.platForm] = platform;
+                    msg[reportParaObj.brand] = curBrand;
+                    msg[reportParaObj.devMsg] = DeviceMsg;
+                    writeTvRunLogFunC(logType.GTAPPRun, msg);
                 }else{
-                    Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + curTime + "|0|" + param + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                    //Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + curTime + "|0|" + param + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                    msg={};
+                    msg[reportParaObj.ver]= '2.0';
+                    msg[reportParaObj.type] = logType.GTAPPRun.toString();
+                    msg[reportParaObj.devID] = deviceID;
+                    msg[reportParaObj.time] = curTime;
+                    msg[reportParaObj.param] = param;
+                    msg[reportParaObj.zone] = curZone;
+                    msg[reportParaObj.countyCode] = curCountry;
+                    msg[reportParaObj.platForm] = platform;
+                    msg[reportParaObj.brand] = curBrand;
+                    msg[reportParaObj.devMsg] = DeviceMsg;
+                    writeTvRunLogFunC(logType.GTAPPRun, msg);
                 }
             }
             break;
@@ -4979,7 +5173,20 @@ function logReport(category, param, start) {
 			    currentNetflixHotKeyTime = curTime;
 			    return;
 		    }
-            Hisense.RunLog.writeTvRunLog(141, "1.1|141|" + deviceID + "|" + curTime + "|" + param + "|1|" + curZone + "|" + remoteType + "|" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+            //Hisense.RunLog.writeTvRunLog(141, "1.1|141|" + deviceID + "|" + curTime + "|" + param + "|1|" + curZone + "|" + remoteType + "|" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+            msg={};
+            msg[reportParaObj.ver]= '2.0';
+            msg[reportParaObj.type] = logType.GTRCNetFlix.toString();
+            msg[reportParaObj.devID] = deviceID;
+            msg[reportParaObj.time] = curTime;
+            msg[reportParaObj.param] = param;
+            msg[reportParaObj.zone] = curZone;
+            msg[reportParaObj.remoteType] = remoteType;
+            msg[reportParaObj.countyCode] = curCountry;
+            msg[reportParaObj.platForm] = platform;
+            msg[reportParaObj.brand] = curBrand;
+            msg[reportParaObj.devMsg] = DeviceMsg;
+            writeTvRunLogFunC(logType.GTRCNetFlix, msg);
             break;
         case 'GTLauncherCategoryBrowser':
             if (start) {
@@ -4989,29 +5196,107 @@ function logReport(category, param, start) {
                 else {
                     currentTagType = getVIDAALiteLauncherCurrentPageTagType();
                 }
-                Hisense.RunLog.writeTvRunLog(123, "1.2|123|" + deviceID + "|" + curTime + "||" + currentTagType + "|" + curCountry + "|" + curZone + "|0|" + param + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                //Hisense.RunLog.writeTvRunLog(123, "1.2|123|" + deviceID + "|" + curTime + "||" + currentTagType + "|" + curCountry + "|" + curZone + "|0|" + param + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                msg={};
+                msg[reportParaObj.ver]= '2.0';
+                msg[reportParaObj.type] = logType.GTLauncherCategoryBrowser.toString();
+                msg[reportParaObj.devID] = deviceID;
+                msg[reportParaObj.time] = curTime;
+                msg[reportParaObj.currentTagType] = currentTagType;
+                msg[reportParaObj.countyCode] = curCountry;
+                msg[reportParaObj.zone] = curZone;
+                msg[reportParaObj.param] = param;
+                msg[reportParaObj.platForm] = platform;
+                msg[reportParaObj.brand] = curBrand;
+                msg[reportParaObj.devMsg] = DeviceMsg;
+                writeTvRunLogFunC(logType.GTLauncherCategoryBrowser, msg);
                 currentContentTime = curTime;
                 currentContentName = param;
             }
             else {
-                Hisense.RunLog.writeTvRunLog(123, "1.2|123|" + deviceID + "|" + currentContentTime + "||" + currentTagType + "|" + curCountry + "|" + curZone + "|" + curTime + "|" + currentContentName + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                //Hisense.RunLog.writeTvRunLog(123, "1.2|123|" + deviceID + "|" + currentContentTime + "||" + currentTagType + "|" + curCountry + "|" + curZone + "|" + curTime + "|" + currentContentName + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                msg={};
+                msg[reportParaObj.ver]= '2.0';
+                msg[reportParaObj.type] = logType.GTLauncherCategoryBrowser.toString();
+                msg[reportParaObj.devID] = deviceID;
+                msg[reportParaObj.currentContentTime] = currentContentTime;
+                msg[reportParaObj.currentTagType] = currentTagType;
+                msg[reportParaObj.countyCode] = curCountry;
+                msg[reportParaObj.zone] = curZone;
+                msg[reportParaObj.time] = curTime;
+                msg[reportParaObj.currentContentName] = currentContentName;
+                msg[reportParaObj.platForm] = platform;
+                msg[reportParaObj.brand] = curBrand;
+                msg[reportParaObj.devMsg] = DeviceMsg;
+                writeTvRunLogFunC(logType.GTLauncherCategoryBrowser, msg);
             }
 
             break;
         case 'GTAllAppClick':
-            Hisense.RunLog.writeTvRunLog(142, "1.1|142|" + deviceID + "|" + curTime + "|" + param + "|" + curZone + "|" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+            //Hisense.RunLog.writeTvRunLog(142, "1.1|142|" + deviceID + "|" + curTime + "|" + param + "|" + curZone + "|" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+            msg={};
+            msg[reportParaObj.ver]= '2.0';
+            msg[reportParaObj.type] = logType.GTAllAppClick.toString();
+            msg[reportParaObj.devID] = deviceID;
+            msg[reportParaObj.time] = curTime;
+            msg[reportParaObj.param] = param;
+            msg[reportParaObj.zone] = curZone;
+            msg[reportParaObj.countyCode] = curCountry;
+            msg[reportParaObj.platForm] = platform;
+            msg[reportParaObj.brand] = curBrand;
+            msg[reportParaObj.devMsg] = DeviceMsg;
+            writeTvRunLogFunC(logType.GTAllAppClick, msg);
             break;
         case 'launcherRun':
             if (start) {
-                Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + curTime + "|0|" + param + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                //Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + curTime + "|0|" + param + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                msg={};
+                msg[reportParaObj.ver]= '2.0';
+                msg[reportParaObj.type] = logType.GTLauncherRun.toString();
+                msg[reportParaObj.devID] = deviceID;
+                msg[reportParaObj.time] = curTime;
+                msg[reportParaObj.param] = param;
+                msg[reportParaObj.zone] = curZone;
+                msg[reportParaObj.countyCode] = curCountry;
+                msg[reportParaObj.platForm] = platform;
+                msg[reportParaObj.brand] = curBrand;
+                msg[reportParaObj.devMsg] = DeviceMsg;
+                writeTvRunLogFunC(logType.GTLauncherRun, msg);
                 currentLauncherTime = curTime;
             }
             else {
-                Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + currentLauncherTime + "|" + curTime + "|" + param + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                //Hisense.RunLog.writeTvRunLog(101, "1.2|101|" + deviceID + "|" + currentLauncherTime + "|" + curTime + "|" + param + "|" + curZone + "||" + curCountry + "|" + platform + "|" + curBrand + "|" + DeviceMsg);
+                msg={};
+                msg[reportParaObj.ver]= '2.0';
+                msg[reportParaObj.type] = logType.GTLauncherRun.toString();
+                msg[reportParaObj.devID] = deviceID;
+                msg[reportParaObj.currentLauncherTime] = currentLauncherTime;
+                msg[reportParaObj.time] = curTime;
+                msg[reportParaObj.param] = param;
+                msg[reportParaObj.zone] = curZone;
+                msg[reportParaObj.countyCode] = curCountry;
+                msg[reportParaObj.platForm] = platform;
+                msg[reportParaObj.brand] = curBrand;
+                msg[reportParaObj.devMsg] = DeviceMsg;
+                writeTvRunLogFunC(logType.GTLauncherRun, msg);
+                currentLauncherTime = curTime;
             }
             break;
         default :
             break;
+    }
+
+    function UnionInfo(msg){
+        msg[reportParaObj.countyCode] = curCountry;
+        msg[reportParaObj.platForm] = platform;
+        msg[reportParaObj.brand] = curBrand;
+        msg[reportParaObj.devMsg] = DeviceMsg;
+    }
+
+    function writeTvRunLogFunC(logType,msg){
+        DBG_INFO({info:"logType:"+reverseLogType[logType]+':'+logType+"----msg:",data:msg});
+        msg = objToString(msg);
+        Hisense.RunLog.writeTvRunLog(logType,msg);
     }
 
 }
@@ -6454,10 +6739,9 @@ function onTvsetLocationChaged(country) {
         onTvLocationChaged(country);
         if(hiWebOsFrame.getCurrentArea()=="EU")
         {
-            if((country=="RUS"
-                ||country=="UZB"
-                ||country=="KGZ"
-                ||country=="TJK")
+            var counrtylist=["RUS","UZB","KAZ","KGZ","TJK","DZA", "IRQ","SAU"]
+
+            if(_getIndex(counrtylist,country)>=0
                 &&(hiWebOsFrame.getCurrentArea()=="EU"))
             {
                 g_systemautosleepflag=0;
@@ -6477,7 +6761,7 @@ function onTvsetLocationChaged(country) {
                     g_systemautosleepflag=1;
                     clearTimeout(g_systemautosleepTimer);
                     g_systemautosleepTimer=null;
-                    g_systemautosleepTimer=setTimeout(function(){onTvSwitchTriggerCauseChanged(-3)},4*3600* 1000);
+                    g_systemautosleepTimer=setTimeout(function(){onTvSwitchTriggerCauseChanged(-3)},timer*3600* 1000);
 
                 }
             }
@@ -7209,4 +7493,12 @@ function getSourceIdbyKey(keycode){
     }
     debugPrint("can not find the source in current source list ");
     return ;
+}
+
+function getFile(address) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", address, false);
+    xmlhttp.send();
+    var xmlDoc = xmlhttp.responseText;
+    return xmlDoc;
 }

@@ -2802,6 +2802,17 @@ HiFileBrowser.initLanguage = function () {
     $("#filename0").html(hiMediaLanguages[cLanguage_himedia]["Return"]);
     $("#totalfile").html(hiMediaLanguages[cLanguage_himedia]["All"] + " " + ((HiFileBrowser.totalFile - 1) >= 0 ? HiFileBrowser.totalFile - 1 : 0));
 //    DBG_ALWAYS(hiWebOsFrame.getHTMLDir());
+    //台湾机增加MEDIA的繁体中文特殊处理，其他市场和地区都不处理
+    var countrycode = tv?model.basicSetting.getTvsetLocation():"DEU";
+    if (cLanguage_himedia == "zho" && countrycode == "TWN") {
+        $("#mediaTitle").html("媒體");
+    }
+    if (cLanguage_himedia == "per") {
+        $("#mediaTitle").html("چندرسانه ای");
+    }
+    else{
+        $("#mediaTitle").html(hiMediaLanguages[cLanguage_himedia]["Media"]);//改为都处理Media多语言
+    }
     if (hiWebOsFrame.getHTMLDir() == HTMLDIR.LTR) {
         $("#dropboxcontent div").css("float", "left");
     }

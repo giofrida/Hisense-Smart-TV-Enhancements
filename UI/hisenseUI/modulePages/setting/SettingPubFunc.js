@@ -283,6 +283,8 @@ function getSettingOSDLanguageMapList() {
     }
     else  if(verArea=="EU")
     {
+        if(CurrentSubArea=="EU2")
+        {
         langMapList=[
             {
                 "number":0,
@@ -400,6 +402,133 @@ function getSettingOSDLanguageMapList() {
                 "name":"Shqiptar",//"阿尔巴尼亚语",
                 "code":"alb"
             },
+                {
+                    "number":4,//阿拉伯语 Arabic
+                    "name":"العربية",
+                    "code":"ara"
+                }
+
+
+            ]
+            return langMapList;
+        }
+        langMapList=[
+            {
+                "number":0,
+                "name":" English ",
+                "code":"eng"
+            },
+            {
+                "number":1,
+                "name":"Français ",
+                "code":"fre"
+            },
+            {
+                "number":16,
+                "name":"Deutsch ",
+                "code":"ger"
+            },
+            {
+                "number":17,
+                "name":"Italiano ",
+                "code":"ita"
+            },
+            {
+                "number":2,
+                "name":"Español ",
+                "code":"spa"
+            },
+            {
+                "number":3,
+                "name":"Português ",
+                "code":"por"
+            },
+            {
+                "number":18,
+                "name":"Svenska ",
+                "code":"swe"
+            },
+            {
+                "number":19,
+                "name":"Dansk ",
+                "code":"dan"
+            },
+            {
+                "number":20,
+                "name":"Suomi ",
+                "code":"fin"
+            },
+            {
+                "number":21,
+                "name":"Norsk ",
+                "code":"nor"
+            },
+            {
+                "number":22,
+                "name":"Čeština ",
+                "code":"cze"
+            },
+            //斯洛伐克语
+            {
+                "number":23,
+                "name":"Slovenčina ",
+                "code":"slk"
+            },
+            {//波兰语
+                "number":24,
+                "name":"Polski ",
+                "code":"pol"
+            },
+            {//匈牙利语
+                "number":25,
+                "name":" Magyar ",
+                "code":"hun"
+            },
+            {//保加利亚语
+                "number":26,
+                "name":"Български ",
+                "code":"bul"
+            },
+            {//土耳其语
+                "number":27,
+                "name":"Türkçe ",
+                "code":"tur"
+            },
+            {
+                "number":6,//
+                "name":"中文",
+                "code":"chi"
+            },
+            {
+                "number":5,//俄语Russian
+                "name":"Русский ",
+                "code":"rus"
+            },
+            {//乌兹别克语
+                "number":10,
+                "name":"O'zbekiston ",
+                "code":"uzb"
+            },
+            {//克罗地亚语
+                "number":30,
+                "name":"Hrvatski",//"克罗地亚语",
+                "code":"hrv"
+            },
+            {//塞尔维亚语
+                "number":31,
+                "name":"Srpski  ",//"塞尔维亚语",
+                "code":"srp"
+            },
+            {//马其顿语
+                "number":32,
+                "name":"Македонски",//"马其顿语",
+                "code":"mac"
+            },
+            {//阿尔巴尼亚语
+                "number":33,
+                "name":"Shqiptar",//"阿尔巴尼亚语",
+                "code":"alb"
+            },
             {//拉脱维亚语
                 "number":34,
                 "name":"Latvija ",//"拉脱维亚语",
@@ -414,7 +543,13 @@ function getSettingOSDLanguageMapList() {
                 "number":36,
                 "name":"Lietuva",//"立陶宛语",
                 "code":"lit"
+            },
+            {
+                "number": 41,//希腊语
+                "name": "Ελληνικά",
+                "code": "gre"
             }
+
 
 
 
@@ -699,95 +834,7 @@ function getSettingOSDLanguageMapList() {
          }
 
     }
-//    var langMapList = [
-//        {
-//            "number": 1,
-//            "name": "English",
-//            "code": "eng"
-//        },
-//        {
-//            "number": 2,
-//            "name": "Français",
-//            "code": "fre"
-//        },
-//        {
-//            "number": 4,
-//            "name": "Español",
-//            "code": "spa"
-//        },
-//
-//        {
-//            "number":16,
-//            "name":"Português",
-//            "code":"cpp"
-//        },
-//        {
-//            "number":40,//阿拉伯语 Arabic
-//            "name":"العربية",
-//            "code":"ara"
-//        },
-//        {
-//            "number":17,//俄语Russian
-//            "name":"Русский",
-//            "code":"rus"
-//        },
-//        {
-//            "number":19,//
-//            "name":"中文",
-//            "code":"chi"
-//        },
-////        {
-////            "number":43,//越南语Vietnamese
-////            "name":"tiếng Việt",
-////            "code":"vie"
-////        },
-////        {
-////            "number":44,//泰语Thai
-////            "name":"Thai",
-////            "code":"tai"
-////        },
-////        {
-////            "number":45,//缅甸语Burmese
-////            "name":"mran-macâ",
-////            "code":"bur"
-////        },
-////        {
-////            "number":46,//乌兹别克语Uzbek
-////            "name":"Ўзбек тили‎",
-////            "code":"uzb"
-////        },
-//        {
-//            "number":47,//波斯语Persian
-//            "name":"فارسی‎",
-//            "code":"per"
-//        },
-////        {
-////            "number":48,//印度尼西亚Indonesian
-////            "name":"Indonesia",
-////            "code":"ind"
-////        },
-//        {
-//            "number":49,//印度语Hindi
-//            "name":"Hindi",
-//            "code":"hin"
-//       }
-//// ,
-////        {
-////            "number":23,//乌克兰Ukrainian
-////            "name":"Український",
-////            "code":"ukr"
-////        },
-////        {
-////            "number":50,//马来Malay
-////            "name":"Melayu",
-////            "code":"may"
-////        },
-////        {
-////            "number":13,//土耳其语Turkish
-////            "name":"Türk dili",
-////            "code":"tur"
-////        }
-//    ]
+
     return langMapList;
 }
 function getCurrVeraForWizard(){
@@ -1191,6 +1238,21 @@ function getCountryToZoneMapList() {
             {
                // "name": "Lithuania",// 立陶宛(Hisense)
                 "code": "LTU",
+                "defzone":0,
+                "supportzonelist":[2,35],
+                "osdtimezonelist":["UTC+2","Auto"]
+            },
+            {
+                // "name": "[SE1091]",//"Latvia",// 斯洛文尼亚(Hisense)
+                "code": "SVN",
+                "defzone":0,
+                "supportzonelist":[1,35],
+                "osdtimezonelist":["UTC+1","Auto"]
+            },
+            {
+
+                //"name": //希腊
+                "code": "GRC",
                 "defzone":0,
                 "supportzonelist":[2,35],
                 "osdtimezonelist":["UTC+2","Auto"]
@@ -3408,4 +3470,113 @@ function HotelModeSearchLock() {
     } catch (ex) {
         debugE(ex.message);
     }
+}
+
+function getCurDisclaimerfile(boeCountry) {
+    var curBrand = initBrand;
+    var curCountry = (boeCountry == undefined)?model.basicSetting.getTvsetLocation():boeCountry;
+    debugPrint("curCountry " + curCountry);
+    var brandfile = " ";
+   if (hiWebOsFrame.getCurrentArea() == "EU") {
+        if (curBrand != "his" && curBrand != "hisense") {
+            brandfile = "Disclaimer_eu_oem_eng.html"
+        }
+        else {
+            switch (curCountry)
+            {
+                case "FRA":
+                {
+                    brandfile="Disclaimer_eu_fre.html"
+                    break;
+                }
+                case "DEU":
+                {
+                    brandfile="Disclaimer_eu_ger.html"
+                    break;
+                }
+                case "CZE":
+                {
+                    brandfile="Disclaimer_eu_cze.html"
+                    break;
+                }
+                case "ITA":
+                {
+                    brandfile="Disclaimer_eu_ita.html"
+                    break;
+                }
+                case "ESP":
+                {
+                    brandfile="Disclaimer_eu_spa.html"
+                    break;
+                }
+                case "LVA":
+                {
+                    brandfile="Disclaimer_eu_lav.html"
+                    break;
+                }
+                case "LTU":
+                {
+                    brandfile="Disclaimer_eu_lit.html"
+                    break;
+                }
+                case "EST":
+                {
+                    brandfile="Disclaimer_eu_est.html"
+                    break;
+                }
+                case "PRT":
+                {
+                    brandfile="Disclaimer_eu_por.html"
+                    break;
+                }
+                case "SVN":
+                {
+                    brandfile="Disclaimer_eu_svn.html"
+                    break;
+                }
+                case "GRC":
+                {
+                    brandfile="Disclaimer_eu_grc.html"
+                    break;
+                }
+                case "NLD":
+                {
+                    brandfile="Disclaimer_eu_nld.html"
+                    break;
+                }
+                case "HRV":
+                {
+                    brandfile="Disclaimer_eu_hrv.html"
+                    break;
+                }
+                case "AUT":
+                {
+                    brandfile="Disclaimer_eu_aut.html"
+                    break;
+                }
+                case "RUS":
+                {
+                    brandfile="Disclaimer_eu_rus.html"
+                    break;
+                }
+                case "GBR":
+                {
+                    brandfile="Disclaimer_eu_gbr.html"
+                    break;
+                }
+                case "SVK":
+                {
+                    brandfile="Disclaimer_eu_svk.html"
+                    break;
+                }
+                default :
+                {
+                    brandfile="Disclaimer_eu_eng.html"
+                    break;
+                }
+            }
+        }
+    }
+
+    return brandfile;
 }

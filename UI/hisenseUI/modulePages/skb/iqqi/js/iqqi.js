@@ -1411,7 +1411,7 @@ function getIQQIPageData(page) {
             "curLang": "ENG",
             "curMode": IQQIUtils.MODE_LANGUAGE,
             "curLangRtl": false,
-            "curLangArray": ["ENG", "GER", "ITA", "POR", "SPA", "FRA", "NOR", "SWE", "DAN", "FIN", "NUM1", "NUM2"],
+            "curLangArray": ["ENG", "GER", "ITA", "POR", "SPA", "FRA", "NOR", "SWE", "DAN", "FIN", "NUM1", "NUM2", "GRE"],
             "rows": ["FirstLineKey", "SecondLineKey", "ThirdLineKey", "FourthLineKey", "ControlLineKey"],
             "curFocusRow": 0,
             "curFocusCol": 0,
@@ -2105,6 +2105,27 @@ function getIQQIPageData(page) {
                         "FourthLineKey": [3, 2, 2, 2, 2, 2, 2, 2, 4, 4],
                         "ControlLineKey": [5, 6, 7, 8, 9, 10]
                     }
+                },
+                "GRE": {
+                    "FirstLineKey": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "@"],
+                    "SecondLineKey": [";", "ς", "ε", "ρ", "τ", "υ", "θ", "ι", "ο", "π", "-"],
+                    "ThirdLineKey": ["σ", "δ", "d", "φ", "γ", "η", "ξ", "κ", "λ", "΄΄", "~"],
+                    "FourthLineKey": ["", "ζ", "χ", "ψ", "ω", "β", "ν", "μ", ",", ".", "/"],
+                    "ControlLineKey": ["", "", "123", "", "", ""],
+                    "upper": {
+                        "FirstLineKey": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "@"],
+                        "SecondLineKey": [":", "#", "E", "Ρ", "T", "Y", "Θ", "Ι", "Ο", "Π", "-"],
+                        "ThirdLineKey": ["A", "Σ", "Δ", "Φ", "Γ", "H", "Ξ", "K", "Λ", "΄΄", "~"],
+                        "FourthLineKey": ["", "Z", "X", "Ψ", "Ω", "B", "N", "M", ",", ".", "/"],
+                        "ControlLineKey": ["", "", "123", "", "", ""]
+                    },
+                    "display": {
+                        "FirstLineKey": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4],
+                        "SecondLineKey": [4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4],
+                        "ThirdLineKey": [2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4],
+                        "FourthLineKey": [3, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4],
+                        "ControlLineKey": [5, 6, 7, 8, 9, 10]
+                    }
                 }
             },
             "currentImagineRoot": "", // if you have enough time, please delete this property, make its logic within InputManager and IQQIImagineUL.
@@ -2279,7 +2300,7 @@ function iqqiAdaptDom(page, curLang, mode) {
         mode = IQQIUtils.MODE_LANGUAGE;
     }
 
-    if(iqqiAdaptDom.initialized == undefined) {
+    if(typeof adaptIqqiHead != "function" || iqqiAdaptDom.initialized == undefined) {
         function adaptIqqiHead() {
             if(opeData.InputManager.isPassword()) {
                 if("password" == opeData.inputAttr || "numberpassword" == opeData.inputAttr) {
@@ -2364,6 +2385,12 @@ function iqqiAdaptDom(page, curLang, mode) {
                     opeData.curLang = "POR";
                     page.dom = adaptIqqiHead() + adaptImagineUl(undefined, opeData.curLang) + iqqiRootBelly + iqqiPorHome + adaptColorPanel(false, opeData.curLang);
                     opeData.imagineUl.ImeType = tv ? imejs.iqqi.BRAZILIAN : -1;
+                    opeData.imagineUl.FirstLiUserInput = true;
+                    break;
+                case "GRE":
+                    opeData.curLang = "GRE";
+                    page.dom = adaptIqqiHead() + adaptImagineUl(undefined, opeData.curLang) + iqqiRootBelly + iqqiGreHome + adaptColorPanel(false, opeData.curLang);
+                    opeData.imagineUl.ImeType = tv ? imejs.iqqi.GREEK : -1;
                     opeData.imagineUl.FirstLiUserInput = true;
                     break;
                 case "ARA":
@@ -2966,7 +2993,7 @@ function iqqiShift(page, opeData, adapt) {
     if(!!element) {
         var classes = element.className.split("_");
 
-        if(iqqiShift.initialized == undefined) {
+        if(typeof adaptButtonUIOnly != "function" || iqqiShift.initialized == undefined) {
             function adaptButtonUIOnly() {
                 var focus =  hiWebOsFrame.iqqi.currentSelectedTree[hiWebOsFrame.iqqi.currentSelectedTree.length-1] && (hiWebOsFrame.iqqi.currentSelectedTree[hiWebOsFrame.iqqi.currentSelectedTree.length-1].id == this.id);
                 if(opeData.isCapsMode) {
@@ -3089,7 +3116,7 @@ function iqqiDataRewrite(data) {
 
     var status = opeData.InputManager && opeData.InputManager.dump();
     //data.iqqiInputContainer.Data.iqqiPosition.Data.iqqiInput.Data = (opeData.InputManager && opeData.InputManager.isPassword()) ? (opeData.InputManager.invoke("mask", status && (status.dynamicValue != undefined ? status.dynamicValue : status.oldValue)) || "") : (status && (status.dynamicValue != undefined ? status.dynamicValue : status.oldValue));
-    data.iqqiInputContainer.Data.iqqiPosition.Data.iqqiInput.Data = opeData.InputManager && (opeData.InputManager.invoke("shouldMask") ? (opeData.InputManager.invoke("mask", opeData.InputManager.getValue(opeData.InputManager.inputId), "")) : opeData.InputManager.getValue(opeData.InputManager.inputId).replace(/&/g, "&amp;").replace(/</g, "&lt;"));
+    data.iqqiInputContainer.Data.iqqiPosition.Data.iqqiInput.Data = opeData.InputManager && (opeData.InputManager.invoke("shouldMask") ? (opeData.InputManager.invoke("mask", opeData.InputManager.getValue(opeData.InputManager.inputId), "")) : opeData.InputManager.getValue(opeData.InputManager.inputId));
     opeData.dynamicPosition = status && (status.dynamicPosition != undefined ? status.dynamicPosition : status.oldPosition);
 
     try {
@@ -5169,7 +5196,7 @@ function InputManager(sourceId, inputAttr, inputMethod, maxLength, min, max, dis
     this.textContainerContainerCss = "iqqiInputTextContainerContainer"; // for now its hidden
     this.textContainerCss = "iqqiInputTextContainer"; // for now its hidden
 
-    if(typeof InputManager.initialized == "undefined") {
+    if(typeof InputManager.initialized == "undefined"||typeof getDynamicPosition=="undefined") {
         InputManager.prototype.resetTo = function(sourceId, inputAttr, inputMethod, maxLength, min, max, display) {
             this.sourceId = sourceId;
             this.inputAttr = inputAttr;
@@ -5288,7 +5315,7 @@ function InputManager(sourceId, inputAttr, inputMethod, maxLength, min, max, dis
          * this fucking disgusting method, damn the opera browser.
          */
         InputManager.prototype.rewrite = function() {
-            if(InputManager.prototype.rewrite.initialized == undefined) {
+            if(typeof findTwinNode != "function" || InputManager.prototype.rewrite.initialized == undefined) {
                 /**
                  * in a rewrite logic, the old nodes are removed, new nodes are added.
                  * the may be same from property, but not the same.
@@ -5367,7 +5394,7 @@ function InputManager(sourceId, inputAttr, inputMethod, maxLength, min, max, dis
         InputManager.prototype.getCaretPosition = function(id) {
             iqqiInfoNewLog("InputManager.getCaretPosition", "show id: " + id);
 
-            if(InputManager.prototype.getCaretPosition.initialized == undefined) {
+            if(typeof getSelection != "function" || InputManager.prototype.getCaretPosition.initialized == undefined) {
                 function getSelection(node) {
                     getSelection.position = valid(getSelection.position, 0);
                     var sel = document.getSelection();
@@ -5613,7 +5640,7 @@ function InputManager(sourceId, inputAttr, inputMethod, maxLength, min, max, dis
             }
             else {
                 var cValue = this.getValue(this.inputId);
-                input.innerHTML = cValue.slice(0, caretPosition).replace(/&/g, "&amp;").replace(/</g, "&lt;") + "<span id=\"" + this.imagineAreaId + "\" class=\"" + this.imagineAreaCss + "_Normal\">" + value + "</span>" + cValue.slice(caretPosition).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+                input.innerHTML = cValue.slice(0, caretPosition) + "<span id=\"" + this.imagineAreaId + "\" class=\"" + this.imagineAreaCss + "_Normal\">" + value + "</span>" + cValue.slice(caretPosition);
 
                 this.dynamicValue = input.innerHTML;
 
@@ -5667,7 +5694,7 @@ function InputManager(sourceId, inputAttr, inputMethod, maxLength, min, max, dis
         InputManager.prototype.getValue = function(id, replace) {
             var input = document.getElementById(id);
 
-            if(InputManager.prototype.getValue.initialized == undefined) {
+            if(typeof getValue != "function" || InputManager.prototype.getValue.initialized == undefined) {
                 /**
                  * get value of node, not input
                  * @param {Node} node
@@ -5736,11 +5763,11 @@ function InputManager(sourceId, inputAttr, inputMethod, maxLength, min, max, dis
                             input.innerHTML = mask.call(this, value.replace("&nbsp;", " "), "");
                         }
                         else {
-                            input.innerHTML = value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(" ", "&nbsp;");
+                            input.innerHTML = value.replace(" ", "&nbsp;");
                         }
                     }
                     else {
-                        input.innerHTML = value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(" ", "&nbsp;");
+                        input.innerHTML = value.replace(" ", "&nbsp;");
                     }
                 }
                 this.dynamicValue = input.innerHTML;
@@ -5919,7 +5946,7 @@ function InputManager(sourceId, inputAttr, inputMethod, maxLength, min, max, dis
          * @param {Number} [offset]
          */
         function setRange(node, position, scroll, offset) {
-            if(setRange.initialized == undefined) {
+            if(typeof containerNode != "function" || setRange.initialized == undefined) {
                 function containerNode(node) {
                     if(node) {
                         if(node.nodeType == 3) {
@@ -6111,7 +6138,7 @@ function InputManager(sourceId, inputAttr, inputMethod, maxLength, min, max, dis
             this.type = type;
             this.position = position;
 
-            if(Position.initialized == undefined) {
+            if(true || Position.initialized == undefined) {
                 Position.prototype.toString = function() {
                     return "{type: " + this.type + "; position: " + this.position + "}";
                 };
@@ -6121,7 +6148,7 @@ function InputManager(sourceId, inputAttr, inputMethod, maxLength, min, max, dis
         }
 
         function sortNodePosition(node, rtl, root) {
-            if(sortNodePosition.initialized == undefined) {
+            if(typeof NodePosition != "function" || sortNodePosition.initialized == undefined) {
                 function NodePosition(node, position, offset) {
                     Position.call(this, "NodePosition", position);
                     this.node = node;
@@ -6443,7 +6470,7 @@ function InputManager(sourceId, inputAttr, inputMethod, maxLength, min, max, dis
          * @returns {Function|Node}
          */
         function getPreviousTextNode(node) {
-            if(getPreviousTextNode.initialized == undefined) {
+            if(typeof loopContainerForTextNode != "function" || getPreviousTextNode.initialized == undefined) {
 
                 /**
                  * this method just dig into, no dig out, previous or parent.
@@ -6508,7 +6535,7 @@ function InputManager(sourceId, inputAttr, inputMethod, maxLength, min, max, dis
          */
         function getNextTextNode(node) {
 
-            if(getNextTextNode.initialized == undefined) {
+            if(typeof loopContainerForTextNode != "function" || getNextTextNode.initialized == undefined) {
                 /**
                  * this method just dig into, no dig out, previous or parent.
                  * if you think this is a spider, you are dead.
@@ -6918,7 +6945,7 @@ function InputManager(sourceId, inputAttr, inputMethod, maxLength, min, max, dis
 
         function attachPageScroller() {
             if(!IQQIUtils.isRunningOnTv()) {
-                if(attachPageScroller.initialized == undefined) {
+                if(typeof onPageScroll != "function" || attachPageScroller.initialized == undefined) {
                     function onPageScroll() {
                         iqqiInfoNewLog("attachPageScroller.onPageScroll", "enter.");
                         this.dirty = true;
@@ -7167,6 +7194,13 @@ function IQQIConfig() {
                 "area": ["Asian"],
                 "rtl": false,
                 "delete": sit_test_mode
+            },
+            {
+                "number": 41,
+                "name": "Ελληνικά",                                     // the language name in its own language.
+                "code": "GRE",                                         // the language code, ISO-639-2
+                "market": ["EU"],                          // the market of the language. miss acts like EM
+                "rtl": false                                        // if the language itself is rtl, then this will be true, otherwise false. miss acts like false.
             }
         ];
 

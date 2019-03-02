@@ -1635,7 +1635,12 @@ function getCurrentLan() {
         "alb"     , //33   "阿尔巴尼亚语",
         "lav"     , //34   "拉脱维亚语"
         "est"     , //35   "爱沙尼亚语"
-        "lit"       //36   "立陶宛语"
+        "lit"     , //36   "立陶宛语"
+        "none"     , //37   "none",
+        "none"     , //38   "none"
+        "none"     , //39   "none"
+        "none"     ,  //40   "none"
+        "gre"        //41  "希腊语"
     ];
     try {
         var lanIndex = model.language.getOsd();

@@ -284,6 +284,10 @@ function settingInitChSetATVManuSetPage(){
             data.operateData.soundSysIdx = 0;
         }else{
             var currTunerMode = model.channelSearch.getSource();
+            if(hiWebOsFrame.getCurrentCountry() == "Greece" && currTunerMode == 1){ //希腊无cable，避免tuner为cable，UI显示问题
+                currTunerMode = 0;// 若为cable强制设为antanne
+                model.channelSearch.setSource(0);
+            }
             for(var i = 0; i < data.operateData.tunerModeMapList.length; i++){
                 if(currTunerMode == data.operateData.tunerModeMapList[i].map){
                     data.operateData.currTunerModeIdx = i;
@@ -336,6 +340,13 @@ function settingInitChSetATVManuSetPage(){
 function settingRewriteChSetATVManuSetPage(data){
     try{
         var data = settingChSetATVManuSetData;
+        if(hiWebOsFrame.getCurrentCountry() == "Greece"){
+            data.settingChSetATVTunerModeList.disableItem = [0,1];
+            $("#settingChSetATVListFrame").css("display","none");
+        }else{
+            data.settingChSetATVTunerModeList.disableItem = [];
+            $("#settingChSetATVListFrame").css("display","block");
+        }
         data.settingChSetATVTunerModeValue.Data = data.operateData.tunerModeMapList[data.operateData.currTunerModeIdx].name;
         data.settingChSetATVTunerModeList.SelectedIndex = data.operateData.currTunerModeIdx;
         data.settingChSetATVTunerModeList.DataSelectedIndex = data.operateData.currTunerModeIdx;
@@ -654,6 +665,11 @@ function settingChSetATVCreateSoundSysList(){
 
 }
 function settingChSetATVManuSetPageOnOpen(){
+    if(hiWebOsFrame.getCurrentCountry() == "Greece"){
+        hiWebOsFrame.ChSetATVManuSetPage.hiFocus("settingChSetATVManuFreqInput");
+    }else{
+        hiWebOsFrame.ChSetATVManuSetPage.hiFocus("settingChSetATVTunerModeList");
+    }
     if(tv == true){
         model.channelSearch.onColorSystemChaged = settingChSetATVCurrColorSysCallBack;
         model.channelSearch.onSoundSystemChaged = settingChSetATVCurrSoundSysCallBack;

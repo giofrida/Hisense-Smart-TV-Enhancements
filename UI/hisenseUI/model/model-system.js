@@ -675,9 +675,9 @@ function SystemModel(parentModel) {
         SystemModelDefines.SL2_TVAPI_ACTION_SYSTEM_SWITCH_OFF_TV,
         [
             {
-                name: "SwitchOffTv", method: function(object) {
-                return object.invoke();
-            }
+                name: "SwitchOffTv", method: function(object, value) {
+                return object.invoke(value);
+                }
             }
         ], "null"
     );

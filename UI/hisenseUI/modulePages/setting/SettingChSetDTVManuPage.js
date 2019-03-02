@@ -781,6 +781,7 @@ function getSettingChSetDTVManuPageData(opt) {
             "handler": {
                 "aftLeftHandler": "settingChSetDTVManuChangeTunerMode",
                 "aftRightHandler": "settingChSetDTVManuChangeTunerMode",
+                "befRightHandler": "settingChSetDTVManuBefChangeTunerMode",
                 "befLeftHandler": "settingChSetDTVManuBefLeftHandle"
             }
         }
@@ -1056,6 +1057,10 @@ function getChSetDTVManuTunerModeIdx() {
             }
         } else {
             var currTunerMode = model.channelSearch.getSource();
+            if(hiWebOsFrame.getCurrentCountry() == "Greece" && currTunerMode == 1){ //希腊无cable，避免tuner为cable，UI显示问题
+                currTunerMode = 0;// 若为cable强制设为antanne
+                model.channelSearch.setSource(0);
+            }
             for (var i = 0; i < tunerModeTypeMapList.length; i++) {
                 if (currTunerMode == tunerModeTypeMapList[i].map) {
                     data.operateData.currTunerModeIdx = i;
@@ -1188,6 +1193,11 @@ function settingRewriteChSetDTVManuPage(data) {
         data.settingChManuSetTabsFrame.SelectedIndex = data.operateData.currTunerModeIdx;
         debugPrint("settingRewriteChSetDTVManuPage:"+data.operateData.currTunerModeIdx,DebugLevel.ALWAYS);
         settingRefreshChSetManuSatellitePage(data);
+        if(hiWebOsFrame.getCurrentCountry() == "Greece"){
+            $("#settingChManuSetCabTitle").css("display","none");
+        }else{
+            $("#settingChManuSetCabTitle").css("display","block");
+        }
         settingRefreshChSetManuCablePage(data);
         settingRefreshChSetManuAntennaPage(data);
     } catch (ex) {
@@ -1345,6 +1355,11 @@ function settingChSetDTVManuTitleAddMarquee(){
     var htmlText = $("#"+this.id ).html();
     if (htmlText.length >15) {
         $("#"+this.id ).html('<marquee style="width: inherit" scrollAmount=10 scrollDelay=150>' + this.oriText + '</marquee>');
+    }
+}
+function settingChSetDTVManuBefChangeTunerMode(){
+    if(hiWebOsFrame.getCurrentCountry() == "Greece"){
+        if(this.SelectedIndex == 1 ) return false;
     }
 }
 /*******************************************************************

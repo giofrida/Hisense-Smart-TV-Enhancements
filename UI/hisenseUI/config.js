@@ -153,7 +153,7 @@ var onAutoSleepSwitchchanged = function (value) {
 /******************************************************
  * platform为5657SA时调用非hotapp页面
  ******************************************************/
-var currentPlatform_config = "", EPOSresolution = "", DeviceMsgSA = "",currOperaVersion = "";
+var currentPlatform_config = "", EPOSresolution = "", DeviceMsgSA = "",currOperaVersion = "",isDoTVScale=false;
 var firstFocusId_config = "launcher_aah_content";
 var jsPath_config = "../../launcher/js/launcherAllAppsWithHot.js";
 var cssPath_config = "../../launcher/css/launcherAllAppsWithHot.css";
@@ -217,7 +217,7 @@ $(document).ready(function () {
                 "common": ['eng', 'ger', 'ita', 'por', 'spa', 'fre', 'nor', 'swe', 'dan', 'fin', 'chi'],
                 "SA": ['chi', 'eng', 'por', 'spa'],
                 "NA": ['chi', 'eng', 'ger', 'ita', 'por', 'spa', 'fre', 'nor', 'swe', 'dan', 'fin', 'tur', 'ara', 'rus', 'vie', 'tha', 'bur', 'uzb', 'hin', 'ukr', 'mal', 'hbr', 'cze', 'slk', 'pol', 'hun', 'bul', 'per', 'ind'],
-                "EU": ['chi', 'eng', 'ger', 'ita', 'por', 'spa', 'fre', 'nor', 'swe', 'dan', 'fin', 'tur', 'ara', 'rus', 'vie', 'tha', 'bur', 'uzb', 'hin', 'ukr', 'mal', 'hbr', 'cze', 'slk', 'pol', 'hun', 'bul', 'per', 'ind','hrv','srp','mac','alb','lav','est','lit'],
+                "EU": ['chi', 'eng', 'ger', 'ita', 'por', 'spa', 'fre', 'nor', 'swe', 'dan', 'fin', 'tur', 'ara', 'rus', 'vie', 'tha', 'bur', 'uzb', 'hin', 'ukr', 'mal', 'hbr', 'cze', 'slk', 'pol', 'hun', 'bul', 'per', 'ind','hrv','srp','mac','alb','lav','est','lit',"gre"],
                 "EM": ['chi', 'eng', 'ger', 'ita', 'por', 'spa', 'fre', 'nor', 'swe', 'dan', 'fin', 'tur', 'ara', 'rus', 'vie', 'tha', 'bur', 'uzb', 'hin', 'ukr', 'mal', 'hbr', 'cze', 'slk', 'pol', 'hun', 'bul', 'per', 'ind','zho'],
                 "COL": ['chi', 'eng', 'ger', 'ita', 'por', 'spa', 'fre', 'nor', 'swe', 'dan', 'fin', 'tur', 'ara', 'rus', 'vie', 'tha', 'bur', 'uzb', 'hin', 'ukr', 'mal', 'hbr', 'cze', 'slk', 'pol', 'hun', 'bul', 'per', 'ind','hrv','srp','mac','alb','lav','est','lit']
 
@@ -299,7 +299,11 @@ $(document).ready(function () {
                     "EU": [
                         {//"德国", "奥地利", "意大利", "英国", "西班牙", "法国", "瑞士", "葡萄牙", "瑞典", "丹麦", "芬兰", "挪威", "土耳其", "捷克", "斯洛伐克", "波兰", "匈牙利", "保加利亚"
                             "EU": ["Germany", "Austria", "Italy", "UK", "Spain", "France", "Switzerland", "Portugal",
-                                "Sweden", "Denmark", "Finland", "Norway", "Turkey", "Czech Republic", "Slovakia", "Poland", "Hungary", "Bulgaria","Russia_EU","Uzbekistan_EU", "Kirghizstan_EU","Tajikistan_EU","Croatia","Kazakhstan_EU","Latvia","Estonia","Lithuanija"]
+                                "Sweden", "Denmark", "Finland", "Norway", "Turkey", "Czech Republic", "Slovakia", "Slovenia","Poland", "Hungary", "Bulgaria","Russia_EU","Uzbekistan_EU", "Kirghizstan_EU","Tajikistan_EU","Croatia","Kazakhstan_EU","Latvia","Estonia","Lithuanija","Greece"]
+                        },
+                        {
+                            "EU2": ["Algeria_EU","Iraq_EU","Saudi Arabia_EU"
+                            ]
                         }
                     ]
                 },
@@ -1390,6 +1394,7 @@ $(document).ready(function () {
                             closePagesOrModuleByPage(hiWebOsFrame.getCurrentPage());
                             tryToCloseLauncher();
                             tryToCloseAllApps();
+                            tryToCloseEpg();
                         }
 
 					if (hiWebOsFrame.getCurrentPageId() == LiveTVModule.MAIN && 2 != TeletextDevice.status && (deviceKeySet.HBBTVKEYSET > 15 || model.tvservice.getHbbTvStatus() == 2)) {
@@ -1970,10 +1975,10 @@ $(document).ready(function () {
                         vol.setBizMute();
                         break;
                     case hiWebOsFrame.getKeyValues().keyGuide:
-                        if (deviceKeySet.HBBTVKEYSET > 0x1f) {
+                        /*if (deviceKeySet.HBBTVKEYSET > 0x1f) { //hbbtv 起来时 不能过滤 EPG按键
                             DBG_ERROR("hbbtv disable the key");
                             return;
-                        }
+                        }*/
                         try {
                             openEPGPage();
                             debugPrint("logReport__________begin", DebugLevel.WARNING);
@@ -2225,8 +2230,9 @@ function doTVScale() {
     try {
         EPOSresolution = tv ? model.system.getCurResolution() : 'HD';
         DeviceMsgSA = Hisense.File.read("am_tv_model_name", 0);
-        // DBG_ERROR('EPOSresolution' + EPOSresolution);
-        // DBG_ERROR('DeviceMsgSA' + DeviceMsgSA);
+        DBG_ERROR("EPOSresolution"+EPOSresolution);
+        DBG_ERROR("DeviceMsgSA"+DeviceMsgSA);
+        isDoTVScale=false;
         if ("HIS_EPOS_HD" == EPOSresolution) {
             if (DeviceMsgSA == 'LHD32K3110WAM') {
                 $('body').css('transform', 'scale(0.7115)');
@@ -2235,10 +2241,30 @@ function doTVScale() {
                 $('body').css('transform', 'scale(0.7115)');
                 $('body').css('transform-origin', 'top left');
             }
+            isDoTVScale=true;
         }
-        else if("HIS_EPOS_FHD" == EPOSresolution && 'HE32M2161HWTS' == DeviceMsgSA) {
+        else if ("HIS_EPOS_FHD" == EPOSresolution ){
+            if(('HE32M2161HWTS' == DeviceMsgSA ||
+                DeviceMsgSA == 'HS32K3110HWT'||
+                'LHD32K3110WT' == DeviceMsgSA||
+                'HA32N2177WT' == DeviceMsgSA||
+                "HT32N2171HW"==DeviceMsgSA)) {
+            if("HT32N2171HW"==DeviceMsgSA){
+	        if(document.body.style.getPropertyValue("transform") != "scale(0.71)"){
+		    $('body').css('transform', 'scale(0.7115)');
+                    $('body').css('transform-origin', 'bottom right');
+		}
+	    }else{
+                $('body').css('transform', 'scale(0.7115)');
+                $('body').css('transform-origin', 'bottom right');
+            }
+            isDoTVScale=true;
+        }
+        else {
             $('body').css('transform', 'scale(0.7115)');
-            $('body').css('transform-origin', 'bottom right');
+            $('body').css('transform-origin', 'top left');
+            isDoTVScale=true;
+        }
         }
     } catch (e) {
         DBG_ERROR(e.message);
@@ -3133,6 +3159,14 @@ function tryToCloseAllApps() {
         hiWebOsFrame["launcher_allapps"].close();
     }
 }
+
+function tryToCloseEpg() {
+    if (!!hiWebOsFrame["epg"] && hiWebOsFrame["epg"].visible) {
+        debugPrint("Try to close epg");
+        closeEPGModule();
+    }
+}
+
 //关闭除当前模块以外的其它模块
 function closeDOthersModule(module) {
     debugPrint("________closeDOthersModule function begin____________");
@@ -5177,7 +5211,7 @@ function onPVRStatusChanged(val) {
                 DBG_ALWAYS("model.pvr.StopRecord()");
                 model.pvr.StopRecord();
                 //model.timeshift.Stop();
-                model.system.SwitchOffTv();
+                model.system.SwitchOffTv(0);  //follow 5659 pvr
             }
             else {
                 DBG_ALWAYS("only power off");

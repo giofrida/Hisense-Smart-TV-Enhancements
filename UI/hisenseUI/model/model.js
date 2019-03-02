@@ -1161,6 +1161,29 @@ function SystemInitBrand()
         brand=sysBrandlist[0];
         debugE(" the brand error ,fix it");
     }
+    if("EM" == InitArea||"EU" == InitArea)
+    {
+        try{
+            var customer=model.basicSetting.getFactoryCustomer();
+            debugPrint("get customer"+customer);
+            if(customer==1)
+            {
+                brand="con";
+            }
+            else if(customer==2)
+            {
+                brand="tho";
+            }
+            else if(customer==3)
+            {
+                brand="str";
+            }
+        }catch (e)
+        {
+            debugE(e.message);
+
+        }
+    }
 	initBrand = brand;//set the uisdk the brand
     // debugE("the tv brand is "+brand);
     if("SA" == InitArea){
@@ -1214,8 +1237,24 @@ function InitCountry()
         newareaindex=model.hisfactory.getNewAreaIndex();
         debugPrint("newareaindex"+newareaindex);
     }
+    else if(InitArea=="EU")
+    {
+        var EU2list=getsettingsyscountrylist("EU",1);
+        var countryIndex=-1;
+        for (var i = 0; i < EU2list.length; i++) {
+            if (EU2list[i].code== country) {
+                countryIndex=i;
+                break;
+            }
+        }
+        if(countryIndex>=0){
+            newareaindex=1;
+        }
+        else {
+            newareaindex=0;
+        }
+    }
     countrylist=getsettingsyscountrylist(InitArea,newareaindex);
-    debugPrint("333333333333");
     for (var i = 0; i < countrylist.length; i++) {
         if (countrylist[i].code.toLowerCase() == country.toLowerCase())
         {
@@ -1337,6 +1376,8 @@ function getsettingsyscountrylist(verArea,CurrentSubArea)
     }
     else  if(verArea=="EU")
     {
+        if(CurrentSubArea=="EU"||CurrentSubArea==0)
+        {
         countryMapList = [
             {
                 "name": "Germany",
@@ -1414,6 +1455,10 @@ function getsettingsyscountrylist(verArea,CurrentSubArea)
             },
             {
 
+                "name": "Slovenia",
+                "code": "SVN"
+            },
+            {
                 "name": "Poland",
                 "code": "POL"
             },
@@ -1443,7 +1488,10 @@ function getsettingsyscountrylist(verArea,CurrentSubArea)
                 "name": "Tajikistan_EU",// 塔吉克斯坦(Hisense)
                 "code": "TJK"
 	    },
-	    
+                {
+                    "name": "Kazakhstan_EU",// 哈萨克斯坦(Hisense)
+                    "code": "KAZ"
+                },
 	    {
 		    "name": "Croatia",// 克罗地亚(Hisense)
 		    "code": "HRV"
@@ -1459,8 +1507,31 @@ function getsettingsyscountrylist(verArea,CurrentSubArea)
 	    {
                     "name": "Lithuanija",// 立陶宛(Hisense)
 		    "code": "LTU"
-	    }
-        ]
+                }
+        ,
+        {
+            "name": "Greece",//希腊
+            "code": "GRC"
+        }
+            ];
+        }
+        else if(CurrentSubArea=="EU2"||CurrentSubArea==1)
+        {
+            countryMapList =[
+            {
+                "name": "Algeria_EU", //阿尔及利亚
+                "code": "DZA"
+            },
+            {
+                "name": "Iraq_EU", //伊拉克
+                "code": "IRQ"
+            },
+            {
+                "name": "Saudi Arabia_EU", //沙特阿拉伯
+                "code": "SAU"
+            }]
+
+        }
         //["Germany", "Austria", "Italy", "England", "Spain", "France", "Switzerland", "Portuguesa",
         // "Sweden", "Denmark", "Finland", "Norway", "Turkish", "Czech", "Slovakia", "Poland", "Hungary", "Bulgaria"]
 

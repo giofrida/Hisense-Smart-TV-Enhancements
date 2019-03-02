@@ -43,6 +43,7 @@
 	SoftwareupdateModelDefines.SL2_TVAPI_I32_SOFTWARE_UPDATE_HISENSE_FLASH_SPACE_ENOUGH= "tvapi.i32.software.update.hisense.flash.space.enough";
 	SoftwareupdateModelDefines.SL2_TVAPI_ACTION_SOFTWARE_UPDATE_START_DOWNLOAD= "tvapi.action.software.update.start.download";
 	SoftwareupdateModelDefines.SL2_TVAPI_I32_SOFTWARE_UPDATE_DOWNLOAD_PROGRESS= "tvapi.i32.software.update.download.progress";
+     SoftwareupdateModelDefines.SL2_TVAPI_I32_SOFTWARE_EULA_STATUS = "tvapi.i32.software.update.eula.status";
     SoftwareupdateModelDefines.SL2_TVAPI_I32_SOFTWARE_UPDATE_OAD_AUTO_ENABLED="tvapi.i32.software.update.oad.auto.enabled";
 	SoftwareupdateModelDefines.SL2_TVAPI_ACTION_SOFTWARE_UPDATE_OAD_START_SEARCH= "tvapi.action.software.update.oad.start.search";
 	SoftwareupdateModelDefines.SL2_TVAPI_ACTION_SOFTWARE_UPDATE_OAD_CANCEL_SEARCH= "tvapi.action.software.update.oad.cancel.search";
@@ -371,6 +372,10 @@ function SoftwareupdateModel( parentModel ) {
               SoftwareupdateModelDefines.SL2_TVAPI_I32_SOFTWARE_UPDATE_DOWNLOAD_PROGRESS,
               "getDownloadProgress", "setDownloadProgress", "onDownloadProgressChaged",
             null, null );
+    this.registerIntegerObject(
+        SoftwareupdateModelDefines.SL2_TVAPI_I32_SOFTWARE_EULA_STATUS,
+        "getEulaFlag", "setEulaFlag", "onEulaFlagChaged",
+        null, null);
 
     // OadAutoEnabled
               this.registerIntegerObject(

@@ -112,9 +112,23 @@ function setting_setLeftParInfo(value){
     }
 
 }
+function setting_setCurrentParInfo(value){
+    DBG_ERROR("setting_setCurrentParInfo:"+value);
+    var memSize = Math.floor(value/1073741824*2)/2;
+    if(memSize >32){
+        setting_ShiftHdSizeListData.operateData.curSize = 32;
+    } else if (memSize<1){
+        setting_ShiftHdSizeListData.operateData.curSize = 1;
+    }else{
+        setting_ShiftHdSizeListData.operateData.curSize = memSize;
+    }
+
+}
 
 function setting_shiftHdSizeListOpenHandler(){
-    setting_ShiftHdSizeListData.operateData.curSize = 1;
+    if(!setting_ShiftHdSizeListData.operateData.curSize) {
+        setting_ShiftHdSizeListData.operateData.curSize = 1;
+    }
 //    ShiftHdSizeListData.operateData.maxSize = 1;
     setting_setCurrentSizeLeft();
     hiWebOsFrame.SettingThiftHdSizeList.rewriteDataOnly();

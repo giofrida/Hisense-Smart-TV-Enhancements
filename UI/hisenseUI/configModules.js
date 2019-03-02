@@ -4688,6 +4688,28 @@ var modulesConfig = [
         "pageData": {}
     },
     {
+        "id": "setting_sys_review_eula_page",
+        "module": "setting",                         //表示页面所属模块
+        "jsPath": "modulePages/setting/SettingSysOpenSrc.js",          //导入Js文件,由于回调问题，当前版本仅提供单一js文件
+        "htmlPath": "UI/hisenseUI/modulePages/setting/SettingSysOpenSrc.html",      //创建页面需要导入的HTML文件，由于回调问题，当前版本仅提供单一html文件
+//            "cssPath": "css/channelScanSetStyle.css",        //创建页面需要导入的HTML文件，由于回调问题，当前版本仅提供单一html文件
+        "description": "setting sys update page",
+        "AutoClose": true,
+        "pageMode": "module",//可指定module,single,dialog
+        "firstFocusId": "setting_sys_eulaOta_box",//包括button或者Component
+//            "groupNavMode": "nearest",//nearest,sequence
+        //导航进入到数组按钮的方式：nearby(最近原则)，sequence(正序原则)，
+        "horizontalEdgesJump": false,
+        "verticalEdgesJump": true,
+        "CaE": [],
+        "initData": "getSettingSysUpdateEulaData", //页面创建前的回调函数
+        "onCreate": "",                        //页面创建时的回调函数
+        "onOpen": "updateEulaOpenHandler",                            //页面创建时的回调函数
+        "onClose": "",                        //页面创建时的回调函数
+        "onDestroy": "SettingSysUpdateEulaDestroy",                       //页面创建时的回调函数
+        "pageData": {}
+    },
+    {
         "id": "setting_sys_dis_fir_page",
         "module": "setting",                         //表示页面所属模块
         "jsPath": "modulePages/setting/SettingSysdisfir.js",          //导入Js文件,由于回调问题，当前版本仅提供单一js文件
@@ -4976,7 +4998,7 @@ var modulesConfig = [
         "description": "loading page",
         "AutoClose": false,
         "pageMode": "module",//可指定module,single,dialog
-        "firstFocusId": "setting_update_ver_btn1",//包括button或者Component
+        "firstFocusId": "setting_update_ver_content_box",//包括button或者Component
         "groupNavMode": "nearest",//nearest,sequence
         //导航进入到数组按钮的方式：nearby(最近原则)，sequence(正序原则)，
         "horizontalEdgesJump": false,
@@ -5002,7 +5024,7 @@ var modulesConfig = [
         "description": "autoupdate page",
         "AutoClose": false,
         "pageMode": "module",//可指定module,single,dialog
-        "firstFocusId": "setting_autoupdate_ver_btn1",//包括button或者Component
+        "firstFocusId": "setting_autoupdate_ver_content_box",//包括button或者Component
         "groupNavMode": "nearest",//nearest,sequence
         //导航进入到数组按钮的方式：nearby(最近原则)，sequence(正序原则)，
         "horizontalEdgesJump": false,
@@ -5027,7 +5049,7 @@ var modulesConfig = [
         "description": "force update page",
         "AutoClose": false,
         "pageMode": "module",//可指定module,single,dialog
-        "firstFocusId": "setting_forceupdate_ver_btn1",//包括button或者Component
+        "firstFocusId": "setting_forceupdate_ver_content_box",//包括button或者Component
         "groupNavMode": "nearest",//nearest,sequence
         //导航进入到数组按钮的方式：nearby(最近原则)，sequence(正序原则)，
         "horizontalEdgesJump": false,

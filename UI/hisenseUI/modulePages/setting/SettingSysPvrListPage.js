@@ -216,6 +216,8 @@ function Updatalist2ScrollBar(pageData)
 
 var tmpSelectIndex = -1;
 var tmpSetTimeOut = null;
+var tmpUUID = null;
+var tmpRegisterSize = 0;
 
 function SettingSyspvrlistEnHandler()
 {
@@ -234,7 +236,7 @@ function SettingSyspvrlistEnHandler()
 
 				    debugRM("Set Pvr Uuid to e2 :" + this.page.operateData.curvolumlist[this.page.operateData.curselectpartition].uuid);
 				    try{
-					    model.pvr.setStationUuid(this.page.operateData.curvolumlist[this.page.operateData.curselectpartition].uuid);
+						tmpUUID = this.page.operateData.curvolumlist[this.page.operateData.curselectpartition].uuid
 					    model.pvr.SpeedTest(this.page.operateData.curvolumlist[this.page.operateData.curselectpartition].path);
 				    }catch (e){
 					    debugE(e.message);
@@ -352,11 +354,12 @@ function SettingSyspvrlistEnHandler()
 function onTshiftIsRegisteredChanged(id, value)
 {
 	debugRM("IsRegisteredReceived:" + value);
-	if(-1 == value)
+	if(1||-1 == value)
 	{
 		debugRM("Set path to get free space :" + PageDataSettingPvrList.operateData.curvolumlist[PageDataSettingPvrList.operateData.curselectpartition].path);
 		model.timeshift.ParInfo(PageDataSettingPvrList.operateData.curvolumlist[PageDataSettingPvrList.operateData.curselectpartition].path);
 		model.timeshift.getTshiftParInfo = onTshiftParInfoChanged;
+		tmpRegisterSize = (-1==value)?0:value;
 	}
 	else
 	{
@@ -390,13 +393,23 @@ function onPvrSpeedChanged(id,value)
 
 	if(value >= 5)
 	{
+		try{
+			model.pvr.setStationUuid(tmpUUID);
+		}catch (e){
+			debugE(e.message);
+		}
 		PageDataSetttingSysPvrCheck.operateData.curListIndex = 0;
 		hiWebOsFrame.pvrCheck.rewriteDataOnly();
 		hiWebOsFrame.pvrCheck.open();
 		hiWebOsFrame.pvrCheck.hiFocus();
 	}
-	else if(value > 0)
+	else if(value >= 3)
 	{
+		try{
+			model.pvr.setStationUuid(tmpUUID);
+		}catch (e){
+			debugE(e.message);
+		}
 		PageDataSetttingSysPvrCheck.operateData.curListIndex = 4;
 		hiWebOsFrame.pvrCheck.rewriteDataOnly();
 		hiWebOsFrame.pvrCheck.open();
@@ -409,6 +422,7 @@ function onPvrSpeedChanged(id,value)
 		hiWebOsFrame.pvrCheck.open();
 		hiWebOsFrame.pvrCheck.hiFocus();
 	}
+	tmpUUID = null;
 }
 
 function onTshiftParInfoChanged(id,value)
@@ -423,7 +437,7 @@ function onTshiftParInfoChanged(id,value)
 
 	var minimumValue = 1073741824;
 
-	if(PageDataSettingPvrList.operateData.curvolumlist[PageDataSettingPvrList.operateData.curselectpartition].free < minimumValue)
+	if((PageDataSettingPvrList.operateData.curvolumlist[PageDataSettingPvrList.operateData.curselectpartition].free+tmpRegisterSize*1024*1024) < minimumValue)
 	{
 		PageDataSettingPvrList.operateData.curselectpartition = tmpSelectIndex;
 		hiWebOsFrame.settingssyspvrlist.rewriteDataOnly();
@@ -453,7 +467,8 @@ function onTshiftParInfoChanged(id,value)
             hiWebOsFrame.settingssyspvrlist.close();
             hiWebOsFrame.createPage("SettingThiftHdSizeList", null, null, null, function (page) {
                 hiWebOsFrame.SettingThiftHdSizeList = page;
-                setting_setLeftParInfo(value[1]);
+                setting_setLeftParInfo(value[1]+tmpRegisterSize*1024*1024);
+                setting_setCurrentParInfo(tmpRegisterSize*1024*1024);
                 page.open();
                 page.hiFocus();
             });

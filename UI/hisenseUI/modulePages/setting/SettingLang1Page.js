@@ -1229,6 +1229,8 @@ var PageDataSettingSysLang = {
         "Japanese":["Japanese","Japanisch","giapponese","japonês","japonés","japonais","Japansk","japanska","Japansk","Japani","Japonština","Japončina","Japoński","japán","Японски","Japonca","Yaponcha "],
         "Irish":["Irish","Irisch","irlandese","irlandês","irlandés","irlandais","irish","iriska","Irsk","Englanti. Iirie","Irština","Írčina","Irlandzki","ír","Ирландски","İrlandaca","Irlandcha"],
         "Welsh":["Welsh","Walisisch","gallese","galês","galés","gallois","Walisisk","kymriska","Welsh","Englanti, Wales","Velština","Waleština","Walijski","welszi","Уелски","Galce","Uelscha"],
+        "Thai":[],
+        "Traditional Chinese":[],
         "Catalan":["Catalan","Katalanisch","catalano","catalão","catalán","catalan","Katalansk","katalanska","Katalansk","Katalaani","Katalánština","Katalánčina","Kataloński","katalán","Каталонски","Katalanca","Kataloncha"],
         "Gaelic":["Gaelic","Gälisch","gaelico","gaélico","gaélico","gaëlique","gaelic","gäliska","Gælisk","Keltti","Velština","Galčina","Gaelicki","gael","Галски","Galik","Gaelcha"],
         "Basque":["Basque","Baskisch","basco","basco","vasco","basque","basque","baskiska","Basque","Baski","Baskičtina","Baskičtina","Baskijski","baszk","Баскски","Baskça","Baskcha"],

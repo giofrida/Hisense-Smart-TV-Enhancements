@@ -293,6 +293,15 @@ function liveTVMain() {
         DBG_ALWAYS("nosignal[" + noSignal + "]");
         return noSignal;
     }
+
+    self.getIsDataChannelFlag = function () {
+        if (!tv) return false;
+        var ret = !crntChannel || (crntChannel.eCode == ECode.NO_SERVICE);
+        DBG_ERROR("crntChannel[" + objToString(crntChannel) + "]");
+        DBG_ERROR("is data channel[" + ret + "]");
+        return ret;
+    }
+    //check
     self.getCIEncryptedFlag = function () {
         try {
             if (!tv) return false;
@@ -1260,7 +1269,7 @@ function liveTVMain() {
         var tempChannel = null;
         //["0","210763905","804","DT65_576p","8719","2","1","e_code:0"]
         if (0 != val.length) {
-            var hasSatId = (8 == val.length);
+            var hasSatId = (8 <= val.length);
             tempChannel = {
                 listUid: val[MPChannel.LISTUID],
                 uid: val[MPChannel.UID],
@@ -1274,7 +1283,7 @@ function liveTVMain() {
                 isHidden: getMaskValue(Mask.HIDDEN, val[MPChannel.ATTRIBUTE]),
                 playId: val[MPChannel.PLAYID],
                 satId: hasSatId ? val[MPChannel.SATELLITEID] : 0,
-                eCode: !!ecode ? ecode : ECode.NONE,
+                eCode: !!ecode ? ecode : (!!val[MPChannel.ECODE] ? val[MPChannel.ECODE] : ECode.NONE),
                 playTime: Date.now()
             }
             //if(hasSatId) {

@@ -135,6 +135,10 @@ function settingInitChSetTunerMode(){
         }else{
             var currTunerMode = model.channelSearch.getSource();
             debugE("settingInitChSetTunerMode:currTunerMode="+ currTunerMode);
+            if(hiWebOsFrame.getCurrentCountry() == "Greece" && currTunerMode == 1){ //希腊无cable，避免tuner为cable，UI显示问题
+                currTunerMode = 0;// 若为cable强制设为antanne
+                model.channelSearch.setSource(0);
+            }
             for(var i = 0; i < data.operateData.tunerModeMapList.length; i++){
                 if(currTunerMode == data.operateData.tunerModeMapList[i].map){
                     data.operateData.currTunerModeIdx = i;
@@ -163,6 +167,8 @@ function settingRewriteChSetTunerMode(data){
     try{
         var opData = data.operateData;
         var tunerModeList = data.settingChSetTMList;
+        data.settingChSetTMList.Data = [];
+        data.settingChSetTMList.disableItem = [];
         if(tunerModeList.Data.length > opData.tunerModeMapList.length){
             tunerModeList.Data.splice(opData.tunerModeMapList.length)
         }else{
@@ -180,7 +186,9 @@ function settingRewriteChSetTunerMode(data){
             item.settingChSetTMSelectImg.Data = false;
         });
         tunerModeList.Data[opData.currTunerModeIdx].settingChSetTMSelectImg.Data = true;
-
+        if(hiWebOsFrame.getCurrentCountry() == "Greece"){
+            data.settingChSetTMList.disableItem.push(2);
+        }
         tunerModeList.SelectedIndex = opData.currTunerModeIdx;
         tunerModeList.DataSelectedIndex = opData.currTunerModeIdx;
 
